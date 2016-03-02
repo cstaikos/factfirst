@@ -17,7 +17,8 @@
       <li>
         <h4><%= evidence.url%></h4>
         <p>Posted by <%= evidence.user.display_name %></p>
-        <p><%= link_to "#{pluralize evidence.upvotes, 'upvote'}", upvote_path(evidence.id) %></p>
+        <p><%= link_to "#{pluralize evidence.upvotes, 'upvote'}", upvote_path(evidence.id) %>
+            | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}", downvote_path(evidence.id) %></p>
       </li>
     <% end %>
   </ul>

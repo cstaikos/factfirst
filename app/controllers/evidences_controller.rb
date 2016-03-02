@@ -13,7 +13,7 @@ class EvidencesController < ApplicationController
 
   def downvote
     Vote.create(upvote: false, user_id: current_user.id, evidence_id: @evidence.id)
-
+    redirect_to fact_path(@evidence.fact_id)
   end
 
   private

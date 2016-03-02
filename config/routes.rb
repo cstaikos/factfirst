@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   get 'evidence/:id/upvote' => 'evidences#upvote', as: :upvote
-  get 'evidence/:id/upvote' => 'evidences#upvote', as: :downvote
+  get 'evidence/:id/downvote' => 'evidences#downvote', as: :downvote
 
 
 
