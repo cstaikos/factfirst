@@ -12,7 +12,7 @@ class VotesController < ApplicationController
   private
 
   def load_evidence
-    @evidence =
+
   end
 
 end

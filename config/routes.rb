@@ -9,8 +9,11 @@ Rails.application.routes.draw do
 
   resources :facts
 
-  resources :evidences
+  # resources :evidences
+  get 'evidence/:id/upvote' => 'evidences#upvote'
+
   resources :votes
+
 
 
   devise_for :users, :controllers => { registrations: 'registrations' }
