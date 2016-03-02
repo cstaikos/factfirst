@@ -6,12 +6,13 @@ class VotesController < ApplicationController
   end
 
   def update
+
   end
 
   private
 
   def load_evidence
-
+    @evidence =
   end
 
 end

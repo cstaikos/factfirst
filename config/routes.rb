@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'evidences/create'
+
   get 'votes/create'
 
   get 'votes/update'
@@ -6,6 +8,10 @@ Rails.application.routes.draw do
   root 'facts#index'
 
   resources :facts
+
+  resources :evidences
+  resources :votes
+
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 

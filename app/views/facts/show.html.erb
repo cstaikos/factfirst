@@ -30,7 +30,7 @@
       <li>
         <h4><%= evidence.url%></h4>
         <p>Posted by <%= evidence.user.display_name %></p>
-        <p><%= "#{pluralize evidence.upvotes, 'upvote'} | #{pluralize evidence.downvotes, 'downvote'}" %></p>
+        <p><%= "#{pluralize evidence.upvotes, 'upvote'},  | #{pluralize evidence.downvotes, 'downvote'}" %></p>
       </li>
     <% end %>
   </ul>
