@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'votes/create'
+
+  get 'votes/update'
+
   root 'facts#index'
 
   resources :facts
