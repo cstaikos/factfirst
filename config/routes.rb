@@ -1,18 +1,13 @@
 Rails.application.routes.draw do
-  get 'evidences/create'
-
-  get 'votes/create'
-
-  get 'votes/update'
-
   root 'facts#index'
 
   resources :facts
 
-  # resources :evidences
-  get 'evidence/:id/upvote' => 'evidences#upvote'
 
-  resources :votes
+  get 'evidence/:id/upvote' => 'evidences#upvote', as: :upvote
+  get 'evidence/:id/upvote' => 'evidences#upvote', as: :downvote
+
+
 
 
 
