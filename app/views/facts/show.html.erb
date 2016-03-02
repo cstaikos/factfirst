@@ -1,0 +1,42 @@
+<h1>Facts#show</h1>
+
+<div>
+  <p>
+    <strong><%= User.find(@fact.user_id).display_name %></strong> posted this fact!
+  </p>
+
+  <p>
+    <%= @fact.body %>
+  </p>
+</div>
+
+<div>
+  <h2><%= pluralize @fact.supporting_evidence.count, 'piece' %> of supporting evidence:</h2>
+  <ul>
+    <% @fact.supporting_evidence.each do |evidence| %>
+      <li>
+        <h4><%= evidence.url%></h4>
+        <p>Posted by <%= evidence.user.display_name %></p>
+        <p><%= "#{pluralize evidence.upvotes, 'upvote'} | #{pluralize evidence.downvotes, 'downvote'}" %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <h2><%= pluralize @fact.refuting_evidence.count, 'piece' %> of refuting evidence:</h2>
+  <ul>
+    <% @fact.refuting_evidence.each do |evidence| %>
+      <li>
+        <h4><%= evidence.url%></h4>
+        <p>Posted by <%= evidence.user.display_name %></p>
+        <p><%= "#{pluralize evidence.upvotes, 'upvote'} | #{pluralize evidence.downvotes, 'downvote'}" %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<% if current_user == User.find(@fact.user_id)  %>
+  <%= link_to "Delete Fact", fact_path(@fact), method: :delete, date: {confirm:"Are you sure you want to delete this
+  fact?"} %>
+<% end  %>

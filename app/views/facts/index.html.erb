@@ -1,0 +1,10 @@
+<h1>All Facts</h1>
+<div class="facts-container">
+  <ul>
+    <% @facts.each do |fact| %>
+    <li>
+      <p><%= link_to fact.body, fact_path(fact) %></p>
+    </li>
+    <% end %>
+  </ul>
+</div>

@@ -1,0 +1,15 @@
+<div class="nested-fields">
+
+  <div >
+    <%= f.label :url %>
+    <%= f.url_field :url %>
+  </div>
+  <div >
+    <%= f.label :support, "Supporting" %>
+    <%= f.radio_button :support, true, value: true, checked: false %>
+    <%= f.label :support, "Refuting" %>
+    <%= f.radio_button :support, false, value: false, checked: false %>
+  </div>
+
+  <%= link_to_remove_association "Remove Evidence", f %>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TruthyFalsey</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <p><%= link_to "Facts Index", facts_path %> | <%= link_to "New Fact", new_fact_path %></p>
+
+  <% if user_signed_in? %>
+    <p><%= link_to('Logout', destroy_user_session_path, :method => :delete)%></p>
+  <% else %>
+    <p><%= link_to('Login', new_user_session_path)  %></p>
+  <% end %>
+
+<%= yield %>
+
+</div>
+
+</body>
+</html>
