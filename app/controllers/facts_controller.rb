@@ -6,7 +6,13 @@ class FactsController < ApplicationController
   end
 
   def new
-    @fact = Fact.new
+
+    if user_signed_in?
+      @fact = Fact.new
+    else
+      redirect_to new_user_session_path, notice: "Please register/login to create a new fact"
+    end
+
   end
 
   def show
@@ -17,6 +23,7 @@ class FactsController < ApplicationController
     @fact = Fact.create(fact_params)
 
     @fact.user = current_user
+
     if @fact.save
       redirect_to fact_path(@fact), notice: 'Fact successfully created.'
     else
@@ -45,7 +52,7 @@ class FactsController < ApplicationController
 
   def fact_params
     params.require(:fact).permit(:body, :user_id,
-                                 evidences_attributes: [:url, :support])
+                                 evidences_attributes: [:url, :support, ])
   end
 
   def load_fact
