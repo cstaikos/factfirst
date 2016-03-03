@@ -5,7 +5,7 @@ class VotesController < ApplicationController
     current_user.votes.each do |vote|
       if vote.evidence_id == @evidence.id
         respond_to do |format|
-          format.js { render template: 'evidences/vote_denied.js.erb' }
+          format.js { render template: 'votes/vote_denied.js.erb' }
           format.html { redirect_to fact_path(@evidence.fact_id) }
         end
         return
