@@ -1,12 +1,10 @@
-<h1>Facts#show</h1>
-
 <div>
   <p>
     <strong><%= User.find(@fact.user_id).display_name %></strong> posted this fact!
   </p>
 
   <p>
-    <%= @fact.body %>
+    <%= @fact.body %> - Truthiness score: <h1><%= @fact.score %></h1>
   </p>
 </div>
 
