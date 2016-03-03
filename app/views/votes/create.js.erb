@@ -1,5 +1,7 @@
 <% if @vote.upvote == true %>
   $("#upvote_<%= @evidence.id %>").html('<%= @evidence.upvotes %> upvotes');
+  $("#alert").html('');
 <% elsif @vote.upvote == false%>
   $("#downvote_<%= @evidence.id %>").html('<%= @evidence.downvotes %> downvotes');
+  $("#alert").html('');
 <% end %>
