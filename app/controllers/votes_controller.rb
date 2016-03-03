@@ -1,23 +1,35 @@
 class VotesController < ApplicationController
   before_action :load_evidence
 
+  # if current_user.already_voted?(@evidence)
+  #   respond_to do |format|
+  #     format.js { render template: 'evidences/vote_denied.js.erb' }
+  #     format.html { redirect_to fact_path(@evidence.fact_id) }
+  #   end
+  # else
+  #   Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
+  #   @evidence.fact.update_score #Update score after a vote is cast
+  #
+  #   respond_to do |format|
+  #     format.js {}
+  #     format.html { redirect_to fact_path(@evidence.fact_id) }
+  #   end
+  # end
+
   def create
-    current_user.votes.each do |vote|
-      if vote.evidence_id == @evidence.id
-        respond_to do |format|
-          format.js { render template: 'votes/vote_denied.js.erb' }
-          format.html { redirect_to fact_path(@evidence.fact_id) }
-        end
-        return
+    if current_user.already_voted?(@evidence)
+      respond_to do |format|
+        format.js { render template: 'votes/vote_denied.js.erb' }
+        format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-    end
+    else
+      @vote = Vote.create(upvote: params[:upvote], user_id: current_user.id, evidence_id: params[:evidence_id])
+      @evidence.fact.update_score
 
-    @vote = Vote.create(upvote: params[:upvote], user_id: current_user.id, evidence_id: params[:evidence_id])
-    @evidence.fact.update_score
-
-    respond_to do |format|
-      format.js {}
-      format.html { redirect_to fact_path(@evidence.fact_id), alert: 'Vote Did not Save' }
+      respond_to do |format|
+        format.js { }
+        format.html { redirect_to fact_path(@evidence.fact_id), alert: 'Vote Did not Save' }
+      end
     end
   end
 
