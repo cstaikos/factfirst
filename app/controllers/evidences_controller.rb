@@ -2,6 +2,7 @@ class EvidencesController < ApplicationController
   before_action :load_evidence
 
   def upvote
+
     current_user.votes.each do |vote|
       if vote.evidence_id == @evidence.id
         respond_to do |format|
@@ -12,13 +13,13 @@ class EvidencesController < ApplicationController
       end
     end
 
-      Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
+    Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
+    @evidence.fact.update_score
 
-      respond_to do |format|
-        format.js {}
-        format.html { redirect_to fact_path(@evidence.fact_id) }
-      end
-
+    respond_to do |format|
+      format.js {}
+      format.html { redirect_to fact_path(@evidence.fact_id) }
+    end
 
   end
 
@@ -34,6 +35,7 @@ class EvidencesController < ApplicationController
     end
 
     Vote.create(upvote: false, user_id: current_user.id, evidence_id: @evidence.id)
+    @evidence.fact.update_score
 
     respond_to do |format|
       format.js {}
