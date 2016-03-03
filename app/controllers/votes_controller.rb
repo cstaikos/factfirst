@@ -1,21 +1,6 @@
 class VotesController < ApplicationController
   before_action :load_evidence
 
-  # if current_user.already_voted?(@evidence)
-  #   respond_to do |format|
-  #     format.js { render template: 'evidences/vote_denied.js.erb' }
-  #     format.html { redirect_to fact_path(@evidence.fact_id) }
-  #   end
-  # else
-  #   Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
-  #   @evidence.fact.update_score #Update score after a vote is cast
-  #
-  #   respond_to do |format|
-  #     format.js {}
-  #     format.html { redirect_to fact_path(@evidence.fact_id) }
-  #   end
-  # end
-
   def create
     if current_user.already_voted?(@evidence)
       respond_to do |format|
