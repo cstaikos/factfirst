@@ -3,7 +3,10 @@ Rails.application.routes.draw do
 
   resources :facts
 
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  post 'evidence/:id/upvote' => 'evidences#upvote', as: :upvote
+  post 'evidence/:id/downvote' => 'evidences#downvote', as: :downvote
+
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   devise_scope :user do
     get 'users/sign_up' => 'registrations#new'
