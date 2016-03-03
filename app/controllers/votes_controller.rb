@@ -29,7 +29,7 @@ class VotesController < ApplicationController
 
   def login_to_vote
     unless current_user
-      redirect_to new_user_session_path, alert: "Please log in to Vote Yo!"
+      redirect_to new_user_session_path, alert: "Please log in to Vote!"
     end
   end
 end

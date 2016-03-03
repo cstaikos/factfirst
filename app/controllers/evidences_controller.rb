@@ -21,7 +21,7 @@ class EvidencesController < ApplicationController
 
   def login_to_add_evidence
     unless current_user
-      redirect_to new_user_session_path, alert: "Please log in to add evidence"
+      redirect_to new_user_session_path, alert: "Please log in to add Evidence!"
     end
   end
 
