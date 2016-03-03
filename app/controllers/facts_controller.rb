@@ -9,6 +9,7 @@ class FactsController < ApplicationController
     if user_signed_in?
       @fact = Fact.new
     else
+      # NOTE: Notices are not working right now and they need to be resolved
       redirect_to new_user_session_path, notice: 'Please register/login to create a new fact'
     end
   end

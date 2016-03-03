@@ -37,7 +37,7 @@ class VotesController < ApplicationController
   end
 
 
-
+  # TODO: This needs strong params ASAP 
   private
   def load_evidence
     @evidence = Evidence.find(params[:evidence_id])
