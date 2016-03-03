@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :facts
 
   post 'evidence/:id/upvote' => 'evidences#upvote', as: :upvote
-  get 'evidence/:id/downvote' => 'evidences#downvote', as: :downvote
+  post 'evidence/:id/downvote' => 'evidences#downvote', as: :downvote
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
