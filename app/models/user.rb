@@ -8,4 +8,11 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :evidences
   has_many :votes
+
+  def already_voted?(evidence)
+    votes.each do |vote|
+      return true if vote.evidence_id == evidence.id
+    end
+    false
+  end
 end

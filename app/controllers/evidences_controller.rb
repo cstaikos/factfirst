@@ -2,38 +2,37 @@ class EvidencesController < ApplicationController
   before_action :load_evidence
 
   def upvote
-    current_user.votes.each do |vote|
-      next unless vote.evidence_id == @evidence.id
+    if current_user.already_voted?(@evidence)
       respond_to do |format|
         format.js { render template: 'evidences/vote_denied.js.erb' }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-      break
-    end
 
-    Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
+    else
 
-    respond_to do |format|
-      format.js {}
-      format.html { redirect_to fact_path(@evidence.fact_id) }
+      Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
+
+      respond_to do |format|
+        format.js {}
+        format.html { redirect_to fact_path(@evidence.fact_id) }
+      end
     end
   end
 
   def downvote
-    current_user.votes.each do |vote|
-      next unless vote.evidence_id == @evidence.id
+    if current_user.already_voted?(@evidence)
       respond_to do |format|
         format.js { render template: 'evidences/vote_denied.js.erb' }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-      break
-    end
+    else
 
-    Vote.create(upvote: false, user_id: current_user.id, evidence_id: @evidence.id)
+      Vote.create(upvote: false, user_id: current_user.id, evidence_id: @evidence.id)
 
-    respond_to do |format|
-      format.js {}
-      format.html { redirect_to fact_path(@evidence.fact_id), alert: 'Vote Did not Save' }
+      respond_to do |format|
+        format.js {}
+        format.html { redirect_to fact_path(@evidence.fact_id) }
+      end
     end
   end
 
