@@ -19,3 +19,7 @@
 .wrapper {
   @include outer-container;
 }
+
+.evidence {
+  @include span-columns(6);
+}
