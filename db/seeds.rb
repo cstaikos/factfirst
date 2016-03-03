@@ -23,7 +23,7 @@ end
   )
 end
 
-5.times do
+50.times do
   Evidence.create(
     url: Faker::Internet.url,
     support: [true, false].sample,
@@ -32,7 +32,7 @@ end
   )
 end
 
-15.times do
+150.times do
   Vote.create(
     upvote: [true, false].sample,
     user: User.all.sample,
@@ -40,10 +40,12 @@ end
   )
 end
 
-5.times do
+25.times do
   Comment.create(
     body: Faker::Lorem.paragraph,
     user: User.all.sample,
     fact: Fact.all.sample
   )
 end
+
+Fact.all.each { |fact| fact.update_score }
