@@ -17,13 +17,13 @@
         <p>Posted by <%= evidence.user.display_name %></p>
 
         <p> <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                        upvote_path(evidence.id),
+                        votes_path(evidence_id: evidence.id, upvote: true),
                         method: :post,
                         remote: true,
                         id: "upvote_#{evidence.id}" %>
 
           | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                        downvote_path(evidence.id),
+                        votes_path(evidence_id: evidence.id, upvote: false),
                         method: :post,
                         remote: true,
                         id: "downvote_#{evidence.id}" %>
@@ -43,13 +43,13 @@
         <p>Posted by <%= evidence.user.display_name %></p>
 
         <p> <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                        upvote_path(evidence.id),
+                        votes_path(evidence_id: evidence.id, upvote: true),
                         method: :post,
                         remote: true,
                         id: "upvote_#{evidence.id}" %>
 
           | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                       downvote_path(evidence.id),
+                       votes_path(evidence_id: evidence.id, upvote: false),
                        method: :post,
                        remote: true,
                        id: "downvote_#{evidence.id}" %>
