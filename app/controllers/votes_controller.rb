@@ -4,6 +4,8 @@ class VotesController < ApplicationController
   def update
   end
 
+
+
   private
 
   def load_evidence

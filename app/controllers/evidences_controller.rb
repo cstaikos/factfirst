@@ -7,9 +7,7 @@ class EvidencesController < ApplicationController
         format.js { render template: 'evidences/vote_denied.js.erb' }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-
     else
-
       Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
 
       respond_to do |format|
@@ -26,7 +24,6 @@ class EvidencesController < ApplicationController
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
     else
-
       Vote.create(upvote: false, user_id: current_user.id, evidence_id: @evidence.id)
 
       respond_to do |format|

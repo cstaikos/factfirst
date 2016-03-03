@@ -8,7 +8,7 @@ class Fact < ActiveRecord::Base
 
   def set_defaults
     self.score = 0
-    self.save
+    save
   end
 
   def supporting_evidence
@@ -27,16 +27,15 @@ class Fact < ActiveRecord::Base
     return if num_votes == 0
 
     vote_sums = evidences.inject(0) do |sum, evidence|
-      if evidence.support
-        sum += evidence.upvotes #upvotes on supporting evidence are good for a fact
-      else
-        sum += evidence.downvotes #downvotes on refuting evidence are good for a fact
-      end
+      sum += if evidence.support
+               evidence.upvotes # upvotes on supporting evidence are good for a fact
+             else
+               evidence.downvotes # downvotes on refuting evidence are good for a fact
+             end
     end
 
     self.score = (vote_sums.to_f / num_votes.to_f * 100).round
-  
-    self.save
-  end
 
+    save
+  end
 end

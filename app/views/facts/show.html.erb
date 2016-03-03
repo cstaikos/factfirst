@@ -15,8 +15,8 @@
       <li>
         <h4><%= evidence.url%></h4>
         <p>Posted by <%= evidence.user.display_name %></p>
-
-        <p> <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
+        <p>
+          <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
                         upvote_path(evidence.id),
                         method: :post,
                         remote: true,
@@ -41,8 +41,8 @@
       <li>
         <h4><%= evidence.url%></h4>
         <p>Posted by <%= evidence.user.display_name %></p>
-
-        <p> <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
+        <p>
+          <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
                         upvote_path(evidence.id),
                         method: :post,
                         remote: true,

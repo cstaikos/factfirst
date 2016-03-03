@@ -23,7 +23,7 @@ class FactsController < ApplicationController
     @fact.user = current_user
 
     if @fact.save
-      #Make sure any evidences attached to a new fact are associated with current user
+      # Make sure any evidences attached to a new fact are associated with current user
       @fact.evidences.each do |evidence|
         evidence.user = current_user
         evidence.save
