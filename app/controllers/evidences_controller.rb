@@ -1,5 +1,5 @@
 class EvidencesController < ApplicationController
-  before_action :load_evidence
+  before_action :load_evidence, only: [:upvote, :downvote]
 
   def upvote
     if current_user.already_voted?(@evidence)
@@ -35,9 +35,25 @@ class EvidencesController < ApplicationController
     end
   end
 
+  def create
+    @fact = Fact.find(params[:fact_id])
+    @evidence = @fact.evidences.build(evidence_params)
+    @evidence.user = current_user
+
+    if @evidence.save
+      redirect_to @fact
+    else
+      render :fact
+    end
+  end
+
   private
 
   def load_evidence
     @evidence = Evidence.find(params[:id])
+  end
+
+  def evidence_params
+    params.require(:evidence).permit(:url, :support)
   end
 end

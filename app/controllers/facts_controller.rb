@@ -15,6 +15,7 @@ class FactsController < ApplicationController
 
   def show
     @fact = Fact.find(params[:id])
+    @evidence = @fact.evidences.build
   end
 
   def create

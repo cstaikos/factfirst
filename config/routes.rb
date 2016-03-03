@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   resources :facts
 
+  resources :facts do
+    resources :evidences
+  end
+
   post 'evidence/:id/upvote' => 'evidences#upvote', as: :upvote
   post 'evidence/:id/downvote' => 'evidences#downvote', as: :downvote
 
