@@ -8,7 +8,6 @@ class EvidencesController < ApplicationController
       format.js {}
       format.html{ redirect_to fact_path(@evidence.fact_id) }
     end
-
   end
 
   def downvote
