@@ -6,7 +6,7 @@ class EvidencesController < ApplicationController
 
     respond_to do |format|
       format.js {}
-      format.html{ redirect_to fact_path(@evidence.fact_id) }
+      format.html { redirect_to fact_path(@evidence.fact_id) }
     end
   end
 
@@ -15,11 +15,12 @@ class EvidencesController < ApplicationController
 
     respond_to do |format|
       format.js {}
-      format.html{ redirect_to fact_path(@evidence.fact_id) }
+      format.html { redirect_to fact_path(@evidence.fact_id), alert: 'Vote Did not Save' }
     end
   end
 
   private
+
   def load_evidence
     @evidence = Evidence.find(params[:id])
   end
