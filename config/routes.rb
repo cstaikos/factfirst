@@ -3,13 +3,8 @@ Rails.application.routes.draw do
 
   resources :facts
 
-
-  get 'evidence/:id/upvote' => 'evidences#upvote', as: :upvote
+  post 'evidence/:id/upvote' => 'evidences#upvote', as: :upvote
   get 'evidence/:id/downvote' => 'evidences#downvote', as: :downvote
-
-
-
-
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
