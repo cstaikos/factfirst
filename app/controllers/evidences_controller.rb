@@ -1,4 +1,5 @@
 class EvidencesController < ApplicationController
+  before_action :login_to_add_evidence
 
   def create
     @fact = Fact.find(params[:fact_id])
@@ -16,6 +17,12 @@ class EvidencesController < ApplicationController
 
   def evidence_params
     params.require(:evidence).permit(:url, :support)
+  end
+
+  def login_to_add_evidence
+    unless current_user
+      redirect_to new_user_session_path, alert: "Please log in to add evidence"
+    end
   end
 
 end
