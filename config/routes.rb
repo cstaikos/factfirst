@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   root 'facts#index'
 
   resources :facts
-  resources :votes, only: [:create]
+
+  resources :votes, only: [:create] # NOTE: May need to add update action for votes in future iteration
+
+  resources :facts do
+    resources :evidences
+  end
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
