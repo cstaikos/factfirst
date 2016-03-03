@@ -2,12 +2,18 @@ class EvidencesController < ApplicationController
   before_action :load_evidence
 
   def upvote
-    Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
+    if @evidence.user_id != current_user.id
 
-    respond_to do |format|
-      format.js {}
-      format.html { redirect_to fact_path(@evidence.fact_id) }
+      Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
+
+      respond_to do |format|
+        format.js {}
+        format.html { redirect_to fact_path(@evidence.fact_id) }
+      end
+    else
+
     end
+
   end
 
   def downvote

@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :facts
   has_many :comments
   has_many :evidences
+  has_many :votes
 end
