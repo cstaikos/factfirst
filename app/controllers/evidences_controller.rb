@@ -2,17 +2,23 @@ class EvidencesController < ApplicationController
   before_action :load_evidence
 
   def upvote
-    if @evidence.user_id != current_user.id
+    current_user.votes.each do |vote|
+      if vote.evidence_id == @evidence.id
+        respond_to do |format|
+          format.js { render template: 'evidences/upvote_denied.js.erb' }
+          format.html { redirect_to fact_path(@evidence.fact_id) }
+        end
+        return
+      end
+    end
 
       Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
 
-      respond_to do |format|
-        format.js {}
-        format.html { redirect_to fact_path(@evidence.fact_id) }
-      end
-    else
+      # respond_to do |format|
+      #   format.js {}
+      #   format.html { redirect_to fact_path(@evidence.fact_id) }
+      # end
 
-    end
 
   end
 
