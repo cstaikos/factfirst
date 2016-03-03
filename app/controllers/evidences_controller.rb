@@ -9,7 +9,7 @@ class EvidencesController < ApplicationController
       end
     else
       Vote.create(upvote: true, user_id: current_user.id, evidence_id: @evidence.id)
-      @evidence.fact.update_score
+      @evidence.fact.update_score #Update score after a vote is cast
 
       respond_to do |format|
         format.js {}
@@ -26,7 +26,7 @@ class EvidencesController < ApplicationController
       end
     else
       Vote.create(upvote: false, user_id: current_user.id, evidence_id: @evidence.id)
-      @evidence.fact.update_score
+      @evidence.fact.update_score #Update score after a vote is cast
 
       respond_to do |format|
         format.js {}
