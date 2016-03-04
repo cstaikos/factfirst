@@ -15,20 +15,20 @@
       <li>
         <h4><%= evidence.url%></h4>
         <p>Posted by <%= evidence.user.display_name %></p>
+        <p>
+          <!--NOTE: Refactor using helpers-->
+          <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
+                      votes_path(vote: {evidence_id: evidence.id, upvote: true}),
+                      method: :post,
+                      remote: current_user != nil,
+                      id: "upvote_#{evidence.id}" %>
 
-        <p> <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                        votes_path(evidence_id: evidence.id, upvote: true),
-                        method: :post,
-                        remote: true,
-                        id: "upvote_#{evidence.id}" %>
-
-          | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                        votes_path(evidence_id: evidence.id, upvote: false),
-                        method: :post,
-                        remote: true,
-                        id: "downvote_#{evidence.id}" %>
+        | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
+                      votes_path(vote: {evidence_id: evidence.id, upvote: false}),
+                      method: :post,
+                      remote: current_user != nil,
+                      id: "downvote_#{evidence.id}" %>
         </p>
-
       </li>
     <% end %>
   </ul>
@@ -42,17 +42,19 @@
         <h4><%= evidence.url%></h4>
         <p>Posted by <%= evidence.user.display_name %></p>
 
-        <p> <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                        votes_path(evidence_id: evidence.id, upvote: true),
-                        method: :post,
-                        remote: true,
-                        id: "upvote_#{evidence.id}" %>
+        <p>
+          <!--NOTE: Refactor using helpers-->
+          <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
+                      votes_path(vote: {evidence_id: evidence.id, upvote: true}),
+                      method: :post,
+                      remote: current_user != nil,
+                      id: "upvote_#{evidence.id}" %>
 
-          | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                       votes_path(evidence_id: evidence.id, upvote: false),
-                       method: :post,
-                       remote: true,
-                       id: "downvote_#{evidence.id}" %>
+        | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
+                      votes_path(vote: {evidence_id: evidence.id, upvote: false}),
+                      method: :post,
+                      remote: current_user != nil,
+                      id: "downvote_#{evidence.id}" %>
         </p>
       </li>
     <% end %>

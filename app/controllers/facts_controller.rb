@@ -1,4 +1,5 @@
 class FactsController < ApplicationController
+  before_action :login_to_add_fact, only: [:new, :create]
   before_action :load_fact, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -6,12 +7,7 @@ class FactsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
-      @fact = Fact.new
-    else
-      # NOTE: Notices are not working right now and they need to be resolved
-      redirect_to new_user_session_path, notice: 'Please register/login to create a new fact'
-    end
+    @fact = Fact.new
   end
 
   def show
@@ -63,5 +59,12 @@ class FactsController < ApplicationController
 
   def load_fact
     @fact = Fact.find(params[:id])
+  end
+
+  def login_to_add_fact
+    unless current_user
+      redirect_to new_user_session_path, alert: "Please login to add a Fact!"
+    end
+
   end
 end

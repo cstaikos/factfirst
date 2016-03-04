@@ -11,15 +11,16 @@
 <div class="wrapper">
   <div class="flash-notifications">
     <p id="alert"><%= flash[:alert] %></p>
-    <p id="alert"><%= flash[:notice] %></p>
+    <p id="notice"><%= flash[:notice] %></p>
   </div>
 
+
+    <!--NOTE: Refactor using helpers-->
+  <p><%= link_to "Facts Index", facts_path %> | <%= link_to "New Fact", new_fact_path %></p>
   <% if user_signed_in? %>
-    <p><%= link_to "Facts Index", facts_path %> | <%= link_to "New Fact", new_fact_path %></p>
-    <p><%= link_to('Logout', destroy_user_session_path, :method => :delete)%></p>
+      <p><%= link_to('Logout', destroy_user_session_path, :method => :delete)%></p>
   <% else %>
-    <p><%= link_to "Facts Index", facts_path %> | <%= link_to "New Fact", new_user_session_url %></p>
-    <p><%= link_to('Login', new_user_session_path)%></p>
+     <p><%= link_to('Login', new_user_session_path)%></p>
   <% end %>
 
 <%= yield %>
