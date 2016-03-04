@@ -10,7 +10,11 @@ class VotesController < ApplicationController
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
     else
-      @vote = Vote.create(vote_params)
+
+      @vote = Vote.new(vote_params)
+      @vote.user_id = current_user.id
+      @vote.save
+
       @evidence.fact.update_score
 
       respond_to do |format|
@@ -26,7 +30,7 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    params.require(:vote).permit(:upvote, :user_id, :evidence_id)
+    params.require(:vote).permit(:upvote, :evidence_id)
   end
 
   def load_evidence
