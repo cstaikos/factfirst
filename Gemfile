@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'cocoon'
+gem 'rmagick'
 
 # HTML5/CSS Framework
 gem 'bourbon'
