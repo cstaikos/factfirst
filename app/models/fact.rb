@@ -1,6 +1,7 @@
 class Fact < ActiveRecord::Base
   belongs_to :user
   has_many :evidences
+  has_many :comments
 
   accepts_nested_attributes_for :evidences, reject_if: :all_blank, allow_destroy: true
 
