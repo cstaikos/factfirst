@@ -148,6 +148,39 @@ header.navigation {
     padding-bottom: 3px;
   }
 
+  #welcome-message {
+      background: $navigation-background;
+      display: block;
+      line-height: $navigation-height;
+      overflow: hidden;
+      padding-right: 0.8em;
+      text-align: right;
+      width: 100%;
+      z-index: 9999;
+      font-size: 0.9em;
+      color: $navigation-color;
+
+      @include media ($horizontal-bar-mode) {
+        background: transparent;
+        display: inline;
+        line-height: $navigation-height;
+        text-decoration: none;
+        width: auto;
+      }
+
+    a {
+      color: $navigation-color;
+      font-weight: 400;
+
+      &:focus,
+      &:hover {
+        color: $navigation-color-hover;
+      }
+
+    }
+
+  }
+
   // Sub menus
 
   li.more.nav-link {

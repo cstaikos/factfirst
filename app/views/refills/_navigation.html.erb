@@ -20,12 +20,13 @@
     <div class="navigation-tools">
 
       <% if user_signed_in? %>
+          <!--NOTE enter user_path when created -->
+          <span id="welcome-message">Welcome, <%= link_to current_user.display_name, '#' %></span>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
       <% else %>
           <a href="<%= new_user_session_path %>" class="login">Login</a>
           <a href="<%= new_user_registration_path %>" class="sign-up">Sign Up</a>
       <% end %>
-
 
     </div>
   </div>
