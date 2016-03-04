@@ -14,6 +14,7 @@
     <p id="notice"><%= flash[:notice] %></p>
   </div>
 
+  <%= render 'refills/navigation' %>
 
     <!--NOTE: Refactor using helpers-->
   <p><%= link_to "Facts Index", facts_path %> | <%= link_to "New Fact", new_fact_path %></p>
