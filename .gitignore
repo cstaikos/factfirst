@@ -11,6 +11,8 @@
 /test/version_tmp/
 /tmp/
 
+/app/assets/images/fact_photos/*
+
 ## Specific to RubyMotion:
 .dat*
 .repl_history
