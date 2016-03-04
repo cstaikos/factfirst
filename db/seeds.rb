@@ -25,10 +25,9 @@ end
 
 # Maximum possible length fact taking up as much space as possible - use this to test how much space we have on the image overlay
 text = ""
-255.times do {
-  text << "M"
-}
-Fact.create (
+255.times { text << "M" }
+
+Fact.create(
   body: text,
   user: User.all.sample
 )
