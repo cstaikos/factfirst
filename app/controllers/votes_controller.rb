@@ -27,12 +27,10 @@ class VotesController < ApplicationController
 
   def vote_params
     params.require(:vote).permit(:upvote, :user_id, :evidence_id)
-
   end
 
   def load_evidence
     @evidence = Evidence.find(params[:vote][:evidence_id])
-
   end
 
   def login_to_vote

@@ -17,16 +17,16 @@
         <p>Posted by <%= evidence.user.display_name %></p>
         <p>
           <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                      votes_path(evidence_id: evidence.id, upvote: true),
+                      votes_path(vote: {user_id: current_user.id, evidence_id: evidence.id, upvote: true}),
                       method: :post,
                       remote: current_user != nil,
                       id: "upvote_#{evidence.id}" %>
 
         | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                        votes_path(evidence_id: evidence.id, upvote: false),
-                        method: :post,
-                        remote: current_user != nil,
-                        id: "downvote_#{evidence.id}" %>
+                      votes_path(vote: {user_id: current_user.id, evidence_id: evidence.id, upvote: false}),
+                      method: :post,
+                      remote: current_user != nil,
+                      id: "downvote_#{evidence.id}" %>
         </p>
       </li>
     <% end %>
@@ -44,16 +44,16 @@
         <p>
           <!--NOTE: Refactor using helpers-->
           <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                          votes_path(evidence_id: evidence.id, upvote: true),
-                          method: :post,
-                          remote: current_user != nil,
-                          id: "upvote_#{evidence.id}" %>
+                      votes_path(vote: {user_id: current_user.id, evidence_id: evidence.id, upvote: true}),
+                      method: :post,
+                      remote: current_user != nil,
+                      id: "upvote_#{evidence.id}" %>
 
         | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                          votes_path(evidence_id: evidence.id, upvote: false),
-                          method: :post,
-                          remote: current_user != nil,
-                          id: "downvote_#{evidence.id}" %>
+                      votes_path(vote: {user_id: current_user.id, evidence_id: evidence.id, upvote: false}),
+                      method: :post,
+                      remote: current_user != nil,
+                      id: "downvote_#{evidence.id}" %>
         </p>
       </li>
     <% end %>
