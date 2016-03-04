@@ -8,7 +8,7 @@
   </p>
 </div>
 
-<div class="evidence">
+<div class="supporting-evidence">
   <h2><%= pluralize @fact.supporting_evidence.count, 'piece' %> of supporting evidence:</h2>
   <ul>
     <% @fact.supporting_evidence.each do |evidence| %>
@@ -34,7 +34,7 @@
   </ul>
 </div>
 
-<div class="evidence">
+<div class="refuting-evidence">
   <h2><%= pluralize @fact.refuting_evidence.count, 'piece' %> of refuting evidence:</h2>
   <ul>
     <% @fact.refuting_evidence.each do |evidence| %>
@@ -61,7 +61,7 @@
   </ul>
 </div>
 
-<div>
+<div class="evidence-form">
   <%= form_for [@fact, @evidence] do |f| %>
     <div>
       <%= f.label :url %>
