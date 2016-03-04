@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :login_to_add_comment, only: [:create]
 
   def create
     @fact = Fact.find(params[:fact_id])
@@ -18,5 +19,11 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def login_to_add_comment
+    unless current_user
+      redirect_to new_user_session_path, alert: "Please login to add a Comment!"
+    end
   end
 end
