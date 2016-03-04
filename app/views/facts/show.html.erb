@@ -32,6 +32,21 @@
       </li>
     <% end %>
   </ul>
+  <div>
+    <h4>Add supporting evidence:</h4>
+    <%= form_for [@fact, @evidence] do |f| %>
+      <div>
+        <%= f.label :url %>
+        <%= f.url_field :url %>
+      </div>
+
+      <%= f.hidden_field :support, value: true %>
+
+      <div>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="evidence">
@@ -59,27 +74,26 @@
       </li>
     <% end %>
   </ul>
+  <div>
+    <h4>Add refuting evidence:</h4>
+    <%= form_for [@fact, @evidence] do |f| %>
+      <div>
+        <%= f.label :url %>
+        <%= f.url_field :url %>
+      </div>
+
+      <%= f.hidden_field :support, value: false %>
+
+      <div>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<div>
-  <%= form_for [@fact, @evidence] do |f| %>
-    <div>
-      <%= f.label :url %>
-      <%= f.url_field :url %>
-    </div>
 
-    <div >
-      <%= f.label :support, "Supporting" %>
-      <%= f.radio_button :support, true, value: true, checked: false %>
-      <%= f.label :support, "Refuting" %>
-      <%= f.radio_button :support, false, value: false, checked: false %>
-    </div>
 
-    <div>
-      <%= f.submit %>
-    </div>
-  <% end %>
-</div>
+
 
 <% if current_user == User.find(@fact.user_id)  %>
   <%= link_to "Delete Fact", fact_path(@fact), method: :delete, date: {confirm:"Are you sure you want to delete this
