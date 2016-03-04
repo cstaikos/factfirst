@@ -16,6 +16,13 @@
   )
 end
 
+User.create(
+  display_name: 'cstaikos',
+  email: 'cstaikos@gmail.com',
+  password: '123123123',
+  password_confirmation: '123123123'
+)
+
 10.times do
   Fact.create(
     body: Faker::Lorem.sentence,
