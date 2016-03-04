@@ -28,6 +28,7 @@ gem 'rmagick'
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
+gem 'refills'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

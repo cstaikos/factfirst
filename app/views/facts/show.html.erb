@@ -10,19 +10,20 @@
 </div>
 
 <div class="evidence">
-  <h2><%= pluralize @fact.supporting_evidence.count, 'piece' %> of supporting evidence:</h2>
-  <ul>
-    <% @fact.supporting_evidence.each do |evidence| %>
-      <li>
-        <h4><%= evidence.url%></h4>
-        <p>Posted by <%= evidence.user.display_name %></p>
-        <p>
-          <!--NOTE: Refactor using helpers-->
-          <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                      votes_path(vote: {evidence_id: evidence.id, upvote: true}),
-                      method: :post,
-                      remote: current_user != nil,
-                      id: "upvote_#{evidence.id}" %>
+  <div class="supporting">
+    <h2><%= pluralize @fact.supporting_evidence.count, 'piece' %> of supporting evidence:</h2>
+    <ul>
+      <% @fact.supporting_evidence.each do |evidence| %>
+        <li>
+          <h4><%= evidence.url%></h4>
+          <p>Posted by <%= evidence.user.display_name %></p>
+          <p>
+            <!--NOTE: Refactor using helpers-->
+            <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
+                        votes_path(vote: {evidence_id: evidence.id, upvote: true}),
+                        method: :post,
+                        remote: current_user != nil,
+                        id: "upvote_#{evidence.id}" %>
 
         | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
                       votes_path(vote: {evidence_id: evidence.id, upvote: false}),
@@ -32,40 +33,39 @@
         </p>
       </li>
     <% end %>
-  </ul>
-  <div>
-    <h4>Add supporting evidence:</h4>
-    <%= form_for [@fact, @evidence] do |f| %>
-      <div>
-        <%= f.label :url %>
-        <%= f.url_field :url %>
-      </div>
+    </ul>
+    <div>
+      <h4>Add supporting evidence:</h4>
+      <%= form_for [@fact, @evidence] do |f| %>
+        <div>
+          <%= f.label :url %>
+          <%= f.url_field :url %>
+        </div>
 
-      <%= f.hidden_field :support, value: true %>
+        <%= f.hidden_field :support, value: true %>
 
-      <div>
-        <%= f.submit %>
-      </div>
-    <% end %>
+        <div>
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="evidence">
-  <h2><%= pluralize @fact.refuting_evidence.count, 'piece' %> of refuting evidence:</h2>
-  <ul>
-    <% @fact.refuting_evidence.each do |evidence| %>
-      <li>
-        <h4><%= evidence.url%></h4>
-        <p>Posted by <%= evidence.user.display_name %></p>
+  <div class="refuting">
+    <h2><%= pluralize @fact.refuting_evidence.count, 'piece' %> of refuting evidence:</h2>
+    <ul>
+      <% @fact.refuting_evidence.each do |evidence| %>
+        <li>
+          <h4><%= evidence.url%></h4>
+          <p>Posted by <%= evidence.user.display_name %></p>
 
-        <p>
-          <!--NOTE: Refactor using helpers-->
-          <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                      votes_path(vote: {evidence_id: evidence.id, upvote: true}),
-                      method: :post,
-                      remote: current_user != nil,
-                      id: "upvote_#{evidence.id}" %>
-
+          <p>
+            <!--NOTE: Refactor using helpers-->
+            <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
+                        votes_path(vote: {evidence_id: evidence.id, upvote: true}),
+                        method: :post,
+                        remote: current_user != nil,
+                        id: "upvote_#{evidence.id}" %>
         | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
                       votes_path(vote: {evidence_id: evidence.id, upvote: false}),
                       method: :post,
@@ -74,26 +74,23 @@
         </p>
       </li>
     <% end %>
-  </ul>
-  <div>
-    <h4>Add refuting evidence:</h4>
-    <%= form_for [@fact, @evidence] do |f| %>
-      <div>
-        <%= f.label :url %>
-        <%= f.url_field :url %>
-      </div>
+    </ul>
+    <div>
+      <h4>Add refuting evidence:</h4>
+      <%= form_for [@fact, @evidence] do |f| %>
+        <div>
+          <%= f.label :url %>
+          <%= f.url_field :url %>
+        </div>
 
-      <%= f.hidden_field :support, value: false %>
+        <%= f.hidden_field :support, value: false %>
 
-      <div>
-        <%= f.submit %>
-      </div>
-    <% end %>
+        <div>
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-
-
-
 
 
 <% if current_user == User.find(@fact.user_id)  %>
