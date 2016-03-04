@@ -17,8 +17,7 @@
     <div id="notice"><%= flash[:notice] %></p>
   </div>
 
-    <!--NOTE: Refactor using helpers-->
-  <p><%= link_to "Facts Index", facts_path %> | <%= link_to "New Fact", new_fact_path %></p>
+  <!--NOTE: Refactor using helpers-->
   <% if user_signed_in? %>
       <p><%= link_to('Logout', destroy_user_session_path, :method => :delete)%></p>
   <% else %>

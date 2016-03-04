@@ -1,23 +1,23 @@
 <header class="navigation" role="banner">
   <div class="navigation-wrapper">
     <a href="<%= root_path %>" class="logo">
-      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo Image">
+      <%= image_tag("logo-placeholder.png", alt: 'Logo', class: 'img-logo') %>
     </a>
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <nav role="navigation">
-      <ul id="js-navigation-menu" class="navigation-menu show">
-        <li class="nav-link"><a href="<%= new_fact_path %>">New Fact</a></li>
-      </ul>
-    </nav>
-    <div class="navigation-tools">
       <div class="search-bar">
         <form role="search">
-          <input type="search" placeholder="Enter Search" />
+          <input type="search" placeholder="Find a Fact" />
           <button type="submit">
             <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
           </button>
         </form>
       </div>
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link"><a href="<%= new_fact_path %>">Add New Fact</a></li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
       <a href="javascript:void(0)" class="sign-up">Sign Up</a>
     </div>
   </div>
