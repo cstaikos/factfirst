@@ -13,6 +13,7 @@ class FactsController < ApplicationController
   def show
     @fact = Fact.find(params[:id])
     @evidence = @fact.evidences.build
+    @comment = @fact.comments.build
   end
 
   def create
