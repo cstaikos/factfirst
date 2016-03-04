@@ -3,13 +3,14 @@ class VotesController < ApplicationController
   before_action :load_evidence
 
   def create
+
     if current_user.already_voted?(@evidence)
       respond_to do |format|
         format.js { render template: 'votes/vote_denied.js.erb' }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
     else
-      @vote = Vote.create(upvote: params[:upvote], user_id: current_user.id, evidence_id: params[:evidence_id])
+      @vote = Vote.create(vote_params)
       @evidence.fact.update_score
 
       respond_to do |format|
@@ -23,8 +24,15 @@ class VotesController < ApplicationController
   end
 
   private
+
+  def vote_params
+    params.require(:vote).permit(:upvote, :user_id, :evidence_id)
+
+  end
+
   def load_evidence
-    @evidence = Evidence.find(params[:evidence_id])
+    @evidence = Evidence.find(params[:vote][:evidence_id])
+
   end
 
   def login_to_vote
