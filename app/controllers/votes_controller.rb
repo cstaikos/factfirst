@@ -3,7 +3,6 @@ class VotesController < ApplicationController
   before_action :load_evidence
 
   def create
-
     if current_user.already_voted?(@evidence)
       respond_to do |format|
         format.js { render template: 'votes/vote_denied.js.erb' }
@@ -39,7 +38,7 @@ class VotesController < ApplicationController
 
   def login_to_vote
     unless current_user
-      redirect_to new_user_session_path, alert: "Please log in to Vote!"
+      redirect_to new_user_session_path, alert: 'Please log in to Vote!'
     end
   end
 end
