@@ -18,8 +18,17 @@
       </ul>
     </nav>
     <div class="navigation-tools">
-      <a href="<%= new_user_session_path %>" class="sign-up login">Login</a>
-      <a href="<%= new_user_registration_path %>" class="sign-up">Sign Up</a>
+
+      <% if user_signed_in? %>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
+      <% else %>
+          <a href="<%= new_user_session_path %>" class="login">Login</a>
+          <a href="<%= new_user_registration_path %>" class="sign-up">Sign Up</a>
+      <% end %>
+
+
     </div>
   </div>
 </header>
+
+
