@@ -3,18 +3,27 @@
 @import 'neat';
 @import 'base/base';
 
+// This is required by Bourbon Refills
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
 .wrapper {
   @include outer-container;
   background-color: #f1e3ce; // temporary color to debug wrapper
 }
 
-.supporting-evidence {
-  @include span-columns(6);
-}
 
-.refuting-evidence {
-  @include span-columns(6);
+.evidence {
+  @include span-columns(12);
   @include omega;
+  .supporting {
+    @include span-columns(6);
+  }
+  .refuting {
+    @include span-columns(6);
+    @include omega;
+  }
 }
 
 .evidence-form {
