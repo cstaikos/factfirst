@@ -5,11 +5,21 @@ class VotesController < ApplicationController
   def create
     if current_user.already_voted?(@evidence)
       respond_to do |format|
-        format.js { render template: 'votes/vote_denied.js.erb' }
+        format.js { render template: 'votes/vote_denied.js.erb', locals: {message: 'You cannot cast more than one vote per piece of evidence!'} }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-    else
+      block_vote = true
+    end
 
+    if current_user == @evidence.user
+      respond_to do |format|
+        format.js { render template: 'votes/vote_denied.js.erb', locals: {message: 'You cannot vote on evidence that you submitted!'} }
+        format.html { redirect_to fact_path(@evidence.fact_id) }
+      end
+      block_vote = true
+    end
+
+    unless block_vote
       @vote = Vote.new(vote_params)
       @vote.user_id = current_user.id
       @vote.save
@@ -21,6 +31,7 @@ class VotesController < ApplicationController
         format.html { redirect_to fact_path(@evidence.fact_id), alert: 'Vote Did not Save' }
       end
     end
+
   end
 
   def update
