@@ -25,10 +25,10 @@ gem 'cocoon'
 gem 'rmagick'
 
 # HTML5/CSS Framework
-gem 'bourbon'
-gem 'neat'
-gem 'bitters'
-gem 'refills'
+gem 'bourbon', '4.2.6'
+gem 'neat', '1.7.4'
+gem 'bitters', '1.2.0'
+gem 'refills', '0.1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
