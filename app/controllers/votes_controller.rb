@@ -8,7 +8,7 @@ class VotesController < ApplicationController
         format.js { render template: 'votes/vote_denied.js.erb', locals: {message: 'You cannot cast more than one vote per piece of evidence!'} }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-      block_vote = true
+      block_vote = true #If vote fails, block saving of vote
     end
 
     if current_user == @evidence.user
@@ -16,7 +16,7 @@ class VotesController < ApplicationController
         format.js { render template: 'votes/vote_denied.js.erb', locals: {message: 'You cannot vote on evidence that you submitted!'} }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-      block_vote = true
+      block_vote = true #If vote fails, block saving of vote
     end
 
     unless block_vote
