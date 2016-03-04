@@ -2,7 +2,8 @@ header.navigation {
   ///////////////////////////////////////////////////////////////////////////////////
   $base-border-color: #eee !default;
   $base-border-radius: 3px !default;
-  $base-accent-color: #477DCA !default;
+  $base-accent-color: #e3f671 !default;
+  $login-accent-color: #477DCA !default;
   $dark-gray: #333 !default;
   $large-screen: em(860) !default;
 
@@ -286,6 +287,17 @@ header.navigation {
     font-size: 0.8em;
     margin-top: 1em;
     padding: 0.75em 1em;
+    text-transform: uppercase;
+  }
+
+  .login {
+    @include button(flat, $login-accent-color);
+    display: inline;
+    font-size: 0.8em;
+    float: left;
+    margin-top: 1em;
+    padding: 0.75em 1em;
+    margin-right: 1em;
     text-transform: uppercase;
   }
 
