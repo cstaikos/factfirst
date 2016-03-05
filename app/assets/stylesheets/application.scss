@@ -4,25 +4,37 @@
 @import 'base/base';
 @import 'refills/navigation';
 @import 'refills/footer';
+@import 'refills/flex-boxes';
+@import 'refills/hero';
+
+$padding-from-screen-edge: 20px;
+$text-max-width: 1020px;
 
 // This is required by Bourbon Refills
 body {
   -webkit-font-smoothing: antialiased;
+  background-color: #f1e3ce; // temporary color
 }
 
 .wrapper {
-  @include outer-container;
-  background-color: #f1e3ce; // temporary color to debug wrapper
+  @include omega;
+  @include pad($padding-from-screen-edge);
 }
 
+.text-wrapper {
+  @include outer-container;
+  max-width: $text-max-width;
+  @include pad($padding-from-screen-edge);
+}
 
 .evidence {
-  @include span-columns(12);
   @include omega;
   .supporting {
+    @include pad($padding-from-screen-edge);
     @include span-columns(6);
   }
   .refuting {
+    @include pad($padding-from-screen-edge);
     @include span-columns(6);
     @include omega;
   }
