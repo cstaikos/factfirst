@@ -4,7 +4,7 @@ module VotesHelper
   # Pass the evidence in question
   # Returns the appropriate button for the given situation
   def vote_button(button_type, evidence)
-    
+
     # Text to display for link
     vote_text = button_type ? 'upvote' : 'downvote'
 
@@ -20,13 +20,13 @@ module VotesHelper
       current_vote = Vote.where(user: current_user, evidence: evidence).first
 
       if current_vote.upvote = button_type
-        form_text =   "#{pluralize evidence.upvotes, vote_text} - change vote"
-        form_path =   vote_path(vote: {upvote: button_type})
-        form_method = :patch
-      else
-        form_text =   "#{number_to_display} - #{vote_text}d"
+        form_text =   "#{number_to_display} - undo #{vote_text}"
         form_path =   "/votes/#{current_vote.id}"
         form_method = :delete
+      else
+        form_text =   "#{pluralize evidence.upvotes, vote_text} - change to #{vote_text}"
+        form_path =   vote_path(vote: {upvote: button_type})
+        form_method = :patch
       end
 
     # If they haven't voted yet, return the regular vote buttons
