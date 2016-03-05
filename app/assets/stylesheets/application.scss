@@ -7,6 +7,7 @@
 @import 'refills/flex-boxes';
 
 $padding-from-screen-edge: 20px;
+$text-max-width: 1020px;
 
 // This is required by Bourbon Refills
 body {
@@ -16,6 +17,12 @@ body {
 
 .wrapper {
   @include omega;
+  @include pad($padding-from-screen-edge);
+}
+
+.text-wrapper {
+  @include outer-container;
+  max-width: $text-max-width;
   @include pad($padding-from-screen-edge);
 }
 
