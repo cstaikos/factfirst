@@ -1,0 +1,10 @@
+<%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
+            votes_path(vote: {evidence_id: evidence.id, upvote: true}),
+            method: :post,
+            remote: current_user != nil,
+            id: "upvote_#{evidence.id}" %>
+| <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
+          votes_path(vote: {evidence_id: evidence.id, upvote: false}),
+          method: :post,
+          remote: current_user != nil,
+          id: "downvote_#{evidence.id}" %>
