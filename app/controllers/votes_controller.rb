@@ -1,35 +1,41 @@
 class VotesController < ApplicationController
   before_action :login_to_vote
-  before_action :load_evidence, only: [:create]
 
   def create
+    @evidence = Evidence.find(params[:vote][:evidence_id])
+
+    # If user has already voted they can't vote again
     if current_user.already_voted?(@evidence)
       respond_to do |format|
         format.js { render template: 'votes/vote_denied.js.erb', locals: {message: 'You cannot cast more than one vote per piece of evidence!'} }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-      block_vote = true #If vote fails, block saving of vote
+      block_vote = true
     end
 
+    # If user submitted the evidence, they cannot vote on it
     if current_user == @evidence.user
       respond_to do |format|
         format.js { render template: 'votes/vote_denied.js.erb', locals: {message: 'You cannot vote on evidence that you submitted!'} }
         format.html { redirect_to fact_path(@evidence.fact_id) }
       end
-      block_vote = true #If vote fails, block saving of vote
+      block_vote = true
     end
 
     unless block_vote
       @vote = Vote.new(vote_params)
-      @vote.user_id = current_user.id
-      @vote.save
+      @vote.user = current_user
 
-      @evidence.fact.update_score
+      if @vote.save
+        @evidence.fact.update_score
 
-      respond_to do |format|
-        format.js { render template: 'votes/vote_updated.js.erb' }
-        format.html { redirect_to fact_path(@evidence.fact_id) }
+        respond_to do |format|
+          format.js { render template: 'votes/vote_updated.js.erb' }
+        end
+      else
+        redirect_to fact_path(@evidence.fact_id), alert: 'Vote failed'
       end
+
     end
 
   end
@@ -62,10 +68,6 @@ class VotesController < ApplicationController
   private
   def vote_params
     params.require(:vote).permit(:upvote, :evidence_id)
-  end
-
-  def load_evidence
-    @evidence = Evidence.find(params[:vote][:evidence_id])
   end
 
   def login_to_vote
