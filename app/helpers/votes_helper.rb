@@ -24,7 +24,7 @@ module VotesHelper
         form_path =   "/votes/#{current_vote.id}"
         form_method = :delete
       else
-        form_text =   "#{pluralize evidence.upvotes, vote_text} - change to #{vote_text}"
+        form_text =   "#{pluralize number_to_display, vote_text} - change to #{vote_text}"
         form_path =   "/votes/#{current_vote.id}"
         form_method = :patch
       end
