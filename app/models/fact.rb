@@ -1,6 +1,7 @@
 class Fact < ActiveRecord::Base
   belongs_to :user
   has_many :evidences
+  has_many :comments
 
   accepts_nested_attributes_for :evidences, reject_if: :all_blank, allow_destroy: true
 
@@ -11,6 +12,7 @@ class Fact < ActiveRecord::Base
   def set_defaults
     self.score = 0
     save
+    update_image
   end
 
   def supporting_evidence
