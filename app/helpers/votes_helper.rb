@@ -19,13 +19,13 @@ module VotesHelper
       # Grab the current vote's direction (up or down)
       current_vote = Vote.where(user: current_user, evidence: evidence).first
 
-      if current_vote.upvote = button_type
+      if current_vote.upvote == button_type
         form_text =   "#{number_to_display} - undo #{vote_text}"
         form_path =   "/votes/#{current_vote.id}"
         form_method = :delete
       else
         form_text =   "#{pluralize evidence.upvotes, vote_text} - change to #{vote_text}"
-        form_path =   vote_path(vote: {upvote: button_type})
+        form_path =   "/votes/#{current_vote.id}"
         form_method = :patch
       end
 

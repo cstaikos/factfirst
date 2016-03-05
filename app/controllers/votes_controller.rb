@@ -36,7 +36,7 @@ class VotesController < ApplicationController
 
   def update
     @vote = Vote.find(params[:id])
-    @vote.upvote = params[:upvote]
+    @vote.toggle(:upvote)
     @evidence = @vote.evidence
 
     if @vote.save
