@@ -36,6 +36,7 @@ header.navigation {
   .navigation-wrapper {
     @include clearfix;
     @include outer-container;
+    max-width: 1920px; // This may decrease
     position: relative;
     z-index: 9999;
   }
