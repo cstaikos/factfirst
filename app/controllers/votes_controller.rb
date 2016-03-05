@@ -1,6 +1,6 @@
 class VotesController < ApplicationController
   before_action :login_to_vote
-  before_action :load_evidence
+  before_action :load_evidence, only: [:create]
 
   def create
     if current_user.already_voted?(@evidence)
@@ -27,14 +27,36 @@ class VotesController < ApplicationController
       @evidence.fact.update_score
 
       respond_to do |format|
-        format.js {}
-        format.html { redirect_to fact_path(@evidence.fact_id), alert: 'Vote Did not Save' }
+        format.js { render template: 'votes/vote_updated.js.erb' }
+        format.html { redirect_to fact_path(@evidence.fact_id) }
       end
     end
 
   end
 
   def update
+    @vote = Vote.find(params[:id])
+    @vote.upvote = params[:upvote]
+    @evidence = @vote.evidence
+
+    if @vote.save
+      respond_to do |format|
+        format.js { render template: 'votes/vote_updated.js.erb' }
+      end
+    else
+      redirect_to @vote.evidence.fact, alert: 'Vote did not save'
+    end
+  end
+
+  def destroy
+    @vote = Vote.find(params[:id])
+    @vote.destroy
+    @evidence = @vote.evidence
+
+    respond_to do |format|
+      format.js { render template: 'votes/vote_updated.js.erb' }
+    end
+
   end
 
   private
