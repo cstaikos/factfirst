@@ -46,6 +46,7 @@ class VotesController < ApplicationController
     @evidence = @vote.evidence
 
     if @vote.save
+      @evidence.fact.update_score
       respond_to do |format|
         format.js { render template: 'votes/vote_updated.js.erb' }
       end
@@ -58,6 +59,7 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     @vote.destroy
     @evidence = @vote.evidence
+    @evidence.fact.update_score
 
     respond_to do |format|
       format.js { render template: 'votes/vote_updated.js.erb' }

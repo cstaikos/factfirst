@@ -4,11 +4,6 @@ module VotesHelper
   # Pass the evidence in question
   # Returns the appropriate button for the given situation
   def vote_button(button_type, evidence)
-    puts evidence.votes.last.inspect
-    if current_user
-      puts current_user.votes.last.inspect
-      puts current_user.inspect
-    end
 
     # Text to display for link
     vote_text = button_type ? 'upvote' : 'downvote'
@@ -19,7 +14,6 @@ module VotesHelper
     # Display either num of upvotes or num of downvotes
     number_to_display = button_type ? evidence.upvotes : evidence.downvotes
 
-    puts current_user.already_voted?(evidence)
     if current_user.already_voted?(evidence)
 
       # Grab the vote in question
