@@ -4,7 +4,7 @@
   $base-accent-color: #477DCA !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
-  
+
   ul {
     padding: 0;
   }
@@ -35,7 +35,7 @@
     img {
       height: 3em;
     }
-  } 
+  }
 
   .footer-links {
     @include clearfix;
@@ -47,7 +47,7 @@
   }
 
   ul {
-    margin-bottom: $base-spacing * 2;
+    margin-bottom: $base-spacing * 1.5;
 
     @include media($medium-screen) {
       @include span-columns(3);
@@ -78,7 +78,7 @@
     font-size: 1em;
     font-weight: 800;
     margin-bottom: 0.4em;
-  }  
+  }
 
   hr {
     border: 1px solid transparentize($footer-disclaimer-color, 0.3);
