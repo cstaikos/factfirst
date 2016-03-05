@@ -50,6 +50,13 @@ group :development, :test do
   gem 'faker'
 
   gem 'rubocop', require: false
+
+
+  # rspec-rails
+  gem 'rspec-rails', '~> 3.0'
+
+  gem 'factory_girl_rails', '~> 4.0'
+
 end
 
 group :development do
@@ -61,3 +68,4 @@ group :development do
   # Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
