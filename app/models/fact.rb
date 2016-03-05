@@ -12,6 +12,7 @@ class Fact < ActiveRecord::Base
   def set_defaults
     self.score = 0
     save
+    update_image
   end
 
   def supporting_evidence
