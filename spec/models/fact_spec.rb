@@ -7,20 +7,16 @@ RSpec.describe Fact, type: :model do
     @fact = create(:fact)
   end
 
-  it "body equal to body" do
-    expect(@fact.body).to eq "This is a random fact!"
+
+  it "has a default score of 0 " do
+    expect(@fact.score).to eq 0
   end
 
-  it "score equal to score" do
-    expect(@fact.score).to eq 5
-  end
 
-  it "user_id equal to user_id" do
-    expect(@fact.user_id).to eq 1
-  end
 
-  # it "has a valid factory" do
-  #   FactoryGirl.create(:fact).should be_valid
+
+  # it "has been created properly" do
+  #   expect(@fact.body).to eq "Test Fact"
   # end
 
 end
