@@ -17,10 +17,9 @@
     <div id="notice"><%= flash[:notice] %></div>
   </div>
 
-  <!--NOTE: Refactor using helpers-->
+  <%= yield %>
 
-
-<%= yield %>
+  <%= render 'refills/footer' %>
 
 </div>
 
