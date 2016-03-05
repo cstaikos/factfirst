@@ -11,3 +11,17 @@ $(document).on("ready page:load", function() {
     });
   });
 });
+
+$(function() {
+  $(document).bind('ready page:load scroll', function() {
+	   	var docScroll = $(document).scrollTop();
+		  if (docScroll >= 100 & $('html').height() > 768) {
+			  if (!$('body').hasClass('sticky')) {
+				  $('body').addClass('sticky');
+  			}
+	  	} else {
+		  	$('body').removeClass('sticky');
+		  	$('.site-nav').removeAttr('style');
+	  	}
+    });
+});
