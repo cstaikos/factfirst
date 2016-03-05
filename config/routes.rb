@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :facts do
     resources :evidences
+    resources :comments
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }

@@ -107,3 +107,12 @@
   </p>
   <%= image_tag "fact_photos/#{@fact.id}.png", width: 400 %>
 </div>
+
+<div>
+  <h2>Add a comment to discuss this fact:</h2>
+  <%= render 'comments/comment_form' %>
+</div>
+
+<div id="comments">
+  <%= render @fact.comments %>
+</div>
