@@ -5,7 +5,7 @@ class Fact < ActiveRecord::Base
 
   accepts_nested_attributes_for :evidences, reject_if: :all_blank, allow_destroy: true
 
-  # after_create :set_defaults
+  after_create :set_defaults
 
   require 'RMagick'
 

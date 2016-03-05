@@ -2,8 +2,9 @@ require 'rails_helper'
 # require 'spec_helper'
 
 RSpec.describe Fact, type: :model do
+
   before(:each) do
-    @fact = FactoryGirl.create(:fact)
+    @fact = create(:fact)
   end
 
   it "body equal to body" do
