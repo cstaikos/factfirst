@@ -9,6 +9,7 @@
 
 $padding-from-screen-edge: 20px;
 $text-max-width: 1020px;
+$navigation-background: $dark-gray;
 
 // This is required by Bourbon Refills
 body {
@@ -46,4 +47,14 @@ body {
 
 #evidence_url {
   width: 300px;
+}
+
+// This is for the home page
+.nav-bg {
+  background-color: $navigation-background;
+  border-bottom: 1px solid darken($navigation-background, 10);
+}
+
+.nodisplay {
+  display: none;
 }
