@@ -10,6 +10,7 @@
 $padding-from-screen-edge: 20px;
 $text-max-width: 1020px;
 $navigation-background: $dark-gray;
+$sticky-nav-top-padding: 80px;
 
 // This is required by Bourbon Refills
 body {
@@ -26,6 +27,7 @@ body {
   @include outer-container;
   max-width: $text-max-width;
   @include pad($padding-from-screen-edge);
+  padding-top: $sticky-nav-top-padding;
 }
 
 .evidence {
