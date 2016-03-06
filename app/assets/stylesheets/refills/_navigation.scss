@@ -7,6 +7,8 @@ header.navigation {
   $dark-gray: #333 !default;
   $large-screen: em(860) !default;
 
+  position: fixed; // Sticky nav bar
+
   a {
     text-decoration: none;
   }
@@ -27,8 +29,6 @@ header.navigation {
   $navigation-submenu-width: 12em;
   $horizontal-bar-mode: $large-screen;
 
-  background-color: $navigation-background;
-  border-bottom: 1px solid darken($navigation-background, 10);
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
@@ -36,6 +36,7 @@ header.navigation {
   .navigation-wrapper {
     @include clearfix;
     @include outer-container;
+    max-width: 1920px; // This may decrease
     position: relative;
     z-index: 9999;
   }

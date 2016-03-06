@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :facts
 
-  resources :votes, only: [:create] # NOTE: May need to add update action for votes in future iteration
+  resources :votes, only: [:create, :update, :destroy]
 
   resources :facts do
     resources :evidences
