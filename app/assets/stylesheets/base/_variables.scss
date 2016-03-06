@@ -40,3 +40,6 @@ $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $l
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
+
+// Nav bar top padding for sticky nav-bg
+$sticky-nav-top-padding: 80px;

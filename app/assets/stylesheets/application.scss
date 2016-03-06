@@ -7,10 +7,11 @@
 @import 'refills/flex-boxes';
 @import 'refills/hero';
 
+@import 'facts/show';
+
 $padding-from-screen-edge: 20px;
 $text-max-width: 1020px;
 $navigation-background: $dark-gray;
-$sticky-nav-top-padding: 80px;
 
 // This is required by Bourbon Refills
 body {
