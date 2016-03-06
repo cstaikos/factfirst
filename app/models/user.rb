@@ -11,9 +11,6 @@ class User < ActiveRecord::Base
 
   # NOTE: This is a potential place where we could refactor for efficiency. Instead of iterating through all of a users' votes, we could check to see if a vote with id user exists for that piece of evidence.
   def already_voted?(evidence)
-    votes.each do |vote|
-      return true if vote.evidence_id == evidence.id
-    end
-    false
+    votes.where(evidence_id: evidence.id).exists?
   end
 end

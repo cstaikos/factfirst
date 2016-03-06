@@ -1,4 +1,7 @@
 class FactsController < ApplicationController
+
+  helper VotesHelper
+
   before_action :login_to_add_fact, only: [:new, :create]
   before_action :load_fact, only: [:show, :edit, :update, :destroy]
 

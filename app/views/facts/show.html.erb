@@ -5,7 +5,7 @@
   </p>
 
   <p>
-    <%= @fact.body %> - Truthiness score: <h1><%= @fact.score %></h1>
+    <%= @fact.body %> - Truthiness score: <h1 id="score"><%= @fact.score %></h1>
   </p>
 </div>
 
@@ -17,20 +17,11 @@
         <li>
           <h4><%= evidence.url%></h4>
           <p>Posted by <%= evidence.user.display_name %></p>
-          <p>
-            <!--NOTE: Refactor using helpers-->
-            <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                        votes_path(vote: {evidence_id: evidence.id, upvote: true}),
-                        method: :post,
-                        remote: current_user != nil,
-                        id: "upvote_#{evidence.id}" %>
 
-        | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                      votes_path(vote: {evidence_id: evidence.id, upvote: false}),
-                      method: :post,
-                      remote: current_user != nil,
-                      id: "downvote_#{evidence.id}" %>
-        </p>
+          <div id="vote-box-<%= evidence.id %>">
+            <%= render 'vote_buttons', evidence: evidence %>
+          </div>
+
       </li>
     <% end %>
     </ul>
@@ -59,19 +50,10 @@
           <h4><%= evidence.url%></h4>
           <p>Posted by <%= evidence.user.display_name %></p>
 
-          <p>
-            <!--NOTE: Refactor using helpers-->
-            <%= link_to "#{pluralize evidence.upvotes, 'upvote'}",
-                        votes_path(vote: {evidence_id: evidence.id, upvote: true}),
-                        method: :post,
-                        remote: current_user != nil,
-                        id: "upvote_#{evidence.id}" %>
-        | <%= link_to "#{pluralize evidence.downvotes, 'downvote'}",
-                      votes_path(vote: {evidence_id: evidence.id, upvote: false}),
-                      method: :post,
-                      remote: current_user != nil,
-                      id: "downvote_#{evidence.id}" %>
-        </p>
+          <div id="vote-box-<%= evidence.id %>">
+            <%= render 'vote_buttons', evidence: evidence %>
+          </div>
+
       </li>
     <% end %>
     </ul>
