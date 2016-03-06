@@ -27,7 +27,7 @@ body {
   @include outer-container;
   max-width: $text-max-width;
   @include pad($padding-from-screen-edge);
-  padding-top: $sticky-nav-top-padding;
+  padding-top: $sticky-nav-top-padding; // This should be applied to the first element on each page.
 }
 
 .evidence {
