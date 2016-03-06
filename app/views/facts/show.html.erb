@@ -1,6 +1,6 @@
 <div class="fact-header">
   <p>
-    <strong><%= User.find(@fact.user_id).display_name %></strong> posted this fact!
+    <strong><%= link_to @fact.user.display_name, @fact.user %></strong> posted this fact!
   </p>
 
   <p>
@@ -15,7 +15,7 @@
       <% @fact.supporting_evidence.each do |evidence| %>
         <li>
           <h4><%= evidence.url%></h4>
-          <p>Posted by <%= evidence.user.display_name %></p>
+          <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
 
           <div id="vote-box-<%= evidence.id %>">
             <%= render 'vote_buttons', evidence: evidence %>
@@ -47,7 +47,7 @@
       <% @fact.refuting_evidence.each do |evidence| %>
         <li>
           <h4><%= evidence.url%></h4>
-          <p>Posted by <%= evidence.user.display_name %></p>
+          <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
 
           <div id="vote-box-<%= evidence.id %>">
             <%= render 'vote_buttons', evidence: evidence %>

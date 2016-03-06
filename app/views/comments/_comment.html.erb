@@ -1,4 +1,4 @@
 <div>
-  <p>Comment posted by <%= comment.user.display_name %> at <%= comment.created_at %></p>
+  <p>Comment posted by <%= link_to comment.user.display_name, comment.user %> at <%= comment.created_at %></p>
   <p><%= comment.body %></p>
 </div>
