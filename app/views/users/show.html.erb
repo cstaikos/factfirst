@@ -1,3 +1,7 @@
 <h1><%= @user.display_name %></h1>
 <%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}" %>
 <em>No profile image? <%= link_to "Click here", "https://en.gravatar.com/connect/" %> to get a gravatar</em>
+
+<p>Facts posted: <%= @user.facts.count %></p>
+<p>Evidence posted: <%= @user.evidences.count %></p>
+<p>Votes cast: <%= @user.votes.count %></p>
