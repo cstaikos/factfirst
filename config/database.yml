@@ -18,8 +18,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/truthy_falsey_development
+  database: db/truthy_falsey_test
 
 production:
   <<: *default
-  database: db/truthy_falsey_development
+  database: db/truthy_falsey_production
