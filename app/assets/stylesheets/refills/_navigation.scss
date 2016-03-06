@@ -108,8 +108,6 @@ header.navigation {
     }
   }
 
-  // The nav items
-
   ul li.nav-link {
     background: $navigation-background;
     display: block;
@@ -142,6 +140,12 @@ header.navigation {
         color: $navigation-color-hover;
       }
     }
+  }
+
+  // Space out the first child in links from search bar
+  ul li.nav-link:first-child {
+    padding-left: 0.8em;
+    padding-right: 0px;
   }
 
   .active-nav-item a {
