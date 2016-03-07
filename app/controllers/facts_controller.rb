@@ -7,7 +7,7 @@ class FactsController < ApplicationController
 
   def index
     if params[:query]
-      @facts = Fact.where('body ILIKE ?', params[:query])
+      @facts = Fact.where('body ILIKE ?', "%#{params[:query]}%")
     else
       @facts = Fact.all
     end
