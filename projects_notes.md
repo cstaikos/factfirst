@@ -70,6 +70,16 @@ let!(:fact) { create(:fact) }
 * `let!` creates the fact before the test
 * `let` creates a fact when `:fact` is referenced in a test I.E lazy create.
 ___
+
+`before(:each)` and `before(:example)` do the same thing:
+
+```
+before(:example) # run before each example
+```
+Check out this reference for more on `before` and `after` hooks
+https://www.relishapp.com/rspec/rspec-core/docs/hooks/before-and-after-hooks
+___
+
 Nested Factories
 ```
 factory :post do
