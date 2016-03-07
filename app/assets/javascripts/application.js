@@ -16,3 +16,4 @@
 //= require_tree .
 //= require cocoon
 //= require refills/navigation
+//= require flashnotice

@@ -7,6 +7,8 @@
 @import 'refills/flex-boxes';
 @import 'refills/hero';
 
+@import 'facts/show';
+
 $padding-from-screen-edge: 20px;
 $text-max-width: 1020px;
 $navigation-background: $dark-gray;
@@ -26,6 +28,7 @@ body {
   @include outer-container;
   max-width: $text-max-width;
   @include pad($padding-from-screen-edge);
+  padding-top: $sticky-nav-top-padding; // This should be applied to the first element on each page.
 }
 
 .evidence {
@@ -57,4 +60,10 @@ body {
 
 .nodisplay {
   display: none;
+}
+
+.flash-notifications {
+  position: fixed;
+  color: blue;
+  top: 62px
 }
