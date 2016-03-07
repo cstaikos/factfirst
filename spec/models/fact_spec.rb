@@ -45,17 +45,19 @@ RSpec.describe Fact, type: :model do
         evidence = create(:refuting_evidence, fact_id: fact.id)
         expect(fact.refuting_evidence[0]).to eq evidence
       end
+    end
   end
 
   describe "#update_score" do
-    it "verifies that 1 upvote for refuting evidence and 1 upvote for supporting evidence results in a fact
-truthiness score of 50" do
-      evidence_1 = create(:evidence, support: true, fact_id: fact.id)
-      evidence_2 = create(:evidence, support: false, fact_id: fact.id)
-      vote_1 = create(:vote, upvote: true, evidence_id: evidence_1.id)
-      vote_2 = create(:vote, upvote: true, evidence_id: evidence_2.id)
-      fact.update_score
-      expect(fact.score).to eq 50
+    context "when there are equal upvotes for supporting and refuting evidence" do
+      it "returns a fact score of 50" do
+        evidence_1 = create(:evidence, support: true, fact_id: fact.id)
+        evidence_2 = create(:evidence, support: false, fact_id: fact.id)
+        vote_1 = create(:vote, upvote: true, evidence_id: evidence_1.id)
+        vote_2 = create(:vote, upvote: true, evidence_id: evidence_2.id)
+        fact.update_score
+        expect(fact.score).to eq 50
+      end
     end
   end
 
