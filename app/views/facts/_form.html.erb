@@ -4,6 +4,18 @@
       <%= f.text_area :body, autofocus: true %>
     </div>
 
+    <div class="field">
+      <%= f.label :category %>
+
+
+      <%= f.select(:category_id) do %>
+        <%= content_tag(:option, '-- Category --', value: '') %>
+        <% Category.all.each do |c| -%>
+          <%= content_tag(:option, c.name, value: c.id) %>
+        <% end %>
+      <% end %>
+    </div>
+
     <div id="evidences">
       <%= f.fields_for :evidences do |evidence_fields| %>
         <%= render 'evidence_fields', f: evidence_fields %>
