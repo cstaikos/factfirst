@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :evidences
   has_many :votes
+  has_many :evidence_votes, through: :evidences, source: :votes
 
   def already_voted?(evidence)
     votes.where(evidence_id: evidence.id).exists?
@@ -19,5 +20,6 @@ class User < ActiveRecord::Base
   def gravatar_hash
     Digest::MD5.hexdigest(email)
   end
+
 
 end

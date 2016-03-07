@@ -7,6 +7,7 @@
 
 <br><br>
 
+<h1>Average truthiness of submitted facts: <%= @user.facts.average(:score).round(2) %>%</h1>
 <h2>Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
 <div>
   <h2>Recent facts posted:</h2>
@@ -19,6 +20,7 @@
 
 <br><br>
 
+<h1>Quality of evidence submitted: <%= @user.evidence_quality %>%</h1>
 <p>Total of <%= pluralize @user.evidences.count, 'piece' %> of evidence submitted</p>
 <div>
   <h2>Recent evidence submitted:</h2>
