@@ -8,6 +8,8 @@ class Fact < ActiveRecord::Base
 
   after_create :set_defaults
 
+  validates :category, presence: true
+
   require 'RMagick'
 
   def set_defaults
