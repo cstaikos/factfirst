@@ -44,7 +44,8 @@ text = ""
 
 Fact.create(
   body: text,
-  user: User.all.sample
+  user: User.all.sample,
+  category: Category.all.sample
 )
 
 250.times do
