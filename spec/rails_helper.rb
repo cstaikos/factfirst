@@ -40,6 +40,7 @@ RSpec.configure do |config|
   # instead of true.
 
   #NOTE - Set to false because we are going to use factories not fixtures.
+  #NOTE - I realized I don't fully understand what this is doing.
   config.use_transactional_fixtures = true
 
   # NOTE - review different available types

@@ -24,7 +24,7 @@ RSpec.describe Evidence, type: :model do
   # end
 
   describe "#upvotes" do
-    it "upvotes increase by 1 when new upvote applied" do
+    it "returns evidence upvotes count including the newly created upvote" do
       evidence = create(:evidence)
       create(:vote, upvote: true, evidence_id: evidence.id)
       expect(evidence.upvotes).to eq 1
@@ -32,7 +32,7 @@ RSpec.describe Evidence, type: :model do
   end
 
   describe "#downvotes" do
-    it "downvotes increase by 1 when new downvote applied" do
+    it "returns evidence downvotes count including the newly created downvote" do
       evidence = create(:evidence)
       create(:vote, upvote: false, evidence_id: evidence.id)
       expect(evidence.downvotes).to eq 1

@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe Fact, type: :model do
 
   # before(:each) do
@@ -38,7 +37,7 @@ RSpec.describe Fact, type: :model do
   end
 
   describe "#supporting_evidence" do
-    it "increase fact supporting evidence collection by 1" do
+    it "returns fact supporting evidence collection with newly created evidence included" do
       fact = create(:fact)
       evidence = create(:evidence, support: true, fact_id: fact.id)
       expect(fact.supporting_evidence[0]).to eq evidence
@@ -46,7 +45,7 @@ RSpec.describe Fact, type: :model do
   end
 
   describe "#refuting_evidence" do
-    it "decreases fact supporting evidence collection by 1" do
+    it "returns fact refuting evidence collection with newly created evidence included" do
       fact = create(:fact)
       evidence = create(:evidence, support: false, fact_id: fact.id)
       expect(fact.refuting_evidence[0]).to eq evidence
@@ -54,13 +53,15 @@ RSpec.describe Fact, type: :model do
   end
 
   describe "#update_score" do
-    it "verifies that 1 upvote for refuting evidence and 1 upvote for supporting evidence results in a score of 50" do
+    it "verifies that 1 upvote for refuting evidence and 1 upvote for supporting evidence results in a fact
+truthiness score of 50" do
       fact = create(:fact)
       evidence_1 = create(:evidence, support: true, fact_id: fact.id)
       evidence_2 = create(:evidence, support: false, fact_id: fact.id)
       vote_1 = create(:vote, upvote: true, evidence_id: evidence_1.id)
       vote_2 = create(:vote, upvote: true, evidence_id: evidence_2.id)
-      expect(fact.update_score).to eq 50
+      fact.update_score
+      expect(fact.score).to eq 50
     end
   end
 

@@ -1,18 +1,16 @@
-<!-- NOTE -->
+`<!-- NOTE -->`
 * Use this syntax near code examples to write important and insightful comments.
 * We can use this to mark important decisions we've made.
 
-<!-- TODO -->
+`<!-- TODO -->`
 * beacon for an action item to address in future iterations.
-
-
 
 # rspec
 
 ## Tips
 __please add tips and tricks about rspec here.__
 
-- _the run tests simply type `rspec` in the console._
+- _to run tests simply type `rspec` in the console._
 
 ## References
 __please add helpful references about rspec here.__
@@ -22,7 +20,7 @@ https://github.com/eliotsykes/rspec-rails-examples/blob/master/spec/models/subsc
 
 
 ## Configuration
-__please add important details regarding configuration here.__
+__please add important details regarding rspec and FactoryGirl configuration here.__
 ___
 ```
 config.use_transactional_fixtures = true
@@ -43,7 +41,7 @@ is necessary for that example, and then remove that data by simply rolling back
 the transaction at the end of the example.
 ___
 
-# Code that needs refactoring to make it more testable
+# CODE that needs refactoring to make it more testable
 
 #### Fact#update_score
 
@@ -82,16 +80,22 @@ def update_score
 
 # ERRORS and SOLUTIONS
 
-__Please use this section to document any errors that you have run into. Add notes about what you've learned and save your team mates from having the same headache!__
+__Use this section to document the errors you run into, and the solutions you came up with. Add notes about what you've learned and save your team mates a headache!__
 ___
-ERROR
+
+__ERROR = E__
+
+__SOLUTION = S__
+
+
+E-1
 ```
  Magick::ImageMagickError:
        unable to read font `(null)' @ error/annotate.c/RenderFreetype/1239: `(null)'
 
 ```
 
-SOLUTION
+S-1
 ```
 brew install gs
 ```
