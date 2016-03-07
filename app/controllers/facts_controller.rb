@@ -6,11 +6,18 @@ class FactsController < ApplicationController
   before_action :load_fact, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:query]
+
+    if params[:query] && params[:query].length > 2
       @facts = Fact.where('body ILIKE ?', "%#{params[:query]}%")
     else
       @facts = Fact.all
     end
+
+    respond_to do |format|
+      format.js {}
+      format.html {}
+    end
+
   end
 
   def new

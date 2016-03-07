@@ -1,11 +1,13 @@
-$(document).on('ready', function(){
+$(document).on('ready page:load', function(){
 
-    //$.ajax({
-    //    url: $(this).attr('action'),
-    //    type: $(this).attr('method'),
-    //    dataType: 'script',
-    //    data: $(this).serialize(),
-    //});
+  $("#search").on('keydown', function() {
+    if ($(this).val().length > 1) {
+      $.ajax({
+        url: '/facts?query=' + encodeURIComponent( $(this).val() ),
+        dataType: 'script'
+      });
+    }
+  });
 
 
 });
