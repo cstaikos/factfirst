@@ -23,8 +23,6 @@ class User < ActiveRecord::Base
 
   def evidence_quality
     upvote_total = evidence_votes.inject(0) { |sum, vote| sum += (vote.upvote ? 1 : 0) }
-    puts upvote_total
-    puts evidence_votes.count
     ((upvote_total.to_f / evidence_votes.count) * 100).round(2)
   end
 
