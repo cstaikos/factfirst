@@ -6,7 +6,11 @@ class FactsController < ApplicationController
   before_action :load_fact, only: [:show, :edit, :update, :destroy]
 
   def index
-    @facts = Fact.all
+    if params[:query]
+      @facts = Fact.where('body ILIKE ?', params[:query])
+    else
+      @facts = Fact.all
+    end
   end
 
   def new
