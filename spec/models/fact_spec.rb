@@ -40,10 +40,11 @@ RSpec.describe Fact, type: :model do
   end
 
   describe "#refuting_evidence" do
-    it "returns fact refuting evidence collection with newly created evidence included" do
-      evidence = create(:refuting_evidence, fact_id: fact.id)
-      expect(fact.refuting_evidence[0]).to eq evidence
-    end
+    context "when adding refuting evidence to fact" do
+      it "returns the created refuting evidence" do
+        evidence = create(:refuting_evidence, fact_id: fact.id)
+        expect(fact.refuting_evidence[0]).to eq evidence
+      end
   end
 
   describe "#update_score" do
