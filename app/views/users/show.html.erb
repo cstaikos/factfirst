@@ -7,7 +7,7 @@
 
 <br><br>
 
-<h1>Average truthiness of submitted facts: <%= @user.facts.average(:score).round(2) %>%</h1>
+<h1>Average truthiness of submitted facts: <%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2) %>%</h1>
 <h2>Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
 <div>
   <h2>Recent facts posted:</h2>
