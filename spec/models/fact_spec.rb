@@ -5,13 +5,6 @@ RSpec.describe Fact, type: :model do
 
   let!(:fact) { create(:fact) }
 
-  before(:each) do
-    # Fact.delete_all
-    # @fact = create(:fact)
-    # @evidence = create(:evidence)
-    # @vote = create(:vote)
-  end
-
   after(:all) do
     p Fact.all
     p Evidence.all
@@ -40,7 +33,6 @@ RSpec.describe Fact, type: :model do
   describe "#supporting_evidence" do
     context "when adding supporting evidence to fact" do
       it "returns the created supporting evidence" do
-        fact = create(:fact)
         evidence = create(:supporting_evidence, fact_id: fact.id)
         expect(fact.supporting_evidence.first).to eq evidence
       end
@@ -49,7 +41,6 @@ RSpec.describe Fact, type: :model do
 
   describe "#refuting_evidence" do
     it "returns fact refuting evidence collection with newly created evidence included" do
-      fact = create(:fact)
       evidence = create(:refuting_evidence, fact_id: fact.id)
       expect(fact.refuting_evidence[0]).to eq evidence
     end
@@ -58,7 +49,6 @@ RSpec.describe Fact, type: :model do
   describe "#update_score" do
     it "verifies that 1 upvote for refuting evidence and 1 upvote for supporting evidence results in a fact
 truthiness score of 50" do
-      fact = create(:fact)
       evidence_1 = create(:evidence, support: true, fact_id: fact.id)
       evidence_2 = create(:evidence, support: false, fact_id: fact.id)
       vote_1 = create(:vote, upvote: true, evidence_id: evidence_1.id)
