@@ -1,5 +1,6 @@
 class Fact < ActiveRecord::Base
   belongs_to :user
+  belongs_to :category
   has_many :evidences
   has_many :comments
 
