@@ -20,12 +20,9 @@
             <div id="vote-box-<%= evidence.id %>" class="vote-box">
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
-
-            <h4><%= evidence.url%></h4>
-            <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
-
-            <div id="vote-box-<%= evidence.id %>" class="vote-box">
-              <%= render 'vote_buttons', evidence: evidence %>
+            <div class="show-evidence">
+              <h4><%= evidence.url%></h4>
+              <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
             </div>
 
         </li>
