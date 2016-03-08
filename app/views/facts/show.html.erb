@@ -22,7 +22,7 @@
             </div>
             <div class="show-evidence">
               <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url%></a></h4>
-              <p class="evidence-posting">Posted by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
+              <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
 
         </li>
@@ -56,7 +56,7 @@
 
             <div class="show-evidence">
               <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url %></a></h4>
-              <p class="evidence-posting">Posted by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
+              <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
 
         </li>
