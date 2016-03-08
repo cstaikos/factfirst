@@ -6,6 +6,27 @@
   color: transparentize($action-color, 0.7);
 }
 
+.fact-favorite-text {
+  padding-left: 10px;
+  display: table;
+  span {
+    vertical-align: middle;
+    padding-left: 8px;
+    display: table-cell;
+  }
+  i {
+    font-size: 1.5em;
+  }
+}
+
+.unfav {
+  color: #555;
+}
+
+.fav {
+
+}
+
 .fact-show {
   display: table-cell;
   width: 70%;
