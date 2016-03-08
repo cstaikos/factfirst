@@ -8,16 +8,15 @@
 </head>
 <body>
 
-<%= render 'refills/navigation' %>
+  <%= render 'refills/navigation' %>
 
-<div class="flash-notifications">
-  <div id="alert"><%= flash[:alert] %>test string for testing ma son</div>
-  <div id="notice"><%= flash[:notice] %>test string for testing yo</div>
-</div>
+  <div id="flash-messages">
+    <%= render 'refills/flashes' %>
+  </div>
 
-<%= yield %>
+  <%= yield %>
 
-<%= render 'refills/footer' %>
+  <%= render 'refills/footer' %>
 
 </body>
 </html>
