@@ -111,3 +111,11 @@
   padding: 0;
   margin: 0;
 }
+
+.evidence-supporting-button {
+  background-color: $upvote-color !important;
+}
+
+.evidence-refuting-button {
+  background-color: $downvote-color !important;
+}

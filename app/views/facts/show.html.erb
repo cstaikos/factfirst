@@ -39,7 +39,7 @@
           <%= f.hidden_field :support, value: true %>
 
           <div class="evidence-submit">
-            <%= f.submit %>
+            <%= f.submit 'Create Supporting Evidence', :class => 'evidence-supporting-button' %>
           </div>
         <% end %>
       </div>
@@ -73,7 +73,7 @@
           <%= f.hidden_field :support, value: false %>
 
           <div class="evidence-submit">
-            <%= f.submit %>
+            <%= f.submit 'Create Refuting Evidence', :class => 'evidence-refuting-button'%>
           </div>
         <% end %>
       </div>
