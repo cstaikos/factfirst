@@ -9,7 +9,14 @@ module VotesHelper
     vote_text = button_type ? 'upvote' : 'downvote'
 
     # If user is logged out, return link to login page
-    return link_to "#{pluralize evidence.upvotes, vote_text}", new_user_session_path if !current_user
+
+    if !current_user
+      return link_to  "#{pluralize evidence.upvotes, 'upvote'}",
+                      votes_path(vote: {evidence_id: evidence.id, upvote: button_type}),
+                      method: :post,
+                      remote: false
+    end
+
 
     # Display either num of upvotes or num of downvotes
     number_to_display = button_type ? evidence.upvotes : evidence.downvotes
