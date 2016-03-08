@@ -170,40 +170,7 @@ ___
 
 # CODE that needs refactoring to make it more testable
 
-#### Fact#update_score
 
-```
-def update_score
-   num_votes = evidences.inject(0) do |sum, evidence|
-     sum += evidence.upvotes + evidence.downvotes
-   end
-
-   return if num_votes == 0
-
-   vote_sums = evidences.inject(0) do |sum, evidence|
-     sum += if evidence.support
-              evidence.upvotes # upvotes on supporting evidence are good for a fact
-            else
-              evidence.downvotes # downvotes on refuting evidence are good for a fact
-            end
-   end
-
-   self.score = (vote_sums.to_f / num_votes.to_f * 100).round
-
-   save
-
-   update_image
- end
- ```
- This method returns whatever `update_image` returns. Which makes it very hard to test.
-
- We should consider refactoring so the method returns the newly updated score.
-
- This way, we can do something like this in a test:
-
- ```
- expect(@fact.update_score)to. eq 50
- ```
 
 # ERRORS and SOLUTIONS
 
