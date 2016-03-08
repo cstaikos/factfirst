@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   before_action :check_login
 
   def create
-    @fact = Fact.find(params[:id])
+    @fact = Fact.find(params[:fact_id])
     @user = current_user
 
     @user.favorites << @fact
@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    @fact = Fact.find(params[:id])
+    @fact = Fact.find(params[:fact_id])
     @user = current_user
 
     @user.favorites.delete(@fact)
