@@ -1,22 +1,39 @@
 <!-- Below is the quickiest and dirtiest of bug fixes. This JS should only run on this page. -->
 <!-- Hide sticky nav bar when it is above the hero image. -->
 <script type="text/javascript">
-$(function() {
 
-  $('.navigation').addClass('nodisplay');
+  $(function() {
 
-  $(document).on('scroll', function() {
-    var display
-    var docScroll = $(document).scrollTop();
-    // This is something we might want for mobile later in the below if statement: & $('html').height() > 768 -- ie. no sticky header for short screens
-    if (docScroll >= 325) {
-      $('.navigation').removeClass('nodisplay');
-      display = true
-    } else if (docScroll < 30){
-      $('.navigation').addClass('nodisplay');
-    }
+    hideNav();
+
+    $(document).on('scroll', function() {
+
+      var docScroll = $(document).scrollTop();
+      // This is something we might want for mobile later in the below if statement: & $('html').height() > 768 -- ie. no sticky header for short screens
+      if (docScroll >= 325) {
+
+        showNav();
+
+      } else if ((docScroll < 20)){
+
+        hideNav();
+      }
+
+    });
   });
-});
+
+  showNav = function(){
+    $('.img-logo').removeClass('nodisplay');
+    $('nav').removeClass('nodisplay');
+    $('.navigation').addClass('nav-bg');
+  }
+
+  hideNav = function(){
+    $('.img-logo').addClass('nodisplay');
+    $('nav').addClass('nodisplay');
+    $('.navigation').removeClass('nav-bg');
+  }
+
 </script>
 
 <%= render 'refills/hero' %>
