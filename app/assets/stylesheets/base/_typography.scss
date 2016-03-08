@@ -36,12 +36,12 @@ a {
 .vote-icon {
   color: #555;
   text-decoration: none;
-  transition: #555 $base-duration $base-timing;
+  transition: $action-color $base-duration $base-timing;
 
   &:active,
   &:focus,
   &:hover {
-    color: shade(#555, 25%);
+    color: shade($action-color, 25%);
   }
 }
 
