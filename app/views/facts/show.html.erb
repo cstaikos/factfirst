@@ -107,7 +107,7 @@
 
   <div id="comments">
     <h2 class="subheader"><a href="#" id="comment-show">View All Comments (<%= @fact.comments.count %>)</a></h2>
-    <div class="comment-list">
+    <div id="comment-list" class="nodisplay">
       <%= render @fact.comments %>
     </div>
   </div>
