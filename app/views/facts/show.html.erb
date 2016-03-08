@@ -8,8 +8,11 @@
     <span class="truth-dial">Dial goes here</span>
   </div>
 
-  <div class="fact-favorite-text" id="favorite-<%= @fact.id %>">
-    <%= favorite_button(@fact) %> <span>Fact posted by <%= link_to @fact.user.display_name, @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
+  <div class="fact-favorite-text">
+    <div id="favorite-<%= @fact.id %>">
+      <%= favorite_button(@fact) %>
+    </div>
+    <span>Fact posted by <%= link_to @fact.user.display_name, @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
   </div>
 
   <div class="evidence">
