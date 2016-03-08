@@ -1,17 +1,21 @@
-<% if flash[:notice] %>
-  <div class="flash-notice">
-    <span><%= flash[:notice] %></span>
-  </div>
-<% elsif flash[:alert] %>
-  <div class="flash-alert">
-    <span><%= flash[:alert] %></span>
-  </div>
-<% elsif flash[:success] %>
-  <div class="flash-success">
-    <span><%= flash[:success] %></span>
-  </div>
-<% elsif flash[:success] %>
-  <div class="flash-error">
-    <span><%= flash[:error] %></span>
+<% if flash[:notice] || flash[:success] || flash[:alert] || flash[:error] %>
+  <div id="flash-messages">
+    <% if flash[:notice] %>
+      <div class="flash-notice">
+        <span><%= flash[:notice] %></span>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="flash-alert">
+        <span><%= flash[:alert] %></span>
+      </div>
+    <% elsif flash[:success] %>
+      <div class="flash-success">
+        <span><%= flash[:success] %></span>
+      </div>
+    <% elsif flash[:success] %>
+      <div class="flash-error">
+        <span><%= flash[:error] %></span>
+      </div>
+    <% end %>
   </div>
 <% end %>
