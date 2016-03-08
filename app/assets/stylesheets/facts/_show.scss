@@ -162,6 +162,10 @@
   min-height: 250px;
 }
 
+.comment-body {
+  min-height: 100px;
+}
+
 #comments {
   @include span-columns(12);
 }
