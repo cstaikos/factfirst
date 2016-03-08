@@ -12,7 +12,7 @@
 
   <div class="evidence">
     <div class="supporting">
-      <h1 class="evidence-header-text">Supporting Evidence (<%= @fact.supporting_evidence.count %>)</h1>
+      <div class="evidence-title-box-supporting"><h1 class="evidence-header-text">Supporting Evidence (<%= @fact.supporting_evidence.count %>)</h1></div>
       <ul class="evidence-list">
         <% @fact.supporting_evidence.each do |evidence| %>
           <li class="piece-of-evidence">
@@ -46,7 +46,7 @@
     </div>
 
     <div class="refuting">
-      <h1 class="evidence-header-text">Refuting Evidence (<%= @fact.refuting_evidence.count %>)</h1>
+      <div class="evidence-title-box-refuting"><h1 class="evidence-header-text">Refuting Evidence (<%= @fact.refuting_evidence.count %>)</h1></div>
       <ul class="evidence-list">
         <% @fact.refuting_evidence.each do |evidence| %>
           <li class="piece-of-evidence">
