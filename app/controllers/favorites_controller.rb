@@ -31,7 +31,7 @@ class FavoritesController < ApplicationController
   private
 
   def check_login
-    redirect_to new_user_session_path unless current_user
+    redirect_to new_user_session_path, alert: 'Login to add favorite' unless current_user
   end
 
 end
