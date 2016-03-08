@@ -1,4 +1,4 @@
-<% if flash[:notice] || flash[:success] || flash[:alert] || flash[:error] %>
+<% if flash.present? %>
   <div id="flash-messages">
     <% if flash[:notice] %>
       <div class="flash-notice">
