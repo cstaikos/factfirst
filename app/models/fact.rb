@@ -12,7 +12,7 @@ class Fact < ActiveRecord::Base
   validates :category, presence: true
   validates :body, presence: true
 
-   require 'RMagick'
+  require 'RMagick'
 
   def set_defaults
     self.score = 0
