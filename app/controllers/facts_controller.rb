@@ -58,7 +58,7 @@ class FactsController < ApplicationController
 
     else
 
-      flash[:error] = @fact.errors.full_messages.to_sentence
+      flash.now[:error] = @fact.errors.full_messages.to_sentence
       render :new
 
     end
@@ -76,7 +76,7 @@ class FactsController < ApplicationController
 
     else
 
-      flash[:error] = @fact.errors.full_messages.to_sentence
+      flash.now[:error] = @fact.errors.full_messages.to_sentence
       render :edit
 
     end
