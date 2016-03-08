@@ -7,12 +7,16 @@
   <div>
     <ul>
       <li>
-        <!-- NOTE: The **SELECTED** bits here should actually be classes applied so the selected category is indicated -->
-        <%= link_to 'All', facts_path %><%= "**SELECTED**" unless params[:category] %>
+        <%= link_to 'All', facts_path, id: 'category-all', class: "#{'is-selected' unless params[:category]}" %>
       </li>
       <% @categories.all.each do |category| %>
         <li>
-          <%= link_to category.name, facts_path + "?category=#{category.name}" %><%= "**SELECTED**" if category.name == params[:category] %>
+          <%= link_to category.name,
+                facts_path + "?category=#{category.name}",
+                method: :get,
+                remote: true,
+                id: "category-#{category.name}",
+                class: "#{'is-selected' if params[:category] == category.name}" %>
         </li>
       <% end %>
     </ul>
