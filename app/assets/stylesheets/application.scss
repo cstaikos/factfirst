@@ -6,6 +6,7 @@
 @import 'refills/footer';
 @import 'refills/flex-boxes';
 @import 'refills/hero';
+@import 'refills/flashes';
 
 @import 'facts/show';
 
@@ -62,8 +63,4 @@ body {
   display: none;
 }
 
-.flash-notifications {
-  position: fixed;
-  color: blue;
-  top: 62px
-}
+
