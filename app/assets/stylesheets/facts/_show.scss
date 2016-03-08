@@ -196,6 +196,23 @@
   background-color: #f9f9f9;
 }
 
+.comment-text {
+  margin: 0;
+  padding-top: 5px;
+  border-top: #ccc solid 1px;
+}
+
+.comment-posting {
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 5px;
+  // NOTE: This is not working. Add border bottom to last child of comments.
+  :last-child {
+    border-bottom: #ccc solid 1px;
+  }
+}
+
 .subheader {
   font-size: 1.5em;
   font-weight: bold;

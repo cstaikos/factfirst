@@ -1,4 +1,4 @@
-<div>
-  <p>Comment posted by <%= link_to comment.user.display_name, comment.user %> at <%= comment.created_at %></p>
-  <p><%= comment.body %></p>
+<div class="individual-comment">
+  <p class="comment-text"><%= comment.body %></p>
+  <p class="comment-posting">Comment posted by <%= link_to comment.user.display_name, comment.user %> on <%= comment.created_at.strftime("%B %-d, %Y") %></p>
 </div>
