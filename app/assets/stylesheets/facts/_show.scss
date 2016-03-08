@@ -85,3 +85,28 @@
   display: table-cell;
   padding: 0 8px;
 }
+
+.add-evidence-box {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  margin-bottom: 20px;
+}
+
+.evidence-label {
+  display: inline-block;
+}
+
+.evidence-field {
+  display: inline-block;
+}
+
+.evidence-posting {
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+}

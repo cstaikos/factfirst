@@ -21,15 +21,15 @@
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
             <div class="show-evidence">
-              <h4><%= evidence.url%></h4>
-              <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
+              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url%></a></h4>
+              <p class="evidence-posting">Posted by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
 
         </li>
       <% end %>
       </ul>
       <div class="add-evidence-box">
-        <h4>Add supporting evidence:</h4>
+        <p>Join the debate! Add your own evidence to support this fact.</p>
         <%= form_for [@fact, @evidence] do |f| %>
           <div class="evidence-url-form-group">
             <%= f.label "URL:", :class => 'evidence-label' %>
@@ -55,15 +55,15 @@
             </div>
 
             <div class="show-evidence">
-              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url%></a></h4>
-              <p class="evidence-posting">Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
+              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url %></a></h4>
+              <p class="evidence-posting">Posted by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
 
         </li>
       <% end %>
       </ul>
       <div class="add-evidence-box">
-        <h4>Add refuting evidence:</h4>
+        <p>Join the debate! Add your own evidence to refute this fact.</p>
         <%= form_for [@fact, @evidence] do |f| %>
           <div class="evidence-url-form-group">
             <%= f.label "URL:", :class => 'evidence-label' %>
