@@ -3,8 +3,8 @@
     <strong><%= link_to @fact.user.display_name, @fact.user %></strong> posted this fact!
   </p>
 
-  <div id="favorite">
-    <%= favorite_button %>    
+  <div id="favorite-<%= @fact.id %>">
+    <%= favorite_button(@fact) %>
   </div>
 
   <p>

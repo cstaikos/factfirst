@@ -1,3 +1,4 @@
 <li>
   <p><%= link_to fact.body, fact_path(fact) %></p>
+  <div id="favorite-<%= fact.id %>"><%= favorite_button(fact) %></div>
 </li>
