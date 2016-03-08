@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :evidences
   has_many :votes
   has_many :evidence_votes, through: :evidences, source: :votes
+  has_and_belongs_to_many :favorites, class_name: 'Fact'
 
   def already_voted?(evidence)
     votes.where(evidence_id: evidence.id).exists?

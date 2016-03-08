@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   get '/home' => 'static_pages#home', as: 'home'
 
+  delete '/favorites/:fact_id' => 'favorites#destroy', as: 'destroy_favorite'
+  post '/favorites/:fact_id' => 'favorites#create', as: 'create_favorite'
+
   resources :facts
 
   resources :votes, only: [:create, :update, :destroy]
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
     resources :evidences
     resources :comments
   end
+
 
   devise_for :users, controllers: { registrations: 'registrations' }
 
