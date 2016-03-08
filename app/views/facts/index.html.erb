@@ -1,5 +1,18 @@
 <div class="text-wrapper">
-  <h1>All Facts</h1>
+  <h1>Browse facts</h1>
+
+  <%= params[:query] %>
+
+  <div>
+    <ul>
+      <% @categories.all.each do |category| %>
+        <li>
+          <%= link_to category.name, facts_path + "?category=#{category.name}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
   <div class="facts-container">
     <ul id="facts-list">
       <% @facts.each do |fact| %>
