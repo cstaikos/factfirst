@@ -34,11 +34,9 @@ body {
 .evidence {
   @include omega;
   .supporting {
-    @include pad($padding-from-screen-edge);
     @include span-columns(6);
   }
   .refuting {
-    @include pad($padding-from-screen-edge);
     @include span-columns(6);
     @include omega;
   }
