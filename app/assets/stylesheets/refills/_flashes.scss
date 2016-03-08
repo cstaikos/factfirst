@@ -38,3 +38,9 @@ $success-color: #e6efc2 !default;
 .flash-success {
   @include flash($success-color);
 }
+
+#flash-messages{
+  position: fixed;
+  width: 100%;
+  z-index: 99999
+}
