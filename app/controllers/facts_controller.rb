@@ -4,6 +4,7 @@ class FactsController < ApplicationController
   before_action :login_to_add_fact, only: [:new, :create]
   before_action :load_fact, only: [:show, :edit, :update, :destroy]
 
+
   helper VotesHelper
 
   def index
@@ -48,7 +49,14 @@ class FactsController < ApplicationController
         evidence.save
       end
 
-      redirect_to fact_path(@fact), notice: 'Fact successfully created.'
+      flash[:success] = 'Fact successfully created!'
+      redirect_to fact_path(@fact)
+
+    elsif @fact.body == ""
+
+      flash[:error] = @fact.errors.full_messages.to_sentence
+      redirect_to new_fact_path
+
     else
       render :new
     end
@@ -60,7 +68,8 @@ class FactsController < ApplicationController
   def update
     @fact.update_attributes(fact_params)
     if @fact.save
-      redirect_to fact_path(@fact), notice: 'Fact successfully created.'
+
+      redirect_to fact_path(@fact), notice: 'Fact successfully Updated!'
     else
       render :edit
     end
@@ -86,6 +95,5 @@ class FactsController < ApplicationController
     unless current_user
       redirect_to new_user_session_path, alert: "Please login to add a Fact!"
     end
-
   end
 end

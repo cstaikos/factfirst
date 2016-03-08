@@ -12,10 +12,12 @@
       <div class="flash-success">
         <span><%= flash[:success] %></span>
       </div>
-    <% elsif flash[:success] %>
+    <% elsif flash[:error] %>
       <div class="flash-error">
         <span><%= flash[:error] %></span>
       </div>
     <% end %>
   </div>
 <% end %>
+
+
