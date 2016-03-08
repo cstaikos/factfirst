@@ -11,10 +11,9 @@ module VotesHelper
     # If user is logged out, return link to login page
 
     if !current_user
-      return link_to  "#{pluralize evidence.upvotes, 'upvote'}",
-                      votes_path(vote: {evidence_id: evidence.id, upvote: button_type}),
-                      method: :post,
-                      remote: false
+      return link_to votes_path(vote: {evidence_id: evidence.id, upvote: button_type}), method: post, remote: false do
+                        votes.upvotes.to_s + content_tag(:i, "", class: "fa fa-arrow-circle-down")
+                      end
     end
 
 

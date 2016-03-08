@@ -50,12 +50,15 @@
       <ul class="evidence-list">
         <% @fact.refuting_evidence.each do |evidence| %>
           <li class="piece-of-evidence">
-            <h4><%= evidence.url%></h4>
-            <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
-
             <div id="vote-box-<%= evidence.id %>" class="vote-box">
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
+
+            <div class="show-evidence">
+              <h4><%= evidence.url%></h4>
+              <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
+            </div>
+
 
         </li>
       <% end %>
