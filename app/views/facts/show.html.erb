@@ -28,17 +28,17 @@
         </li>
       <% end %>
       </ul>
-      <div>
+      <div class="add-evidence-box">
         <h4>Add supporting evidence:</h4>
         <%= form_for [@fact, @evidence] do |f| %>
-          <div>
-            <%= f.label :url %>
-            <%= f.url_field :url %>
+          <div class="evidence-url-form-group">
+            <%= f.label "URL:", :class => 'evidence-label' %>
+            <%= f.url_field :url, :class => 'evidence-field' %>
           </div>
 
           <%= f.hidden_field :support, value: true %>
 
-          <div>
+          <div class="evidence-submit">
             <%= f.submit %>
           </div>
         <% end %>
@@ -55,25 +55,24 @@
             </div>
 
             <div class="show-evidence">
-              <h4><%= evidence.url%></h4>
-              <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
+              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url%></a></h4>
+              <p class="evidence-posting">Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
             </div>
-
 
         </li>
       <% end %>
       </ul>
-      <div>
+      <div class="add-evidence-box">
         <h4>Add refuting evidence:</h4>
         <%= form_for [@fact, @evidence] do |f| %>
-          <div>
-            <%= f.label :url %>
-            <%= f.url_field :url %>
+          <div class="evidence-url-form-group">
+            <%= f.label "URL:", :class => 'evidence-label' %>
+            <%= f.url_field :url, :class => 'evidence-field' %>
           </div>
 
           <%= f.hidden_field :support, value: false %>
 
-          <div>
+          <div class="evidence-submit">
             <%= f.submit %>
           </div>
         <% end %>
