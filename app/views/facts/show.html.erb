@@ -12,14 +12,19 @@
 
   <div class="evidence">
     <div class="supporting">
-      <h2><%= pluralize @fact.supporting_evidence.count, 'piece' %> of supporting evidence:</h2>
-      <ul>
+      <h1 class="evidence-header-text">Supporting Evidence (<%= @fact.supporting_evidence.count %>)</h1>
+      <ul class="evidence-list">
         <% @fact.supporting_evidence.each do |evidence| %>
-          <li>
+          <li class="piece-of-evidence">
+
+            <div id="vote-box-<%= evidence.id %>" class="vote-box">
+              <%= render 'vote_buttons', evidence: evidence %>
+            </div>
+
             <h4><%= evidence.url%></h4>
             <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
 
-            <div id="vote-box-<%= evidence.id %>">
+            <div id="vote-box-<%= evidence.id %>" class="vote-box">
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
 
@@ -44,14 +49,14 @@
     </div>
 
     <div class="refuting">
-      <h2><%= pluralize @fact.refuting_evidence.count, 'piece' %> of refuting evidence:</h2>
-      <ul>
+      <h1 class="evidence-header-text">Refuting Evidence (<%= @fact.refuting_evidence.count %>)</h1>
+      <ul class="evidence-list">
         <% @fact.refuting_evidence.each do |evidence| %>
-          <li>
+          <li class="piece-of-evidence">
             <h4><%= evidence.url%></h4>
             <p>Posted by <%= link_to evidence.user.display_name, evidence.user %></p>
 
-            <div id="vote-box-<%= evidence.id %>">
+            <div id="vote-box-<%= evidence.id %>" class="vote-box">
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
 
