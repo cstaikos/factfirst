@@ -16,7 +16,11 @@ class FactsController < ApplicationController
     end
 
     if params[:category]
-      @facts = @facts.where(category: Category.where(name: params[:category]) ) 
+      if params[:category] == 'Favorites'
+        @facts = current_user.favorites
+      else
+        @facts = @facts.where(category: Category.where(name: params[:category]) )
+      end
     end
 
     respond_to do |format|

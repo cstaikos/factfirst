@@ -53,3 +53,12 @@
     <% end %>
   </ul>
 </div>
+
+<div>
+  <h2>My favorites:</h2>
+  <ul>
+    <% @user.favorites.each do |fact| %>
+      <%= render fact %>
+    <% end %>
+  </ul>
+</div>
