@@ -3,15 +3,22 @@
 
   <%= params[:query] %>
 
+  <h2>Categories:</h2>
   <div>
     <ul>
+      <li>
+        <!-- NOTE: The **SELECTED** bits here should actually be classes applied so the selected category is indicated -->
+        <%= link_to 'All', facts_path %><%= "**SELECTED**" unless params[:category] %>
+      </li>
       <% @categories.all.each do |category| %>
         <li>
-          <%= link_to category.name, facts_path + "?category=#{category.name}" %>
+          <%= link_to category.name, facts_path + "?category=#{category.name}" %><%= "**SELECTED**" if category.name == params[:category] %>
         </li>
       <% end %>
     </ul>
   </div>
+
+  <br><br>
 
   <div class="facts-container">
     <ul id="facts-list">
