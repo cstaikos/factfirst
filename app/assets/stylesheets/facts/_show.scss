@@ -1,5 +1,48 @@
+.fact-show {
+  display: table-cell;
+  width: 70%;
+  font-size: 1.5em;
+  vertical-align: middle;
+}
+
+.truth-score {
+  height: 100%;
+  width: 15%;
+  font-size: 4em;
+  background-color: #ccc;
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+}
+
+.truth-dial {
+  height: 100%;
+  width: 15%;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
 .fact-header {
   @include span-columns(12);
   @include omega;
-  padding-top: $sticky-nav-top-padding;
+  background:#f9f9f9;
+  border-left:10px solid #ccc;
+  display: table;
+  margin:0.5em 0px 30px 0px;
+  padding:.5em 10px;
+  min-height: 150px;
+}
+
+.evidence-header-text {
+  margin-top: 0px;
+}
+
+.piece-of-evidence {
+  width: 100%;
+  display: block;
+  border-left: 10px solid #ccc;
+  background-color: #f9f9f9;
 }
