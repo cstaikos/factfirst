@@ -89,23 +89,22 @@
   <% end  %>
 
 
-  <div style="clear:both;">
-    <p>
-      <strong>
-        Share a permalink image of this fact on another site: <%= root_url[0..-2] + asset_path("fact_photos/#{@fact.id}.png") %>
-      </strong>
-    </p>
+  <div class="permalink">
+    <div class="subheader">Share this Fact</div>
+    <p><a href="<%= root_url[0..-2] + asset_path("fact_photos/#{@fact.id}.png") %>">This will be a copy box ala github. The image will be a modal.</a></p>
     <div id="fact-image">
-      <%= image_tag "fact_photos/#{@fact.id}.png", width: 400 %>
+      <%= image_tag "fact_photos/#{@fact.id}.png", width: 400, height: 150 %>
     </div>
   </div>
 
-  <div>
-    <h2>Add a comment to discuss this fact:</h2>
+  <div class="add-comment">
+    <h2 class="subheader">Discuss this Fact</h2>
+    <p>Add a comment to join the discussion!</p>
     <%= render 'comments/comment_form' %>
   </div>
 
   <div id="comments">
+    <h2 class="subheader">View All Comments (<%= @fact.comments.count %>)</h2>
     <%= render @fact.comments %>
   </div>
 
