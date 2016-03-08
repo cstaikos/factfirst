@@ -2,14 +2,14 @@
 @import 'bourbon';
 @import 'neat';
 @import 'base/base';
+@import 'facts/show';
+@import 'facts';
 @import 'refills/navigation';
 @import 'refills/footer';
 @import 'refills/flex-boxes';
 @import 'refills/hero';
 @import 'refills/flashes';
 
-@import 'facts/show';
-@import 'facts';
 
 $padding-from-screen-edge: 20px;
 $text-max-width: 1020px;

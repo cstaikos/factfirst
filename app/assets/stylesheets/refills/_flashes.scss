@@ -26,7 +26,7 @@ $success-color: #e6efc2 !default;
 }
 
 .flash-alert {
-  @include flash($alert-color);
+  @include flash($error-color);
   //padding: 0;
 }
 
@@ -36,7 +36,7 @@ $success-color: #e6efc2 !default;
 }
 
 .flash-notice {
-  @include flash($notice-color);
+  @include flash($success-color);
   //padding: 0;
 }
 
@@ -48,6 +48,6 @@ $success-color: #e6efc2 !default;
 #flash-messages{
   position: fixed;
   width: 100%;
-  //height: $navigation-height;
+  height: $navigation-height;
   z-index: 99999;
 }

@@ -53,12 +53,12 @@ class FactsController < ApplicationController
         evidence.save
       end
 
-      flash[:success] = 'Fact successfully created!'
+      flash[:notice] = 'Fact successfully created!'
       redirect_to fact_path(@fact)
 
     else
 
-      flash.now[:error] = @fact.errors.full_messages.to_sentence
+      flash.now[:alert] = @fact.errors.full_messages.to_sentence
       render :new
 
     end
@@ -71,12 +71,12 @@ class FactsController < ApplicationController
     @fact.update_attributes(fact_params)
     if @fact.save
 
-      flash[:success] = 'Fact successfully Updated!'
+      flash[:notice] = 'Fact successfully Updated!'
       redirect_to fact_path(@fact)
 
     else
 
-      flash.now[:error] = @fact.errors.full_messages.to_sentence
+      flash.now[:alert] = @fact.errors.full_messages.to_sentence
       render :edit
 
     end
