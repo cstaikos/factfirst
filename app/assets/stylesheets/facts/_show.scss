@@ -1,9 +1,9 @@
-.upvote-color {
-  color: $upvote-color;
+.voted-on {
+  color: $action-color;
 }
 
-.downvote-color {
-  color: $downvote-color;
+.opposite-vote {
+  color: lighten($action-color, 30);
 }
 
 .fact-show {

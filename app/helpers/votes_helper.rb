@@ -12,7 +12,7 @@ module VotesHelper
     # If user is logged out, return link to login page
 
     if !current_user
-      return link_to  content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction}"),
+      return link_to  content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon"),
                       votes_path(vote: {evidence_id: evidence.id, upvote: button_type}),
                       method: :post,
                       remote: false
@@ -28,20 +28,20 @@ module VotesHelper
 
       # If the vote is the same as the current button, display a delete link
       if current_vote.upvote == button_type
-        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} downvote-color")
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon voted-on")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :delete
 
       # Otherwise display a change vote link
       else
-        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} upvote-color")
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon opposite-vote")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :patch
       end
 
     # If they haven't voted yet, return the regular vote buttons
     else
-      form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction}")
+      form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon")
       form_path =   votes_path(vote: {evidence_id: evidence.id, upvote: button_type})
       form_method = :post
 

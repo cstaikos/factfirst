@@ -1,7 +1,7 @@
 @import 'normalize';
 @import 'bourbon';
-@import 'neat';
 @import 'base/base';
+@import 'neat';
 @import 'refills/navigation';
 @import 'refills/footer';
 @import 'refills/flex-boxes';
@@ -61,5 +61,3 @@ body {
 .nodisplay {
   display: none;
 }
-
-
