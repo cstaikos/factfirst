@@ -10,26 +10,38 @@
         <%= link_to 'All',
             facts_path,
             id: 'category-all',
-            class: "#{'is-selected' unless params[:category]}",
+            class: ('is-selected' unless params[:category]),
             remote: true %>
       </li>
       <li>
         <%= link_to 'My Favorites',
             facts_path + '?category=Favorites',
             id: 'category-Favorites',
-            class: "#{'is-selected' if params[:category] && params[:category].downcase == 'favorites'}",
+            class: ('is-selected' if params[:category] && params[:category].downcase == 'favorites'),
             remote: true %>
       </li>
       <% @categories.all.each do |category| %>
         <li>
           <%= link_to category.name,
                 facts_path + "?category=#{category.name}",
-                method: :get,
-                remote: true,
                 id: "category-#{category.name}",
-                class: "#{'is-selected' if params[:category] && params[:category].downcase == category.name.downcase}" %>
+                class: ('is-selected' if params[:category] && params[:category].downcase == category.name.downcase),
+                remote: true %>
         </li>
       <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Sort by:</h2>
+    <ul>
+      <li>
+        <%= link_to 'Popular',
+            facts_path + "?sort=popular",
+            id: "sort-popular",
+            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'popular'),
+            remote: true %>
+      </li>
     </ul>
   </div>
 
