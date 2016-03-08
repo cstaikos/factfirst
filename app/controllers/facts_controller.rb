@@ -71,7 +71,9 @@ class FactsController < ApplicationController
     @fact.update_attributes(fact_params)
     if @fact.save
 
-      redirect_to fact_path(@fact), notice: 'Fact successfully Updated!'
+      flash[:success] = 'Fact successfully Updated!'
+      redirect_to fact_path(@fact)
+
     else
 
       flash[:error] = @fact.errors.full_messages.to_sentence
