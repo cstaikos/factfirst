@@ -119,3 +119,15 @@
 .evidence-refuting-button {
   background-color: $downvote-color !important;
 }
+
+.delete-fact-box {
+  @include span-columns(12);
+  @include omega;
+  border-left: 10px solid #ccc;
+  padding: 10px 0;
+  background-color: #f9f9f9;
+  margin-bottom: 15px;
+  .delete-fact-link {
+    padding-left: 10px;
+  }
+}
