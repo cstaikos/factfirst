@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :facts do
     resources :evidences
     resources :comments
+    resources :favorites, only: [:create, :destroy]
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }
