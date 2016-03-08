@@ -24,9 +24,10 @@ RSpec.describe Fact, type: :model do
   # end
 
   describe "#set_defaults" do
-
-    it "sets the default fact score to 0" do
-      expect(fact.score).to eq 0
+    context "when creating a new fact" do
+      it "returns the expected default fact score value of 0" do
+        expect(fact.score).to eq 0
+      end
     end
   end
 
