@@ -11,11 +11,11 @@ module VotesHelper
     # If user is logged out, return link to login page
 
     if !current_user
-      return link_to votes_path(vote: {evidence_id: evidence.id, upvote: button_type}), method: post, remote: false do
-                        votes.upvotes.to_s + content_tag(:i, "", class: "fa fa-arrow-circle-down")
-                      end
+      return link_to  content_tag(:i, "", class: "fa fa-arrow-circle-down"),
+                      votes_path(vote: {evidence_id: evidence.id, upvote: button_type}),
+                      method: :post,
+                      remote: false
     end
-
 
     # Display either num of upvotes or num of downvotes
     number_to_display = button_type ? evidence.upvotes : evidence.downvotes

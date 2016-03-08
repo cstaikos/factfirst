@@ -47,8 +47,26 @@
   margin-bottom: 20px;
 }
 
+.vote-buttons {
+  vertical-align: middle;
+  .upvote {
+    font-size: 2em;
+    display: block;
+    text-align: center;
+  }
+  .downvote {
+    font-size: 2em;
+    display: block;
+    text-align: center;
+  }
+  .numvotes {
+    font-size: 0.5em;
+    line-height: 20px;
+  }
+}
+
 .vote-box {
-  width: 20%;
+  width: 15%;
   display: table-cell;
   vertical-align: middle;
   background-color: #ccc;
