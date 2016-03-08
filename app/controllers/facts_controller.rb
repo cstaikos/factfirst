@@ -7,10 +7,15 @@ class FactsController < ApplicationController
 
   def index
 
+    @categories = Category.all
+    @facts = Fact.all
+
     if params[:query] && params[:query].length > 2
-      @facts = Fact.where('body ILIKE ?', "%#{params[:query]}%")
-    else
-      @facts = Fact.all
+      @facts = @facts.where('body ILIKE ?', "%#{params[:query]}%")
+    end
+
+    if params[:category]
+      @facts = @facts.where(category: Category.where(name: params[:category]) ) 
     end
 
     respond_to do |format|

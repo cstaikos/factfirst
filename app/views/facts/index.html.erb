@@ -1,5 +1,29 @@
 <div class="text-wrapper">
-  <h1>All Facts</h1>
+  <h1>Browse facts</h1>
+
+  <%= "Showing results for \"#{params[:query]}\"" if params[:query] %>
+
+  <h2>Categories:</h2>
+  <div>
+    <ul>
+      <li>
+        <%= link_to 'All', facts_path, id: 'category-all', class: "#{'is-selected' unless params[:category]}" %>
+      </li>
+      <% @categories.all.each do |category| %>
+        <li>
+          <%= link_to category.name,
+                facts_path + "?category=#{category.name}",
+                method: :get,
+                remote: true,
+                id: "category-#{category.name}",
+                class: "#{'is-selected' if params[:category] == category.name}" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <br><br>
+
   <div class="facts-container">
     <ul id="facts-list">
       <% @facts.each do |fact| %>
