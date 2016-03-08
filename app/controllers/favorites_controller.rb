@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
     @user.save
 
     respond_to do |format|
-      format.js {}
+      format.js { render 'favorite-updated.js.erb'}
       format.html { redirect_to @fact }
     end
 
@@ -23,7 +23,7 @@ class FavoritesController < ApplicationController
     @user.favorites.delete(@fact)
 
     respond_to do |format|
-      format.js {}
+      format.js { render 'favorite-updated.js.erb'}
       format.html { redirect_to @fact }
     end
   end

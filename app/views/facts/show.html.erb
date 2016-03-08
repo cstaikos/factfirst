@@ -3,6 +3,10 @@
     <strong><%= link_to @fact.user.display_name, @fact.user %></strong> posted this fact!
   </p>
 
+  <div id="favorite">
+    <%= favorite_button %>    
+  </div>
+
   <p>
     <%= @fact.body %> - Truthiness score: <h1 id="score"><%= @fact.score %></h1>
   </p>
