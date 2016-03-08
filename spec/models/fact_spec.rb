@@ -2,26 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Fact, type: :model do
 
-
   let!(:fact) { create(:fact) }
-
-  after(:all) do
-    p Fact.all
-    p Evidence.all
-  end
-
-  #
-  # it "has has properties defined in factory" do
-  #   expect(Fact.count).to eq 1
-  # end
-  #
-  # it "has a higher score when associated evidence is upvoted" do
-  #   @evidence.fact_id = @fact.id
-  #   @evidence.support = true
-  #   @vote.evidence_id = @evidence.id
-  #   @vote.upvote = true
-  #   expect(@fact.score).to eq 1
-  # end
 
   describe "#set_defaults" do
     context "when creating a new fact" do
