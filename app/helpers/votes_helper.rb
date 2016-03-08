@@ -27,20 +27,20 @@ module VotesHelper
 
       # If the vote is the same as the current button, display a delete link
       if current_vote.upvote == button_type
-        form_text =   "#{number_to_display} - undo #{vote_text}"
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-down downvote-color")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :delete
 
       # Otherwise display a change vote link
       else
-        form_text =   "#{pluralize number_to_display, vote_text} - change to #{vote_text}"
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-down upvote-color")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :patch
       end
 
     # If they haven't voted yet, return the regular vote buttons
     else
-      form_text =   "#{pluralize number_to_display, vote_text}"
+      form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-down")
       form_path =   votes_path(vote: {evidence_id: evidence.id, upvote: button_type})
       form_method = :post
 
