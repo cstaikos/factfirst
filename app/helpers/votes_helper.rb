@@ -7,16 +7,16 @@ module VotesHelper
 
     # Text to display for link
     vote_text = button_type ? 'upvote' : 'downvote'
+    arrow_direction = button_type ? 'up' : 'down'
 
     # If user is logged out, return link to login page
 
     if !current_user
-      return link_to  "#{pluralize evidence.upvotes, 'upvote'}",
+      return link_to  content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction}"),
                       votes_path(vote: {evidence_id: evidence.id, upvote: button_type}),
                       method: :post,
                       remote: false
     end
-
 
     # Display either num of upvotes or num of downvotes
     number_to_display = button_type ? evidence.upvotes : evidence.downvotes
@@ -28,20 +28,20 @@ module VotesHelper
 
       # If the vote is the same as the current button, display a delete link
       if current_vote.upvote == button_type
-        form_text =   "#{number_to_display} - undo #{vote_text}"
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} downvote-color")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :delete
 
       # Otherwise display a change vote link
       else
-        form_text =   "#{pluralize number_to_display, vote_text} - change to #{vote_text}"
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} upvote-color")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :patch
       end
 
     # If they haven't voted yet, return the regular vote buttons
     else
-      form_text =   "#{pluralize number_to_display, vote_text}"
+      form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction}")
       form_path =   votes_path(vote: {evidence_id: evidence.id, upvote: button_type})
       form_method = :post
 

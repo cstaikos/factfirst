@@ -7,7 +7,18 @@
   <div>
     <ul>
       <li>
-        <%= link_to 'All', facts_path, id: 'category-all', class: "#{'is-selected' unless params[:category]}" %>
+        <%= link_to 'All',
+            facts_path,
+            id: 'category-all',
+            class: "#{'is-selected' unless params[:category]}",
+            remote: true %>
+      </li>
+      <li>
+        <%= link_to 'My Favorites',
+            facts_path + '?category=Favorites',
+            id: 'category-Favorites',
+            class: "#{'is-selected' if params[:category] && params[:category].downcase == 'favorites'}",
+            remote: true %>
       </li>
       <% @categories.all.each do |category| %>
         <li>
@@ -16,7 +27,7 @@
                 method: :get,
                 remote: true,
                 id: "category-#{category.name}",
-                class: "#{'is-selected' if params[:category] == category.name}" %>
+                class: "#{'is-selected' if params[:category] && params[:category].downcase == category.name.downcase}" %>
         </li>
       <% end %>
     </ul>

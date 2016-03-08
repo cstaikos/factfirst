@@ -1,1 +1,4 @@
-<%= vote_button true, evidence %> | <%= vote_button false, evidence %>
+<div class="vote-buttons">
+  <span class="upvote"><%= vote_button true, evidence %> <span class="numvotes"><%= evidence.upvotes %> </span></span>
+  <span class="downvote"><%= vote_button false, evidence %> <span class="numvotes"><%= evidence.downvotes %> </span></span>
+</div>
