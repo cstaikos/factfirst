@@ -1,22 +1,14 @@
 <div class="text-wrapper">
 
   <span class="prefact">Fact posted by <%= link_to @fact.user.display_name, @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
-  <blockquote>
-      <%= @fact.body %>
-    <p></p>
-    <span class="truth-score"><%= @fact.score %></span>
-  </blockquote>
-
   <div class="fact-header">
-    <p>
-      <strong><%= link_to @fact.user.display_name, @fact.user %></strong> posted this fact!
-    </p>
-
-    <p>
-      <%= @fact.body %> - Truthiness score: <h1 id="score"><%= @fact.score %></h1>
-    </p>
-    <h2>Category: <%= @fact.category.name %></h2>
+    <span class="fact-show">
+        <%= @fact.body %>
+    </span>
+    <span class="truth-score"><%= @fact.score %></span>
+    <span class="truth-dial">Dial goes here</span>
   </div>
+
 
   <div class="evidence">
     <div class="supporting">
