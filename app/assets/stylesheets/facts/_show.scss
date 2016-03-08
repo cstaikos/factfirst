@@ -3,7 +3,7 @@
 }
 
 .opposite-vote {
-  color: lighten($action-color, 30);
+  color: transparentize($action-color, 0.7);
 }
 
 .fact-show {

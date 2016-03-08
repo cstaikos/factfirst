@@ -28,13 +28,13 @@ module VotesHelper
 
       # If the vote is the same as the current button, display a delete link
       if current_vote.upvote == button_type
-        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon voted-on")
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} voted-on")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :delete
 
       # Otherwise display a change vote link
       else
-        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon opposite-vote")
+        form_text =   content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} opposite-vote")
         form_path =   "/votes/#{current_vote.id}"
         form_method = :patch
       end
