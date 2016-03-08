@@ -56,13 +56,11 @@ class FactsController < ApplicationController
       flash[:success] = 'Fact successfully created!'
       redirect_to fact_path(@fact)
 
-    elsif @fact.body == ""
+    else
 
       flash[:error] = @fact.errors.full_messages.to_sentence
-      redirect_to new_fact_path
-
-    else
       render :new
+
     end
   end
 
@@ -75,7 +73,10 @@ class FactsController < ApplicationController
 
       redirect_to fact_path(@fact), notice: 'Fact successfully Updated!'
     else
+
+      flash[:error] = @fact.errors.full_messages.to_sentence
       render :edit
+
     end
   end
 
