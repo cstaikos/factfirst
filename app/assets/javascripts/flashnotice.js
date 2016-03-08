@@ -4,6 +4,6 @@ $(document).on('ready page:load', function(){
 
     $('#flash-messages').on('click', function(e) {
     e.preventDefault();
-    $( this ).empty();
+    $( this ).remove();
   });
 });

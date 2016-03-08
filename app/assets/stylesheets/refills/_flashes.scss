@@ -47,6 +47,7 @@ $success-color: #e6efc2 !default;
 
 #flash-messages{
   position: fixed;
+  top: 62px;
   width: 100%;
   height: $navigation-height;
   z-index: 99999;
