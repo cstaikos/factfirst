@@ -1,6 +1,17 @@
 $(document).on('ready', function(){
-    if ($('.text-wrapper').height() < 800) {
-        $('.text-wrapper').css('height', '90vh');
-    }
+
+    $('.links').on('click', function(){
+
+        var formHeight = $('.login-signup-wrapper').height();
+        var textWrapHeight = $('.text-wrapper').height();
+
+        if ( formHeight > 500){
+            $('.text-wrapper').css('height', '');
+        } else if (textWrapHeight < 800 && formHeight < 900) {
+            $('.text-wrapper').css('height', '90vh');
+        }
+
+    });
+
 });
 
