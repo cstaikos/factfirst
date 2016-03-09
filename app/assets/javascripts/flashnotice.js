@@ -8,6 +8,8 @@ $(document).on('ready page:load', function(){
     $( this ).remove();
   });
 
+
+    //If on landing page, make flash message centered on top of the page.
     var path = window.location.pathname
 
     if (path === '/'){
