@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require cocoon
 //= require refills/navigation
 //= require flashnotice
+
+
+
