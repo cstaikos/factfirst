@@ -32,6 +32,7 @@ header.navigation {
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
+  top: 0;
 
   .navigation-wrapper {
     @include clearfix;
