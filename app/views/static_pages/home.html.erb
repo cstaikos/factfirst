@@ -2,24 +2,49 @@
 <!-- Hide sticky nav bar when it is above the hero image. -->
 <script type="text/javascript">
 
-  $(function() {
+//  $(document).on('ready', function() {
+//    var pathname = window.location.pathname;
+//    if (pathname === '/') {
+//      hideNav();
+//
+//      $(document).on('scroll', function () {
+//
+//        var docScroll = $(document).scrollTop();
+//        // This is something we might want for mobile later in the below if statement: & $('html').height() > 768 -- ie. no sticky header for short screens
+//        if (docScroll >= 325) {
+//
+//          showNav();
+//
+//        } else if ((docScroll < 20)) {
+//
+//          hideNav();
+//        }
+//
+//      });
+//    } else if(pathname != '/') {
+//      showNav();
+//    }
+//  });
+//
+  $(document).on('ready', function() {
 
-    hideNav();
+      hideNav();
 
-    $(document).on('scroll', function() {
+      $(document).on('scroll', function () {
 
-      var docScroll = $(document).scrollTop();
-      // This is something we might want for mobile later in the below if statement: & $('html').height() > 768 -- ie. no sticky header for short screens
-      if (docScroll >= 325) {
+        var docScroll = $(document).scrollTop();
+        // This is something we might want for mobile later in the below if statement: & $('html').height() > 768 -- ie. no sticky header for short screens
+        if (docScroll >= 325) {
 
-        showNav();
+          showNav();
 
-      } else if ((docScroll < 20)){
+        } else if ((docScroll < 20)) {
 
-        hideNav();
-      }
+          hideNav();
+        }
 
-    });
+      });
+
   });
 
   showNav = function(){
