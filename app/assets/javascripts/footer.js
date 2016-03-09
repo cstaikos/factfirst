@@ -2,7 +2,7 @@ $(document).on('ready', function(){
 
     $('.links').on('click', function(){
 
-        var formHeight = $('.login-signup-wrapper').height();
+        var formHeight = $('.form-wrapper').height();
         var textWrapHeight = $('.text-wrapper').height();
 
         if ( formHeight > 500){
