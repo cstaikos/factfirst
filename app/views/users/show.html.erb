@@ -1,64 +1,79 @@
-<h1><%= @user.display_name %></h1>
-<%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}" %>
+<div class="profile-image">
+  <%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}" %>
+
+  <% if current_user == @user %>
+      <em>No profile image? <%= link_to "Click here", "https://en.gravatar.com/connect/" %> to get a gravatar</em>
+  <% end %>
+</div>
+
+<div class="user-details">
+  <h1><%= @user.display_name %></h1>
+</div>
+
+<br><br>
+
+<div class="users-facts">
+  <h1>Average truthiness of submitted facts: <%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2) %>%</h1>
+  <h2>Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
+  <div>
+    <h2>Recent facts posted:</h2>
+    <ul>
+      <% @user.facts.last(10).each do |fact| %>
+        <li><strong><%= fact.score %>%&nbsp;</strong><%= link_to fact.body, fact %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<br><br>
+
+<div class="users-evidence">
+  <h1>Quality of evidence submitted: <%= @user.evidence_quality %>%</h1>
+  <p>Total of <%= pluralize @user.evidences.count, 'piece' %> of evidence submitted</p>
+  <div>
+    <h2>Recent evidence submitted:</h2>
+    <ul>
+      <% @user.evidences.last(10).each do |evidence| %>
+        <li>
+          <strong>
+            <%= evidence.upvotes %> upvotes, <%= evidence.downvotes %> downvotes&nbsp;
+          </strong>
+          <p><%= evidence.url %></p>
+          <p><%= evidence.support ? 'Supporting' : 'Refuting' %> evidence attached to: <%= link_to evidence.fact.body, evidence.fact %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<br><br>
+
+<div class="users-votes">
+  <p>Total of <%= pluralize @user.votes.count, 'vote' %> cast</p>
+  <div>
+    <h2>Recent Votes</h2>
+    <ul>
+      <% @user.votes.last(10).each do |vote| %>
+        <li>
+          <p>
+            <%= vote.upvote ? 'Upvoted' : 'Downvoted' %> <%= vote.evidence.url %>, <br>
+            on <%= link_to vote.evidence.fact.body, vote.evidence.fact %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 <% if current_user == @user %>
-  <em>No profile image? <%= link_to "Click here", "https://en.gravatar.com/connect/" %> to get a gravatar</em>
+
+    <div class="users-favorites">
+      <h2>My favorites:</h2>
+      <ul>
+        <% @user.favorites.each do |fact| %>
+            <%= render fact %>
+        <% end %>
+      </ul>
+    </div>
+
 <% end %>
-
-<br><br>
-
-<h1>Average truthiness of submitted facts: <%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2) %>%</h1>
-<h2>Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
-<div>
-  <h2>Recent facts posted:</h2>
-  <ul>
-    <% @user.facts.last(10).each do |fact| %>
-      <li><strong><%= fact.score %>%&nbsp;</strong><%= link_to fact.body, fact %></li>
-    <% end %>
-  </ul>
-</div>
-
-<br><br>
-
-<h1>Quality of evidence submitted: <%= @user.evidence_quality %>%</h1>
-<p>Total of <%= pluralize @user.evidences.count, 'piece' %> of evidence submitted</p>
-<div>
-  <h2>Recent evidence submitted:</h2>
-  <ul>
-    <% @user.evidences.last(10).each do |evidence| %>
-      <li>
-        <strong>
-          <%= evidence.upvotes %> upvotes, <%= evidence.downvotes %> downvotes&nbsp;
-        </strong>
-        <p><%= evidence.url %></p>
-        <p><%= evidence.support ? 'Supporting' : 'Refuting' %> evidence attached to: <%= link_to evidence.fact.body, evidence.fact %></p>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<br><br>
-
-<p>Total of <%= pluralize @user.votes.count, 'vote' %> cast</p>
-<div>
-  <h2>Recent Votes</h2>
-  <ul>
-    <% @user.votes.last(10).each do |vote| %>
-      <li>
-        <p>
-          <%= vote.upvote ? 'Upvoted' : 'Downvoted' %> <%= vote.evidence.url %>, <br>
-          on <%= link_to vote.evidence.fact.body, vote.evidence.fact %>
-        </p>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<div>
-  <h2>My favorites:</h2>
-  <ul>
-    <% @user.favorites.each do |fact| %>
-      <%= render fact %>
-    <% end %>
-  </ul>
-</div>
