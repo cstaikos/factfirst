@@ -9,7 +9,8 @@ class EvidencesController < ApplicationController
     if @evidence.save
       redirect_to @fact
     else
-      render :fact
+      flash[:alert] = @evidence.errors.full_messages.to_sentence
+      redirect_to fact_path(@fact)
     end
   end
 
