@@ -1,6 +1,5 @@
 // Add nice transition into jQuery "hamburger" nav menu
 $(document).on("ready page:load", function() {
-    $('.navigation').off();
     var menuToggle = $('#js-mobile-menu').unbind();
   $('#js-navigation-menu').removeClass("show");
 
