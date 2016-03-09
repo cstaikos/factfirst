@@ -4,7 +4,8 @@
     <span class="fact-show">
         <%= @fact.body %>
     </span>
-    <span class="truth-score"><%= @fact.score %></span>
+    <span class="truth-score odometer" >00</span>
+    <span id="actual-score" style="display:none"><%= @fact.score %></span>
     <span class="truth-dial">Dial goes here</span>
   </div>
 

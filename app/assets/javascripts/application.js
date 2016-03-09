@@ -16,6 +16,4 @@
 //= require cocoon
 //= require refills/navigation
 //= require flashnotice
-
-
-
+//= require odometer.min.js
