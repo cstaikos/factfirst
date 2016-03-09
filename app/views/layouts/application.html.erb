@@ -16,9 +16,15 @@
 
   <%= render 'refills/flashes' %>
 
-  <%= yield %>
+  <% if current_page?(root_url) %>
+    <%= yield %>
+  <% else %>
+    <div class="text-wrapper">
+      <%= yield %>
+    </div>
+  <% end %>
 
-  <%= render 'refills/footer' %>
+  <%= render 'refills/footer_2' %>
 
 </body>
 </html>
