@@ -4,8 +4,10 @@
 @import 'neat';
 @import 'facts/show';
 @import 'facts';
+@import 'authentication/login_signup_forms';
 @import 'refills/navigation';
 @import 'refills/footer';
+@import 'refills/footer-2';
 @import 'refills/flex-boxes';
 @import 'refills/hero';
 @import 'refills/flashes';
@@ -16,7 +18,7 @@ $text-max-width: 1020px;
 $navigation-background: $dark-gray;
 
 // This is required by Bourbon Refills
-body {
+html, body {
   -webkit-font-smoothing: antialiased;
   background-color: #eaeaf5; // temporary color
 }
