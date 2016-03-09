@@ -12,7 +12,7 @@ class Fact < ActiveRecord::Base
   validates :category, presence: true
   validates :body, presence: true
 
-   require 'RMagick'
+  require 'RMagick'
 
   def set_defaults
     self.score = 0
@@ -28,12 +28,18 @@ class Fact < ActiveRecord::Base
     evidences.where(support: false)
   end
 
-  def update_score
-    num_votes = evidences.inject(0) do |sum, evidence|
+  def total_votes
+    evidences.inject(0) do |sum, evidence|
       sum += evidence.upvotes + evidence.downvotes
     end
+  end
 
-    return if num_votes == 0
+  def controversy_score
+    (score - 50).abs
+  end
+
+  def update_score
+    return if total_votes == 0
 
     vote_sums = evidences.inject(0) do |sum, evidence|
       sum += if evidence.support
@@ -43,7 +49,7 @@ class Fact < ActiveRecord::Base
              end
     end
 
-    self.score = (vote_sums.to_f / num_votes.to_f * 100).round
+    self.score = (vote_sums.to_f / total_votes.to_f * 100).round
 
     save
 

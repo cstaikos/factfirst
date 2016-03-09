@@ -1,6 +1,5 @@
 <div class="text-wrapper">
 
-  <span class="prefact">Fact posted by <%= link_to @fact.user.display_name, @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
   <div class="fact-header">
     <span class="fact-show">
         <%= @fact.body %>
@@ -9,8 +8,11 @@
     <span class="truth-dial">Dial goes here</span>
   </div>
 
-  <div id="favorite-<%= @fact.id %>">
-    <%= favorite_button(@fact) %>
+  <div class="fact-favorite-text">
+    <div id="favorite-<%= @fact.id %>">
+      <%= favorite_button(@fact) %>
+    </div>
+    <span>Fact posted by <%= link_to @fact.user.display_name, @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
   </div>
 
   <div class="evidence">
@@ -107,8 +109,10 @@
   </div>
 
   <div id="comments">
-    <h2 class="subheader">View All Comments (<%= @fact.comments.count %>)</h2>
-    <%= render @fact.comments %>
+    <h2 class="subheader"><a href="#" id="comment-show">View All Comments (<%= @fact.comments.count %>)</a></h2>
+    <div id="comment-list" class="nodisplay">
+      <%= render @fact.comments %>
+    </div>
   </div>
 
 </div>

@@ -1,7 +1,7 @@
 @import 'normalize';
 @import 'bourbon';
-@import 'neat';
 @import 'base/base';
+@import 'neat';
 @import 'facts/show';
 @import 'facts';
 @import 'refills/navigation';
@@ -61,5 +61,3 @@ body {
 .nodisplay {
   display: none;
 }
-
-

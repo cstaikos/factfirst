@@ -17,10 +17,25 @@ class FactsController < ApplicationController
     end
 
     if params[:category]
-      if params[:category] == 'Favorites'
+      if params[:category].downcase == 'favorites'
         @facts = current_user.favorites
       else
         @facts = @facts.where(category: Category.where(name: params[:category]) )
+      end
+    end
+
+    if params[:sort]
+      case params[:sort].downcase
+      when 'popular'
+        @facts = @facts.sort_by(&:total_votes).reverse #TODO this needs to be a db column...sorting this way is way slower
+      when 'debated'
+        @facts = @facts.sort_by(&:controversy_score) #TODO this too needs to be a db column...sorting this way is way slower
+      when 'new'
+        @facts = @facts.order(created_at: :desc)
+      when 'bullshit'
+        @facts = @facts.order(score: :asc)
+      when 'truth'
+        @facts = @facts.order(score: :desc)  
       end
     end
 

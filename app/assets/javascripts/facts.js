@@ -9,5 +9,15 @@ $(document).on('ready page:load', function(){
     }
   });
 
+  $("#comments").on('click', function(e) {
+    e.preventDefault();
+    var commentList = $("#comment-list");
+
+    if(commentList.hasClass('nodisplay')) {
+      commentList.removeClass('nodisplay');
+    } else {
+      commentList.addClass('nodisplay');
+    }
+  });
 
 });

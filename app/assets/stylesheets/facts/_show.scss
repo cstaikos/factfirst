@@ -1,9 +1,31 @@
-.upvote-color {
-  color: $upvote-color;
+.voted-on {
+  color: $action-color;
 }
 
-.downvote-color {
-  color: $downvote-color;
+.opposite-vote {
+  color: transparentize($action-color, 0.7);
+}
+
+.fact-favorite-text {
+  padding-left: 10px;
+  display: table;
+  margin-bottom: 5px;
+  span {
+    vertical-align: middle;
+    padding-left: 8px;
+    display: table-cell;
+  }
+  i {
+    font-size: 1.5em;
+  }
+}
+
+.unfav {
+  color: #555;
+}
+
+.fav {
+
 }
 
 .fact-show {
@@ -168,6 +190,27 @@
 
 #comments {
   @include span-columns(12);
+  @include omega;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.comment-text {
+  margin: 0;
+  padding-top: 5px;
+  border-top: #ccc solid 1px;
+}
+
+.comment-posting {
+  font-size: 0.8em;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 5px;
+  // NOTE: This is not working. Add border bottom to last child of comments.
+  :last-child {
+    border-bottom: #ccc solid 1px;
+  }
 }
 
 .subheader {
