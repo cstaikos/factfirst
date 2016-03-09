@@ -1,0 +1,32 @@
+$user_profile_and_details_height: 15em;
+
+.profile-image {
+  @include span-columns(4);
+  border: 1px solid black;
+  height: $user_profile_and_details_height;
+
+}
+
+.user-details {
+  @include span-columns(8);
+  @include omega;
+  border: 1px solid black;
+  height: $user_profile_and_details_height;
+
+}
+
+.users-facts {
+
+}
+
+.users-evidence {
+
+}
+
+.users-votes {
+
+}
+
+.users.favorites {
+
+}
