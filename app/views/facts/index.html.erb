@@ -4,7 +4,7 @@
 
   <h2>Categories:</h2>
   <div>
-    <ul>
+    <ul class="category-list">
       <li>
         <%= link_to 'All',
             facts_path,
@@ -30,10 +30,10 @@
       <% end %>
     </ul>
   </div>
-
+<br>
   <div>
     <h2>Sort by:</h2>
-    <ul>
+    <ul class="sort-list">
       <li>
         <%= link_to 'Popular',
             facts_path + "?sort=popular",
@@ -81,4 +81,3 @@
       <% end %>
     </ul>
   </div>
-

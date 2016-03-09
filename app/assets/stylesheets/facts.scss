@@ -4,4 +4,12 @@
 .is-selected {
   color: red !important;
 }
+
+.category-list,
+.sort-list {
+  li {
+    float: left;
+    padding-left: 15px;
+  }
+}
 // NOTE: this is just here as a placeholder, obviously we need better style
