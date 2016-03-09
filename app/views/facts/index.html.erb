@@ -42,6 +42,34 @@
             class: ('is-selected' if params[:sort] && params[:sort].downcase == 'popular'),
             remote: true %>
       </li>
+      <li>
+        <%= link_to 'Debated',
+            facts_path + "?sort=debated",
+            id: "sort-debated",
+            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'debated'),
+            remote: true %>
+      </li>
+      <li>
+        <%= link_to 'New',
+            facts_path + "?sort=new",
+            id: "sort-new",
+            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'new'),
+            remote: true %>
+      </li>
+      <li>
+        <%= link_to 'Bullshit',
+            facts_path + "?sort=bullshit",
+            id: "sort-bullshit",
+            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'bullshit'),
+            remote: true %>
+      </li>
+      <li>
+        <%= link_to 'Truth',
+            facts_path + "?sort=truth",
+            id: "sort-truth",
+            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'truth'),
+            remote: true %>
+      </li>
     </ul>
   </div>
 

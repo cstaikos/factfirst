@@ -34,6 +34,10 @@ class Fact < ActiveRecord::Base
     end
   end
 
+  def controversy_score
+    (score - 50).abs
+  end
+
   def update_score
     return if total_votes == 0
 
