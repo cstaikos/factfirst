@@ -81,12 +81,16 @@ html, body {
 }
 
 .home-add-facts {
-  @include span-columns(6);
+  @include span-columns(5);
+  @include shift(1);
+  background-color: #fff;
+  background-color: transparentize($dark-gray, 0.3);
 }
 
 .home-browse-facts {
-  @include span-columns(6);
+  @include span-columns(5);
   @include omega;
+  background-color: transparentize($dark-gray, 0.3);
 }
 
 .home-subheader {
