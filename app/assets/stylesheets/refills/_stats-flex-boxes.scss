@@ -1,0 +1,104 @@
+.stats-flex-boxes {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $base-font-color: $dark-gray !default;
+
+  a {
+    text-decoration: none;
+  }
+  //////////////////////////////////////////////////////////////////////////////////
+
+  $stats-flex-box-border-color: $light-gray;
+  $stats-flex-box-border: 1px solid $stats-flex-box-border-color;
+  $stats-flex-box-background: lighten($light-gray, 10%);
+  $stats-flex-box-gutter: 0.4em;
+  $stats-flex-box-width: 18em;
+  $stats-flex-box-color: transparentize($base-font-color, 0.3);
+  $stats-flex-box-top-colors:
+    tomato,
+    #72BFBF,
+    #92B1E3,
+    #E3D743,
+    #CCC,
+    #F6C05C;
+
+    @include clearfix;
+    @include display(flex);
+    @include justify-content(center);
+    @include align-items(stretch);
+    @include flex-wrap(wrap);
+    clear: both;
+    text-align: left;
+
+  .stats-flex-box {
+    @include transition (all 0.2s ease-in-out);
+    @include flex(2 2 15em);
+    @include align-self(stretch);
+    background: $stats-flex-box-background;
+    border-radius: $base-border-radius;
+    box-shadow: inset 0 0 1px $stats-flex-box-border-color, 0 2px 4px darken($base-background-color, 10%);
+    display: block;
+    margin: $stats-flex-box-gutter;
+    padding: 2em 2em 3em 2em;
+
+    @for $i from 1 to 7 { // assign colors from $stats-flex-box-top-colors list
+      &:nth-child(#{$i}) {
+        $color-from-list: nth($stats-flex-box-top-colors, $i);
+        border-top: 6px solid $color-from-list;
+
+        &:focus,
+        &:hover {
+          background-color: transparentize($color-from-list, 0.9);
+        }
+      }
+    }
+
+    img {
+      display: block;
+      height: 3em;
+      margin-bottom: 2em;
+      margin: auto;
+      opacity: 0.4;
+    }
+
+    .stats-flex-title {
+      color: $stats-flex-box-color;
+      font-size: 1.6em;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+    }
+
+    .stats-flex-title-2 {
+      color: $stats-flex-box-color;
+      font-size: 1.2em;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+    }
+
+    .stats-flex-score {
+      color: $stats-flex-box-color;
+      font-size: 2.5em;
+      font-weight: 900;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      color: transparentize($stats-flex-box-color, 0.1);
+      line-height: 1.5em;
+      margin: auto;
+    }
+  }
+
+  .stats-flex-box-big {
+    @include flex(1 1 40em);
+  }
+}
+
+.stats-flex-box-wrapper {
+  margin-top: 20px;
+  @include outer-container;
+  @include clearfix;
+}

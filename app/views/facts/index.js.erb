@@ -1,3 +1,4 @@
 $("#facts-list").html('<%= j render @facts %>');
 $(".is-selected").toggleClass("is-selected");
-$("#category-<%= params[:category] %>").toggleClass("is-selected");
+$("#category-<%= params[:category] ? params[:category] : 'all' %>").toggleClass("is-selected");
+$("#sort-<%= params[:sort] ? params[:sort] : 'popular' %>").toggleClass("is-selected");
