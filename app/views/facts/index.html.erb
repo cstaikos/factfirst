@@ -22,8 +22,9 @@
     </div>
 
     <ul id="facts-list">
-      <% @facts.each do |fact| %>
-        <%= render fact %>
-      <% end %>
+      <%= render @facts %>
     </ul>
+
+    <%= paginate @facts %>
+
   </div>

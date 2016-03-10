@@ -32,12 +32,14 @@ class FactsController < ApplicationController
       when 'bullshit'
         @facts = @facts.order(score: :asc)
       when 'truth'
-        @facts = @facts.order(score: :desc)  
+        @facts = @facts.order(score: :desc)
       end
     else
       # Default sort is popular
       @facts = @facts.sort_by(&:total_votes).reverse #TODO this needs to be a db column...sorting this way is way slower
     end
+
+    @facts = @facts.page(params[:page])
 
 
     respond_to do |format|
