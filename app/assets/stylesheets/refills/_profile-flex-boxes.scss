@@ -19,6 +19,7 @@
   $profile-flex-box-color: transparentize($base-font-color, 0.3);
   $profile-flex-box-top-colors:
     tomato,
+    tomato,
     #72BFBF,
     #92B1E3,
     #E3D743,
@@ -51,7 +52,7 @@
 
         &:focus,
         &:hover {
-          background-color: transparentize($color-from-list, 0.9);
+          // background-color: transparentize($color-from-list, 0.9);
         }
       }
     }
@@ -61,10 +62,17 @@
       height: 6em;
       margin-bottom: 2em;
       margin: auto;
-      opacity: 0.4;
+      opacity: 1.0;
     }
 
     .profile-flex-title {
+      color: $profile-flex-box-color;
+      font-size: 1.2em;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+    }
+
+    .profile-image-text {
       color: $profile-flex-box-color;
       font-size: 1.2em;
       font-weight: 800;
