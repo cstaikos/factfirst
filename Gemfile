@@ -23,7 +23,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'cocoon'
+gem 'kaminari'
 gem 'rmagick'
+
 
 # HTML5/CSS Framework
 gem 'bourbon', '4.2.6'
@@ -69,4 +71,3 @@ group :development do
   # Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

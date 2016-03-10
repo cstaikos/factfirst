@@ -4,9 +4,11 @@
   <%= render 'filter_nav' %>
 
   <div class="facts-container">
-    <div id="facts-list" class="fact-box-wrapper">
-      <% @facts.each do |fact| %>
-        <%= render fact %>
-      <% end %>
-    </div>
+
+    <ul id="facts-list" class="fact-box-wrapper">
+      <%= render @facts %>
+    </ul>
+
+    <%= paginate @facts %>
+
   </div>
