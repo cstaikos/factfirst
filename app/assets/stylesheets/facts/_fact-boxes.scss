@@ -1,0 +1,78 @@
+.fact-boxes {
+  ///////////////////////////////////////////////////////////////////////////////////
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $base-font-color: $dark-gray !default;
+
+  a {
+    text-decoration: none;
+  }
+  //////////////////////////////////////////////////////////////////////////////////
+
+  $fact-box-border-color: $light-gray;
+  $fact-box-border: 1px solid $fact-box-border-color;
+  $fact-box-background: lighten($light-gray, 10%);
+  $fact-box-gutter: 0.4em;
+  $fact-box-width: 18em;
+  $fact-box-color: transparentize($base-font-color, 0.3);
+  $fact-box-left-color: #CCCCCC;
+
+    @include clearfix;
+    @include display(flex);
+    @include justify-content(center);
+    @include align-items(stretch);
+    @include flex-wrap(wrap);
+    clear: both;
+    text-align: center;
+
+  .fact-box {
+    @include transition (all 0.2s ease-in-out);
+    @include flex(2 2 15em);
+    @include align-self(stretch);
+    background: $fact-box-background;
+    border-radius: $base-border-radius;
+    box-shadow: inset 0 0 1px $fact-box-border-color, 0 2px 4px darken($base-background-color, 10%);
+    display: block;
+    margin: $fact-box-gutter;
+    padding: 2em 2em 3em 2em;
+
+    border-left: 6px solid $fact-box-left-color;
+    &:focus,
+    &:hover {
+      background-color: transparentize($fact-box-left-color, 0.9);
+    }
+
+    img {
+      display: block;
+      height: 3em;
+      margin-bottom: 2em;
+      margin: auto;
+      opacity: 0.4;
+    }
+
+    .flex-title {
+      color: $fact-box-color;
+      font-size: 1.2em;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      color: transparentize($fact-box-color, 0.1);
+      line-height: 1.5em;
+      margin: auto;
+    }
+  }
+
+  .fact-box-big {
+    @include flex(1 1 40em);
+  }
+}
+
+.fact-box-wrapper {
+  margin-top: 20px;
+  @include outer-container;
+  @include clearfix;
+}
