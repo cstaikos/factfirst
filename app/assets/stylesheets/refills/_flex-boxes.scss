@@ -5,10 +5,10 @@
   $dark-gray: #333 !default;
   $light-gray: #DDD !default;
   $base-font-color: $dark-gray !default;
-  
+
   a {
     text-decoration: none;
-  }  
+  }
   //////////////////////////////////////////////////////////////////////////////////
 
   $flex-box-border-color: $light-gray;
@@ -17,10 +17,10 @@
   $flex-box-gutter: 0.4em;
   $flex-box-width: 18em;
   $flex-box-color: transparentize($base-font-color, 0.3);
-  $flex-box-top-colors: 
-    tomato, 
-    #72BFBF, 
-    #92B1E3, 
+  $flex-box-top-colors:
+    tomato,
+    #72BFBF,
+    #92B1E3,
     #E3D743,
     #CCC,
     #F6C05C;
@@ -48,7 +48,7 @@
       &:nth-child(#{$i}) {
         $color-from-list: nth($flex-box-top-colors, $i);
         border-top: 6px solid $color-from-list;
-        
+
         &:focus,
         &:hover {
           background-color: transparentize($color-from-list, 0.9);
@@ -81,4 +81,10 @@
   .flex-box-big {
     @include flex(1 1 40em);
   }
+}
+
+.flex-box-wrapper {
+  margin-top: 20px;
+  @include outer-container;
+  @include clearfix;
 }

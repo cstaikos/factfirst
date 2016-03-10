@@ -30,6 +30,11 @@ html, body {
   @include pad($padding-from-screen-edge);
 }
 
+.text-wrapper {
+  @include outer-container;
+  max-width: $text-max-width;
+}
+
 .application-wrapper {
   @include outer-container;
   max-width: $text-max-width;
