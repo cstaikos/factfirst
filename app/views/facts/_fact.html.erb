@@ -1,5 +1,5 @@
 <div class="fact-boxes">
   <a href="<%= fact_path(fact) %>" class="fact-box">
-    <p class="fact-name"><span class="fact-heading">FACT:</span> <%= fact.body %></p>
+    <p class="fact-name"><span class="fact-heading">FACT:</span> <%= truncate(fact.body, length: 120) %></p>
   </a>
 </div>

@@ -5,6 +5,8 @@
   $dark-gray: #333 !default;
   $light-gray: #DDD !default;
   $base-font-color: $dark-gray !default;
+  height: 200px;
+  margin-bottom: 2.35765%;
   @include span-columns(4);
   @include omega(3n);
 
@@ -65,6 +67,7 @@
       margin: auto;
       text-align: left;
       padding-bottom: 10px;
+      height: 85px;
       border-bottom: 1px solid #ccc;
 
       .fact-heading {
