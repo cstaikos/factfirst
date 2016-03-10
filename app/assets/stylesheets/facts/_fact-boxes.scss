@@ -61,7 +61,7 @@
     }
 
     p {
-      color: transparentize($fact-box-color, 0.1);
+      color: #333;
       line-height: 1.2em;
       margin: auto;
       text-align: left;
@@ -69,10 +69,10 @@
       height: 50px;
       border-bottom: 1px solid #ccc;
 
-      .fact-heading {
-        font-weight: bold;
-        color: #333;
-      }
+      // .fact-heading {
+      //   font-weight: bold;
+      //   color: #333;
+      // }
     }
   }
 
@@ -117,7 +117,6 @@
   font-weight: bold;
   padding: 5px 0;
   @include span-columns(4);
-  @include omega(3n);
   span {
     display: block;
     font-weight: 300;
