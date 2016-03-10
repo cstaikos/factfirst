@@ -1,8 +1,10 @@
 $user_profile_and_details_height: 15em;
+$border-for-testing: 1px solid black;
+$top-margin: 2.35765%;
 
 .profile-image {
   @include span-columns(4);
-  border: 1px solid black;
+  border: $border-for-testing;
   height: $user_profile_and_details_height;
 
 }
@@ -10,16 +12,23 @@ $user_profile_and_details_height: 15em;
 .user-details {
   @include span-columns(8);
   @include omega;
-  border: 1px solid black;
+  border: $border-for-testing;
   height: $user_profile_and_details_height;
 
 }
 
 .users-facts {
+  @include span-columns(6);
+  border: $border-for-testing;
+  margin-top: $top-margin;
 
 }
 
 .users-evidence {
+  @include span-columns(6);
+  @include omega;
+  border: $border-for-testing;
+  margin-top: $top-margin;
 
 }
 
