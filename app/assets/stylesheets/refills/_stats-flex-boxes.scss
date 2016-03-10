@@ -78,6 +78,13 @@
       margin-bottom: 0.5em;
     }
 
+    .stats-flex-score {
+      color: $stats-flex-box-color;
+      font-size: 2.5em;
+      font-weight: 900;
+      margin-bottom: 0.5em;
+    }
+
     p {
       color: transparentize($stats-flex-box-color, 0.1);
       line-height: 1.5em;

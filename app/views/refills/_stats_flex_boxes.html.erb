@@ -3,7 +3,8 @@
   <div class="stats-flex-boxes">
 
     <div class="stats-flex-box users-facts">
-      <h1 class="stats-flex-title">Average truthiness of submitted facts: <%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2) %>%</h1>
+      <h1 class="stats-flex-title">Average truthiness of submitted facts: </h1>
+      <h1 class="stats-flex-score"><%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2) %>%</h1>
       <h2 class="stats-flex-title-2">Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
       <div>
         <h2 class="stats-flex-title-2">Recent facts posted:</h2>
@@ -18,7 +19,8 @@
     </div>
 
     <div class="stats-flex-box users-evidence">
-      <h1 class="stats-flex-title">Quality of evidence submitted: <%= @user.evidence_quality %>%</h1>
+      <h1 class="stats-flex-title">Quality of evidence submitted: </h1>
+      <h1 class="stats-flex-score"><%= @user.evidence_quality %>%</h1>
       <div>
         <h2 class="stats-flex-title-2">Recent evidence submitted:</h2>
         <ul>
