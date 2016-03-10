@@ -28,7 +28,11 @@
 /* background: #40526b; */
 
 
-
+.footer-paragraph {
+  text-align: center;
+  color: #777;
+  font-size: 0.8em;
+}
 
 
 .footer-2 {
@@ -37,7 +41,7 @@
   $base-accent-color: #477DCA !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
-  
+
   ul {
     margin: 0;
     padding: 0;
@@ -83,11 +87,11 @@
 
   .footer-logo img {
     height: 1.6em;
-  } 
+  }
 
   ul {
     margin-bottom: 1em;
-    
+
     @include media($large-screen) {
       float: left;
       line-height: 1.8em;
