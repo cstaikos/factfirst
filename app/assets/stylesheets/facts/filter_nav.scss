@@ -1,0 +1,33 @@
+.filters-container {
+  overflow: hidden;
+  margin: 0 0 15px 0;
+}
+
+.is-selected {
+  border-bottom: 4px solid;
+}
+
+.sort-list {
+
+}
+
+.categories-container,
+.sort-container {
+  overflow: hidden;
+  margin: 0 0 15px 0;
+}
+
+.category-list,
+.sort-list {
+
+  li {
+    float: left;
+    font-size: 1.15rem;
+    font-weight: 500;
+
+    &:not(:first-child) {
+      padding-left: 15px;
+    }
+
+  }
+}
