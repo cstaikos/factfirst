@@ -9,22 +9,11 @@
 
     <div class="field">
       <%= f.label :category %>
-
-
-      <%# f.select(:category_id) do %>
-
-        <%# Category.all.each do |c| -%>
-          <%# content_tag(:option, c.name, value: c.id) %>
-        <%# end %>
-      <%# end %>
-
       <%= f.select  (:category_id) do %>
         <%= content_tag(:option, '-- Category --') %>
         <%= options_from_collection_for_select(@categories, 'id', 'name',:selected => @category) %>
       <% end %>
-
-
-          </div>
+    </div>
 
     <div id="evidences">
       <%= f.fields_for :evidences do |evidence_fields| %>
