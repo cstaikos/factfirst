@@ -6,9 +6,9 @@
   </div>
   <div >
     <%= f.label :support, "Supporting" %>
-    <%= f.radio_button :support, true, value: true, checked: false %>
+    <%= f.radio_button :support, true, value: true %>
     <%= f.label :support, "Refuting" %>
-    <%= f.radio_button :support, false, value: false, checked: false %>
+    <%= f.radio_button :support, false, value: false %>
   </div>
 
   <%= link_to_remove_association "Remove Evidence", f %>

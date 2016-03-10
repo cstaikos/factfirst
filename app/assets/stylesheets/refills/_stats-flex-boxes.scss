@@ -18,11 +18,13 @@
   $stats-flex-box-width: 18em;
   $stats-flex-box-color: transparentize($base-font-color, 0.3);
   $stats-flex-box-top-colors:
-    tomato,
-    #72BFBF,
     #92B1E3,
+    #92B1E3,
+    #92B1E3,
+    #72BFBF,
     #E3D743,
     #CCC,
+    tomato,
     #F6C05C;
 
     @include clearfix;
@@ -51,7 +53,7 @@
 
         &:focus,
         &:hover {
-          background-color: transparentize($color-from-list, 0.9);
+          // background-color: transparentize($color-from-list, 0.9);
         }
       }
     }
