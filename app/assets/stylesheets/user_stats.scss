@@ -1,0 +1,34 @@
+// Place all the styles related to the votes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Stuff below from cool "dial" Chris sent
+// .superWrapper {
+//     position: relative;
+//     float: left;
+// }
+// .wrapper {
+//   width: 200px; /* Set the size of the progress bar */
+//   height: 200px;
+//   position: absolute; /* Enable clipping */
+//   clip: rect(0px, 200px, 200px, 100px); /* Hide half of the progress bar */
+// }
+// /* Set the sizes of the elements that make up the progress bar */
+// .circle {
+
+.truthiness-rating {
+    /* width: 50%; */
+    float: left;
+    border: solid;
+    width: 45%;
+    display: block;
+}
+
+.evidence-quality {
+    /* width: 50%; */
+    float: right;
+    border: solid;
+    margin: 1rem;
+    width: 45%;
+    display: block;
+}

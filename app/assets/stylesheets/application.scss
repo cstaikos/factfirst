@@ -4,18 +4,23 @@
 @import 'neat';
 @import 'facts/show';
 @import 'facts';
+@import 'facts/filter_nav';
 @import 'user_show';
 @import 'authentication/form-wrapper';
 @import 'refills/navigation';
 @import 'refills/footer-2';
 @import 'refills/flex-boxes';
+@import 'refills/stats-flex-boxes';
+@import 'refills/profile-flex-boxes';
 @import 'refills/hero';
 @import 'refills/flashes';
 @import 'odometer-theme-default';
+@import 'refills/search-bar';
+@import 'facts/fact-boxes';
 
 
 $padding-from-screen-edge: 20px;
-$text-max-width: 1020px;
+$text-max-width: 1200px;
 $navigation-background: $dark-gray;
 
 // This is required by Bourbon Refills
@@ -27,6 +32,11 @@ html, body {
 .wrapper {
   @include omega;
   @include pad($padding-from-screen-edge);
+}
+
+.text-wrapper {
+  @include outer-container;
+  max-width: $text-max-width;
 }
 
 .application-wrapper {
@@ -64,4 +74,42 @@ html, body {
 
 .nodisplay {
   display: none;
+}
+
+// Home page search bar NOT one in nav bar
+.home-search-bar {
+  @include span-columns(6);
+  @include shift(3);
+}
+
+.home-page-or {
+  padding-top: 70px;
+}
+
+.home-page-or p {
+  margin-bottom: 25px !important;
+}
+
+.home-add-facts {
+  @include span-columns(5);
+  @include shift(1);
+  background-color: #fff;
+  background-color: transparentize($dark-gray, 0.3);
+}
+
+.home-browse-facts {
+  @include span-columns(5);
+  @include omega;
+  background-color: transparentize($dark-gray, 0.3);
+}
+
+.home-subheader {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.4em;
+}
+
+.secondary-content {
+  margin: 0 auto 1em auto !important;
+  max-width: 80% !important;
 }

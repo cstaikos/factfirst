@@ -2,9 +2,22 @@
 	<div class="hero-inner">
     <a href="" class="hero-logo"><%= image_tag("logo-placeholder.png", alt: 'Truthometer') %></a>
 		<div class="hero-copy">
-			<h1>This is a short slogan</h1>
-			<p>This could be a longer slogan or according to our mockup a search bar</p>
-		</div>
-    <%= button_to "Add Fact", new_fact_path, method: :get %>
+			<h1>Promoting civil discourse and debate online</h1>
+      <div class="home-search-bar">
+  			<%= render 'refills/search_bar' %>
+      </div>
+      <div class="home-page-or"><p>OR</p></div>
+      <div class="home-add-facts">
+        <h3 class="home-subheader">Add your own fact</h3>
+        <p class="secondary-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo at enim sed fermentum. Maecenas tempor eget dui et dapibus.</p>
+        <%= button_to "Add Fact", new_fact_path, method: :get %>
+      </div>
+      <div class="home-browse-facts">
+        <h3 class="home-subheader">Browse all facts</h3>
+        <p class="secondary-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo at enim sed fermentum. Maecenas tempor eget dui et dapibus.</p>
+        <%= button_to "Browse Facts", facts_path, method: :get %>
+      </div>
+
+    </div>
 	</div>
 </div>
