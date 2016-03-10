@@ -39,6 +39,9 @@ class FactsController < ApplicationController
       @facts = @facts.sort_by(&:total_votes).reverse #TODO this needs to be a db column...sorting this way is way slower
     end
 
+    @facts = Kaminari.paginate_array(@facts) if @facts.class == Array
+
+
     @facts = @facts.page(params[:page]).per(15)
 
 
