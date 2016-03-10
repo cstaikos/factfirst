@@ -11,13 +11,15 @@
             class: ('is-selected' unless params[:category]),
             remote: true %>
       </li>
-      <li>
-        <%= link_to 'My Favorites',
-            facts_path + '?category=Favorites',
-            id: 'category-Favorites',
-            class: ('is-selected' if params[:category] && params[:category].downcase == 'favorites'),
-            remote: true %>
-      </li>
+      <% if current_user %>
+        <li>
+          <%= link_to 'My Favorites',
+              facts_path + '?category=Favorites',
+              id: 'category-Favorites',
+              class: ('is-selected' if params[:category] && params[:category].downcase == 'favorites'),
+              remote: true %>
+        </li>
+      <% end %>
       <% @categories.all.each do |category| %>
         <li>
           <%= link_to category.name,
