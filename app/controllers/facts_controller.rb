@@ -39,7 +39,7 @@ class FactsController < ApplicationController
       @facts = @facts.sort_by(&:total_votes).reverse #TODO this needs to be a db column...sorting this way is way slower
     end
 
-    @facts = @facts.page(params[:page])
+    @facts = @facts.page(params[:page]).per(15)
 
 
     respond_to do |format|
