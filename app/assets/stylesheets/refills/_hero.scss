@@ -31,6 +31,15 @@
     padding: 3.5em 3.5em 1em 3.5em;
     text-align: center;
 
+    input,
+    optgroup,
+    select,
+    textarea {
+      color: #444;/* 1 */
+      font: inherit;/* 2 */
+      margin: 0;/* 3 */
+    }
+
     .hero-copy {
       text-align: center;
 
