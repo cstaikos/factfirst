@@ -1,0 +1,25 @@
+<div class="profile-flex-box-wrapper">
+
+  <div class="profile-flex-boxes">
+
+    <div class="profile-flex-box profile-image">
+      <h1 class="profile-flex-title"> </h1>
+      <span><%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}" %></span>
+
+      <% if current_user == @user %>
+          <br>
+          <em>No profile image?</em><br>
+          <em> <%= link_to "Click here", "https://en.gravatar.com/connect/" %> to get a gravatar.</em>
+      <% end %>
+    </div>
+
+    <div class="profile-flex-box user-details">
+      <h1 class="profile-flex-title">  <h1><%= @user.display_name %></h1></h1>
+      <div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
