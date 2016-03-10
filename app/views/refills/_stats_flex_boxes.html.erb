@@ -8,7 +8,6 @@
       <h2 class="stats-flex-title-2">Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
       <div>
         <h2 class="stats-flex-title-2">Recent facts posted:</h2>
-        <br>
         <ul>
           <% @user.facts.last(10).each do |fact| %>
             <li><strong><%= fact.score %>%&nbsp;</strong><%= link_to fact.body, fact %></li>
