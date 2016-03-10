@@ -10,7 +10,7 @@
   @include span-columns(4);
   @include omega(3n);
 
-  a {
+  a.fact-box {
     text-decoration: none;
   }
   //////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +67,7 @@
       margin: auto;
       text-align: left;
       padding-bottom: 10px;
-      height: 85px;
+      height: 70px;
       border-bottom: 1px solid #ccc;
 
       .fact-heading {
@@ -87,4 +87,14 @@
   @include outer-container;
   @include clearfix;
   @include span-columns(12);
+}
+
+.fact-box-favorite {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #477DCA;
+  background-color: #f9f9f9;
+  text-align: left;
+  padding-left: 5px;
+  padding-top: 2px;
 }
