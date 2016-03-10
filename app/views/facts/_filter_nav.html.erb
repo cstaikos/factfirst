@@ -2,7 +2,7 @@
 
   <div class='categories-container'>
 
-    <ul class="category-list">
+    <ul class="category-list" data-selected="all">
       <li>Categories:</li>
       <li>
         <%= link_to 'All',
@@ -32,13 +32,13 @@
 
   <div class='sort-container'>
 
-    <ul class="sort-list">
+    <ul class="sort-list" data-selected="popular">
       <li>Sort by:</li>
       <li>
         <%= link_to 'Popular',
-            facts_path + "?sort=popular",
+            facts_path,
             id: "sort-popular",
-            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'popular'),
+            class: ('is-selected' unless params[:sort]),
             remote: true %>
       </li>
       <li>
