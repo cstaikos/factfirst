@@ -3,7 +3,8 @@ class Evidence < ActiveRecord::Base
   belongs_to :fact
   has_many :votes
 
-  validates :url, :support, presence: true
+  validates :url, presence: true
+  validates_inclusion_of :support, in: [true, false]
 
 
   def upvotes
