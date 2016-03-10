@@ -1,6 +1,9 @@
 <div class="fact-boxes">
   <a href="<%= fact_path(fact) %>" class="fact-box">
     <p class="fact-name"><span class="fact-heading">FACT:</span> <%= truncate(fact.body, length: 80) %></p>
+    <div class="fact-box-score"><span>TRUTHINESS:</span><%= fact.score %></div>
+    <div class="fact-box-score"><span>TRUTHINESS:</span><%= fact.score %></div>
+    <div class="fact-box-score"><span>TRUTHINESS:</span><%= fact.score %></div>
   </a>
   <div class="fact-box-favorite"><span class="fact-box-star" id="favorite-<%= fact.id %>"><%= favorite_button(fact) %></span> <p>Posted by <%= link_to fact.user.display_name, fact.user %> on <%= fact.created_at.strftime("%B %-d, %Y") %></p></div>
 </div>

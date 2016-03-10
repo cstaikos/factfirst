@@ -5,7 +5,6 @@
   $dark-gray: #333 !default;
   $light-gray: #DDD !default;
   $base-font-color: $dark-gray !default;
-  height: 200px;
   margin-bottom: 2.35765%;
   @include span-columns(4);
   @include omega(3n);
@@ -67,12 +66,12 @@
       margin: auto;
       text-align: left;
       padding-bottom: 10px;
-      height: 70px;
+      height: 50px;
       border-bottom: 1px solid #ccc;
 
       .fact-heading {
         font-weight: bold;
-        color: #000;
+        color: #333;
       }
     }
   }
@@ -110,3 +109,36 @@
 .fact-box-star {
   font-size: 1em;
 }
+
+.fact-box-score {
+  background-color: #ccc;
+  color: #fff;
+  margin-top: 12px;
+  font-weight: bold;
+  padding: 5px 0;
+  @include span-columns(4);
+  @include omega(3n);
+  span {
+    display: block;
+    font-weight: 300;
+    font-size: 0.8em;
+    text-align: center;
+    color: #333;
+  }
+}
+
+
+
+// .fact-box-info {
+//   width: 70%;
+//   display: inline;
+//   float: left;
+//   margin-top: 12px;
+//   padding: 0 0 5px 10px;
+//   text-align: left;
+//   color: transparentize($base-font-color, 0.3);
+//   span {
+//     color: #333;
+//     font-weight: bold;
+//   }
+//}
