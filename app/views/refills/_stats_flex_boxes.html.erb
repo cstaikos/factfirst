@@ -4,12 +4,14 @@
 
     <div class="stats-flex-box users-facts">
       <h1 class="stats-flex-title">Average truthiness of submitted facts: <%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2) %>%</h1>
-      <h2 class="stats-flex-title">Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
+      <h2 class="stats-flex-title-2">Total of <%= pluralize @user.facts.count, 'fact' %> posted</h2>
       <div>
-        <h2 class="stats-flex-title">Recent facts posted:</h2>
+        <h2 class="stats-flex-title-2">Recent facts posted:</h2>
+        <br>
         <ul>
           <% @user.facts.last(10).each do |fact| %>
             <li><strong><%= fact.score %>%&nbsp;</strong><%= link_to fact.body, fact %></li>
+            <br>
           <% end %>
         </ul>
       </div>
@@ -18,15 +20,16 @@
     <div class="stats-flex-box users-evidence">
       <h1 class="stats-flex-title">Quality of evidence submitted: <%= @user.evidence_quality %>%</h1>
       <div>
-        <h2 class="stats-flex-title">Recent evidence submitted:</h2>
+        <h2 class="stats-flex-title-2">Recent evidence submitted:</h2>
         <ul>
           <% @user.evidences.last(10).each do |evidence| %>
             <li>
               <strong>
                 <%= evidence.upvotes %> upvotes, <%= evidence.downvotes %> downvotes&nbsp;
               </strong>
-              <p><%= evidence.url %></p>
+              <p><a href="<%= evidence.url %>"><%= evidence.url%></a></p>
               <p><%= evidence.support ? 'Supporting' : 'Refuting' %> evidence attached to: <%= link_to evidence.fact.body, evidence.fact %></p>
+              <br>
             </li>
           <% end %>
         </ul>
@@ -36,15 +39,16 @@
     <div class="stats-flex-box users-votes">
       <h1 class="stats-flex-title">Total of <%= pluralize @user.votes.count, 'vote' %> cast</h1>
       <div>
-        <h2 class="stats-flex-title">Recent Votes:</h2>
+        <h2 class="stats-flex-title-2">Recent Votes:</h2>
         <ul>
           <% @user.votes.last(10).each do |vote| %>
             <li>
               <p>
-                <%= vote.upvote ? 'Upvoted' : 'Downvoted' %> <%= vote.evidence.url %>, <br>
+                <%= vote.upvote ? 'Upvoted' : 'Downvoted' %> <a href="<%= vote.evidence.url %>"><%= vote.evidence.url%></a>, <br>
                 on <%= link_to vote.evidence.fact.body, vote.evidence.fact %>
               </p>
             </li>
+            <br>
           <% end %>
         </ul>
       </div>
@@ -56,6 +60,7 @@
           <ul>
             <% @user.favorites.each do |fact| %>
                 <%= render fact %>
+                <br>
             <% end %>
           </ul>
       </div>

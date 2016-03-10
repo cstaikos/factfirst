@@ -31,7 +31,7 @@
     @include align-items(stretch);
     @include flex-wrap(wrap);
     clear: both;
-    text-align: center;
+    text-align: left;
 
   .stats-flex-box {
     @include transition (all 0.2s ease-in-out);
@@ -65,6 +65,13 @@
     }
 
     .stats-flex-title {
+      color: $stats-flex-box-color;
+      font-size: 1.6em;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+    }
+
+    .stats-flex-title-2 {
       color: $stats-flex-box-color;
       font-size: 1.2em;
       font-weight: 800;
