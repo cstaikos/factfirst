@@ -59,24 +59,79 @@ class Fact < ActiveRecord::Base
 
   def update_image
 
-    canvas = Magick::ImageList.new('app/assets/images/base.gif')
+    canvas = Magick::ImageList.new('app/assets/images/base.png')
 
-    drawer = Magick::Draw.new
+    user_date_drawer = Magick::Draw.new
+    footer_drawer = Magick::Draw.new
 
-    drawer.font_family = 'helvetica'
-    drawer.pointsize = 22
-    drawer.gravity = Magick::CenterGravity
+    fact_body_drawer = Magick::Draw.new
+    fact_body_drawer.pointsize = 22
+    fact_body_drawer.gravity = Magick::CenterGravity
 
-    drawer.annotate(canvas, 0,0,0,0, self.body) {
-      self.fill = 'darkred'
+    score_drawer = Magick::Draw.new
+    score_drawer.pointsize = 80
+    score_drawer.gravity = Magick::CenterGravity
+
+
+    body_text = fit_text(self.body, 450)
+
+    fact_body_drawer.annotate(canvas, 485,395,0,0, body_text) {
+      self.fill = 'black'
     }
 
-    drawer.annotate(canvas, 50,50,0,0, self.score.to_s) {
-      self.fill = 'darkred'
+    score_drawer.annotate(canvas, 1067,375,0,0, self.score.to_s) {
+      self.fill = 'white'
     }
 
     canvas.write("app/assets/images/fact_photos/#{self.id}.png")
 
+  end
+
+  # Checks if text fits within certain width
+  def text_fit?(text, width)
+    tmp_image = Magick::Image.new(width, 500)
+    drawing = Magick::Draw.new
+    drawing.annotate(tmp_image, 0, 0, 0, 0, text) { |txt|
+      txt.gravity = Magick::NorthGravity
+      txt.pointsize = 22
+      txt.fill = "#ffffff"
+      txt.font_family = 'helvetica'
+      txt.font_weight = Magick::BoldWeight
+    }
+    metrics = drawing.get_multiline_type_metrics(tmp_image, text)
+    (metrics.width < width)
+  end
+
+  # Adds line breaks to text to simulate word wrap
+  def fit_text(text, width)
+    separator = ' '
+    line = ''
+
+    if not text_fit?(text, width) and text.include? separator
+      i = 0
+      text.split(separator).each do |word|
+        if i == 0
+          tmp_line = line + word
+        else
+          tmp_line = line + separator + word
+        end
+
+        if text_fit?(tmp_line, width)
+          unless i == 0
+            line += separator
+          end
+          line += word
+        else
+          unless i == 0
+            line +=  '\n'
+          end
+          line += word
+        end
+        i += 1
+      end
+      text = line
+    end
+    text
   end
 
 
