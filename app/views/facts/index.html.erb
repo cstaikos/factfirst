@@ -3,75 +3,7 @@
 
   <%= "Showing results for \"#{params[:query]}\"" if params[:query] %>
 
-  <h2>Categories:</h2>
-  <div>
-    <ul class="category-list">
-      <li>
-        <%= link_to 'All',
-            facts_path,
-            id: 'category-all',
-            class: ('is-selected' unless params[:category]),
-            remote: true %>
-      </li>
-      <li>
-        <%= link_to 'My Favorites',
-            facts_path + '?category=Favorites',
-            id: 'category-Favorites',
-            class: ('is-selected' if params[:category] && params[:category].downcase == 'favorites'),
-            remote: true %>
-      </li>
-      <% @categories.all.each do |category| %>
-        <li>
-          <%= link_to category.name,
-                facts_path + "?category=#{category.name}",
-                id: "category-#{category.name}",
-                class: ('is-selected' if params[:category] && params[:category].downcase == category.name.downcase),
-                remote: true %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-<br>
-  <div>
-    <h2>Sort by:</h2>
-    <ul class="sort-list">
-      <li>
-        <%= link_to 'Popular',
-            facts_path + "?sort=popular",
-            id: "sort-popular",
-            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'popular'),
-            remote: true %>
-      </li>
-      <li>
-        <%= link_to 'Debated',
-            facts_path + "?sort=debated",
-            id: "sort-debated",
-            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'debated'),
-            remote: true %>
-      </li>
-      <li>
-        <%= link_to 'New',
-            facts_path + "?sort=new",
-            id: "sort-new",
-            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'new'),
-            remote: true %>
-      </li>
-      <li>
-        <%= link_to 'Bullshit',
-            facts_path + "?sort=bullshit",
-            id: "sort-bullshit",
-            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'bullshit'),
-            remote: true %>
-      </li>
-      <li>
-        <%= link_to 'Truth',
-            facts_path + "?sort=truth",
-            id: "sort-truth",
-            class: ('is-selected' if params[:sort] && params[:sort].downcase == 'truth'),
-            remote: true %>
-      </li>
-    </ul>
-  </div>
+  <%= render 'filter_nav' %>
 
   <br><br>
 
