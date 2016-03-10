@@ -61,26 +61,35 @@ class Fact < ActiveRecord::Base
 
     canvas = Magick::ImageList.new('app/assets/images/base.png')
 
-    user_date_drawer = Magick::Draw.new
     footer_drawer = Magick::Draw.new
+    footer_drawer.pointsize = 18
+    footer_drawer.gravity = Magick::CenterGravity
+    footer_text = "Agree? Disagree? Join the conversation and change this image!\nVisit www.truthometer.co/facts/#{id} to get started"
+    footer_drawer.annotate(canvas, 645,900,0,0,footer_text) {
+      self.fill = 'white'
+    }
 
     fact_body_drawer = Magick::Draw.new
-    fact_body_drawer.pointsize = 22
-    fact_body_drawer.gravity = Magick::CenterGravity
+    fact_body_drawer.pointsize = 34
+    fact_body_drawer.gravity = Magick::ForgetGravity
+    body_text = fit_text(self.body, 450)
+    fact_body_drawer.annotate(canvas, 0,0,38,200, body_text) {
+      self.fill = 'black'
+    }
 
     score_drawer = Magick::Draw.new
     score_drawer.pointsize = 80
     score_drawer.gravity = Magick::CenterGravity
-
-
-    body_text = fit_text(self.body, 450)
-
-    fact_body_drawer.annotate(canvas, 485,395,0,0, body_text) {
-      self.fill = 'black'
-    }
-
     score_drawer.annotate(canvas, 1067,375,0,0, self.score.to_s) {
       self.fill = 'white'
+    }
+
+    other_stats_drawer = Magick::Draw.new
+    other_stats_drawer.pointsize = 18
+    other_stats_drawer.gravity = Magick::ForgetGravity
+    other_stats_text = "Score is based on #{total_votes} votes over #{evidences.count} pieces of evidence"
+    other_stats_drawer.annotate(canvas, 0,0,42,380, other_stats_text) {
+      self.fill = 'black'
     }
 
     canvas.write("app/assets/images/fact_photos/#{self.id}.png")
@@ -93,7 +102,7 @@ class Fact < ActiveRecord::Base
     drawing = Magick::Draw.new
     drawing.annotate(tmp_image, 0, 0, 0, 0, text) { |txt|
       txt.gravity = Magick::NorthGravity
-      txt.pointsize = 22
+      txt.pointsize = 34
       txt.fill = "#ffffff"
       txt.font_family = 'helvetica'
       txt.font_weight = Magick::BoldWeight
