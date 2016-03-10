@@ -4,26 +4,9 @@
   <%= render 'filter_nav' %>
 
   <div class="facts-container">
-    <div class="fact-box-wrapper">
-      <div class="fact-boxes">
-        <a href="javascript:void(0)" class="fact-box">
-          <h1 class="fact-title"></i> Share Dynamic Images</h1>
-          <p>Our dynamically generated fact infographics will change based on community feedback! Watch the state of your facts evolve.</p>
-        </a>
-        <a href="javascript:void(0)" class="fact-box">
-          <h1 class="fact-title"></i> Evidence Based Ranking</h1>
-          <p>Facts are rated based on the strength of evidence attached to them. Agree or disagree? Submit your own evidence!</p>
-        </a>
-        <a href="javascript:void(0)" class="fact-box">
-          <h1 class="fact-title"></i> Learn Truthometer Etiquette</h1>
-          <p>Our mission statement and philosophy. A set of guidelines to ensure that your truthometer experience gets a high rating.</p>
-        </a>
-      </div>
-    </div>
-
-    <ul id="facts-list">
+    <div id="facts-list" class="fact-box-wrapper">
       <% @facts.each do |fact| %>
         <%= render fact %>
       <% end %>
-    </ul>
+    </div>
   </div>
