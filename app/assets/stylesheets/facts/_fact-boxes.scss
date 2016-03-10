@@ -5,6 +5,7 @@
   $dark-gray: #333 !default;
   $light-gray: #DDD !default;
   $base-font-color: $dark-gray !default;
+  @include span-columns(4);
 
   a {
     text-decoration: none;
@@ -14,17 +15,15 @@
   $fact-box-border-color: $light-gray;
   $fact-box-border: 1px solid $fact-box-border-color;
   $fact-box-background: lighten($light-gray, 10%);
-  $fact-box-gutter: 0.4em;
+  $fact-box-gutter: 0em; // reduce margin to 0
   $fact-box-width: 18em;
   $fact-box-color: transparentize($base-font-color, 0.3);
   $fact-box-left-color: #CCCCCC;
 
-    @include clearfix;
     @include display(flex);
     @include justify-content(center);
     @include align-items(stretch);
     @include flex-wrap(wrap);
-    clear: both;
     text-align: center;
 
   .fact-box {
@@ -75,4 +74,5 @@
   margin-top: 20px;
   @include outer-container;
   @include clearfix;
+  @include span-columns(12);
 }
