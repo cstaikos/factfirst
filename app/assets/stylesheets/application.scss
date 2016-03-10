@@ -29,7 +29,7 @@ html, body {
   @include pad($padding-from-screen-edge);
 }
 
-.text-wrapper {
+.application-wrapper {
   @include outer-container;
   max-width: $text-max-width;
   @include pad($padding-from-screen-edge);
