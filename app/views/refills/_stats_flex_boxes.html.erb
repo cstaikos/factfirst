@@ -1,20 +1,19 @@
-<div class="profile-image">
-  <span><%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}" %></span>
-
-  <% if current_user == @user %>
-      <br>
-      <em>No profile image?</em><br>
-      <em> <%= link_to "Click here", "https://en.gravatar.com/connect/" %> to get a gravatar.</em>
-  <% end %>
+<div class="flex-box-wrapper">
+  <div class="flex-boxes">
+    <a href="javascript:void(0)" class="flex-box">
+      <h1 class="flex-title"><i class="fa fa-file-image-o"></i> Share Dynamic Images</h1>
+      <p>Our dynamically generated fact infographics will change based on community feedback! Watch the state of your facts evolve. lorem</p>
+    </a>
+    <a href="javascript:void(0)" class="flex-box">
+      <h1 class="flex-title"><i class="fa fa-bar-chart"></i> Evidence Based Ranking</h1>
+      <p>Facts are rated based on the strength of evidence attached to them. Agree or disagree? Submit your own evidence!</p>
+    </a>
+    <a href="javascript:void(0)" class="flex-box">
+      <h1 class="flex-title"><i class="fa fa-university"></i> Learn Truthometer Etiquette</h1>
+      <p>Our mission statement and philosophy. A set of guidelines to ensure that your truthometer experience gets a high rating.</p>
+    </a>
+  </div>
 </div>
-
-<div class="user-details">
-  <h1><%= @user.display_name %></h1>
-</div>
-
-<br><br>
-
-<%= render 'refills/stats_flex_boxes' %>
 
 <div class="users-facts">
   <h1>Average truthiness of submitted facts: <%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2) %>%</h1>

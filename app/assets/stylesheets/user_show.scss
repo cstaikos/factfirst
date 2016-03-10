@@ -1,4 +1,6 @@
 $user_profile_and_details_height: 15em;
+$user_stats_height: 30em;
+$user_favorites_height: 15em;
 $border-for-testing: 1px solid black;
 $top-margin: 2.35765%;
 
@@ -18,24 +20,34 @@ $top-margin: 2.35765%;
 }
 
 .users-facts {
-  @include span-columns(6);
+  @include span-columns(4);
   border: $border-for-testing;
   margin-top: $top-margin;
+  height: $user_stats_height;
 
 }
 
 .users-evidence {
-  @include span-columns(6);
-  @include omega;
+  @include span-columns(4);
   border: $border-for-testing;
   margin-top: $top-margin;
+  height: $user_stats_height;
 
 }
 
 .users-votes {
-
+  @include span-columns(4);
+  @include omega;
+  border: $border-for-testing;
+  margin-top: $top-margin;
+  height: $user_stats_height;
 }
 
-.users.favorites {
+.users-favorites {
+  @include span-columns(12);
+  @include omega;
+  border: $border-for-testing;
+  margin-top: $top-margin;
+  height: $user_favorites_height;
 
 }
