@@ -3,13 +3,12 @@ class FactsController < ApplicationController
 
   before_action :login_to_add_fact, only: [:new, :create]
   before_action :load_fact, only: [:show, :edit, :update, :destroy]
-
+  before_action :load_categories
 
   helper VotesHelper
 
   def index
 
-    @categories = Category.all
     @facts = Fact.all
 
     if params[:query] && params[:query].length > 2
@@ -48,6 +47,7 @@ class FactsController < ApplicationController
 
   def new
     @fact = Fact.new
+
   end
 
   def show
@@ -58,6 +58,9 @@ class FactsController < ApplicationController
 
   def create
     @fact = Fact.create(fact_params)
+
+
+    @category = @fact.category_id
 
     @fact.user = current_user
 
@@ -117,5 +120,9 @@ class FactsController < ApplicationController
     unless current_user
       redirect_to new_user_session_path, alert: "Please login to add a Fact!"
     end
+  end
+
+  def load_categories
+    @categories = Category.all
   end
 end
