@@ -38,7 +38,7 @@
     margin: $fact-box-gutter;
     padding: 2em 2em 3em 2em;
 
-    border-left: 6px solid $fact-box-left-color;
+    border-left: 10px solid $fact-box-left-color;
     &:focus,
     &:hover {
       background-color: transparentize($fact-box-left-color, 0.9);
