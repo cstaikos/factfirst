@@ -6,6 +6,7 @@
   $light-gray: #DDD !default;
   $base-font-color: $dark-gray !default;
   @include span-columns(4);
+  @include omega(3n);
 
   a {
     text-decoration: none;
@@ -35,7 +36,7 @@
     box-shadow: inset 0 0 1px $fact-box-border-color, 0 2px 4px darken($base-background-color, 10%);
     display: block;
     margin: $fact-box-gutter;
-    padding: 2em 2em 3em 2em;
+    padding: 1em;
 
     border-left: 10px solid $fact-box-left-color;
     &:focus,
@@ -60,8 +61,16 @@
 
     p {
       color: transparentize($fact-box-color, 0.1);
-      line-height: 1.5em;
+      line-height: 1.2em;
       margin: auto;
+      text-align: left;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+
+      .fact-heading {
+        font-weight: bold;
+        color: #000;
+      }
     }
   }
 

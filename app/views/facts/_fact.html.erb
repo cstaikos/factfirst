@@ -1,5 +1,5 @@
-<li>
-  <p><%= fact.score %>% - <%= link_to fact.body, fact_path(fact) %></p>
-  <div id="favorite-<%= fact.id %>"><%= favorite_button(fact) %></div>
-  <p>Posted <%= fact.created_at%></p>
-</li>
+<div class="fact-boxes">
+  <a href="<%= fact_path(fact) %>" class="fact-box">
+    <p class="fact-name"><span class="fact-heading">FACT:</span> <%= fact.body %></p>
+  </a>
+</div>
