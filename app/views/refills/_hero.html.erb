@@ -6,7 +6,18 @@
       <div class="home-search-bar">
   			<%= render 'refills/search_bar' %>
       </div>
-		</div>
-    <%= button_to "Add Fact", new_fact_path, method: :get %>
+      <div class="home-page-or"><p>OR</p></div>
+      <div class="home-add-facts">
+        <h3 class="home-subheader">Add your own fact</h3>
+        <p class="secondary-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo at enim sed fermentum. Maecenas tempor eget dui et dapibus.</p>
+        <%= button_to "Add Fact", new_fact_path, method: :get %>
+      </div>
+      <div class="home-browse-facts">
+        <h3 class="home-subheader">Browse all facts</h3>
+        <p class="secondary-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris commodo at enim sed fermentum. Maecenas tempor eget dui et dapibus.</p>
+        <%= button_to "Browse Facts", facts_path, method: :get %>
+      </div>
+
+    </div>
 	</div>
 </div>

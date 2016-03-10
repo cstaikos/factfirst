@@ -71,3 +71,29 @@ html, body {
   @include span-columns(6);
   @include shift(3);
 }
+
+.home-page-or {
+  padding-top: 70px;
+}
+
+.home-page-or p {
+  margin-bottom: 25px !important;
+}
+
+.home-add-facts {
+  @include span-columns(6);
+}
+
+.home-browse-facts {
+  @include span-columns(6);
+  @include omega;
+}
+
+.home-subheader {
+  margin-top: 0;
+}
+
+.secondary-content {
+  margin: 0 auto 1em auto !important;
+  max-width: 80% !important;
+}
