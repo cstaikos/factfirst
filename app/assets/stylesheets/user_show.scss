@@ -19,35 +19,35 @@ $top-margin: 2.35765%;
 
 }
 
-.users-facts {
-  @include span-columns(4);
-  border: $border-for-testing;
-  margin-top: $top-margin;
-  height: $user_stats_height;
+// .users-facts {
+//   @include span-columns(4);
+//   border: $border-for-testing;
+//   margin-top: $top-margin;
+//   height: $user_stats_height;
+//
+// }
 
-}
+// .users-evidence {
+//   @include span-columns(4);
+//   border: $border-for-testing;
+//   margin-top: $top-margin;
+//   height: $user_stats_height;
+//
+// }
 
-.users-evidence {
-  @include span-columns(4);
-  border: $border-for-testing;
-  margin-top: $top-margin;
-  height: $user_stats_height;
-
-}
-
-.users-votes {
-  @include span-columns(4);
-  @include omega;
-  border: $border-for-testing;
-  margin-top: $top-margin;
-  height: $user_stats_height;
-}
-
-.users-favorites {
-  @include span-columns(12);
-  @include omega;
-  border: $border-for-testing;
-  margin-top: $top-margin;
-  height: $user_favorites_height;
-
-}
+// .users-votes {
+//   @include span-columns(4);
+//   @include omega;
+//   border: $border-for-testing;
+//   margin-top: $top-margin;
+//   height: $user_stats_height;
+// }
+// 
+// .users-favorites {
+//   @include span-columns(12);
+//   @include omega;
+//   border: $border-for-testing;
+//   margin-top: $top-margin;
+//   height: $user_favorites_height;
+//
+// }
