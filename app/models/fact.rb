@@ -59,7 +59,7 @@ class Fact < ActiveRecord::Base
 
   def update_image
 
-    canvas = Magick::ImageList.new('app/assets/images/base.png')
+    canvas = Magick::ImageList.new('/imagemagick/base.png')
 
     footer_drawer = Magick::Draw.new
     footer_drawer.pointsize = 18
