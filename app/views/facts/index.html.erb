@@ -14,6 +14,8 @@
     <ul id="facts-list" class="fact-box-wrapper">
       <%= render @facts %>
     </ul>
-    <%= paginate @facts %>
+    
+    <div id="index-pagination">
+      <%= paginate @facts %>
+    </div>
   </div>
-
