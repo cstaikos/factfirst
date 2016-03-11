@@ -1,16 +1,35 @@
 <div class="category-buttons">
   <h4>Find Facts by Category:</h4>
   <div class="button-group">
+    <label>
+      <%= button_to '', {}, {
+          :type => 'radio',
+          :name => '',
+          :method => 'get',
+          :remote => true,
+          :url => facts_path } %>
+      <span id="category-all" class="button-group-item<%= ' is-selected' unless params[:category] %>">All</span>
+    </label>
+    <% if current_user %>
+      <label>
+        <%= button_to 'favorites', {}, {
+            :type => 'radio',
+            :name => 'category',
+            :method => 'get',
+            :remote => true,
+            :url => facts_path } %>
+        <span id="category-favorites" class="button-group-item<%= ' is-selected' if params[:category] && params[:category].downcase == 'favorites' %>">My Favorites</span>
+      </label>
+    <% end %>
     <% @categories.each do |category| %>
         <label>
           <%= button_to category.name, {}, {
-              :class => ('is-selected' if params[:category] && params[:category].downcase == category.name.downcase),
               :type => 'radio',
               :name => 'category',
               :method => 'get',
               :remote => true,
               :url => facts_path } %>
-          <span id="category-<%= category.name %>" class="button-group-item"><%= category.name %></span>
+          <span id="category-<%= category.name %>" class="button-group-item<%= ' is-selected' if params[:category] && params[:category].downcase == category.name.downcase %>"><%= category.name %></span>
         </label>
     <% end %>
   </div>
