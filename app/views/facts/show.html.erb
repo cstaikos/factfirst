@@ -31,7 +31,7 @@
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
             <div class="show-evidence">
-              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url%></a></h4>
+              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= truncate(evidence.url, length: 50)%></a></h4>
               <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
 
