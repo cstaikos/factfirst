@@ -141,6 +141,11 @@
     padding-bottom: 5px;
   }
   margin-bottom: 20px;
+  @include span-columns(6);
+}
+
+#add-refuting {
+  @include omega;
 }
 
 .evidence-label {
