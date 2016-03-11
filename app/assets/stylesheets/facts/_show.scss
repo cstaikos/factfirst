@@ -189,8 +189,6 @@
 .add-comment {
   @include span-columns(12);
   @include omega;
-  border-left: 10px solid #ccc;
-  background-color: #f9f9f9;
   padding: 0 8px 5px 5px;
   min-height: 250px;
 }
