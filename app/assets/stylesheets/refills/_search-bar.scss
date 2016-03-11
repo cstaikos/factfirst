@@ -63,3 +63,24 @@ form.search-bar {
     }
   }
 }
+
+#search-index{
+  color: black;
+
+}
+
+#form-search-index {
+  ::-webkit-input-placeholder {
+    color: #555;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: #555;
+  }
+  ::-moz-placeholder {  /* Firefox 19+ */
+    color: #555;
+  }
+  :-ms-input-placeholder {
+    color: #555;
+  }
+
+}
