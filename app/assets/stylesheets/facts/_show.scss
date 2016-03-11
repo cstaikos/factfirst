@@ -186,6 +186,11 @@
   min-height: 250px;
 }
 
+.individual-comment {
+  padding: 15px;
+  border-bottom: #ccc solid 1px;
+}
+
 .add-comment {
   @include span-columns(12);
   @include omega;
@@ -208,7 +213,6 @@
 .comment-text {
   margin: 0;
   padding-top: 5px;
-  border-top: #ccc solid 1px;
 }
 
 .comment-posting {
