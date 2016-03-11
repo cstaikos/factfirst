@@ -37,6 +37,37 @@
 
 </script>
 
-<%= render 'refills/hero' %>
 
-<%= render 'refills/flex_boxes' %>
+  <%= render 'refills/hero' %>
+
+  <%= render 'refills/flex_boxes' %>
+
+
+  <div class="text-wrapper">
+
+  <hr/>
+  <h2 class="transition">Most Popular Facts</h2>
+
+  <div class="home-page-fact-boxes">
+    <%= render @popular_facts %>
+    <!-- This should be a dynamic/rails generated link -->
+    <p><a href="/facts?sort=popular">(view all)</a></p>
+  </div>
+
+  <hr/>
+  <h2 class="transition">Political Facts</h2>
+
+  <div class="home-page-fact-boxes">
+    <%= render @political_facts %>
+    <p><a href="/facts?category=political">(view all)</a></p>
+  </div>
+
+  <hr/>
+  <h2 class="transition">Newest Facts</h2>
+
+  <div class="home-page-fact-boxes">
+    <%= render @new_facts %>
+    <p><a href="/facts?sort=new">(view all)</a></p>
+  </div>
+
+</div>

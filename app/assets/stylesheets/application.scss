@@ -114,3 +114,83 @@ html, body {
   margin: 0 auto 1em auto !important;
   max-width: 80% !important;
 }
+
+// Transition home page vars
+$link-color: #f52e62;
+$text-color: #3f517e;
+$hr-color:   rgba(0,0,0,0.35);
+$hr-text-color: #453986;
+
+$letter-spacing: .1em;
+
+$background-color: #fff;
+
+hr {
+  display: block;
+  margin: 30px 0 -15px;
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: $hr-color;
+
+  + h2.transition {
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    margin: 0;
+    padding: 5px 10px;
+    border: 1px solid $hr-text-color;
+    box-shadow: inset 0 0 0 1px $hr-text-color;
+    transform: translateX(-50%);
+    color: $hr-text-color;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: $letter-spacing;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: $background-color;
+
+    // Cancel out offset created by letterspacing
+    &::first-letter {
+      margin-left: $letter-spacing;
+    }
+  }
+}
+
+/* Alternative transform: translate */
+hr.transition + h2 {
+  border-width: 1px 0;
+
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: $hr-text-color;
+    content: '';
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+  }
+}
+
+.home-page-fact-boxes {
+  margin-top: 20px;
+  @include clearfix;
+  .fact-boxes {
+    margin-bottom: 10px;
+  }
+  p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+  }
+}
