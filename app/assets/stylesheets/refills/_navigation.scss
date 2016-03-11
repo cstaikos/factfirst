@@ -4,8 +4,9 @@ header.navigation {
   $base-border-color: #eee !default;
   $base-border-radius: 3px !default;
   $base-accent-color: #e3f671 !default;
-  $login-accent-color: #477DCA !default;
+  $login-accent-color: #006668 !default;
   $dark-gray: #333 !default;
+  $nav-base-color: #001168;
   $large-screen: em(860) !default;
 
   position: fixed; // Sticky nav bar
@@ -16,7 +17,7 @@ header.navigation {
   //////////////////////////////////////////////////////////////////////////////////
 
   $navigation-padding: 1em;
-  $navigation-background: $dark-gray;
+  $navigation-background: $nav-base-color;
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
   $navigation-nav-button-background: $base-accent-color;

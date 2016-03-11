@@ -1,7 +1,7 @@
 .hero {
   ///////////////////////////////////////////////////////////////////////////////////
   $base-border-radius: 3px !default;
-  $base-accent-color: #477DCA !default;
+  $base-accent-color: #006668 !default;
   $large-screen: em(860) !default;
   //////////////////////////////////////////////////////////////////////////////////
 
@@ -88,4 +88,8 @@
       // color: $base-accent-color;
     }
   }
+}
+
+.hero-button-main {
+  margin-bottom: 10px;
 }

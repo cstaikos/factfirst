@@ -22,12 +22,19 @@
 
 $padding-from-screen-edge: 20px;
 $text-max-width: 1200px;
-$navigation-background: $dark-gray;
+$navigation-background: #001168;
 
 // This is required by Bourbon Refills
 html, body {
   -webkit-font-smoothing: antialiased;
   background-color: #eaeaf5; // temporary color
+}
+
+
+// This is for the home page
+.nav-bg {
+  background-color: $navigation-background;
+  border-bottom: 1px solid darken($navigation-background, 10);
 }
 
 .wrapper {
@@ -67,12 +74,6 @@ html, body {
   width: 300px;
 }
 
-// This is for the home page
-.nav-bg {
-  background-color: $navigation-background;
-  border-bottom: 1px solid darken($navigation-background, 10);
-}
-
 .nodisplay {
   display: none;
 }
@@ -106,7 +107,7 @@ html, body {
 }
 
 .home-subheader {
-  margin-top: 0;
+  margin-top: 5px;
   margin-bottom: 10px;
   font-size: 1.4em;
 }
