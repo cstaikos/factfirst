@@ -1,8 +1,4 @@
   <div class="fact-header">
-    <span class="fact-show">
-        <%= @fact.body %>
-    </span>
-
     <div id="speedo">
       <span class="speedometer"></span>
       <span class="needle"></span>
@@ -10,6 +6,9 @@
       <span id="actual-score" style="display:none"><%= @fact.score %></span>
     </div>
 
+    <span class="fact-show">
+        <%= @fact.body %>
+    </span>
   </div>
 
   <div class="fact-favorite-text">
