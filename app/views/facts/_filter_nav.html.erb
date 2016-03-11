@@ -37,35 +37,35 @@
     <ul class="sort-list" data-selected="popular">
       <li>Sort by:</li>
       <li>
-        <%= link_to 'Popular',
+        <%= link_to 'popular',
             facts_path,
             id: "sort-popular",
             class: ('is-selected' unless params[:sort]),
             remote: true %>
       </li>
       <li>
-        <%= link_to 'Debated',
+        <%= link_to 'debated',
             facts_path + "?sort=debated",
             id: "sort-debated",
             class: ('is-selected' if params[:sort] && params[:sort].downcase == 'debated'),
             remote: true %>
       </li>
       <li>
-        <%= link_to 'New',
+        <%= link_to 'new',
             facts_path + "?sort=new",
             id: "sort-new",
             class: ('is-selected' if params[:sort] && params[:sort].downcase == 'new'),
             remote: true %>
       </li>
       <li>
-        <%= link_to 'Bullshit',
+        <%= link_to 'bullshit',
             facts_path + "?sort=bullshit",
             id: "sort-bullshit",
             class: ('is-selected' if params[:sort] && params[:sort].downcase == 'bullshit'),
             remote: true %>
       </li>
       <li>
-        <%= link_to 'Truth',
+        <%= link_to 'truth',
             facts_path + "?sort=truth",
             id: "sort-truth",
             class: ('is-selected' if params[:sort] && params[:sort].downcase == 'truth'),

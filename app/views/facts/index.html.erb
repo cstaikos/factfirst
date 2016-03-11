@@ -1,14 +1,19 @@
 
-  <%= "Showing results for \"#{params[:query]}\"" if params[:query] %>
 
-  <%= render 'filter_nav' %>
+
+  <%# render 'filter_nav' %>
+
+    <%= render 'refills/categories_filter_buttons' %>
+
+    <%= render 'refills/sort_filter_buttons' %>
+
+    <%= render 'facts/facts_index_search' %>
+
 
   <div class="facts-container">
-
     <ul id="facts-list" class="fact-box-wrapper">
       <%= render @facts %>
     </ul>
-
     <%= paginate @facts %>
-
   </div>
+

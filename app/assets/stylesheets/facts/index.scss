@@ -1,0 +1,29 @@
+.category-buttons {
+  display: block;
+  overflow: hidden;
+  margin-bottom: 1em;
+  h4 {
+    margin: 0;
+    margin-bottom: 0.5em;
+  }
+}
+
+.filter-buttons {
+  display: block;
+  overflow: hidden;
+  h4 {
+    margin: 0;
+    margin-bottom: 0.5em;
+  }
+}
+
+.facts-index-search {
+  @include span-columns(6);
+  float: none;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  h4 {
+    margin: 0;
+    margin-bottom: 0.5em;
+  }
+}
