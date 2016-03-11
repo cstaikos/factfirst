@@ -50,7 +50,8 @@
 
   <div class="home-page-fact-boxes">
     <%= render @popular_facts %>
-    <p><a href="<%= %>">View all popular facts</a></p>
+    <!-- This should be a dynamic/rails generated link -->
+    <p><a href="/facts?sort=popular">(view all)</a></p>
   </div>
 
   <hr/>
@@ -58,7 +59,7 @@
 
   <div class="home-page-fact-boxes">
     <%= render @political_facts %>
-    <p><a href="<%= %>">View all political facts</a></p>
+    <p><a href="/facts?category=political">(view all)</a></p>
   </div>
 
   <hr/>
@@ -66,7 +67,7 @@
 
   <div class="home-page-fact-boxes">
     <%= render @new_facts %>
-    <p><a href="<%= %>">View all new facts</a></p>
+    <p><a href="/facts?sort=new">(view all)</a></p>
   </div>
 
 </div>
