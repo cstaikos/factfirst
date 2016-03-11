@@ -1,18 +1,33 @@
 <div class="button-group">
-  <label>
-    <input type="radio" name="button-group" value="item" checked>
-    <span class="button-group-item">Item</span>
-  </label>
-  <label>
-    <input type="radio" name="button-group" value="other-item">
-    <span class="button-group-item">Other But Longer Item</span>
-  </label>
-  <label>
-    <input type="radio" name="button-group" value="other-item">
-    <span class="button-group-item">Third</span>
-  </label>
-  <label>
-    <input type="radio" name="button-group" value="third">
-    <span class="button-group-item">Last Item</span>
-  </label>
+  <!--<label>-->
+    <!--<input type="radio" name="button-group" value="item" checked>-->
+    <!--<span class="button-group-item">Item</span>-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--<input type="radio" name="button-group" value="other-item">-->
+    <!--<span class="button-group-item">Other But Longer Item</span>-->
+  <!--</label>-->
+  <!--<label>-->
+    <!--<input type="radio" name="button-group" value="other-item">-->
+    <!--<span class="button-group-item">Third</span>-->
+  <!--</label>-->
+      <!--<label>-->
+        <!--<input type="radio" name="button-group" value="third">-->
+        <!--<span class="button-group-item"></span>-->
+      <!--</label>-->
+
+  <% @categories.each do |category| %>
+      <label>
+        <%= button_to category.name, {}, {
+            # :id => 'category-' + category.name,
+            :class => ('is-selected' if params[:category] && params[:category].downcase == category.name.downcase),
+            :type => 'radio',
+            :name => 'category',
+            :method => 'get',
+            :remote => true,
+            :url => facts_path } %>
+        <span id="category-<%= category.name %>" class="button-group-item"><%= category.name %></span>
+      </label>
+  <% end %>
+
 </div>
