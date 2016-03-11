@@ -21,7 +21,9 @@
 
   <div class="evidence">
     <div class="supporting">
-      <div class="evidence-title-box-supporting"><h1 class="evidence-header-text">Supporting Evidence (<%= @fact.supporting_evidence.count %>)</h1></div>
+      <div class="evidence-title-box-supporting">
+        <h3 class="evidence-header-text">Supporting Evidence (<%= @fact.supporting_evidence.count %>)<a href="#add-supporting" class="add-evidence-anchor">+ add evidence</a></h3>
+      </div>
       <ul class="evidence-list">
         <% @fact.supporting_evidence.each do |evidence| %>
           <li class="piece-of-evidence">
@@ -37,7 +39,7 @@
         </li>
       <% end %>
       </ul>
-      <div class="add-evidence-box">
+      <div id="add-supporting" class="add-evidence-box">
         <p>Join the debate! Add your own evidence to support this fact.</p>
         <%= form_for [@fact, @evidence] do |f| %>
           <div class="evidence-url-form-group">
@@ -55,7 +57,9 @@
     </div>
 
     <div class="refuting">
-      <div class="evidence-title-box-refuting"><h1 class="evidence-header-text">Refuting Evidence (<%= @fact.refuting_evidence.count %>)</h1></div>
+      <div class="evidence-title-box-refuting">
+        <h3 class="evidence-header-text">Refuting Evidence (<%= @fact.refuting_evidence.count %>)<a href="#add-refuting" class="add-evidence-anchor">+ add evidence</a></h3>
+      </div>
       <ul class="evidence-list">
         <% @fact.refuting_evidence.each do |evidence| %>
           <li class="piece-of-evidence">
@@ -71,7 +75,7 @@
         </li>
       <% end %>
       </ul>
-      <div class="add-evidence-box">
+      <div id="add-refuting" class="add-evidence-box">
         <p>Join the debate! Add your own evidence to refute this fact.</p>
         <%= form_for [@fact, @evidence] do |f| %>
           <div class="evidence-url-form-group">
@@ -113,7 +117,7 @@
   </div>
 
   <div id="comments">
-    <h2 class="subheader"><a href="#" id="comment-show">View All Comments (<%= @fact.comments.count %>)</a></h2>
+    <h2 class="subheader"><a href="#" id="comment-show">View Comments <span id="comment-count">(<%= @fact.comments.count %>)</span></a></h2>
     <div id="comment-list" class="nodisplay">
       <%= render @fact.comments %>
     </div>
