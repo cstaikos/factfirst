@@ -141,6 +141,11 @@
     padding-bottom: 5px;
   }
   margin-bottom: 20px;
+  @include span-columns(6);
+}
+
+#add-refuting {
+  @include omega;
 }
 
 .evidence-label {
@@ -194,7 +199,7 @@
 .add-comment {
   @include span-columns(12);
   @include omega;
-  padding: 0 8px 5px 5px;
+  padding: 0;
   min-height: 250px;
 }
 
