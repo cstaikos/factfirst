@@ -39,13 +39,14 @@
 .truth-score {
   height: 100%;
   width: 100px;
-  font-size: 4em;
-  background-color: #ccc;
-  color: white;
-  display: table-cell;
+  font-size: 24px;
+  color: black;
   vertical-align: middle;
   text-align: center;
   font-weight: bold;
+  position: relative;
+  top: 97px;
+  left: 20px;
 }
 
 .truth-dial {

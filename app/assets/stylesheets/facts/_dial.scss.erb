@@ -1,0 +1,35 @@
+#speedo {
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background: url('<%= asset_path 'dial.png' %>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+#speedo .speedometer {
+    -webkit-transform: rotate(45deg);
+    display: inline-block;
+}
+
+#speedo .needle {
+    width: 5px;
+    height: 50px;
+    background: black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 100%;
+    display: inline-block;
+    left: 72px;
+    position: absolute;
+    top: 28px;
+    -webkit-animation:move 2s;
+    transform:rotate(0deg);
+    transform-origin:bottom;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}

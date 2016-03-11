@@ -2,9 +2,14 @@
     <span class="fact-show">
         <%= @fact.body %>
     </span>
-    <span id="score" class="truth-score odometer">00</span>
-    <span id="actual-score" style="display:none"><%= @fact.score %></span>
-    <span class="truth-dial">Dial goes here</span>
+
+    <div id="speedo">
+      <span class="speedometer"></span>
+      <span class="needle"></span>
+      <span id="score" class="truth-score odometer">00</span>
+      <span id="actual-score" style="display:none"><%= @fact.score %></span>
+    </div>
+
   </div>
 
   <div class="fact-favorite-text">
@@ -113,3 +118,15 @@
       <%= render @fact.comments %>
     </div>
   </div>
+
+  <!-- TODO: Figure out how to not have this style tag in the view...-->
+  <style>
+  @-webkit-keyframes move {
+      0% {
+          transform:rotate(-130deg);
+      }
+
+      100% {
+          transform:rotate(<%= -130 + ((@fact.score/100.0) * 260) %>deg);
+      }
+  }</style>
