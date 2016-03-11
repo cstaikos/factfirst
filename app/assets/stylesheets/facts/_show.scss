@@ -34,6 +34,8 @@
   font-size: 1.5em;
   vertical-align: middle;
   padding-right: 5px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .truth-score {
@@ -60,9 +62,7 @@
 .fact-header {
   @include span-columns(12);
   @include omega;
-  background:#f9f9f9;
   display: table;
-  border-left: 10px solid #ccc;
   margin:0.5em 0px 20px 0px;
   padding:.5em 10px;
   min-height: 150px;
