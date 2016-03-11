@@ -5,7 +5,7 @@ $(document).on('ready page:load', function(){
   }, 10)
 
 
-  $("#search").on('keydown', function() {
+  $("#index-search").on('keydown', function() {
     if ($(this).val().length > 1) {
       $.ajax({
         url: '/facts?query=' + encodeURIComponent( $(this).val() ),

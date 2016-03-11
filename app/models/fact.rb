@@ -1,7 +1,7 @@
 class Fact < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
-  has_many :evidences
+  has_many :evidences, dependent: :destroy
   has_many :comments
   has_and_belongs_to_many :favorited_users, class_name: 'User'
 

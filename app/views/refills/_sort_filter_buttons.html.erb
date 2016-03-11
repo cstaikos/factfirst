@@ -3,52 +3,47 @@
   <div class="button-group">
     <label>
       <%= button_to 'popular', {}, {
-          class: ('is-selected' unless params[:sort]),
           :method => 'get',
           :name => 'sort',
           :remote => true,
           :url => facts_path } %>
-      <span id="sort-popular" class="button-group-item">Popular</span>
+      <span id="sort-popular" class="button-group-item<%= ' is-selected' unless params[:sort] %>">Popular</span>
     </label>
 
     <label>
       <%= button_to 'debated', {}, {
-          class: ('is-selected' if params[:sort] && params[:sort].downcase == 'debated'),
           :method => 'get',
           :name => 'sort',
           :remote => true,
           :url => facts_path + "?sort=debated"} %>
-      <span id="sort-debated" class="button-group-item">Debated</span>
+      <span id="sort-debated" class="button-group-item<%= ' is-selected' if params[:sort] && params[:sort].downcase == 'debated' %>">Debated</span>
     </label>
 
     <label>
       <%= button_to 'new', {}, {
-          class: ('is-selected' if params[:sort] && params[:sort].downcase == 'new'),
           :method => 'get',
           :name => 'sort',
           :remote => true,
           :url => facts_path + "?sort=new" } %>
-      <span id="sort-new" class="button-group-item">New</span>
+      <span id="sort-new" class="button-group-item<%= ' is-selected' if params[:sort] && params[:sort].downcase == 'new' %>">New</span>
     </label>
 
     <label>
       <%= button_to 'bullshit', {}, {
-          class: ('is-selected' if params[:sort] && params[:sort].downcase == 'bullshit'),
           :method => 'get',
           :name => 'sort',
           :remote => true,
           :url => facts_path + "?sort=bullshit" } %>
-      <span id="sort-bullshit" class="button-group-item">Bullshit</span>
+      <span id="sort-bullshit" class="button-group-item<%= ' is-selected' if params[:sort] && params[:sort].downcase == 'bullshit' %>">Bullshit</span>
     </label>
 
     <label>
       <%= button_to 'truth', {}, {
-          class: ('is-selected' if params[:sort] && params[:sort].downcase == 'truth'),
           :method => 'get',
           :name => 'sort',
           :remote => true,
           :url => facts_path + "?sort=truth" } %>
-      <span id="sort-truth" class="button-group-item">Popular</span>
+      <span id="sort-truth" class="button-group-item<%= 'is-selected' if params[:sort] && params[:sort].downcase == 'truth' %>">Truth</span>
     </label>
   </div>
 </div>

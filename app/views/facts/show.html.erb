@@ -1,8 +1,4 @@
   <div class="fact-header">
-    <span class="fact-show">
-        <%= @fact.body %>
-    </span>
-
     <div id="speedo">
       <span class="speedometer"></span>
       <span class="needle"></span>
@@ -10,6 +6,9 @@
       <span id="actual-score" style="display:none"><%= @fact.score %></span>
     </div>
 
+    <span class="fact-show">
+        <%= @fact.body %>
+    </span>
   </div>
 
   <div class="fact-favorite-text">
@@ -32,7 +31,7 @@
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
             <div class="show-evidence">
-              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= evidence.url%></a></h4>
+              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= truncate(evidence.url, length: 50)%></a></h4>
               <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
 
