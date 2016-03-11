@@ -70,7 +70,6 @@
       padding-bottom: 20px;
       background-color: transparentize($dark-gray, 0.3);
       font-style: italic;
-      border-top: 5px solid transparentize($dark-gray, 0.05);
       .secondary-content {
         padding: 0;
         margin: 0 auto 0 auto !important;
@@ -85,9 +84,8 @@
       }
     }
     .hero-footer:hover, .hero-footer:focus {
-      background-color: transparentize($dark-gray, 0.05);
-      border-top: 5px solid $base-accent-color;
-      color: $base-accent-color;
+      background-color: transparentize($base-accent-color, 0.3);
+      // color: $base-accent-color;
     }
   }
 }
