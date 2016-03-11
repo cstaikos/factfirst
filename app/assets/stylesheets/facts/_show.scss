@@ -194,7 +194,7 @@
 .add-comment {
   @include span-columns(12);
   @include omega;
-  padding: 0 8px 5px 5px;
+  padding: 0;
   min-height: 250px;
 }
 
