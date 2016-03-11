@@ -7,7 +7,7 @@
     <nav role="navigation">
       <div class="search-bar">
         <form role="search" action="/facts">
-          <input name="query" type="search" id="search" placeholder="Find a Fact" />
+          <input name="query" type="search" id="search" placeholder="Search Facts" />
           <button type="submit">
             <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
           </button>
@@ -16,6 +16,7 @@
       <ul id="js-navigation-menu" class="navigation-menu show">
         <li class="nav-link"><a href="<%= facts_path %>">Browse Facts</a></li>
         <li class="nav-link"><a href="<%= new_fact_path %>">Add New Fact</a></li>
+        <li class="nav-link"><a href="<%= about_path %>">About</a></li>
       </ul>
     </nav>
     <div class="navigation-tools">
