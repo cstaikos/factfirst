@@ -16,7 +16,7 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-bottom: 3em;
+  padding-bottom: 0; // take out bottom padding so the about box can live there
 
   .hero-logo img {
     height: 4em;
@@ -28,7 +28,7 @@
     @include clearfix;
     color: $hero-color;
     margin: auto;
-    padding: 3.5em 3.5em 1em 3.5em;
+    padding: 3.5em 3.5em 0 3.5em; // take out bottom padding so the about box can live there
     text-align: center;
 
     .hero-copy {
@@ -58,6 +58,34 @@
     button {
       @include button(flat, $base-accent-color);
       padding: 0.7em 1em;
+    }
+
+    .hero-footer {
+      color: $hero-color;
+      display: block;
+      @include span-columns(10);
+      @include shift(1);
+      @include omega;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: transparentize($dark-gray, 0.3);
+      font-style: italic;
+      .secondary-content {
+        padding: 0;
+        margin: 0 auto 0 auto !important;
+        display: inline;
+      }
+      .hero-about-button {
+        display: inline;
+        font-weight: bold;
+      }
+      form.button_to {
+        display: inline-block;
+      }
+    }
+    .hero-footer:hover, .hero-footer:focus {
+      background-color: transparentize($base-accent-color, 0.3);
+      // color: $base-accent-color;
     }
   }
 }
