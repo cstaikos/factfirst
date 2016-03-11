@@ -108,7 +108,7 @@
     <div class="permalink-left">
       <h2>Share this Fact</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus leo, fringilla a faucibus vel, placerat aliquet dui. Ut sed fermentum tellus, vitae sagittis urna. Sed bibendum nisi ac nisi lacinia ultrices. In vel libero ac mi viverra ullamcorper ac sed eros. In ligula augue, eleifend a lacus sed, aliquam fringilla magna. Nulla mollis nisi risus.</p>
-      <p><a href="<%= root_url[0..-2] + asset_path("fact_photos/#{@fact.id}.png") %>">This will be a copy box ala github. The image will be a modal.</a></p>
+      <p><a href="<%= "/public/imagemagick/fact_photos/#{@fact.id}.png" %>">This will be a copy box ala github. The image will be a modal.</a></p>
     </div>
     <div id="fact-image">
       <%= image_tag "/public/imagemagick/fact_photos/#{@fact.id}.png", width: 224, height: 168 %>
