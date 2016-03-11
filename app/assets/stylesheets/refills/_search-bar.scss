@@ -1,6 +1,6 @@
 form.search-bar {
   ///////////////////////////////////////////////////////////////////////////////////
-  $base-border-color: gainsboro !default;
+  $base-border-color: #006668;
   $base-border-radius: 3px !default;
   $base-line-height: 1.5em !default;
   $base-accent-color: #006668 !default;
@@ -8,19 +8,32 @@ form.search-bar {
   //////////////////////////////////////////////////////////////////////////////////
 
   $search-bar-border-color: $base-border-color;
-  $search-bar-border: 1px solid $search-bar-border-color;
+  $search-bar-border: 0px solid $search-bar-border-color;
   $search-bar-background: lighten($search-bar-border-color, 10%);
 
   position: relative;
+
+  ::-webkit-input-placeholder {
+   color: #FFF;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+     color: #FFF;
+  }
+  ::-moz-placeholder {  /* Firefox 19+ */
+     color: #FFF;
+  }
+  :-ms-input-placeholder {
+     color: #FFF;
+  }
 
   input[type=search] {
     @include appearance(none);
     @include box-sizing(border-box);
     @include transition(border-color);
-    background-color: white;
+    background-color: transparentize(#fff, 0.7);
     border-radius: $base-border-radius;
     border-radius: $base-border-radius;
-    border: 1px solid $base-border-color;
+    border: 0px solid $base-border-color;
     display: block;
     font-size: 1em;
     font-style: italic;
@@ -31,7 +44,7 @@ form.search-bar {
   }
 
   input {
-    color: #444;/* 1 */
+    color: #FFF;/* 1 */
     font: inherit;/* 2 */
     margin: 0;/* 3 */
   }
