@@ -112,7 +112,7 @@
       <p><a href="<%= root_url[0..-2] + asset_path("fact_photos/#{@fact.id}.png") %>">This will be a copy box ala github. The image will be a modal.</a></p>
     </div>
     <div id="fact-image">
-      <%= image_tag "imagemagick/fact_photos/#{@fact.id}.png", width: 224, height: 168 %>
+      <%= image_tag "/public/imagemagick/fact_photos/#{@fact.id}.png", width: 224, height: 168 %>
     </div>
   </div>
 
