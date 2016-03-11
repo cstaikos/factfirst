@@ -37,21 +37,33 @@
 
 </script>
 
-<%= render 'refills/hero' %>
 
-<%= render 'refills/flex_boxes' %>
+  <%= render 'refills/hero' %>
 
-<hr/>
-<h2 class="transition">Popular Facts</h2>
+  <%= render 'refills/flex_boxes' %>
 
-<%= render @popular_facts %>
 
-<hr/>
-<h2 class="transition">Political Facts</h2>
+  <div class="text-wrapper">
 
-<%= render @political_facts %>
+  <hr/>
+  <h2 class="transition">Most Popular Facts</h2>
 
-<hr/>
-<h2 class="transition">New Facts</h2>
+  <div class="home-page-fact-boxes">
+    <%= render @popular_facts %>
+  </div>
 
-<%= render @new_facts %>
+  <hr/>
+  <h2 class="transition">Latest Political Facts</h2>
+
+  <div class="home-page-fact-boxes">
+    <%= render @political_facts %>
+  </div>
+
+  <hr/>
+  <h2 class="transition">Newest Facts</h2>
+
+  <div class="home-page-fact-boxes">
+    <%= render @new_facts %>
+  </div>
+
+</div>

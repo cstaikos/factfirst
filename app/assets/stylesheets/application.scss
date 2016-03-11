@@ -179,3 +179,11 @@ hr.transition + h2 {
     right: 0;
   }
 }
+
+.home-page-fact-boxes {
+  margin-top: 20px;
+  @include clearfix;
+  .fact-boxes {
+    margin-bottom: 0;
+  }
+}
