@@ -10,7 +10,7 @@
         <h2 class="stats-flex-title-2">Recent facts posted:</h2>
         <ul>
           <% @user.facts.last(10).each do |fact| %>
-            <li><strong><%= fact.score %>%&nbsp;</strong><%= link_to fact.body, fact %></li>
+            <li><span class="stats-flex-title-2"><%= fact.score %>%&nbsp;</span><%= link_to fact.body, fact %></li>
             <br>
           <% end %>
         </ul>
@@ -25,9 +25,7 @@
         <ul>
           <% @user.evidences.last(10).each do |evidence| %>
             <li>
-              <strong>
-                <%= evidence.upvotes %> upvotes, <%= evidence.downvotes %> downvotes&nbsp;
-              </strong>
+              <span class="stats-flex-title-3"><%= evidence.upvotes %> upvotes, <%= evidence.downvotes %> downvotes&nbsp;</span>
               <p><a href="<%= evidence.url %>"><%= evidence.url%></a></p>
               <p><%= evidence.support ? 'Supporting' : 'Refuting' %> evidence attached to: <%= link_to evidence.fact.body, evidence.fact %></p>
               <br>
@@ -45,7 +43,7 @@
           <% @user.votes.last(10).each do |vote| %>
             <li>
               <p>
-                <%= vote.upvote ? 'Upvoted' : 'Downvoted' %> <a href="<%= vote.evidence.url %>"><%= vote.evidence.url%></a>, <br>
+                <span class="stats-flex-title-3"><%= vote.upvote ? 'Upvoted' : 'Downvoted' %></span> <a href="<%= vote.evidence.url %>"><%= vote.evidence.url%></a>, <br>
                 on <%= link_to vote.evidence.fact.body, vote.evidence.fact %>
               </p>
             </li>
@@ -61,7 +59,6 @@
           <ul>
             <% @user.favorites.each do |fact| %>
                 <%= render fact %>
-                <br>
             <% end %>
           </ul>
       </div>
