@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315201151) do
+ActiveRecord::Schema.define(version: 20160315202931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20160315201151) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "evidences", ["fact_id"], name: "index_evidences_on_fact_id", using: :btree
+  add_index "evidences", ["user_id"], name: "index_evidences_on_user_id", using: :btree
+
   create_table "facts", force: :cascade do |t|
     t.string   "body"
     t.integer  "user_id"
@@ -40,6 +43,11 @@ ActiveRecord::Schema.define(version: 20160315201151) do
     t.integer  "score"
     t.integer  "category_id"
   end
+
+  add_index "facts", ["category_id"], name: "index_facts_on_category_id", using: :btree
+  add_index "facts", ["created_at"], name: "index_facts_on_created_at", using: :btree
+  add_index "facts", ["score"], name: "index_facts_on_score", using: :btree
+  add_index "facts", ["user_id"], name: "index_facts_on_user_id", using: :btree
 
   create_table "facts_users", force: :cascade do |t|
     t.integer "fact_id"
@@ -72,5 +80,8 @@ ActiveRecord::Schema.define(version: 20160315201151) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "votes", ["evidence_id"], name: "index_votes_on_evidence_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end
