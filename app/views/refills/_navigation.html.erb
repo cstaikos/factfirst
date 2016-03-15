@@ -32,10 +32,7 @@
 
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
       <% else %>
-          <!--<a href="<%# new_user_session_path %>" class="login">Login</a>-->
-          <!--<a href="<%# new_user_registration_path %>" class="sign-up">Sign Up</a>-->
-          <%= render 'refills/modal' %>
-          <%= render 'refills/modal_login' %>
+          <%= render 'refills/modal_authenticate' %>
     <% end %>
 
     </div>
