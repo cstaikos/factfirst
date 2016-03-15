@@ -17,7 +17,7 @@ $(function() {
 });
 
 $(function() {
-    $("#modal-2").on("change", function() {
+    $("#auth-modal").on("change", function() {
         if ($(this).is(":checked")) {
             $("body").addClass("modal-open");
         } else {
