@@ -113,7 +113,7 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus leo, fringilla a faucibus vel, placerat aliquet dui. Ut sed fermentum tellus, vitae sagittis urna. Sed bibendum nisi ac nisi lacinia ultrices. In vel libero ac mi viverra ullamcorper ac sed eros. In ligula augue, eleifend a lacus sed, aliquam fringilla magna. Nulla mollis nisi risus.</p>
       <!-- Clipboard Target -->
       <div class="input-group">
-        <input id="copy-fact-image" value="https://github.com/zenorocha/clipboard.js.git">
+        <input id="copy-fact-image" value="<%= "#{root_url}public/imagemagick/fact_photos/#{@fact.id}.png" %>">
         <!-- Clipboard Trigger -->
         <span class="input-group-button">
           <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
