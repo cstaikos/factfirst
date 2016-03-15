@@ -17,3 +17,21 @@
 //= require refills/navigation
 //= require flashnotice
 //= require odometer.min.js
+
+$(document).on('ready', function(){
+
+    //$("#sign_up_user").on("ajax:success", function(e, data, status, xhr) {
+    //    if (data.success) {
+    //        $('.modal').hide();
+    //        $('#sign_up_button').hide();
+    //        return $('#submit_comment').slideToggle(1000, "easeOutBack");
+    //    } else {
+    //        return alert('failure!');
+    //    }
+    //});
+
+})
+
+
+
+
