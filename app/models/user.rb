@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :facts
-  has_many :comments
   has_many :evidences
   has_many :votes
   has_many :evidence_votes, through: :evidences, source: :votes
