@@ -111,7 +111,12 @@
     <div class="permalink-left">
       <h2>Share this Fact</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus leo, fringilla a faucibus vel, placerat aliquet dui. Ut sed fermentum tellus, vitae sagittis urna. Sed bibendum nisi ac nisi lacinia ultrices. In vel libero ac mi viverra ullamcorper ac sed eros. In ligula augue, eleifend a lacus sed, aliquam fringilla magna. Nulla mollis nisi risus.</p>
-      <p><a href="<%= "/public/imagemagick/fact_photos/#{@fact.id}.png" %>">This will be a copy box ala github. The image will be a modal.</a></p>
+      <!-- Clipboard Target -->
+      <input id="copy-fact-image" value="https://github.com/zenorocha/clipboard.js.git">
+      <!-- Clipboard Trigger -->
+      <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
+          <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
+      </button>
     </div>
     <div id="fact-image">
       <%= image_tag "/public/imagemagick/fact_photos/#{@fact.id}.png", width: 224, height: 168 %>
@@ -132,3 +137,10 @@
           transform:rotate(<%= -130 + ((@fact.score/100.0) * 260) %>deg);
       }
   }</style>
+
+  <script>
+    // Call clipboard.js on buttons
+    (function(){
+      new Clipboard('#copy-fact-image-button');
+    })();
+  </script>
