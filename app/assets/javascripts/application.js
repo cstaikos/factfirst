@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require cocoon
 //= require refills/navigation
 //= require flashnotice
 //= require odometer.min.js
