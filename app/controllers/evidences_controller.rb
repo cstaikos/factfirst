@@ -6,6 +6,21 @@ class EvidencesController < ApplicationController
     @evidence = @fact.evidences.build(evidence_params)
     @evidence.user = current_user
 
+    begin
+      timeout(5) do
+        doc = Nokogiri::HTML(open(@evidence.url))
+        
+        og_title = doc.css("meta[property='og:title']")
+        og_description = doc.css("meta[property='og:description']")
+
+        @evidence.title = og_title.first.attributes["content"] if og_title.length > 0
+        @evidence.description = og_description.first.attributes["content"] if og_description.length > 0
+      end
+    rescue Timeout::Error
+      puts 'Timeout error'
+    end
+
+
     if @evidence.save
       redirect_to @fact
     else
