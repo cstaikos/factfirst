@@ -1,4 +1,8 @@
 class SessionsController < Devise::SessionsController
+  # Note - Maybe we should remove this skip_before_filter?
+  # without it, we get an 'invalid authenticity token' error on logout...
+  skip_before_filter :verify_authenticity_token, :only => :destroy
+
   prepend_before_action :require_no_authentication, only: [:new, :create]
   prepend_before_action :allow_params_authentication!, only: :create
   prepend_before_action :verify_signed_out_user, only: :destroy
@@ -18,7 +22,7 @@ class SessionsController < Devise::SessionsController
 
     # set_flash_message!(:notice, :signed_in)
 
-    flash[:notice] = "Signed in Successfully"
+    flash[:notice] = "Logged in Successfully"
     sign_in(resource_name, resource)
     yield resource if block_given?
 
