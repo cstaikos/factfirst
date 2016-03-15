@@ -1,8 +1,4 @@
 
-
-
-  <%# render 'filter_nav' %>
-
     <%= render 'refills/categories_filter_buttons' %>
 
     <%= render 'refills/sort_filter_buttons' %>
@@ -14,7 +10,7 @@
     <ul id="facts-list" class="fact-box-wrapper">
       <%= render @facts %>
     </ul>
-    
+
     <div id="index-pagination">
       <%= paginate @facts %>
     </div>

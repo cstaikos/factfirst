@@ -1,4 +1,4 @@
-<div class="filter-buttons">
+<div class="filter-buttons" data-selected="popular">
   <h4>Sort by:</h4>
   <div class="button-group">
     <label>
@@ -14,7 +14,7 @@
           :method => 'get',
           :name => 'sort',
           :remote => true,
-          :url => facts_path + "?sort=debated"} %>
+          :url => facts_path + "?sort=debated" } %>
       <span id="sort-debated" class="button-group-item<%= ' is-selected' if params[:sort] && params[:sort].downcase == 'debated' %>">Debated</span>
     </label>
 
