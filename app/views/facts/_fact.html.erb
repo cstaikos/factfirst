@@ -1,6 +1,6 @@
 <div class="fact-boxes">
   <a href="<%= fact_path(fact) %>" class="fact-box">
-    <p class="fact-name"><%= truncate(fact.body, length: 80) %></p>
+    <p class="fact-name"><strong><%= truncate(fact.body, length: 80) %></strong></p>
     <div class="fact-box-score"><span>TRUTHINESS:</span><%= fact.score %></div>
     <div class="fact-box-score"><span>POPULARITY:</span><%= fact.total_votes %></div>
     <div class="fact-box-score"><span>CATEGORY:</span><%= fact.category.name %></div>
