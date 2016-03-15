@@ -8,11 +8,13 @@ class EvidencesController < ApplicationController
 
     begin
       timeout(5) do
-        doc = Nokogiri::HTML(open(@evidence.url, read_timeout: 10))
-        puts doc.at_css("title").text
+        doc = Nokogiri::HTML(open(@evidence.url))
+        @evidence.title =  doc.at_css("title").text
       end
     rescue Timeout::Error
       puts 'Timeout error'
+      @evidence.title = @evidence.url
+      @evidence.description = @evidence.url
     end
 
 
