@@ -1,11 +1,5 @@
 $(document).on('ready', function(){
-    var formHeight = $('.form-wrapper').height();
-    var textWrapHeight = $('.application-wrapper').height();
 
-    //Accounts for pages with very little content
-    if(textWrapHeight < 800){
-        $('.application-wrapper').css('height', '90vh');
-    }
 
     //Handles the special case of nested forms on the add fact page
     $('.links').on('click', function(){
@@ -23,3 +17,12 @@ $(document).on('ready', function(){
 
 });
 
+muut(function() {
+  var formHeight = $('.form-wrapper').height();
+  var textWrapHeight = $('.application-wrapper').height();
+
+  //Accounts for pages with very little content
+  if(textWrapHeight < 800){
+      $('.application-wrapper').css('height', '90vh');
+  }
+});
