@@ -13,15 +13,6 @@ class VotesController < ApplicationController
       block_vote = true
     end
 
-    # If user submitted the evidence, they cannot vote on it
-    if current_user == @evidence.user
-      respond_to do |format|
-        format.js { render template: 'votes/vote_denied.js.erb', locals: {message: 'You cannot vote on evidence that you submitted!'} }
-        format.html { redirect_to fact_path(@evidence.fact_id) }
-      end
-      block_vote = true
-    end
-
     unless block_vote
       @vote = Vote.new(vote_params)
       @vote.user = current_user

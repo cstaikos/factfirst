@@ -9,7 +9,7 @@ class EvidencesController < ApplicationController
     begin
       timeout(5) do
         doc = Nokogiri::HTML(open(@evidence.url))
-        
+
         og_title = doc.css("meta[property='og:title']")
         og_description = doc.css("meta[property='og:description']")
 
@@ -22,6 +22,8 @@ class EvidencesController < ApplicationController
 
 
     if @evidence.save
+      @evidence.votes.create(upvote: true, user: current_user)
+      @evidence.fact.update_score
       redirect_to @fact
     else
       flash[:alert] = @evidence.errors.full_messages.to_sentence
