@@ -1,1 +1,6 @@
 console.log("create.js.erb create session!")
+//$('.modal').hide();
+$('#flash-messages').show();
+$('.navigation-tools').html('<%= j render 'layouts/nav_tools_user_signed_in' %>');
+$('#flash-messages').html('<%= j render 'refills/flashes' %>');
+$('#flash-messages').delay(5000).fadeOut(400);
