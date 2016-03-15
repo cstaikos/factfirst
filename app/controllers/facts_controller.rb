@@ -60,7 +60,6 @@ class FactsController < ApplicationController
   def show
     @fact = Fact.find(params[:id])
     @evidence = @fact.evidences.build
-    @new_comment = Comment.new
   end
 
   def create
