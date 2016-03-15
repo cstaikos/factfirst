@@ -1,5 +1,14 @@
+// Populate list of facts with what matches category/sort/search from controller
 $("#facts-list").html('<%= j render @facts %>');
+
+// Add selected class to current filter buttons and remove whatever was previously selected
 $(".is-selected").toggleClass("is-selected");
 $("#category-<%= params[:category] ? params[:category] : 'all' %>").toggleClass("is-selected");
 $("#sort-<%= params[:sort] ? params[:sort] : 'popular' %>").toggleClass("is-selected");
+
+// Re-render pagination
 $("#index-pagination").html('<%= j paginate(@facts) %>')
+
+// Set current sort/category params
+$('.category-buttons').attr('data-selected', '<%= params[:category] %>');
+$('.filter-buttons').attr('data-selected', '<%= params[:sort] %>');
