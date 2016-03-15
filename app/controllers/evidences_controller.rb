@@ -6,6 +6,16 @@ class EvidencesController < ApplicationController
     @evidence = @fact.evidences.build(evidence_params)
     @evidence.user = current_user
 
+    begin
+      timeout(5) do
+        doc = Nokogiri::HTML(open(@evidence.url, read_timeout: 10))
+        puts doc.at_css("title").text
+      end
+    rescue Timeout::Error
+      puts 'Timeout error'
+    end
+
+
     if @evidence.save
       redirect_to @fact
     else
