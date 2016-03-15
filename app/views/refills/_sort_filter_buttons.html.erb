@@ -6,7 +6,7 @@
           :method => 'get',
           :remote => true,
           :url => facts_path } %>
-      <span id="sort-popular" class="button-group-item<%= ' is-selected' unless params[:sort] %>">Popular</span>
+      <span id="sort-popular" class="button-group-item<%= ' is-selected' if !params[:sort] || params[:sort].downcase == 'popular' %>">Popular</span>
     </label>
 
     <label>

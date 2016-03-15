@@ -5,15 +5,18 @@ $(document).on('ready page:load', function(){
   }, 10)
 
 
+  // Grab current filter params
+  currentCategory = $('.category-buttons').attr('data-selected');
+  currentSort = $('.filter-buttons').attr('data-selected');
+
+  // Trigger search filter while typing
   $("#search-index").on('keyup', function() {
     if ($(this).val().length > 1) {
       $.ajax({
-        url: '/facts?query=' + encodeURIComponent( $(this).val() ),
+        url: '/facts?category=' + currentCategory + '&sort=' + currentSort + '&query=' + encodeURIComponent( $(this).val() ),
         dataType: 'script'
       });
     }
   });
-
-
 
 });
