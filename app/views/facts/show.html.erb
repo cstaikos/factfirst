@@ -112,11 +112,15 @@
       <h2>Share this Fact</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus leo, fringilla a faucibus vel, placerat aliquet dui. Ut sed fermentum tellus, vitae sagittis urna. Sed bibendum nisi ac nisi lacinia ultrices. In vel libero ac mi viverra ullamcorper ac sed eros. In ligula augue, eleifend a lacus sed, aliquam fringilla magna. Nulla mollis nisi risus.</p>
       <!-- Clipboard Target -->
-      <input id="copy-fact-image" value="https://github.com/zenorocha/clipboard.js.git">
-      <!-- Clipboard Trigger -->
-      <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
-          <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
-      </button>
+      <div class="input-group">
+        <input id="copy-fact-image" value="https://github.com/zenorocha/clipboard.js.git">
+        <!-- Clipboard Trigger -->
+        <span class="input-group-button">
+          <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
+              <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
+          </button>
+        </span>
+      </div>
     </div>
     <div id="fact-image">
       <%= image_tag "/public/imagemagick/fact_photos/#{@fact.id}.png", width: 224, height: 168 %>

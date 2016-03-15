@@ -199,6 +199,22 @@ hr.transition + h2 {
   }
 }
 
+.input-group {
+  display: table;
+}
+
+.input-group input:first-child, .input-group-button:first-child .clippy-btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group-button {
+  // vertical-align: middle;
+}
+.input-group input, .input-group-button {
+    display: table-cell;
+}
+
 .clippy-btn {
   position: relative;
   display: inline-block;
@@ -232,4 +248,8 @@ hr.transition + h2 {
   margin-top: -3px;
   position: relative;
   top: 3px;
+}
+
+#copy-fact-image {
+  width: 500px;
 }
