@@ -15,16 +15,6 @@
       <% end %>
     </div>
 
-    <div id="evidences">
-      <%= f.fields_for :evidences do |evidence_fields| %>
-        <%= render 'evidence_fields', f: evidence_fields %>
-      <% end %>
-
-      <div class="links">
-        <%= link_to_add_association "Add Evidence", f, :evidences %>
-      </div>
-    </div>
-
     <div>
       <%= f.submit %>
     </div>
