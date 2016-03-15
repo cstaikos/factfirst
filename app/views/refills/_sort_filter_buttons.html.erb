@@ -2,10 +2,11 @@
   <h4>Sort by:</h4>
   <div class="button-group">
     <label>
-      <%= button_to '', {}, {
+      <%= button_to 'popular', {}, {
           :method => 'get',
+          :name => 'sort',
           :remote => true,
-          :url => facts_path } %>
+          :url => facts_path + "?sort=popular"  } %>
       <span id="sort-popular" class="button-group-item<%= ' is-selected' if !params[:sort] || params[:sort].downcase == 'popular' %>">Popular</span>
     </label>
 

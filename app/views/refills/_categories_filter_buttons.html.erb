@@ -2,9 +2,9 @@
   <h4>Browse Facts by Category:</h4>
   <div class="button-group">
     <label>
-      <%= button_to '', {}, {
+      <%= button_to 'all', {}, {
           :type => 'radio',
-          :name => '',
+          :name => 'category',
           :method => 'get',
           :remote => true,
           :url => facts_path } %>
