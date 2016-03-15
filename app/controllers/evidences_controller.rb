@@ -9,12 +9,15 @@ class EvidencesController < ApplicationController
     begin
       timeout(5) do
         doc = Nokogiri::HTML(open(@evidence.url))
-        @evidence.title =  doc.at_css("title").text
+        
+        og_title = doc.css("meta[property='og:title']")
+        og_description = doc.css("meta[property='og:description']")
+
+        @evidence.title = og_title.first.attributes["content"] if og_title.length > 0
+        @evidence.description = og_description.first.attributes["content"] if og_description.length > 0
       end
     rescue Timeout::Error
       puts 'Timeout error'
-      @evidence.title = @evidence.url
-      @evidence.description = @evidence.url
     end
 
 
