@@ -11,6 +11,71 @@
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
+  display: inline-block;
+
+  .login-form{
+    display: inline-block;
+    float: right;
+    width: 47%;
+    margin-right: 0px;
+    h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    #{$all-text-inputs},
+    select[multiple] {
+      background-color: $base-background-color;
+      border: $base-border;
+      border-radius: $base-border-radius;
+      box-shadow: $form-box-shadow;
+      box-sizing: border-box;
+      font-family: $base-font-family;
+      font-size: $base-font-size;
+      margin-bottom: $small-spacing;
+      padding: 0.3em;
+      transition: border-color $base-duration $base-timing;
+      width: 100%;
+    }
+
+    #user_remember_me{
+      //display: inline-block;
+      float: left;
+    }
+
+    #remember_me_label{
+      display: inline-block;
+      padding-bottom: 0px;
+      position: relative;
+      bottom: 5px;
+    }
+
+  }
+
+  .signup-form{
+    display: inline-block;
+    float: left;
+    width: 47%;
+    h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    #{$all-text-inputs},
+    select[multiple] {
+      background-color: $base-background-color;
+      border: $base-border;
+      border-radius: $base-border-radius;
+      box-shadow: $form-box-shadow;
+      box-sizing: border-box;
+      font-family: $base-font-family;
+      font-size: $base-font-size;
+      margin-bottom: $small-spacing;
+      padding: 0.3em;
+      transition: border-color $base-duration $base-timing;
+      width: 100%;
+    }
+  }
 
   h1 {
     margin: 0;
@@ -22,7 +87,7 @@
   }
   //////////////////////////////////////////////////////////////////////////////////
 
-  $modal-padding: 3em;
+  $modal-padding: 1em;
   $modal-background: $base-background-color;
   $modal-close-color: $light-gray;
   $modal-image-height: 135px;
