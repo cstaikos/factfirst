@@ -114,7 +114,7 @@
       <%= image_tag "/public/imagemagick/fact_photos/#{@fact.id}.png", width: 224, height: 168 %>
     </div>
   </div>
-
+<!--
   <div class="add-comment">
     <h2 class="subheader">Discuss this Fact</h2>
     <p>Add a comment to join the discussion!</p>
@@ -126,7 +126,10 @@
     <div id="comment-list" class="nodisplay">
       <%= render @fact.comments %>
     </div>
-  </div>
+  </div> -->
+
+  <a href="https://muut.com/i/truthometer/comments" class="muut" type="dynamic">Comments</a>
+  <script src="//cdn.muut.com/1/moot.min.js"></script>
 
   <!-- TODO: Figure out how to not have this style tag in the view...-->
   <style>
