@@ -4,8 +4,6 @@ class Fact < ActiveRecord::Base
   has_many :evidences, dependent: :destroy
   has_and_belongs_to_many :favorited_users, class_name: 'User'
 
-  accepts_nested_attributes_for :evidences, reject_if: :all_blank, allow_destroy: true
-
   after_create :set_defaults
 
   validates :category, presence: true

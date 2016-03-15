@@ -71,20 +71,11 @@ class FactsController < ApplicationController
     @fact.user = current_user
 
     if @fact.save
-      # Make sure any evidences attached to a new fact are associated with current user
-      @fact.evidences.each do |evidence|
-        evidence.user = current_user
-        evidence.save
-      end
-
       flash[:notice] = 'Fact successfully created!'
       redirect_to fact_path(@fact)
-
     else
-
       flash.now[:alert] = @fact.errors.full_messages.to_sentence
       render :new
-
     end
   end
 
