@@ -107,8 +107,12 @@ class FactsController < ApplicationController
   end
 
   def destroy
-    @fact.destroy
-    redirect_to facts_url notice: 'Fact Successfully Deleted'
+    if @fact.total_votes > 0
+      redirect_to @fact, alert: 'Cannot delete fact that has votes - contact admin if you feel this is necessary'
+    else
+      @fact.destroy
+      redirect_to facts_url notice: 'Fact Successfully Deleted'
+    end
   end
 
   private
