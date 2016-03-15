@@ -14,8 +14,9 @@
 
   <%= render 'refills/navigation' %>
 
-  <%= render 'refills/flashes' %>
-
+  <div id="flash-messages">
+    <%= render 'refills/flashes' %>
+  </div>
   <% if current_page?(root_url) %>
     <%= yield %>
   <% else %>
