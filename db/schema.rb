@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315202931) do
+ActiveRecord::Schema.define(version: 20160315214657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 20160315202931) do
     t.boolean  "support"
     t.integer  "user_id"
     t.integer  "fact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+    t.string   "title"
   end
 
   add_index "evidences", ["fact_id"], name: "index_evidences_on_fact_id", using: :btree
