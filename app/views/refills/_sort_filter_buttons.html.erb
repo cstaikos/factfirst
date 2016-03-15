@@ -2,9 +2,8 @@
   <h4>Sort by:</h4>
   <div class="button-group">
     <label>
-      <%= button_to 'popular', {}, {
+      <%= button_to '', {}, {
           :method => 'get',
-          :name => 'sort',
           :remote => true,
           :url => facts_path } %>
       <span id="sort-popular" class="button-group-item<%= ' is-selected' unless params[:sort] %>">Popular</span>
