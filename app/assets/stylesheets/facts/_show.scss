@@ -109,6 +109,16 @@
   width: 80%;
   display: table-cell;
   padding: 0 8px;
+  .evidence-title {
+    margin: 10px 0 5px 0;
+
+  }
+  .evidence-url {
+    margin: 0;
+  }
+  .evidence-description {
+    margin: 0;
+  }
 }
 
 .add-evidence-box {
