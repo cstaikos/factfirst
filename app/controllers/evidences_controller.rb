@@ -6,6 +6,7 @@ class EvidencesController < ApplicationController
     @evidence = @fact.evidences.build(evidence_params)
     @evidence.user = current_user
 
+    # Grab metadata from evidence url - 5 second limit on request, otherwise save empty title/description
     begin
       timeout(5) do
         doc = Nokogiri::HTML(open(@evidence.url))
@@ -20,10 +21,34 @@ class EvidencesController < ApplicationController
       puts 'Timeout error'
     end
 
+    # Grab host
+    host = URI(@evidence.url).host
+
+    # Check if host is a valid domain
+    if PublicSuffix.valid?(host)
+      domain = PublicSuffix.parse(host).domain
+    else
+      flash[:alert] = "Error: #{host} seems to be an invalid domain"
+      redirect_to fact_path(@fact) and return
+    end
 
     if @evidence.save
+      # Auto upvote submitted evidence
       @evidence.votes.create(upvote: true, user: current_user)
       @evidence.fact.update_score
+
+      # Check if source domain exists in DB - if it does, add association - if not, create it and add association
+      existing_source = Source.where(domain: domain)
+      if existing_source.count > 0
+        @evidence.source = existing_source.first
+      else
+        new_source = Source.create(domain: domain)
+        new_source.save
+        @evidence.source = new_source
+      end
+
+      @evidence.save
+
       redirect_to @fact
     else
       flash[:alert] = @evidence.errors.full_messages.to_sentence
