@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/home' => 'static_pages#home', as: 'home'
   get '/about' => 'static_pages#about', as: 'about'
 
+  # get '/current_user' => 'users#current_user'
+
   delete '/favorites/:fact_id' => 'favorites#destroy', as: 'destroy_favorite'
   post '/favorites/:fact_id' => 'favorites#create', as: 'create_favorite'
 
