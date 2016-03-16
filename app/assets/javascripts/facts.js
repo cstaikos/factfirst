@@ -20,7 +20,7 @@ $(document).on('ready page:load', function(){
         url: '/facts?category=' + currentCategory + '&sort=' + currentSort + '&query=' + encodeURIComponent( $(this).val() ),
         dataType: 'script',
         beforeSend: function(){
-            $('#spinner').show();
+            $('#spinner').show().css({display: 'block'});
             $('#facts-list').empty();
         },
         complete: function(){
