@@ -15,7 +15,8 @@
       </div>
       <ul id="js-navigation-menu" class="navigation-menu show">
         <li class="nav-link"><a href="<%= facts_path %>">Browse Facts</a></li>
-        <li class="nav-link"><a href="<%= new_fact_path %>">Add New Fact</a></li>
+        <li class="nav-link"><a href="<%= new_fact_path %>"
+                                class="<%= "requires-login" if !current_user %>">Add New Fact</a></li>
         <li class="nav-link"><a href="<%= about_path %>">About</a></li>
       </ul>
     </nav>
@@ -23,17 +24,18 @@
 
       <% if user_signed_in? %>
           <!--NOTE enter user_path when created -->
-          <span id="welcome-message">Welcome, <%= link_to current_user.display_name, user_path(current_user) %></span>
+          <span id="welcome-message">Welcome, <%= link_to current_user.display_name, user_path(current_user)
+                                                  %></span>
             <span><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
-                width: '20',
-                height:'20',
+#                 width: '20',
+#                 height:'20',
                 id: "user-image-nav"%></span>
 
 
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
       <% else %>
           <%= render 'refills/modal_authenticate' %>
-    <% end %>
+      <% end %>
 
     </div>
   </div>
