@@ -61,6 +61,8 @@
       margin-bottom: 10px;
     }
 
+
+
     #{$all-text-inputs},
     select[multiple] {
       background-color: $base-background-color;
@@ -170,12 +172,14 @@
     max-height: 95%;
     overflow: auto;
     padding: $modal-padding / 2;
+    padding-top: 0;
     position: relative;
     width: 95%;
 
     @include media($medium-screen) {
       max-height: 70%;
       padding: $modal-padding;
+      padding-top: 0;
       width: 60%;
     }
 
@@ -200,6 +204,7 @@
       @include media($medium-screen) {
         @include columns(2 8em);
       }
+
     }
 
     a.cta {
@@ -210,6 +215,18 @@
 
       &:last-child {
         padding: 0 2em;
+      }
+    }
+
+
+    .auth-error-messages {
+      height: 25px;
+      margin-top: 0px;
+      position: relative;
+      top: 5px;
+      text-align: center;
+      span {
+        color: firebrick;
       }
     }
   }
