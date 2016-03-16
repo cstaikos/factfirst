@@ -253,10 +253,14 @@ hr.transition + h2 {
   float: left;
   display: inline-block;
   clear: both;
-  padding-right: 3px;
   padding-top: 6px;
+  width: 100px;
 }
 
 #copy-fact-image {
+  width: 500px;
+}
+
+#copy-fact-iframe {
   width: 500px;
 }

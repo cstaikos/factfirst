@@ -169,7 +169,7 @@
   margin-bottom: 15px;
   border-left: 10px solid #092E4B;
   background-color: #f9f9f9;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .individual-comment {
@@ -227,6 +227,7 @@
     font-weight: bold;
     padding: 0px;
     margin: 0px;
+    padding-top: 10px;
   }
   @include span-columns(9);
   p {
@@ -238,7 +239,7 @@
 }
 
 #fact-image {
-  padding-top: 10px;
+  padding-top: 15px;
   @include span-columns(3);
   margin-bottom: 7px;
 }
