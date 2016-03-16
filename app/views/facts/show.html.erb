@@ -114,11 +114,12 @@
   <div class="permalink">
     <div class="permalink-left">
       <h2>Share this Fact</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus leo, fringilla a faucibus vel, placerat aliquet dui. Ut sed fermentum tellus, vitae sagittis urna. Sed bibendum nisi ac nisi lacinia ultrices. In vel libero ac mi viverra ullamcorper ac sed eros. In ligula augue, eleifend a lacus sed, aliquam fringilla magna. Nulla mollis nisi risus.</p>
+      <p>Continue the conversation! Share a link to our dynamically generated image that will automatically update its content when new evidence is created and more people vote. Think of it as a user-driven infographic.</p>
       <!-- Clipboard Target -->
       <div class="input-group">
         <input id="copy-fact-image" value="<%= "#{root_url}public/imagemagick/fact_photos/#{@fact.id}.png" %>">
         <!-- Clipboard Trigger -->
+        <label class="input-group-label" for="copy-fact-image-button">Image URL:</label>
         <span class="input-group-button">
           <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
               <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>

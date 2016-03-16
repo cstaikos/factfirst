@@ -249,6 +249,14 @@ hr.transition + h2 {
   top: 3px;
 }
 
+.input-group-label {
+  float: left;
+  display: inline-block;
+  clear: both;
+  padding-right: 3px;
+  padding-top: 6px;
+}
+
 #copy-fact-image {
   width: 500px;
 }
