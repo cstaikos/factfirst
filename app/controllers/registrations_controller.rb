@@ -12,7 +12,10 @@ class RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_up(resource_name, resource)
 
+        @current_user = current_user
+
         flash.now[:success] = "Successfully Signed In!"
+
         respond_to do |format|
           format.js { render template: '/users/registrations/create.js.erb'}
           format.html {}
@@ -21,9 +24,11 @@ class RegistrationsController < Devise::RegistrationsController
         # return render :json => {:success => true}
 
       else
+
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
         expire_session_data_after_sign_in!
         return render :json => {:success => true}
+
       end
     else
       clean_up_passwords resource

@@ -126,6 +126,7 @@ class FactsController < ApplicationController
   def login_to_add_fact
     unless current_user
       redirect_to new_user_session_path, alert: "Please login to add a Fact!"
+      # render 'refills/_modal_authenticate'
     end
   end
 
