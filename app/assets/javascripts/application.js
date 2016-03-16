@@ -26,15 +26,7 @@ $(document).on('ready', function(){
           $("body").addClass("modal-open");
           $('#auth-modal').prop("checked", "true");
         }
-    });``
-
-//    $(".login-form").on("click", function() {
-//      $("#auth-modal").prop("checked", false);
-//    });
-//
-//    $(".signup-form").on("click", function() {
-//      $("#auth-modal").prop("checked", false);
-//    });
+    });
 
 });
 
