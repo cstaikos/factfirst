@@ -47,12 +47,4 @@ end
   )
 end
 
-125.times do
-  Comment.create(
-    body: Faker::Lorem.paragraph,
-    user: User.all.sample,
-    fact: Fact.all.sample
-  )
-end
-
 Fact.all.each { |fact| fact.update_score }
