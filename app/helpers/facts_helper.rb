@@ -18,9 +18,9 @@ module FactsHelper
 
   def query_details
     result = "<h2>Viewing <em>" +
-             (params[:category] || 'all') +
+             (params[:category] ? params[:category].capitalize : 'All') +
              "</em> facts, <em>" +
-             (params[:sort] || 'popular') +
+             (params[:sort] ? params[:sort].capitalize : 'Popular') +
              "</em> first"
 
     if params[:query]
