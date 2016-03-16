@@ -10,8 +10,8 @@ $(document).on('ready page:load', function(){
   currentSort = $('.filter-buttons').attr('data-selected');
 
   // Trigger search filter while typing
-  $("#search-index").on('keyup', function() {
-    if ($(this).val().length > 1) {
+  $("#search-index").on('input', function() {
+    if ($(this).val().length > 1 || $(this).val().length === 0) {
       $.ajax({
         url: '/facts?category=' + currentCategory + '&sort=' + currentSort + '&query=' + encodeURIComponent( $(this).val() ),
         dataType: 'script'

@@ -11,7 +11,7 @@ class FactsController < ApplicationController
 
     @facts = Fact.all
 
-    if params[:query] && params[:query].length > 2
+    if params[:query] && params[:query].length > 3
       @facts = @facts.where('body ILIKE ?', "%#{params[:query]}%")
     end
 
@@ -19,7 +19,7 @@ class FactsController < ApplicationController
       if params[:category].downcase == 'favorites'
         @facts = current_user.favorites
       else
-        @facts = @facts.where(category: Category.where(name: params[:category]) )
+        @facts = @facts.where(category: Category.where(name: params[:category]) ) unless params[:category].downcase == 'all'
       end
     end
 

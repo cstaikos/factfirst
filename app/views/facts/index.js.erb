@@ -12,3 +12,18 @@ $("#index-pagination").html('<%= j paginate(@facts) %>')
 // Set current sort/category params
 $('.category-buttons').attr('data-selected', '<%= params[:category] %>');
 $('.filter-buttons').attr('data-selected', '<%= params[:sort] %>');
+
+// Grab current sort/category/search params
+currentCategory = $('.category-buttons').attr('data-selected');
+currentSort = $('.filter-buttons').attr('data-selected');
+currentQuery = encodeURIComponent( $('#search-index').val() );
+
+// Set action on category buttons so they include sort param
+$('.category-buttons form').each(function(index) {
+  $(this).attr('action', 'facts/?sort=' + currentSort + '&query=' + currentQuery);
+});
+
+// Set action on sort buttons so they include category param
+$('.filter-buttons form').each(function(index) {
+  $(this).attr('action', 'facts/?category=' + currentCategory + '&query=' + currentQuery);
+});
