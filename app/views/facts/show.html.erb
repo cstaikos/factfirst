@@ -31,9 +31,13 @@
               <%= render 'vote_buttons', evidence: evidence %>
             </div>
             <div class="show-evidence">
-              <h4 class="evidence-title"><%= evidence.title %></h4>
-              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= truncate(evidence.url, length: 50)%></a></h4>
-              <p class="evidence-description"><%= evidence.description %></p>
+              <% if evidence.title != nil && evidence.description != nil %>
+                <a href="<%= evidence.url %>"><h4 class="evidence-title"><%= evidence.title %></h4></a>
+                <p class="evidence-description"><%= evidence.description %></p>
+              <% else %>
+                <%= "<h4 class='evidence-url'><a href='#{evidence.url}'>#{truncate(evidence.url, length: 50)}</a></h4>".html_safe %>
+                <p class="evidence-description">No site description found.</p>
+              <% end %>
               <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
 
@@ -54,12 +58,15 @@
             </div>
 
             <div class="show-evidence">
-              <h4 class="evidence-title"><%= evidence.title %></h4>
-              <h4 class="evidence-url"><a href="<%= evidence.url %>"><%= truncate(evidence.url, length: 50)%></a></h4>
-              <p class="evidence-description"><%= evidence.description %></p>
+              <% if evidence.title != nil && evidence.description != nil %>
+                <a href="<%= evidence.url %>"><h4 class="evidence-title"><%= evidence.title %></h4></a>
+                <p class="evidence-description"><%= evidence.description %></p>
+              <% else %>
+                <%= "<h4 class='evidence-url'><a href='#{evidence.url}'>#{truncate(evidence.url, length: 50)}</a></h4>".html_safe %>
+                <p class="evidence-description">No site description found.</p>
+              <% end %>
               <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
             </div>
-
         </li>
       <% end %>
       </ul>
