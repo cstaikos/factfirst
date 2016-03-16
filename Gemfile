@@ -24,6 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'kaminari'
 gem 'rmagick'
+gem 'public_suffix'
+gem 'figaro'
 
 
 # HTML5/CSS Framework

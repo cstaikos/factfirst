@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315214657) do
+ActiveRecord::Schema.define(version: 20160316182329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160315214657) do
     t.datetime "updated_at",  null: false
     t.text     "description"
     t.string   "title"
+    t.integer  "source_id"
   end
 
   add_index "evidences", ["fact_id"], name: "index_evidences_on_fact_id", using: :btree
@@ -54,6 +55,13 @@ ActiveRecord::Schema.define(version: 20160315214657) do
   create_table "facts_users", force: :cascade do |t|
     t.integer "fact_id"
     t.integer "user_id"
+  end
+
+  create_table "sources", force: :cascade do |t|
+    t.string   "domain"
+    t.integer  "wot_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
