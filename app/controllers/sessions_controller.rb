@@ -17,6 +17,27 @@ class SessionsController < Devise::SessionsController
     respond_with(resource, serialize_options(resource))
   end
 
+  def create
+    self.resource = warden.authenticate!(auth_options)
+
+    # set_flash_message!(:notice, :signed_in)
+    flash[:notice] = "Logged in Successfully!"
+
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+
+    @current_user = User.find_by(email: params[:user][:email])
+
+    respond_to do |format|
+      format.js { render template: '/users/sessions/create.js.erb'}
+      format.html {}
+    end
+
+
+    # respond_with resource, location: after_sign_in_path_for(resource)
+  end
+
+  # Create Refactor (keeping for reference until oauth is successfully implemented)
   # POST /resource/sign_in
   # def create
   #
@@ -43,17 +64,6 @@ class SessionsController < Devise::SessionsController
   #
   # end
 
-  def create
-    self.resource = warden.authenticate!(auth_options)
-    binding.pry
-    # set_flash_message!(:notice, :signed_in)
-    flash[:notice] = "Logged in Successfully!"
-    sign_in(resource_name, resource)
-    yield resource if block_given?
-    respond_with resource, location: after_sign_in_path_for(resource)
-  end
-
-
   # def create
   #   resource = User.find_for_database_authentication(email: params[:user][:email])
   #   return invalid_login_attempt unless resource
@@ -62,14 +72,9 @@ class SessionsController < Devise::SessionsController
   #
   #     sign_in :user, resource
   #
-  #     @current_user = User.find_by(email: params[:user][:email])
   #
   #     flash.now[:notice] = "Successfully logged in!"
   #
-  #     respond_to do |format|
-  #       format.js { render template: '/users/sessions/create.js.erb'}
-  #       format.html {}
-  #     end
   #   end
   #
   #   # if resource.valid_password?(params[:user][:password])
@@ -146,14 +151,16 @@ class SessionsController < Devise::SessionsController
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def invalid_login_attempt
-    # set_flash_message(:alert, :invalid)
-    flash.now[:alert] = "Invalid email or password"
-    respond_to do |format|
-      format.js { render template: '/users/sessions/failed.js.erb'}
-      format.html {}
-    end
-  end
+
+  # This method was used in one of the create action refactorings.
+  # def invalid_login_attempt
+  #   # set_flash_message(:alert, :invalid)
+  #   flash.now[:alert] = "Invalid email or password"
+  #   respond_to do |format|
+  #     format.js { render template: '/users/sessions/failed.js.erb'}
+  #     format.html {}
+  #   end
+  # end
 
 
 end
