@@ -1,4 +1,4 @@
 $('#vote-box-<%= @evidence.id %>').html('<%= j render "facts/vote_buttons", evidence: @evidence %>');
 $('#alert').html('');
 $('#score').html('<%= @evidence.fact.score %>');
-$('#fact-image').html('<%= image_tag "fact_photos/#{@evidence.fact.id}.png", id: "fact-image" %>')
+$('#fact-image').html('<%= image_tag "public/imagemagick/fact_photos/#{evidence.fact.id}.png", id: "fact-image" %>')
