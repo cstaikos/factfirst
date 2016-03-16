@@ -23,7 +23,7 @@ module FactsHelper
              (params[:sort] ? params[:sort].capitalize : 'Popular') +
              "</em> first"
 
-    if params[:query] && params[:query].length > 3
+    if params[:query] && params[:query].length > 1
       result += ", with <em>\"#{params[:query]}\"</em> in the title"
     end
 

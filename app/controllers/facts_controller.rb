@@ -11,7 +11,7 @@ class FactsController < ApplicationController
 
     @facts = Fact.all
 
-    if params[:query] && params[:query].length > 3
+    if params[:query] && params[:query].length > 1
       @facts = @facts.where('body ILIKE ?', "%#{params[:query]}%")
     end
 

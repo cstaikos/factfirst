@@ -20,12 +20,12 @@ currentQuery = encodeURIComponent( $('#search-index').val() );
 
 // Set action on category buttons so they include sort param
 $('.category-buttons form').each(function(index) {
-  $(this).attr('action', 'facts/?sort=' + currentSort + (currentQuery.length > 3 ? '&query=' + currentQuery : '') );
+  $(this).attr('action', 'facts/?sort=' + currentSort + (currentQuery.length > 1 ? '&query=' + currentQuery : '') );
 });
 
 // Set action on sort buttons so they include category param
 $('.filter-buttons form').each(function(index) {
-  $(this).attr('action', 'facts/?category=' + currentCategory + (currentQuery.length > 3 ? '&query=' + currentQuery : '') );
+  $(this).attr('action', 'facts/?category=' + currentCategory + (currentQuery.length > 1 ? '&query=' + currentQuery : '') );
 });
 
 // Set search results text to reflect current params
