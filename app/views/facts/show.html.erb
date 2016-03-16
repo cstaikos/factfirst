@@ -127,9 +127,9 @@
         </span>
       </div>
       <div class="input-group">
-        <input class="copy-share" id="copy-fact-iframe" value="<%= "#{root_url}public/fdsafasimagemagick/fact_photos/#{@fact.id}.png" %>">
+        <input class="copy-share" id="copy-fact-iframe" value="<%= "<a href='#{fact_url(@fact)}'><img src='#{root_url}public/imagemagick/fact_photos/#{@fact.id}.png'></a>" %>">
         <!-- Clipboard Trigger -->
-        <label class="input-group-label" for="copy-fact-iframe-button">IFrame:</label>
+        <label class="input-group-label" for="copy-fact-iframe-button">HTML Code:</label>
         <span class="input-group-button">
           <button id="copy-fact-iframe-button" class="clippy-btn" data-clipboard-target="#copy-fact-iframe">
               <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
