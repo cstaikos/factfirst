@@ -1,17 +1,19 @@
+<%= render 'refills/categories_filter_buttons' %>
 
-    <%= render 'refills/categories_filter_buttons' %>
+<%= render 'refills/sort_filter_buttons' %>
 
-    <%= render 'refills/sort_filter_buttons' %>
+<%= render 'facts/facts_index_search' %>
 
-    <%= render 'facts/facts_index_search' %>
+<div class="query-details">
+  <%= query_details %>
+</div>
 
+<div class="facts-container">
+  <ul id="facts-list" class="fact-box-wrapper">
+    <%= render @facts %>
+  </ul>
 
-  <div class="facts-container">
-    <ul id="facts-list" class="fact-box-wrapper">
-      <%= render @facts %>
-    </ul>
-
-    <div id="index-pagination">
-      <%= paginate @facts %>
-    </div>
+  <div id="index-pagination">
+    <%= paginate @facts %>
   </div>
+</div>

@@ -27,3 +27,6 @@ $('.category-buttons form').each(function(index) {
 $('.filter-buttons form').each(function(index) {
   $(this).attr('action', 'facts/?category=' + currentCategory + '&query=' + currentQuery);
 });
+
+// Set search results text to reflect current params
+$(".query-details").html('<%= j query_details %>');

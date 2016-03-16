@@ -16,4 +16,21 @@ module FactsHelper
 
   end
 
+  def query_details
+    result = "<h2>Viewing <em>" +
+             (params[:category] || 'all') +
+             "</em> facts, <em>" +
+             (params[:sort] || 'popular') +
+             "</em> first"
+
+    if params[:query]
+      result += ", with <em>\"#{params[:query]}\"</em> in the title"
+    end
+
+    result += ":</h2>"
+
+    result.html_safe
+
+  end
+
 end
