@@ -86,4 +86,10 @@ ActiveRecord::Schema.define(version: 20160315214657) do
   add_index "votes", ["evidence_id"], name: "index_votes_on_evidence_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
+  add_foreign_key "evidences", "facts"
+  add_foreign_key "evidences", "users"
+  add_foreign_key "facts", "categories"
+  add_foreign_key "facts", "users"
+  add_foreign_key "votes", "evidences"
+  add_foreign_key "votes", "users"
 end
