@@ -25,6 +25,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'rmagick'
 gem 'public_suffix'
+gem 'figaro'
 
 
 # HTML5/CSS Framework
