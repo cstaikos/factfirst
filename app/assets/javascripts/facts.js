@@ -1,10 +1,11 @@
 $(document).on('ready page:load', function(){
 
+  // Odomoter (number scrolling) on fact show page
   window.setTimeout(function() {
     $(".odometer").text($("#actual-score").text());
   }, 10)
 
-
+  // Reset search box when clicking reset
   $('#reset').on('click', function() {
     $("#search-index").val("");
   })
@@ -29,5 +30,14 @@ $(document).on('ready page:load', function(){
       });
     }
   });
+
+  // Bind spinner events to category/sort buttons as well
+  $('.category-buttons form, .filter-buttons form').bind('ajax:beforeSend', function() {
+    $('#spinner').show().css({display: 'block'});
+  })
+
+  $('.category-buttons form, .filter-buttons form').bind('ajax:complete', function() {
+    $('#spinner').hide();
+  })
 
 });
