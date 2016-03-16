@@ -10,6 +10,7 @@
 <%= link_to 'Click to reset', facts_path + '?category=all&sort=popular', remote: true , id: 'reset'%>
 
 <div class="facts-container">
+  <%= image_tag 'ajax-loader.gif', id: 'spinner' %>
   <ul id="facts-list" class="fact-box-wrapper">
     <%= render @facts %>
   </ul>

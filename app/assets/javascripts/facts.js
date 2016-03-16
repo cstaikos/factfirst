@@ -18,7 +18,14 @@ $(document).on('ready page:load', function(){
     if ($(this).val().length > 1 || $(this).val().length === 0) {
       $.ajax({
         url: '/facts?category=' + currentCategory + '&sort=' + currentSort + '&query=' + encodeURIComponent( $(this).val() ),
-        dataType: 'script'
+        dataType: 'script',
+        beforeSend: function(){
+            $('#spinner').show();
+            $('#facts-list').empty();
+        },
+        complete: function(){
+            $('#spinner').hide();
+        }
       });
     }
   });
