@@ -5,6 +5,10 @@ $(document).on('ready page:load', function(){
   }, 10)
 
 
+  $('#reset').on('click', function() {
+    $("#search-index").val("");
+  })
+
   // Grab current filter params
   currentCategory = $('.category-buttons').attr('data-selected');
   currentSort = $('.filter-buttons').attr('data-selected');
