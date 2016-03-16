@@ -17,10 +17,11 @@
   <div id="flash-messages">
     <%= render 'refills/flashes' %>
   </div>
+
   <% if current_page?(root_url) %>
     <%= yield %>
   <% else %>
-    <!--NOTE rename to application-wrapper-->
+
     <div class="application-wrapper">
       <%= yield %>
     </div>

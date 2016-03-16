@@ -20,17 +20,23 @@
 
 $(document).on('ready', function(){
 
-    //$("#sign_up_user").on("ajax:success", function(e, data, status, xhr) {
-    //    if (data.success) {
-    //        $('.modal').hide();
-    //        $('#sign_up_button').hide();
-    //        return $('#submit_comment').slideToggle(1000, "easeOutBack");
-    //    } else {
-    //        return alert('failure!');
-    //    }
-    //});
+    $('.requires-login').on('click', function(e){
+        if ($(this).hasClass('requires-login')) {
+          e.preventDefault();
+          $("body").addClass("modal-open");
+          $('#auth-modal').prop("checked", "true");
+        }
+    });``
 
-})
+//    $(".login-form").on("click", function() {
+//      $("#auth-modal").prop("checked", false);
+//    });
+//
+//    $(".signup-form").on("click", function() {
+//      $("#auth-modal").prop("checked", false);
+//    });
+
+});
 
 
 

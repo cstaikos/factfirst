@@ -1,3 +1,4 @@
+
 $(function() {
 
     $("#auth-modal").on("change", function() {
