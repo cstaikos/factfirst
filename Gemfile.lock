@@ -113,6 +113,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    public_suffix (1.5.3)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -227,6 +228,7 @@ DEPENDENCIES
   neat (= 1.7.4)
   pg
   pry-rails
+  public_suffix
   quiet_assets
   rails (= 4.2.5.1)
   refills (= 0.1.0)

@@ -1,6 +1,7 @@
 class Evidence < ActiveRecord::Base
   belongs_to :user
   belongs_to :fact
+  belongs_to :source
   has_many :votes
 
   validates :url, presence: true
