@@ -8,6 +8,7 @@ class SessionsController < Devise::SessionsController
   prepend_before_action :verify_signed_out_user, only: :destroy
   prepend_before_action only: [:create, :destroy] { request.env["devise.skip_timeout"] = true }
 
+
   # GET /resource/sign_in
   def new
     self.resource = resource_class.new(sign_in_params)
@@ -17,23 +18,67 @@ class SessionsController < Devise::SessionsController
   end
 
   # POST /resource/sign_in
+  # def create
+  #
+  #   if params[:user][:email] && params[:user][:password]
+  #     binding.pry
+  #     self.resource = warden.authenticate!(auth_options)
+  #   else
+  #     binding.pry
+  #     respond_to do |format|
+  #       format.js { render template: '/users/sessions/create.js.erb'}
+  #       format.html {}
+  #     end
+  #   end
+  #
+  #   # set_flash_message!(:notice, :signed_in)
+  #   # current_user
+  #
+  #   flash[:notice] = "Logged in Successfully"
+  #   sign_in(resource_name, resource)
+  #   yield resource if block_given?
+  #
+  #   # respond_with resource, location: after_sign_in_path_for(resource)
+  #
+  #
+  # end
+
   def create
     self.resource = warden.authenticate!(auth_options)
-
+    binding.pry
     # set_flash_message!(:notice, :signed_in)
-
-    flash[:notice] = "Logged in Successfully"
+    flash[:notice] = "Logged in Successfully!"
     sign_in(resource_name, resource)
     yield resource if block_given?
-
-    # respond_with resource, location: after_sign_in_path_for(resource)
-
-    respond_to do |format|
-      format.js { render template: '/users/sessions/create.js.erb'}
-      format.html {}
-    end
-
+    respond_with resource, location: after_sign_in_path_for(resource)
   end
+
+
+  # def create
+  #   resource = User.find_for_database_authentication(email: params[:user][:email])
+  #   return invalid_login_attempt unless resource
+  #
+  #   if resource.valid_password?(params[:user][:password])
+  #
+  #     sign_in :user, resource
+  #
+  #     @current_user = User.find_by(email: params[:user][:email])
+  #
+  #     flash.now[:notice] = "Successfully logged in!"
+  #
+  #     respond_to do |format|
+  #       format.js { render template: '/users/sessions/create.js.erb'}
+  #       format.html {}
+  #     end
+  #   end
+  #
+  #   # if resource.valid_password?(params[:user][:password])
+  #
+  #   #   return render nothing: true
+  #   # end
+  #   #
+  #   # invalid_login_attempt
+  # end
 
   # DELETE /resource/sign_out
   def destroy
@@ -85,7 +130,6 @@ class SessionsController < Devise::SessionsController
 
   def all_signed_out?
     users = Devise.mappings.keys.map { |s| warden.user(scope: s, run_callbacks: false) }
-
     users.all?(&:blank?)
   end
 
@@ -97,6 +141,21 @@ class SessionsController < Devise::SessionsController
       format.any(*navigational_formats) { redirect_to after_sign_out_path_for(resource_name) }
     end
   end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def invalid_login_attempt
+    # set_flash_message(:alert, :invalid)
+    flash.now[:alert] = "Invalid email or password"
+    respond_to do |format|
+      format.js { render template: '/users/sessions/failed.js.erb'}
+      format.html {}
+    end
+  end
+
+
 end
 
 
