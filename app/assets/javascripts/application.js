@@ -16,3 +16,19 @@
 //= require refills/navigation
 //= require flashnotice
 //= require odometer.min.js
+
+$(document).on('ready', function(){
+
+    $('.requires-login').on('click', function(e){
+        if ($(this).hasClass('requires-login')) {
+          e.preventDefault();
+          $("body").addClass("modal-open");
+          $('#auth-modal').prop("checked", "true");
+        }
+    });
+
+});
+
+
+
+
