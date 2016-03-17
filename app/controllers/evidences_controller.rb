@@ -4,15 +4,19 @@ class EvidencesController < ApplicationController
   def create
     @fact = Fact.find(params[:fact_id])
 
+    @evidence = @fact.evidences.build(evidence_params)
+    @evidence.user = current_user
+    @evidence.grab_metadata
+
     # If user already has 5 evidences on this fact, they can't add more
     if @fact.evidences.where(user_id: current_user).count >= 5
       redirect_to fact_path(@fact), alert: "Evidence not added. You are only permitted 5 evidence submissions per fact!" and return
     end
 
-    @evidence = @fact.evidences.build(evidence_params)
-    @evidence.user = current_user
-    @evidence.grab_metadata
-
+    # If a peice of evidence has already been used for a fact
+    if @evidence.already_used_for_fact?(@fact)
+      redirect_to fact_path(@fact), alert: "Already used that reference on this fact!" and return
+    end
 
     if @evidence.save
       # Auto upvote submitted evidence

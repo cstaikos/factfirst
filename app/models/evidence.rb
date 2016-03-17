@@ -4,9 +4,9 @@ class Evidence < ActiveRecord::Base
   belongs_to :source
   has_many :votes
 
+
   validates :url, presence: true
   # validates_inclusion_of :support, in: [true, false]
-
 
   def upvotes
     votes.where(upvote: true).count
@@ -36,5 +36,9 @@ class Evidence < ActiveRecord::Base
     
   end
 
-
-end
+  def already_used_for_fact?(fact)
+    if fact.evidences.where(fact_id: fact.id, url: self.url) != []
+        return true
+      end
+    end
+  end
