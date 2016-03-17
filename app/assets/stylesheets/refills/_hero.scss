@@ -88,14 +88,25 @@
     .hero-footer {
       color: $hero-color;
       display: block;
-      @include span-columns(10);
-      @include shift(1);
-      @include omega;
-      padding-top: 20px;
-      padding-bottom: 20px;
+
+      @include span-columns(12);
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+
+      @include media($medium-screen) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      @include media($large-screen) {
+        @include span-columns(10);
+        @include shift(1);
+        @include omega;
+      }
       background-color: transparentize($dark-gray, 0.3);
       font-style: italic;
-      margin-bottom: 30px;
       .secondary-content {
         padding: 0;
         margin: 0 auto 0 auto !important;

@@ -169,13 +169,13 @@ html, body {
   background-color: transparentize($dark-gray, 0.3);
 
   @include span-columns(12);
-  margin-top: 15px;
   margin-bottom: 15px;
 
   @include media($medium-screen) {
     margin-bottom: 30px;
     margin-top: 0px;
     @include span-columns(6);
+    @include omega;
   }
 
 
