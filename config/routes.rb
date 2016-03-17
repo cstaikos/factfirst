@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about', as: 'about'
   get '/forum' => 'static_pages#forum', as: 'forum'
 
-  # get '/current_user' => 'users#current_user'
-
   delete '/favorites/:fact_id' => 'favorites#destroy', as: 'destroy_favorite'
   post '/favorites/:fact_id' => 'favorites#create', as: 'create_favorite'
 
@@ -23,10 +21,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {   registrations: 'registrations',
                                       sessions: 'sessions',
                                       omniauth_callbacks: 'omniauth_callbacks' }
-
-  devise_scope :user do
-    get 'users/sign_up' => 'registrations#new'
-  end
 
   get 'users/:id' => 'users#show', as: 'user'
 
