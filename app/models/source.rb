@@ -16,7 +16,7 @@ class Source < ActiveRecord::Base
       self.wot_confidence = scores[1].to_i
     else
       # If no wot data is returned, give a baseline of 50% which will have a neutral effect
-      self.wot_trust = 50
+      self.wot_trust = 70
       self.wot_confidence = 100
     end
     self.save
@@ -46,7 +46,7 @@ class Source < ActiveRecord::Base
     else
 
       return false
-      
+
     end
 
   end
