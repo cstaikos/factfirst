@@ -7,6 +7,7 @@ class Evidence < ActiveRecord::Base
   validates :url, presence: true
   # validates_inclusion_of :support, in: [true, false]
 
+  require 'open_uri_redirections'
 
   def upvotes
     votes.where(upvote: true).count
@@ -21,7 +22,7 @@ class Evidence < ActiveRecord::Base
     begin
 
       timeout(5) do
-        doc = Nokogiri::HTML(open(self.url))
+        doc = Nokogiri::HTML(open(self.url, allow_redirections: :safe))
 
         og_title = doc.css("meta[property='og:title']")
         og_description = doc.css("meta[property='og:description']")
@@ -33,7 +34,7 @@ class Evidence < ActiveRecord::Base
     rescue Timeout::Error
       puts 'Timeout error'
     end
-    
+
   end
 
 
