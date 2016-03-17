@@ -28,10 +28,10 @@
           <!--NOTE enter user_path when created -->
           <span id="welcome-message">Welcome, <%= link_to current_user.display_name, user_path(current_user)
                                                   %></span>
-            <span><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
+            <span><a href="<%= user_path(current_user) %>"><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
 #                 width: '20',
 #                 height:'20',
-                id: "user-image-nav"%></span>
+                id: "user-image-nav"%></a></span>
 
 
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
