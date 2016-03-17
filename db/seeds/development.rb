@@ -22,7 +22,7 @@ User.create(
   )
 end
 
-50.times do
+3.times do
   Fact.create(
     body: Faker::Lorem.sentence,
     user: User.all.sample,
@@ -30,7 +30,7 @@ end
   )
 end
 
-250.times do
+10.times do
   url = Faker::Internet.url
   Evidence.create(
     url: url,
