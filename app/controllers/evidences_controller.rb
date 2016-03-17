@@ -7,8 +7,10 @@ class EvidencesController < ApplicationController
     @evidence.user = current_user
 
 
-    evidence_count = @fact.evidences.where(user_id: current_user).count
-    if evidence_count <= 5
+    if @fact.evidences.where(user_id: current_user).count >= 5
+      redirect_to fact_path(@fact), alert: "Evidence not added. You are only permitted 5 evidence submissions per fact!" and return
+    end
+
 
     # Grab metadata from evidence url - 5 second limit on request, otherwise save empty title/description
       begin
@@ -55,8 +57,8 @@ class EvidencesController < ApplicationController
 
       redirect_to @fact
 
-    else
-      redirect_to fact_path(@fact), alert: "Evidence not added. You are only permitted 5 evidence submissions per fact!"
+
+
     end
 
   end
