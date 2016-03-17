@@ -14,4 +14,10 @@ module ApplicationHelper
   def cp(path)
     "current-page" if current_page?(path)
   end
+
+  def requires_login
+    if !current_user
+      'requires-login'
+    end
+  end
 end
