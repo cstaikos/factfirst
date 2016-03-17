@@ -1,5 +1,8 @@
 console.log("create.js.erb");
 
+$('html,body').scrollTop(0);
+$('body').removeClass('modal-open');
+
 $('.modal').hide();
 $('#flash-messages').show();
 $('.navigation-tools').html('<%= j render 'layouts/nav_tools_user_signed_in' %>');
