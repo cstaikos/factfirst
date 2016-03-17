@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20160317011803) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -95,4 +97,10 @@ ActiveRecord::Schema.define(version: 20160317011803) do
   add_index "votes", ["evidence_id"], name: "index_votes_on_evidence_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
+  add_foreign_key "evidences", "facts"
+  add_foreign_key "evidences", "users"
+  add_foreign_key "facts", "categories"
+  add_foreign_key "facts", "users"
+  add_foreign_key "votes", "evidences"
+  add_foreign_key "votes", "users"
 end
