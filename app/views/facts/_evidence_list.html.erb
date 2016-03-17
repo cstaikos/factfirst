@@ -15,7 +15,7 @@
           <h4 class="evidence-title">
             <%= link_to ( evidence.title || truncate(evidence.url, length: 50) ), evidence.url, target: '_blank' %>
           </h4>
-          
+
           <div class="tooltip-item source-tooltip">
             <%= "Source domain: #{evidence.source.domain}" %>
             <div class="tooltip">

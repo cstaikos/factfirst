@@ -1,4 +1,5 @@
-<div id="add-<%= support ? 'supporting' : 'refuting' %>" class="add-evidence-box">
+<span id="add-<%= support ? 'supporting' : 'refuting' %>"></span>
+<div class="add-evidence-box" <%= support ? '' : 'id=refuting-box' %>>
   <p>Join the debate! Add your own evidence to <%= support ? 'support' : 'refute' %> this fact.</p>
   <%= form_for [@fact, @evidence] do |f| %>
     <div class="evidence-url-form-group">
