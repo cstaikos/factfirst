@@ -9,7 +9,9 @@ header.navigation {
   $nav-base-color: #092E4B;
   $large-screen: em(860) !default;
 
-  position: fixed; // Sticky nav bar
+  @include media($small-screen) {
+    position: fixed; // Sticky nav bar for > 600px wide screens
+  }
 
   a {
     text-decoration: none;
