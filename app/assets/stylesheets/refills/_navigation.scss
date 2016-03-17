@@ -132,6 +132,11 @@ header.navigation {
       line-height: $navigation-height;
       text-decoration: none;
       width: auto;
+      font-size: 0.9em;
+    }
+
+    @include media ($desktop-screen) {
+      font-size: 1em;
     }
 
     a {
