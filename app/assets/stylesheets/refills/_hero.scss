@@ -21,6 +21,10 @@
   .hero-logo img {
     height: 4em;
     margin-bottom: 1em;
+    display: none;
+    @include media($large-screen) {
+      display: inline;
+    }
   }
 
   .hero-inner {
@@ -37,9 +41,11 @@
       h1 {
         font-size: 1.6em;
         margin-bottom: 0.5em;
+        margin-top: 15px;
 
         @include media($large-screen) {
           font-size: 1.8em;
+          margin-top: 0;
         }
       }
 
