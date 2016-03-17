@@ -246,7 +246,9 @@ Devise.setup do |config|
                   '999460257077-vudgebme5ms6qsoduhrvi325kvpmdh0s.apps.googleusercontent.com',
                   'SKpIHqDrQnROoait0JDYXxdt',
                   {access_type: "offline", approval_prompt: ""}
-                  # scope: 'user,public_repo'
+
+  config.omniauth :facebook, "153893971668566", "46054aa349957b249caebb92b580adf9",
+                  callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
 
   # ==> Warden configuration
