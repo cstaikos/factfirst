@@ -23,7 +23,9 @@
     <%= render 'evidence_list', support: false %>
   </div>
 
+  <span id="add-supporting" class="anchor-span"></span>
   <%= render 'evidence_form', support: true %>
+  <span id="add-refuting" class="anchor-span"></span>
   <%= render 'evidence_form', support: false %>
 
   <% if current_user == User.find(@fact.user_id) && @fact.total_votes == 0 %>
