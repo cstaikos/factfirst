@@ -3,6 +3,7 @@
     <h3 class="evidence-header-text"><%= support ? 'Supporting' : 'Refuting' %> Evidence (<%= support ? @fact.supporting_evidence.count : @fact.refuting_evidence.count %>)<a href="#add-<%= support ? 'supporting' : 'refuting' %>" class="add-evidence-anchor">+ add evidence</a></h3>
   </div>
   <ul class="evidence-list">
+
     <% (support ? @fact.supporting_evidence : @fact.refuting_evidence).each do |evidence| %>
       <li class="piece-of-evidence">
 
@@ -14,7 +15,7 @@
           <h4 class="evidence-title">
             <%= link_to ( evidence.title || truncate(evidence.url, length: 50) ), evidence.url, target: '_blank' %>
           </h4>
-          
+
           <div class="tooltip-item source-tooltip">
             <%= "Source domain: #{evidence.source.domain}" %>
             <div class="tooltip">
@@ -35,5 +36,6 @@
 
     </li>
   <% end %>
+
   </ul>
 </div>

@@ -12,7 +12,7 @@ module VotesHelper
     # If user is logged out, return link to login page
 
     if !current_user
-      return link_to  content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon requires-login"),
+      return link_to  content_tag(:i, "", class: "fa fa-arrow-circle-#{arrow_direction} vote-icon #{requires_login}"),
                       # votes_path(vote: {evidence_id: evidence.id, upvote: button_type}),
                       method: :post,
                       remote: false
