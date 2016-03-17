@@ -3,6 +3,7 @@
     <h3 class="evidence-header-text"><%= support ? 'Supporting' : 'Refuting' %> Evidence (<%= support ? @fact.supporting_evidence.count : @fact.refuting_evidence.count %>)<a href="#add-<%= support ? 'supporting' : 'refuting' %>" class="add-evidence-anchor">+ add evidence</a></h3>
   </div>
   <ul class="evidence-list">
+
     <% (support ? @fact.supporting_evidence : @fact.refuting_evidence).each do |evidence| %>
       <li class="piece-of-evidence">
 
@@ -30,5 +31,6 @@
 
     </li>
   <% end %>
+
   </ul>
 </div>

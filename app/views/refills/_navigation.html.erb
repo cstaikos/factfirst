@@ -27,7 +27,7 @@
         <!-- cp is a helper method in application helper, returns class to highlight link if it is the currently active page -->
         <li class="nav-link <%= cp(facts_path) %>"><a href="<%= facts_path %>">Browse Facts</a></li>
         <li class="nav-link <%= cp(new_fact_path) %>"><a href="<%= new_fact_path %>"
-                                class="<%= "requires-login" if !current_user %>">Add New Fact</a></li>
+                                class="<%= requires_login %>">Add New Fact</a></li>
         <li class="nav-link <%= cp(about_path) %>"><a href="<%= about_path %>">About</a></li>
         <li class="nav-link <%= cp(forum_path) %>"><a href="<%= forum_path %>">Forum</a></li>
       </ul>
