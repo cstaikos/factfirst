@@ -120,6 +120,16 @@
   font-size: 1em;
 }
 
+
+.fact-box-category {
+  @include media($large-screen) {
+    font-size: 0.8em;
+  }
+  @include media($desktop-screen) {
+    font-size: 1em;
+  }
+}
+
 .fact-box-score {
   background-color: #7995A3;
   color: #fff;
