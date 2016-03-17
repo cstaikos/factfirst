@@ -123,10 +123,12 @@ header.navigation {
     line-height: $navigation-height;
     overflow: hidden;
     text-align: right;
+    padding-right: 1em;
     width: 100%;
     z-index: 9999;
 
     @include media ($horizontal-bar-mode) {
+      padding-right: 0px;
       background: transparent;
       display: inline;
       line-height: $navigation-height;
@@ -158,7 +160,9 @@ header.navigation {
   // Space out the first child in links from search bar
   ul li.nav-link:first-child {
     padding-left: 0.8em;
-    padding-right: 0px;
+    @include media ($horizontal-bar-mode) {
+      padding-right: 0px;
+    }
   }
 
   .active-nav-item a {
@@ -321,12 +325,17 @@ header.navigation {
   .navigation-tools {
     background: #505050;
     clear: both;
-    display: block;
     height: $navigation-height;
     padding-left: $navigation-padding / 2;
     padding-right: $navigation-padding;
+    display: none;
+
+    @include media(horizontal-bar-mode) {
+      display: block;
+    }
 
     @include media($large-screen) {
+      display: block;
       background: transparent;
       clear: none;
       float: right;
