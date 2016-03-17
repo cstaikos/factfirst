@@ -13,12 +13,16 @@
           </button>
         </form>
       </div>
-      <div class="gravatar">
-        <a href="<%= user_path(current_user) %>">
-          <%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
-              id: "user-image-nav" %>
-        </a>
-      </div>
+
+      <% if user_signed_in? %>
+        <div class="gravatar">
+          <a href="<%= user_path(current_user) %>">
+            <%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
+                id: "user-image-nav" %>
+          </a>
+        </div>
+      <% end %>
+
       <ul id="js-navigation-menu" class="navigation-menu show">
         <!-- cp is a helper method in application helper, returns class to highlight link if it is the currently active page -->
         <li class="nav-link <%= cp(facts_path) %>"><a href="<%= facts_path %>">Browse Facts</a></li>
