@@ -40,6 +40,12 @@ gem 'refills', '0.1.0'
 # postgresql
 gem 'pg'
 
+#oauth
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution
   # and get debugger console
