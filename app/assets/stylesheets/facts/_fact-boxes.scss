@@ -6,8 +6,17 @@
   $light-gray: #DDD !default;
   $base-font-color: $dark-gray !default;
   margin-bottom: 2.35765%;
-  @include span-columns(4);
-  @include omega(3n);
+  @include span-columns(12);
+  @include media($medium-screen) {
+    @include span-columns(6);
+    @include omega(2n);
+    @include display(flex);
+  }
+  @include media($large-screen) {
+    @include span-columns(4);
+    @include omega(3n);
+    @include display(flex);
+  }
 
   a.fact-box {
     text-decoration: none;
@@ -153,7 +162,6 @@
     font-size: 0.8em;
     text-align: center;
     color: #333;
-
     @include media($desktop-screen) {
       display: none;
     }
