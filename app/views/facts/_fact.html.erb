@@ -5,5 +5,5 @@
     <div class="fact-box-score"><span>POPULARITY:</span><%= fact.total_votes %></div>
     <div class="fact-box-score"><span>CATEGORY:</span><%= fact.category.name %></div>
   </a>
-  <div class="fact-box-favorite"><span class="fact-box-star" id="favorite-<%= fact.id %>"><%= favorite_button(fact) %></span> <p>Posted by <%= link_to fact.user.display_name, fact.user %> on <%= fact.created_at.strftime("%B %-d, %Y") %></p></div>
+  <div class="fact-box-favorite"><span class="fact-box-star" id="favorite-<%= fact.id %>"><%= favorite_button(fact) %></span> <p>Posted by <%= link_to truncate(fact.user.display_name, length: 10), fact.user %> on <%= fact.created_at.strftime("%B %-d, %Y") %></p></div>
 </div>
