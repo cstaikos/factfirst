@@ -3,7 +3,7 @@
     <a href="<%= root_path %>" class="logo">
       <%= image_tag("truthometer-logo-large-01.png", alt: 'Truthometer', class: 'img-logo') %>
     </a>
-    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu"><i class="fa fa-bars"></i></a>
     <nav role="navigation">
       <div class="search-bar">
         <form role="search" action="/facts">
@@ -12,6 +12,12 @@
             <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
           </button>
         </form>
+      </div>
+      <div class="gravatar">
+        <a href="<%= user_path(current_user) %>">
+          <%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
+              id: "user-image-nav" %>
+        </a>
       </div>
       <ul id="js-navigation-menu" class="navigation-menu show">
         <!-- cp is a helper method in application helper, returns class to highlight link if it is the currently active page -->
