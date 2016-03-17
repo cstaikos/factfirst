@@ -31,11 +31,13 @@ end
 end
 
 250.times do
+  url = Faker::Internet.url
   Evidence.create(
-    url: Faker::Internet.url,
+    url: url,
     support: [true, false].sample,
     user: User.all.sample,
-    fact: Fact.all.sample
+    fact: Fact.all.sample,
+    source: Source.create_from_url(url)
   )
 end
 

@@ -3,62 +3,37 @@ class EvidencesController < ApplicationController
 
   def create
     @fact = Fact.find(params[:fact_id])
-    @evidence = @fact.evidences.build(evidence_params)
-    @evidence.user = current_user
 
-
+    # If user already has 5 evidences on this fact, they can't add more
     if @fact.evidences.where(user_id: current_user).count >= 5
       redirect_to fact_path(@fact), alert: "Evidence not added. You are only permitted 5 evidence submissions per fact!" and return
     end
 
+    @evidence = @fact.evidences.build(evidence_params)
+    @evidence.user = current_user
+    @evidence.grab_metadata
 
-    # Grab metadata from evidence url - 5 second limit on request, otherwise save empty title/description
-      begin
-        timeout(5) do
-          doc = Nokogiri::HTML(open(@evidence.url))
-
-          og_title = doc.css("meta[property='og:title']")
-          og_description = doc.css("meta[property='og:description']")
-
-          @evidence.title = og_title.first.attributes["content"] if og_title.length > 0
-          @evidence.description = og_description.first.attributes["content"] if og_description.length > 0
-        end
-      rescue Timeout::Error
-        puts 'Timeout error'
-      end
-
-    # Grab host
-    host = URI(@evidence.url).host
-
-    # Check if host is a valid domain
-    if PublicSuffix.valid?(host)
-      domain = PublicSuffix.parse(host).domain
-    else
-      flash[:alert] = "Error: #{host} seems to be an invalid domain"
-      redirect_to fact_path(@fact) and return
-    end
 
     if @evidence.save
       # Auto upvote submitted evidence
       @evidence.votes.create(upvote: true, user: current_user)
-      @evidence.fact.update_score
 
-      # Check if source domain exists in DB - if it does, add association - if not, create it and add association
-      existing_source = Source.where(domain: domain)
-      if existing_source.count > 0
-        @evidence.source = existing_source.first
-      else
-        new_source = Source.create(domain: domain)
-        new_source.save
+      # Create new source or grab existing one if it exists
+      new_source = Source.create_from_url(@evidence.url)
+      if new_source
         @evidence.source = new_source
+      else
+        flash[:alert] = "Error: #{URI(@evidence.url).host} seems to be an invalid domain.\nIf you think this is incorrect please contact the admin."
+        redirect_to fact_path(@fact) and return
       end
 
       @evidence.save
+      @evidence.fact.update_score
 
-      redirect_to @fact
-
-
-
+      redirect_to fact_path(@fact)
+    else
+      flash[:alert] = @evidence.errors.full_messages.to_sentence
+      redirect_to fact_path(@fact)
     end
 
   end
