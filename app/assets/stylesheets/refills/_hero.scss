@@ -47,10 +47,12 @@
       text-align: center;
 
       h1 {
-
         font-size: 1.4em;
         margin-bottom: 0.5em;
-        margin-top: 0px;
+
+        @include media($small-screen) {
+          margin-top: 10px;
+        }
 
         @include media($medium-screen) {
           margin-top: 15px;
@@ -58,7 +60,6 @@
 
         @include media(666px) {
           font-size: 1.6em;
-
         }
 
         @include media($large-screen) {
