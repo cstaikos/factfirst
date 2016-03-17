@@ -32,16 +32,35 @@
     @include clearfix;
     color: $hero-color;
     margin: auto;
-    padding: 3.5em 3.5em 0 3.5em; // take out bottom padding so the about box can live there
+    padding: 1em 1em 0 1em;
+
+    @include media($small-screen) {
+      padding: 3.5em 1em 0 1em;
+    }
+
+    @include media($medium-screen) {
+      padding: 3.5em 3.5em 0 3.5em; // take out bottom padding so the about box can live there
+    }
     text-align: center;
 
     .hero-copy {
       text-align: center;
 
       h1 {
-        font-size: 1.6em;
+        font-size: 1.4em;
         margin-bottom: 0.5em;
-        margin-top: 15px;
+
+        @include media($small-screen) {
+          margin-top: 10px;
+        }
+
+        @include media($medium-screen) {
+          margin-top: 15px;
+        }
+
+        @include media(666px) {
+          font-size: 1.6em;
+        }
 
         @include media($large-screen) {
           font-size: 1.8em;
@@ -69,14 +88,25 @@
     .hero-footer {
       color: $hero-color;
       display: block;
-      @include span-columns(10);
-      @include shift(1);
-      @include omega;
-      padding-top: 20px;
-      padding-bottom: 20px;
+
+      @include span-columns(12);
+      padding-top: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+
+      @include media($medium-screen) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      @include media($large-screen) {
+        @include span-columns(10);
+        @include shift(1);
+        @include omega;
+      }
       background-color: transparentize($dark-gray, 0.3);
       font-style: italic;
-      margin-bottom: 30px;
       .secondary-content {
         padding: 0;
         margin: 0 auto 0 auto !important;
