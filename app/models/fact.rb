@@ -40,16 +40,10 @@ class Fact < ActiveRecord::Base
 
     vote_sums = evidences.inject(0) do |sum, evidence|
 
-
-      # This is applied to downvotes - the result is that upvotes weigh more
-      # when the trust is high, while downvotes weigh less.
-      # Conversely, with a low trust score, upvotes weight less and downvotes more.
-      reverse_wot_factor = 1 + (1 - evidence.source.wot_factor.to_f)
-
       sum += if evidence.support
                evidence.upvotes * evidence.source.wot_factor.to_f  # upvotes on supporting evidence are good for a fact
              else
-               evidence.downvotes * reverse_wot_factor # downvotes on refuting evidence are good for a fact
+               evidence.downvotes * evidence.source.reverse_wot_factor # downvotes on refuting evidence are good for a fact
              end
     end
 

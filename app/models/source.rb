@@ -7,6 +7,13 @@ class Source < ActiveRecord::Base
 
   @@base_trust = 70
 
+  # This is applied to downvotes - the result is that upvotes weigh more
+  # when the trust is high, while downvotes weigh less.
+  # Conversely, with a low trust score, upvotes weight less and downvotes more.
+  def reverse_wot_factor
+    1 + (1 - self.wot_factor.to_f)
+  end
+
   # Use web of trust (wot) api to get trust and confidence scores for domain
   def get_wot
     response = HTTParty.get("http://api.mywot.com/0.4/public_link_json2?hosts=#{domain}/&key=#{ENV['wot_key']}")
