@@ -11,12 +11,12 @@ class EvidencesController < ApplicationController
 
     @evidence = @fact.evidences.build(evidence_params)
     @evidence.user = current_user
-    @evidence.grab_metadata
 
 
     if @evidence.save
       # Auto upvote submitted evidence
       @evidence.votes.create(upvote: true, user: current_user)
+      @evidence.grab_metadata
 
       # Create new source or grab existing one if it exists
       new_source = Source.create_from_url(@evidence.url)
