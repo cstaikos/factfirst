@@ -168,19 +168,17 @@ header.navigation {
 
   #welcome-message {
       background: $navigation-background;
-      display: inline;
-      line-height: $navigation-height;
+      display: inline-block;
       overflow: hidden;
       padding-right: 0.8em;
       text-align: right;
       width: 100%;
       z-index: 9999;
       color: $navigation-color;
+      margin-top: 0.8em;
 
       @include media ($horizontal-bar-mode) {
         background: transparent;
-        display: inline;
-        line-height: $navigation-height;
         text-decoration: none;
         width: auto;
         font-size: 0.8em;
@@ -369,11 +367,13 @@ header.navigation {
 
   img#user-image-nav {
     /* margin-top: 10px; */
-    position: relative;
-    top: 11px;
-    right: 10px;
-    width: 2em;
-    height: 2em;
+    // position: relative;
+    // top: 11px;
+    // right: 10px;
+    // width: 2em;
+    // height: 2em;
+    height: 100%;
+    width: 28px;
   }
 
   // Search bar
@@ -385,7 +385,7 @@ header.navigation {
 
     float: left;
     padding: 0.85em 0.6em 0.7em 0.6em;
-    width: 60%;
+    // width: 60%;
 
     form {
       position: relative;

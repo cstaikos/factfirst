@@ -23,22 +23,17 @@
       </ul>
     </nav>
     <div class="navigation-tools">
-
       <% if user_signed_in? %>
           <!--NOTE enter user_path when created -->
-          <span id="welcome-message">Welcome, <%= link_to truncate(current_user.display_name, length: 10), user_path(current_user)
-                                                  %></span>
-            <span><a href="<%= user_path(current_user) %>"><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
-#                 width: '20',
-#                 height:'20',
-                id: "user-image-nav"%></a></span>
-
-
+          <div id="welcome-message">Welcome, <%= link_to truncate(current_user.display_name, length: 10), user_path(current_user) %>
+            <a href="<%= user_path(current_user) %>"><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
+                width: '28',
+                id: "user-image-nav"%></a>
+          </div>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
       <% else %>
           <%= render 'refills/modal_authenticate' %>
       <% end %>
-
     </div>
   </div>
 </header>
