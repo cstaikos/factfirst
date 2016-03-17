@@ -4,8 +4,8 @@ class Evidence < ActiveRecord::Base
   belongs_to :source
   has_many :votes
 
-  validates :url, presence: true, uniqueness: { case_sensitive: false }
-  validates_inclusion_of :support, in: [true, false]
+  validates :url, presence: true
+  # validates_inclusion_of :support, in: [true, false]
 
 
   def upvotes
