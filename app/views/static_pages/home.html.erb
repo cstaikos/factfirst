@@ -4,22 +4,18 @@
 
   $(document).on('ready', function() {
 
+    if (Modernizr.mq('(min-width: 900px)')) {
       hideNav();
-
       $(document).on('scroll', function () {
-
         var docScroll = $(document).scrollTop();
         // This is something we might want for mobile later in the below if statement: & $('html').height() > 768 -- ie. no sticky header for short screens
         if (docScroll >= 280) {
-
           showNav();
-
         } else if ((docScroll <= 280)) {
-
           hideNav();
         }
-
       });
+    }
 
   });
 
