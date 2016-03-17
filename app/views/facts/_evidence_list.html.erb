@@ -18,6 +18,14 @@
             <p class="evidence-description">No site description found.</p>
           <% end %>
           <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
+
+          <div class="tooltip-item">
+            <%= evidence.source.domain %>
+            <div class="tooltip">
+              <p>Votes from this source count for <%= evidence.source.wot_factor.to_f %> of a vote. <%= link_to 'Why?', about_path + '#weight' %></p>
+            </div>
+          </div>
+
         </div>
 
     </li>
