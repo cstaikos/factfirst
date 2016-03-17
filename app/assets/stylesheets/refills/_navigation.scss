@@ -103,6 +103,12 @@ header.navigation {
       display: block;
     }
 
+    .current-page {
+      a {
+        color: #FFFFFF;
+      }
+    }
+
     @include media ($horizontal-bar-mode) {
       display: inline;
       margin: 0;
