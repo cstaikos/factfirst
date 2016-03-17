@@ -74,38 +74,8 @@
     </div>
   </div>
 
-  <div id="add-supporting" class="add-evidence-box">
-    <p>Join the debate! Add your own evidence to support this fact.</p>
-    <%= form_for [@fact, @evidence] do |f| %>
-      <div class="evidence-url-form-group">
-        <%= f.label "URL:", :class => 'evidence-label' %>
-        <%= f.url_field :url, :class => 'evidence-field' %>
-      </div>
-
-      <%= f.hidden_field :support, value: true %>
-
-      <div class="evidence-submit">
-        <%= f.submit 'Create Supporting Evidence', :class => 'evidence-supporting-button' %>
-      </div>
-    <% end %>
-  </div>
-
-  <div id="add-refuting" class="add-evidence-box">
-    <p>Join the debate! Add your own evidence to refute this fact.</p>
-    <%= form_for [@fact, @evidence] do |f| %>
-      <div class="evidence-url-form-group">
-        <%= f.label "URL:", :class => 'evidence-label' %>
-        <%= f.url_field :url, :class => 'evidence-field' %>
-      </div>
-
-      <%= f.hidden_field :support, value: false %>
-
-      <div class="evidence-submit">
-        <%= f.submit 'Create Refuting Evidence', :class => 'evidence-refuting-button'%>
-      </div>
-    <% end %>
-  </div>
-
+  <%= render 'evidence_form', support: true %>
+  <%= render 'evidence_form', support: false %>
 
   <% if current_user == User.find(@fact.user_id) && @fact.total_votes == 0 %>
     <div class="delete-fact-box">

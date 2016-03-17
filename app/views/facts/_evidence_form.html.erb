@@ -1,0 +1,15 @@
+<div id="add-<%= support ? 'supporting' : 'refuting' %>" class="add-evidence-box">
+  <p>Join the debate! Add your own evidence to <%= support ? 'support' : 'refute' %> this fact.</p>
+  <%= form_for [@fact, @evidence] do |f| %>
+    <div class="evidence-url-form-group">
+      <%= f.label "URL:", :class => 'evidence-label' %>
+      <%= f.url_field :url, :class => 'evidence-field' %>
+    </div>
+
+    <%= f.hidden_field :support, value: support %>
+
+    <div class="evidence-submit">
+      <%= f.submit "Create #{support ? 'Supporting' : 'Refuting'} Evidence", :class => "evidence-#{support ? 'supporting' : 'refuting'}-button"%>
+    </div>
+  <% end %>
+</div>
