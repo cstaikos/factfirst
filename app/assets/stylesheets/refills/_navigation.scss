@@ -175,7 +175,6 @@ header.navigation {
       text-align: right;
       width: 100%;
       z-index: 9999;
-      font-size: 0.9em;
       color: $navigation-color;
 
       @include media ($horizontal-bar-mode) {
@@ -184,6 +183,11 @@ header.navigation {
         line-height: $navigation-height;
         text-decoration: none;
         width: auto;
+        font-size: 0.8em;
+      }
+
+      @include media ($desktop-screen) {
+        font-size: 0.9em;
       }
 
     a {
