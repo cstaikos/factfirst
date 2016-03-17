@@ -10,4 +10,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def cp(path)
+    "current-page" if current_page?(path)
+  end
 end

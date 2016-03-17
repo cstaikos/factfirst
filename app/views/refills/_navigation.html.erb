@@ -14,31 +14,26 @@
         </form>
       </div>
       <ul id="js-navigation-menu" class="navigation-menu show">
-        <li class="nav-link"><a href="<%= facts_path %>">Browse Facts</a></li>
-        <li class="nav-link"><a href="<%= new_fact_path %>"
+        <!-- cp is a helper method in application helper, returns class to highlight link if it is the currently active page -->
+        <li class="nav-link <%= cp(facts_path) %>"><a href="<%= facts_path %>">Browse Facts</a></li>
+        <li class="nav-link <%= cp(new_fact_path) %>"><a href="<%= new_fact_path %>"
                                 class="<%= "requires-login" if !current_user %>">Add New Fact</a></li>
-        <li class="nav-link"><a href="<%= about_path %>">About</a></li>
-        <li class="nav-link"><a href="<%= forum_path %>">Forum</a></li>
+        <li class="nav-link <%= cp(about_path) %>"><a href="<%= about_path %>">About</a></li>
+        <li class="nav-link <%= cp(forum_path) %>"><a href="<%= forum_path %>">Forum</a></li>
       </ul>
     </nav>
     <div class="navigation-tools">
-
       <% if user_signed_in? %>
           <!--NOTE enter user_path when created -->
-          <span id="welcome-message">Welcome, <%= link_to current_user.display_name, user_path(current_user)
-                                                  %></span>
-            <span><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
-#                 width: '20',
-#                 height:'20',
-                id: "user-image-nav"%></span>
-
-
+          <div id="welcome-message">Welcome, <%= link_to truncate(current_user.display_name, length: 10), user_path(current_user) %>
+            <a href="<%= user_path(current_user) %>"><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
+                width: '28',
+                id: "user-image-nav"%></a>
+          </div>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
       <% else %>
           <%= render 'refills/modal_authenticate' %>
       <% end %>
-
     </div>
   </div>
 </header>
-

@@ -29,6 +29,7 @@ header.navigation {
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: 12em;
   $horizontal-bar-mode: $large-screen;
+  $search-bar-display: $desktop-screen;
 
   min-height: $navigation-height;
   width: 100%;
@@ -47,7 +48,7 @@ header.navigation {
     float: left;
     max-height: $navigation-height;
     padding-left: $navigation-padding;
-    padding-right: 2em;
+    padding-right: 1em;
 
     img {
       max-height: $navigation-height;
@@ -103,6 +104,12 @@ header.navigation {
       display: block;
     }
 
+    .current-page {
+      a {
+        color: #FFFFFF;
+      }
+    }
+
     @include media ($horizontal-bar-mode) {
       display: inline;
       margin: 0;
@@ -115,17 +122,23 @@ header.navigation {
     display: block;
     line-height: $navigation-height;
     overflow: hidden;
-    padding-right: 0.8em;
     text-align: right;
+    padding-right: 1em;
     width: 100%;
     z-index: 9999;
 
     @include media ($horizontal-bar-mode) {
+      padding-right: 0px;
       background: transparent;
       display: inline;
       line-height: $navigation-height;
       text-decoration: none;
       width: auto;
+      font-size: 0.9em;
+    }
+
+    @include media ($desktop-screen) {
+      font-size: 1em;
     }
 
     a {
@@ -147,7 +160,9 @@ header.navigation {
   // Space out the first child in links from search bar
   ul li.nav-link:first-child {
     padding-left: 0.8em;
-    padding-right: 0px;
+    @include media ($horizontal-bar-mode) {
+      padding-right: 0px;
+    }
   }
 
   .active-nav-item a {
@@ -157,22 +172,24 @@ header.navigation {
 
   #welcome-message {
       background: $navigation-background;
-      display: block;
-      line-height: $navigation-height;
+      display: inline-block;
       overflow: hidden;
       padding-right: 0.8em;
       text-align: right;
       width: 100%;
       z-index: 9999;
-      font-size: 0.9em;
       color: $navigation-color;
+      margin-top: 0.8em;
 
       @include media ($horizontal-bar-mode) {
         background: transparent;
-        display: inline;
-        line-height: $navigation-height;
         text-decoration: none;
         width: auto;
+        font-size: 0.8em;
+      }
+
+      @include media ($desktop-screen) {
+        font-size: 0.9em;
       }
 
     a {
@@ -308,12 +325,17 @@ header.navigation {
   .navigation-tools {
     background: #505050;
     clear: both;
-    display: block;
     height: $navigation-height;
     padding-left: $navigation-padding / 2;
     padding-right: $navigation-padding;
+    display: none;
+
+    @include media(horizontal-bar-mode) {
+      display: block;
+    }
 
     @include media($large-screen) {
+      display: block;
       background: transparent;
       clear: none;
       float: right;
@@ -331,7 +353,7 @@ header.navigation {
   }
 
   .login {
-    @include button(flat, $login-accent-color);
+    @include button(flat, $base-accent-color);
     display: inline;
     font-size: 0.8em;
     float: left;
@@ -354,11 +376,13 @@ header.navigation {
 
   img#user-image-nav {
     /* margin-top: 10px; */
-    position: relative;
-    top: 11px;
-    right: 10px;
-    width: 2em;
-    height: 2em;
+    // position: relative;
+    // top: 11px;
+    // right: 10px;
+    // width: 2em;
+    // height: 2em;
+    height: 100%;
+    width: 28px;
   }
 
   // Search bar
@@ -370,7 +394,7 @@ header.navigation {
 
     float: left;
     padding: 0.85em 0.6em 0.7em 0.6em;
-    width: 60%;
+    // width: 60%;
 
     form {
       position: relative;
@@ -387,7 +411,7 @@ header.navigation {
         padding: 0.5em 0.8em;
         width: 100%;
 
-        @include media($large-screen) {
+        @include media($desktop-screen) {
           width: 100%;
         }
       }
@@ -410,10 +434,15 @@ header.navigation {
       }
     }
 
-    @include media($horizontal-bar-mode) {
+    // Remove search bar at 1150 - 900px width for now
+    @include media($large-screen) {
+      display: none;
+    }
+
+    @include media($desktop-screen) {
       display: inline-block;
       position: relative;
-      width: 16em;
+      width: 12em;
 
       input {
         @include box-sizing(border-box);
