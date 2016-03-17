@@ -6,8 +6,17 @@
   $light-gray: #DDD !default;
   $base-font-color: $dark-gray !default;
   margin-bottom: 2.35765%;
-  @include span-columns(4);
-  @include omega(3n);
+  @include span-columns(12);
+  @include media($medium-screen) {
+    @include span-columns(6);
+    @include omega(2n);
+    @include display(flex);
+  }
+  @include media($large-screen) {
+    @include span-columns(4);
+    @include omega(3n);
+    @include display(flex);
+  }
 
   a.fact-box {
     text-decoration: none;
@@ -66,8 +75,12 @@
       margin: auto;
       text-align: left;
       padding-bottom: 10px;
-      height: 50px;
       border-bottom: 1px solid #ccc;
+      height: 68px;
+
+      @include media($desktop-screen) {
+        height: 50px;
+      }
 
       // .fact-heading {
       //   font-weight: bold;
@@ -101,12 +114,29 @@
 .fact-box-favorite p {
   padding: 0;
   margin: 0;
-  font-size: 0.8em !important;
   display: inline-block;
+
+  @include media($large-screen) {
+    font-size: 0.7em !important;
+  }
+
+  @include media($desktop-screen) {
+    font-size: 0.8em !important;
+  }
 }
 
 .fact-box-star {
   font-size: 1em;
+}
+
+
+.fact-box-category {
+  @include media($large-screen) {
+    font-size: 0.8em;
+  }
+  @include media($desktop-screen) {
+    font-size: 1em;
+  }
 }
 
 .fact-box-score {
@@ -116,12 +146,25 @@
   font-weight: bold;
   padding: 5px 0;
   @include span-columns(4);
-  span {
+  span.full-cat-name {
+    display: none;
+    font-weight: 300;
+    font-size: 0.8em;
+    text-align: center;
+    color: #333;
+    @include media($desktop-screen) {
+      display: block;
+    }
+  }
+  span.short-cat-name {
     display: block;
     font-weight: 300;
     font-size: 0.8em;
     text-align: center;
     color: #333;
+    @include media($desktop-screen) {
+      display: none;
+    }
   }
 }
 
