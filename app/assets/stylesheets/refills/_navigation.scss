@@ -29,6 +29,7 @@ header.navigation {
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: 12em;
   $horizontal-bar-mode: $large-screen;
+  $search-bar-display: $desktop-screen;
 
   min-height: $navigation-height;
   width: 100%;
@@ -392,7 +393,7 @@ header.navigation {
         padding: 0.5em 0.8em;
         width: 100%;
 
-        @include media($large-screen) {
+        @include media($desktop-screen) {
           width: 100%;
         }
       }
@@ -415,7 +416,12 @@ header.navigation {
       }
     }
 
-    @include media($horizontal-bar-mode) {
+    // Remove search bar at 1150 - 900px width for now
+    @include media($large-screen) {
+      display: none;
+    }
+
+    @include media($desktop-screen) {
       display: inline-block;
       position: relative;
       width: 12em;
