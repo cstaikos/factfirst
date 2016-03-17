@@ -444,13 +444,11 @@ header.navigation {
       }
     }
 
-    @include media($small-screen) {
-      display: none;
-    }
+    display: none;
 
-    @include media($small-screen) {
-      width: 9em;
-    }
+    // @include media($small-screen) {
+    //   display: none;
+    // }
 
 
     @include media($medium-screen) {
