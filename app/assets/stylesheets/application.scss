@@ -282,7 +282,10 @@ hr.transition + h2 {
     text-align: center;
     margin: 0;
     padding: 0;
-    font-size: 0.8em;
+    font-size: 1em;
+    @include media($medium-screen) {
+      font-size: 0.8em;
+    }
     @include media($desktop-screen) {
       font-size: 1em;
     }

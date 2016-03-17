@@ -7,10 +7,13 @@
   $base-font-color: $dark-gray !default;
   margin-bottom: 2.35765%;
   @include span-columns(12);
-  @include media($medium-screen) {
+  @include media(min-width $medium-screen max-width $large-screen) {
     @include span-columns(6);
     @include omega(2n);
     @include display(flex);
+    &:nth-child(3) {
+      display: none;
+    }
   }
   @include media($large-screen) {
     @include span-columns(4);
