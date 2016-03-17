@@ -28,30 +28,19 @@ class EvidencesController < ApplicationController
     end
 
 
-    # Grab host
-    host = URI(@evidence.url).host
 
-    # Check if host is a valid domain
-    if PublicSuffix.valid?(host)
-      domain = PublicSuffix.parse(host).domain
-    else
-      flash[:alert] = "Error: #{host} seems to be an invalid domain"
-      redirect_to fact_path(@fact) and return
-    end
 
     if @evidence.save
       # Auto upvote submitted evidence
       @evidence.votes.create(upvote: true, user: current_user)
       @evidence.fact.update_score
 
-      # Check if source domain exists in DB - if it does, add association - if not, create it and add association
-      existing_source = Source.where(domain: domain)
-      if existing_source.count > 0
-        @evidence.source = existing_source.first
-      else
-        new_source = Source.create(domain: domain)
-        new_source.save
+      new_source = Source.create_from_url(@evidence.url)
+      if new_source
         @evidence.source = new_source
+      else
+        flash[:alert] = "Error: #{host} seems to be an invalid domain"
+        redirect_to fact_path(@fact) and return
       end
 
       @evidence.save

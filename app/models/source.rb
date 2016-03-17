@@ -23,4 +23,32 @@ class Source < ActiveRecord::Base
 
   end
 
+  def self.create_from_url(url)
+    # Grab host
+    host = URI(url).host
+
+    # Check if host is a valid domain
+    if PublicSuffix.valid?(host)
+      domain = PublicSuffix.parse(host).domain
+
+      # Check if source domain exists in DB - if it does, add association - if not, create it and add association
+      existing_source = Source.where(domain: domain)
+
+      if existing_source.count > 0
+        source = existing_source.first
+      else
+        source = Source.create(domain: domain)
+        source.save
+      end
+
+      return source
+
+    else
+
+      return false
+      
+    end
+
+  end
+
 end
