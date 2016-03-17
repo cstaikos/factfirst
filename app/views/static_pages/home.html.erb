@@ -10,11 +10,11 @@
 
         var docScroll = $(document).scrollTop();
         // This is something we might want for mobile later in the below if statement: & $('html').height() > 768 -- ie. no sticky header for short screens
-        if (docScroll >= 325) {
+        if (docScroll >= 280) {
 
           showNav();
 
-        } else if ((docScroll < 20)) {
+        } else if ((docScroll <= 280)) {
 
           hideNav();
         }
