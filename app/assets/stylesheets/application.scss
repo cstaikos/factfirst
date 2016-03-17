@@ -117,8 +117,20 @@ html, body {
 
 // Home page search bar NOT one in nav bar
 .home-search-bar {
-  @include span-columns(6);
-  @include shift(3);
+
+  @include span-columns(10);
+  @include shift(1);
+
+
+  @include media($medium-screen) {
+    @include span-columns(8);
+    @include shift(2);
+  }
+
+  @include media($large-screen) {
+    @include span-columns(6);
+    @include shift(3);
+  }
 }
 
 .home-page-or {
