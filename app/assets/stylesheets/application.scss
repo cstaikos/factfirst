@@ -80,8 +80,12 @@ html, body {
 }
 
 .text-wrapper {
-  @include outer-container;
-  max-width: $text-max-width;
+  @include outer-container(95%);
+
+  @include media(1230px) {
+    @include outer-container();
+    max-width: $text-max-width;
+  }
 }
 
 .application-wrapper {

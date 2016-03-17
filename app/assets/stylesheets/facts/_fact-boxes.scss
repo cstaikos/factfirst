@@ -66,8 +66,12 @@
       margin: auto;
       text-align: left;
       padding-bottom: 10px;
-      height: 50px;
       border-bottom: 1px solid #ccc;
+      height: 68px;
+
+      @include media($desktop-screen) {
+        height: 50px;
+      }
 
       // .fact-heading {
       //   font-weight: bold;
@@ -101,8 +105,15 @@
 .fact-box-favorite p {
   padding: 0;
   margin: 0;
-  font-size: 0.8em !important;
   display: inline-block;
+
+  @include media($large-screen) {
+    font-size: 0.7em !important;
+  }
+
+  @include media($desktop-screen) {
+    font-size: 0.8em !important;
+  }
 }
 
 .fact-box-star {
@@ -116,12 +127,26 @@
   font-weight: bold;
   padding: 5px 0;
   @include span-columns(4);
-  span {
+  span.full-cat-name {
+    display: none;
+    font-weight: 300;
+    font-size: 0.8em;
+    text-align: center;
+    color: #333;
+    @include media($desktop-screen) {
+      display: block;
+    }
+  }
+  span.short-cat-name {
     display: block;
     font-weight: 300;
     font-size: 0.8em;
     text-align: center;
     color: #333;
+
+    @include media($desktop-screen) {
+      display: none;
+    }
   }
 }
 
