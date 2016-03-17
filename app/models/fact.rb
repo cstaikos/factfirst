@@ -49,7 +49,8 @@ class Fact < ActiveRecord::Base
       # to also adjust the default trust in source.rb if this is done.
       # (2/3 * 0.01) is a conversion factor to move trust percentage to the
       # same scale we are looking for, which is 0.53 <= factor <= 1.2
-      wot_factor = 1 + ( ( (evidence.source.wot_trust - 70) * (2/3 * 0.01) * (evidence.source.wot_confidence / 100) ))
+      wot_factor = 1.0 + ( ( (evidence.source.wot_trust.to_f - 70.0) * (2.0/3.0 * 0.01) * (evidence.source.wot_confidence.to_f / 100.0) ))
+      puts wot_factor.to_s + "HERE***********"
 
       # This is applied to downvotes - the result is that upvotes weigh more
       # when the trust is high, while downvotes weigh less.
@@ -65,6 +66,8 @@ class Fact < ActiveRecord::Base
     end
 
     self.score = (vote_sums.to_f / total_votes.to_f * 100).round
+
+    self.score = 100 if self.score > 100
 
     save
 
