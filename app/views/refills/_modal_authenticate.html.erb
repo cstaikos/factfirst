@@ -31,14 +31,24 @@
                   <%= f.label :remember_me, id: "remember_me_label" %>
                   <%= f.check_box :remember_me %>
                 </div>
-            <% end -%>
+            <% end %>
 
             <div class="actions">
               <%= f.submit "Log in" %>
             </div>
 
         <% end %>
-        <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+        <%= link_to user_omniauth_authorize_path(:google_oauth2), id: 'gpluslogin' do %>
+            <em id="gpname">g+</em>
+            <span id="gptext">Sign In with Google</span>
+      <% end %>
+        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+
+
+
+        <!--<button class="googleplus">Sign in <em>w/</em> Google</button>-->
+        <!--<button type="button" id="gpluslogin">-->
+        <!--</button>-->
 
 
       </div>
