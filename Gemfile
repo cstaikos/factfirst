@@ -26,6 +26,7 @@ gem 'kaminari'
 gem 'rmagick'
 gem 'public_suffix'
 gem 'figaro'
+gem 'httparty'
 
 
 # HTML5/CSS Framework
