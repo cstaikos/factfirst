@@ -244,10 +244,10 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :google_oauth2,
                   '999460257077-vudgebme5ms6qsoduhrvi325kvpmdh0s.apps.googleusercontent.com',
-                  'SKpIHqDrQnROoait0JDYXxdt',
+                  ENV['google_secret'],
                   {access_type: "offline", approval_prompt: ""}
 
-  config.omniauth :facebook, "153893971668566", "46054aa349957b249caebb92b580adf9",
+  config.omniauth :facebook, "153893971668566", ENV['facebook_secret'],
                   callback_url: "http://localhost:3000/users/auth/facebook/callback"
 
 
