@@ -32,7 +32,11 @@
     @include clearfix;
     color: $hero-color;
     margin: auto;
-    padding: 3.5em 3.5em 0 3.5em; // take out bottom padding so the about box can live there
+    padding: 1em 1em 0 1em;
+
+    @include media($small-screen) {
+      padding: 3.5em 3.5em 0 3.5em; // take out bottom padding so the about box can live there
+    }
     text-align: center;
 
     .hero-copy {
