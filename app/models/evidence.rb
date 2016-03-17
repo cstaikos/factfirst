@@ -8,6 +8,8 @@ class Evidence < ActiveRecord::Base
   validates :url, presence: true
   # validates_inclusion_of :support, in: [true, false]
 
+  require 'open_uri_redirections'
+
   def upvotes
     votes.where(upvote: true).count
   end
@@ -21,19 +23,24 @@ class Evidence < ActiveRecord::Base
     begin
 
       timeout(5) do
-        doc = Nokogiri::HTML(open(self.url))
+        begin
+          doc = Nokogiri::HTML(open(self.url, allow_redirections: :safe))
 
-        og_title = doc.css("meta[property='og:title']")
-        og_description = doc.css("meta[property='og:description']")
+          og_title = doc.css("meta[property='og:title']")
+          og_description = doc.css("meta[property='og:description']")
 
-        self.title = og_title.first.attributes["content"] if og_title.length > 0
-        self.description = og_description.first.attributes["content"] if og_description.length > 0
+          self.title = og_title.first.attributes["content"] if og_title.length > 0
+          self.description = og_description.first.attributes["content"] if og_description.length > 0
+        rescue Exception
+        end
+
+
       end
 
     rescue Timeout::Error
       puts 'Timeout error'
     end
-    
+
   end
 
   def already_used_for_fact?(fact)

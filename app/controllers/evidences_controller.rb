@@ -18,25 +18,27 @@ class EvidencesController < ApplicationController
       redirect_to fact_path(@fact), alert: "Already used that reference on this fact!" and return
     end
 
+    # Auto upvote submitted evidence
+    @evidence.votes.build(upvote: true, user: current_user)
+
+    # Create new source or grab existing one if it exists
+    @new_source = Source.create_from_url(@evidence.url)
+
+    if @new_source
+      @evidence.source = @new_source
+    else
+      flash[:alert] = "Error: #{URI(@evidence.url).host} seems to be an invalid domain.\nIf you think this is incorrect please contact the admin."
+      redirect_to fact_path(@fact) and return
+    end
+
+    @evidence.grab_metadata
+
     if @evidence.save
-      # Auto upvote submitted evidence
-      @evidence.votes.create(upvote: true, user: current_user)
-
-      # Create new source or grab existing one if it exists
-      new_source = Source.create_from_url(@evidence.url)
-      if new_source
-        @evidence.source = new_source
-      else
-        flash[:alert] = "Error: #{URI(@evidence.url).host} seems to be an invalid domain.\nIf you think this is incorrect please contact the admin."
-        redirect_to fact_path(@fact) and return
-      end
-
-      @evidence.save
       @evidence.fact.update_score
-
       redirect_to fact_path(@fact)
     else
       flash[:alert] = @evidence.errors.full_messages.to_sentence
+      @new_source.destroy
       redirect_to fact_path(@fact)
     end
 

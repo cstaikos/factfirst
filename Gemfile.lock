@@ -132,6 +132,7 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    open_uri_redirections (0.2.1)
     orm_adapter (0.5.0)
     parser (2.3.0.6)
       ast (~> 2.2)
@@ -261,6 +262,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-google-oauth2
+  open_uri_redirections
   pg
   pry-rails
   public_suffix
