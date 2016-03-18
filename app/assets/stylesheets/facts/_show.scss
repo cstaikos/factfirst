@@ -218,12 +218,15 @@
   min-height: 46px;
 }
 
-.evidence-supporting-button {
-  background-color: $upvote-color !important;
-  font-size: 1em;
+.evidence-submit input {
   @include media(max-width $large-screen) {
     font-size: 0.9em !important;
   }
+}
+
+.evidence-supporting-button {
+  background-color: $upvote-color !important;
+  font-size: 1em;
 }
 
 .evidence-refuting-button {
