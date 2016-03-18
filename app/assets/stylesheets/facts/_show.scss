@@ -343,7 +343,10 @@
     margin: 0px;
     padding-top: 10px;
   }
-  @include span-columns(9);
+  @include span-columns(8);
+  @include media($desktop-screen) {
+    @include span-columns(9);
+  }
   p {
     font-weight: normal;
     padding: 0;
@@ -358,7 +361,10 @@
 
 #fact-image {
   padding-top: 15px;
-  @include span-columns(3);
+  @include span-columns(4);
+  @include media($desktop-screen) {
+    @include span-columns(3);
+  }
   margin-bottom: 7px;
 }
 
@@ -418,16 +424,28 @@
   display: inline-block;
   clear: both;
   padding-top: 6px;
-  width: 120px;
+  @include media($large-screen) {
+    width: 80px;
+    font-size: 0.8em;
+  }
+  @include media($desktop-screen) {
+    width: 120px;
+    font-size: 1em;
+  }
 }
 
 #copy-fact-image {
-  width: 500px;
+  width: 313px;
+  @include media($desktop-screen) {
+    width: 500px;
+  }
 }
 
 #copy-fact-iframe {
-  width: 500px;
-}
+  width: 313px;
+  @include media($desktop-screen) {
+    width: 500px;
+  }}
 
 .tooltip-item.source-tooltip {
   display: inline-block;
