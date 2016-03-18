@@ -25,6 +25,8 @@
 
 
 $padding-from-screen-edge: 20px;
+$padding-from-screen-edge-medium: 15px;
+$padding-from-screen-edge-small: 10px;
 $text-max-width: 1200px;
 $navigation-background: #092E4B;
 
@@ -36,44 +38,45 @@ html, body {
 
 
 // This is for the home page
+// NOTE: I am going to leave the animation code commented out because we may want to revisit this soon, but not for any iterations pre demo day.
 .nav-bg {
   background-color: $navigation-background;
   border-bottom: 1px solid darken($navigation-background, 10);
-  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-   -moz-animation: fadein 1s; /* Firefox < 16 */
-    -ms-animation: fadein 1s; /* Internet Explorer */
-     -o-animation: fadein 1s; /* Opera < 12.1 */
-        animation: fadein 1s;
+  // -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  //  -moz-animation: fadein 1s; /* Firefox < 16 */
+  //   -ms-animation: fadein 1s; /* Internet Explorer */
+  //    -o-animation: fadein 1s; /* Opera < 12.1 */
+  //       animation: fadein 1s;
 }
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
+//
+// @keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+//
+// /* Firefox < 16 */
+// @-moz-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+//
+// /* Safari, Chrome and Opera > 12.1 */
+// @-webkit-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+//
+// /* Internet Explorer */
+// @-ms-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
+//
+// /* Opera < 12.1 */
+// @-o-keyframes fadein {
+//     from { opacity: 0; }
+//     to   { opacity: 1; }
+// }
 
 .wrapper {
   @include omega;
@@ -92,9 +95,17 @@ html, body {
 .application-wrapper {
   @include outer-container;
   max-width: $text-max-width;
-  @include pad($padding-from-screen-edge);
-  padding-top: $sticky-nav-top-padding; // This should be applied to the first element on each page.
-  padding-top: 98px;
+  @include pad($padding-from-screen-edge-small);
+  padding-top: 10px; // less padding on mobile <600px
+  // Give more padding top when nav bar is position fixed (sticky)
+  @include media(min-width $small-screen) {
+    @include pad($padding-from-screen-edge-medium);
+  }
+  @include media(min-width $medium-screen) {
+    @include pad($padding-from-screen-edge);
+    padding-top: $sticky-nav-top-padding; // This should be applied to the first element on each page.
+  }
+  // padding-top: 98px; NOTE: This is old but leaving here for now in case something breaks
 }
 
 .evidence {
@@ -110,10 +121,6 @@ html, body {
 
 .evidence-form {
   @include span-columns(6);
-}
-
-#evidence_url {
-  width: 300px;
 }
 
 .nodisplay {

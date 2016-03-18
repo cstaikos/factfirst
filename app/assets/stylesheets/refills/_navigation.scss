@@ -9,7 +9,7 @@ header.navigation {
   $nav-base-color: #092E4B;
   $large-screen: em(860) !default;
 
-  @include media($small-screen) {
+  @include media(min-width $medium-screen) {
     position: fixed; // Sticky nav bar for > 600px wide screens
   }
 
@@ -471,5 +471,19 @@ header.navigation {
         display: block;
       }
     }
+  }
+}
+
+.img-logo {
+  display: none;
+  @include media(min-width $small-screen) {
+    display: inline;
+  }
+}
+
+.img-logo-mobile {
+  display: inline;
+  @include media(min-width $small-screen) {
+    display: none;
   }
 }
