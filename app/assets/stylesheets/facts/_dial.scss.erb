@@ -10,6 +10,9 @@
     background-repeat: no-repeat;
     background-position: right;
     margin-right: 20px;
+    @include media(max-width $medium-screen) {
+      @include omega;
+    }
 }
 #speedo .speedometer {
     -webkit-transform: rotate(45deg);
