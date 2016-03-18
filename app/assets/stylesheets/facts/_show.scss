@@ -343,7 +343,10 @@
     margin: 0px;
     padding-top: 10px;
   }
-  @include span-columns(8);
+  @include span-columns(7);
+  @include media($large-screen) {
+    @include span-columns(8);
+  }
   @include media($desktop-screen) {
     @include span-columns(9);
   }
@@ -361,7 +364,10 @@
 
 #fact-image {
   padding-top: 15px;
-  @include span-columns(4);
+  @include span-columns(5);
+  @include media($large-screen) {
+    @include span-columns(4);
+  }
   @include media($desktop-screen) {
     @include span-columns(3);
   }
@@ -424,7 +430,7 @@
   display: inline-block;
   clear: both;
   padding-top: 6px;
-  @include media($large-screen) {
+  @include media(max-width $desktop-screen) {
     width: 80px;
     font-size: 0.8em;
   }
@@ -435,17 +441,22 @@
 }
 
 #copy-fact-image {
-  width: 313px;
+  @include media($large-screen) {
+    width: 313px;
+  }
   @include media($desktop-screen) {
     width: 500px;
   }
 }
 
 #copy-fact-iframe {
-  width: 313px;
+  @include media($large-screen) {
+    width: 313px;
+  }
   @include media($desktop-screen) {
     width: 500px;
-  }}
+  }
+}
 
 .tooltip-item.source-tooltip {
   display: inline-block;
