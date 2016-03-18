@@ -17,11 +17,11 @@
           </h4>
 
           <div class="tooltip-item source-tooltip">
-            <%= "Source domain: #{evidence.source.domain}" %>
+            <%= "Source domain: #{evidence.source ? evidence.source.domain : 'n/a'}" %>
             <div class="tooltip">
               <p>
-                Upvotes for this domain are worth <%= evidence.source.wot_factor.to_f.round(2) %> of a vote. <br>
-                Downvotes for this domain are worth <%= evidence.source.reverse_wot_factor.to_f.round(2) %> of a vote. <br>
+                Upvotes for this domain are worth <%= evidence.source ? evidence.source.wot_factor.to_f.round(2) : 1.0 %> of a vote. <br>
+                Downvotes for this domain are worth <%= evidence.source ? evidence.source.reverse_wot_factor.to_f.round(2) : 1.0 %> of a vote. <br>
                 <%= link_to 'Why?', about_path + '#weight' %>
               </p>
             </div>
