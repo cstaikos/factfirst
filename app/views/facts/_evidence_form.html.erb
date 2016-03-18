@@ -2,8 +2,7 @@
   <p>Join the debate! Add your own evidence to <%= support ? 'support' : 'refute' %> this fact.</p>
   <%= form_for [@fact, @evidence] do |f| %>
     <div class="evidence-url-form-group">
-      <%= f.label "URL:", :class => 'evidence-label' %>
-      <%= f.url_field :url, :class => 'evidence-field' %>
+      <%= f.url_field :url, :class => 'evidence-field', placeholder: "URL" %>
     </div>
 
     <%= f.hidden_field :support, value: support %>
