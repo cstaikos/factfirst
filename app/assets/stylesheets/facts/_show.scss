@@ -10,8 +10,12 @@
   padding-left: 230px;
   display: table;
   margin-bottom: 30px;
-  font-size: 0.9em;
   font-style: italic;
+  font-size: 0.8em;
+
+  @include media($large-screen) {
+    font-size: 0.9em;
+  }
 
   span {
     vertical-align: middle;
@@ -34,12 +38,16 @@
 .fact-show {
   display: table-cell;
   width: 90%;
-  font-size: 2em;
   font-weight: bold;
   vertical-align: middle;
   padding-right: 5px;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  font-size: 1.5em;
+
+  @include media($large-screen) {
+    font-size: 2em;
+  }
 }
 
 .fact-header {
