@@ -20,8 +20,8 @@
             <%= "Source domain: #{evidence.source.domain}" %>
             <div class="tooltip">
               <p>
-                Upvotes for this domain are worth <%= evidence.source.wot_factor.to_f %> of a vote. <br>
-                Downvotes for this domain are worth <%= evidence.source.reverse_wot_factor.to_f %> of a vote. <br>
+                Upvotes for this domain are worth <%= evidence.source.wot_factor.to_f.round(2) %> of a vote. <br>
+                Downvotes for this domain are worth <%= evidence.source.reverse_wot_factor.to_f.round(2) %> of a vote. <br>
                 <%= link_to 'Why?', about_path + '#weight' %>
               </p>
             </div>
