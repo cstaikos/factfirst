@@ -93,6 +93,7 @@ html, body {
   @include outer-container;
   max-width: $text-max-width;
   @include pad($padding-from-screen-edge);
+  padding-top: 10px; // less padding on mobile <600px 
   // Give more padding top when nav bar is position fixed (sticky)
   @include media(min-width $medium-screen) {
     padding-top: $sticky-nav-top-padding; // This should be applied to the first element on each page.

@@ -52,6 +52,12 @@
 
   @include media(max-width $medium-screen) {
     display: block;
+    width: 100%;
+    font-size: 1.2em;
+  }
+
+  @include media(max-width $small-screen) {
+    font-size: 1em;
   }
 
   @include media($large-screen) {
