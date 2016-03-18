@@ -8,27 +8,50 @@
 
 .fact-favorite-text {
   display: table;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-style: italic;
   font-size: 0.7em;
-  padding-left: 150px;
+  padding-left: 0px;
 
   @include media($medium-screen) {
     padding-left: 205px;
+    margin-bottom: 20px;
   }
 
   @include media($large-screen) {
     font-size: 0.9em;
     padding-left: 230px;
+    margin-bottom: 30px;
   }
 
-  span {
+  span.favorite-text-mobile {
     vertical-align: middle;
-    padding-left: 8px;
+    padding-left: 4px;
     display: table-cell;
+    @include media($medium-screen) {
+      display: none;
+    }
+  }
+
+  span.favorite-text-medium {
+    vertical-align: middle;
+    padding-left: 4px;
+    display: none;
+    @include media($medium-screen) {
+      display: table-cell;
+      padding-left: 8px;
+    }
   }
   i {
-    font-size: 1.5em;
+    @include media(max-width $medium-screen) {
+      font-size: 1em
+    }
+    @include media($medium-screen) {
+      font-size: 1.2em
+    }
+    @include media($large-screen) {
+      font-size: 1.5em;
+    }
   }
 }
 

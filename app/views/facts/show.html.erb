@@ -15,7 +15,8 @@
     <div id="favorite-<%= @fact.id %>">
       <%= favorite_button(@fact) %>
     </div>
-    <span>Fact posted by <%= link_to truncate(@fact.user.display_name, length: 8), @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
+    <span class="favorite-text-medium">Fact posted by <%= link_to truncate(@fact.user.display_name, length: 8), @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
+    <span class="favorite-text-mobile">By <%= link_to truncate(@fact.user.display_name, length: 8), @fact.user %> on <%= @fact.created_at.strftime("%b %-d, %Y") %> | <%= @fact.category.name %></span>
   </div>
 
   <div class="evidence">
