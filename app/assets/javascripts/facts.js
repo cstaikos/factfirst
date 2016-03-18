@@ -1,10 +1,11 @@
 $(document).on('ready page:load', function(){
 
   // Truncate text on fact-show padding-left
-  $(document).ready(function() {
-    $(".evidence-title").dotdotdot({
-        });
-    });
+  $(".evidence-title").dotdotdot({
+      });
+
+  $(".evidence-description").dotdotdot({
+      });
 
   // Odomoter (number scrolling) on fact show page
   window.setTimeout(function() {
