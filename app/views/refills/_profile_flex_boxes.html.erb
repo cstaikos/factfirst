@@ -3,12 +3,14 @@
   <div class="profile-flex-boxes">
 
     <div class="profile-flex-box profile-image">
-      <span><%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}" %></span>
+      <span><%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}?d=identicon" %></span>
 
       <% if current_user == @user %>
           <br>
           <p class="profile-flex-title profile-image-text"><em>No profile image?</em><br>
           <em> <%= link_to "Click here", "https://en.gravatar.com/connect/", target: '_blank' %> to get a gravatar.</em>
+          <br>
+          <em><%= link_to "Edit Profile", edit_user_registration_path %></em>
           </p>
       <% end %>
     </div>
