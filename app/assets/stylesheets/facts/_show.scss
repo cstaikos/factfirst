@@ -70,7 +70,7 @@
   @include omega;
   display: table;
   margin:0.5em 0px 0px 0px;
-  padding:.5em 10px;
+  padding:.5em 0px;
   min-height: 150px;
 
   @include media(max-width $medium-screen) {

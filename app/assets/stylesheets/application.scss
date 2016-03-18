@@ -25,6 +25,8 @@
 
 
 $padding-from-screen-edge: 20px;
+$padding-from-screen-edge-medium: 15px;
+$padding-from-screen-edge-small: 10px;
 $text-max-width: 1200px;
 $navigation-background: #092E4B;
 
@@ -92,10 +94,14 @@ html, body {
 .application-wrapper {
   @include outer-container;
   max-width: $text-max-width;
-  @include pad($padding-from-screen-edge);
-  padding-top: 10px; // less padding on mobile <600px 
+  @include pad($padding-from-screen-edge-small);
+  padding-top: 10px; // less padding on mobile <600px
   // Give more padding top when nav bar is position fixed (sticky)
+  @include media(min-width $small-screen) {
+    @include pad($padding-from-screen-edge-medium);
+  }
   @include media(min-width $medium-screen) {
+    @include pad($padding-from-screen-edge);
     padding-top: $sticky-nav-top-padding; // This should be applied to the first element on each page.
   }
   // padding-top: 98px; NOTE: This is old but leaving here for now in case something breaks
