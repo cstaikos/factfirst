@@ -181,13 +181,17 @@
   padding: 10px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
+  font-size: 0.7em;
   p {
     margin: 0;
     padding: 0;
     padding-bottom: 5px;
+    @include media($small-screen) {
+      font-size: 0.8em;
+    }
 
     @include media($medium-screen) {
-
+      font-size: 1em;
     }
   }
   margin-bottom: 20px;
