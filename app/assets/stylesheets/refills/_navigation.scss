@@ -473,3 +473,17 @@ header.navigation {
     }
   }
 }
+
+.img-logo {
+  display: none;
+  @include media(min-width $small-screen) {
+    display: inline;
+  }
+}
+
+.img-logo-mobile {
+  display: inline;
+  @include media(max-width $small-screen) {
+    display: none;
+  }
+}
