@@ -181,11 +181,14 @@
     margin: 0;
     margin-top: 0px;
     @include media(max-width $large-screen) {
-      min-height: 42px;
+      height: 42px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     @include media($large-screen) {
       font-size: 16px;
       min-height: 48px;
+      text-overflow: ellipsis;
     }
     text-overflow: ellipsis;
     a {
@@ -197,6 +200,15 @@
   }
   .evidence-description {
     margin: 0;
+    font-size: 0.8em;
+    padding-bottom: 8px;
+    min-height: 46px;
+    @include media($medium-screen) {
+      min-height: 57px;
+    }
+    @include media($large-screen) {
+      min-height: 46px;
+    }
   }
 }
 
@@ -235,12 +247,6 @@
   font-size: 0.8em;
   padding: 0;
   margin: 0;
-}
-
-.evidence-description {
-  font-size: 0.8em;
-  padding-bottom: 8px;
-  min-height: 46px;
 }
 
 .evidence-submit input {
