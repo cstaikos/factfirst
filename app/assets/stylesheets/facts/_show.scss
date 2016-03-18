@@ -129,10 +129,18 @@
 }
 
 .piece-of-evidence {
+  word-wrap: break-word;
+  word-break: break-all;
   width: 100%;
   display: table;
   background-color: #f9f9f9;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  @include media($medium-screen) {
+    margin-bottom: 15px;
+  }
+  @include media($large-screen) {
+    margin-bottom: 20px;
+  }
 }
 
 .vote-buttons {
@@ -150,6 +158,9 @@
   .numvotes {
     font-size: 0.5em;
     line-height: 20px;
+    @include media(max-width $large-screen) {
+      display: block;
+    }
   }
 }
 
@@ -164,10 +175,21 @@
   width: 80%;
   display: table-cell;
   padding: 0 8px;
+  text-overflow: ellipsis;
+  font-size: 14px;
   .evidence-title {
-    margin: 20px 0 0 0;
-    line-height: 5px;
-
+    margin: 0;
+    margin-top: 10px;
+    @include media($medium-screen) {
+    }
+    @include media($large-screen) {
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    text-overflow: ellipsis;
+    a {
+      text-overflow: ellipsis;
+    }
   }
   .evidence-url {
     margin: 0;
@@ -186,12 +208,14 @@
     margin: 0;
     padding: 0;
     padding-bottom: 5px;
-    @include media($small-screen) {
-      font-size: 0.8em;
-    }
+    font-size: 0.8em;
 
     @include media($medium-screen) {
       font-size: 1em;
+    }
+
+    @include media($desktop-screen) {
+      font-size: 1.2em;
     }
   }
   margin-bottom: 20px;
@@ -410,7 +434,6 @@
   height: 1px;
   width: 1px;
 }
-
 
 .evidence-field {
   max-width: 300px !important;

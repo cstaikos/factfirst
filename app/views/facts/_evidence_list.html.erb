@@ -30,7 +30,7 @@
 
           <p class="evidence-description"><%= evidence.description || 'No site description found.' %></p>
 
-          <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
+          <p class="evidence-posting">Added by <%= link_to truncate(evidence.user.display_name, length: 8), evidence.user %> on <%= evidence.created_at.strftime("%b %-d, %Y") %></p>
 
         </div>
 
