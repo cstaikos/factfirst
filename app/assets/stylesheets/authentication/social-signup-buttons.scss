@@ -86,21 +86,19 @@
   align-self: flex-start;
   text-align: center;
   width: 74%;
+  position: relative;
+  left: 13px;
   height: 17px;
   background-color: none;
   white-space: nowrap;
   font: normal normal bold 0.7em/normal 'Helvetica Neue', Helvetica, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', arial, sans-serif;
-  margin: 0px 0px 0px 3px;
+  margin: 2px 0 0px 3px;
   text-shadow: rgba(0, 0, 0, 0.24706) 0px -1px 0px;
-  color: rgb(255, 255, 255);
-  text-decoration: none solid rgb(255, 255, 255);
-  border: 0px none rgb(255, 255, 255);
-  outline: rgb(255, 255, 255) none 0px;
-  //font: normal normal bold 16px/normal 'Helvetica Neue', Helvetica, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', arial, sans-serif;
+  color: white;
+  text-decoration: none solid white;
+  border: 0px none white;
+  outline: white none 0px;
   /* vertical-align: middle; */
-  //white-space: nowrap;
-  //width: 150px;
-
 }
 
 
