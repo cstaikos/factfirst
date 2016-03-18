@@ -3,6 +3,7 @@ class Source < ActiveRecord::Base
 
   after_create :get_wot
 
+  require 'open_uri_redirections'
   require 'httparty'
 
   @@base_trust = 70

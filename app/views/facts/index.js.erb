@@ -10,8 +10,8 @@ $("#sort-<%= params[:sort] ? params[:sort].downcase : 'popular' %>").toggleClass
 $("#index-pagination").html('<%= j paginate(@facts) %>')
 
 // Set current sort/category params
-$('.category-buttons').attr('data-selected', '<%= params[:category] %>');
-$('.filter-buttons').attr('data-selected', '<%= params[:sort] %>');
+$('.category-buttons').attr('data-selected', '<%= params[:category] || "all" %>');
+$('.filter-buttons').attr('data-selected', '<%= params[:sort] || "popular" %>');
 
 // Grab current sort/category/search params
 currentCategory = $('.category-buttons').attr('data-selected');

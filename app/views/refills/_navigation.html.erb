@@ -18,7 +18,7 @@
       <% if user_signed_in? %>
         <div class="gravatar">
           <a href="<%= user_path(current_user) %>">
-            <%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
+            <%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}?d=identicon",
                 id: "user-image-nav" %>
           </a>
         </div>
@@ -37,7 +37,7 @@
       <% if user_signed_in? %>
           <!--NOTE enter user_path when created -->
           <div id="welcome-message">Welcome, <%= link_to truncate(current_user.display_name, length: 10), user_path(current_user) %>
-            <a href="<%= user_path(current_user) %>"><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}",
+            <a href="<%= user_path(current_user) %>"><%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}?d=identicon",
                 width: '28',
                 id: "user-image-nav"%></a>
           </div>
