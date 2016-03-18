@@ -29,21 +29,22 @@
     </label>
 
     <label>
-      <%= button_to 'Bullshit', {}, {
-          :method => 'get',
-          :name => 'sort',
-          :remote => true,
-          :url => facts_path + "?sort=bullshit" } %>
-      <span id="sort-bullshit" class="button-group-item<%= ' is-selected' if params[:sort] && params[:sort].downcase == 'bullshit' %>">Bullshit</span>
-    </label>
-
-    <label>
-      <%= button_to 'Truth', {}, {
+      <%= button_to 'True', {}, {
           :method => 'get',
           :name => 'sort',
           :remote => true,
           :url => facts_path + "?sort=truth" } %>
-      <span id="sort-truth" class="button-group-item<%= 'is-selected' if params[:sort] && params[:sort].downcase == 'truth' %>">Truth</span>
+          <span id="sort-truth" class="button-group-item<%= 'is-selected' if params[:sort] && params[:sort].downcase == 'truth' %>">Truth</span>
     </label>
+
+    <label>
+      <%= button_to 'False', {}, {
+          :method => 'get',
+          :name => 'sort',
+          :remote => true,
+          :url => facts_path + "?sort=false" } %>
+      <span id="sort-false" class="button-group-item<%= ' is-selected' if params[:sort] && params[:sort].downcase == 'false' %>">false</span>
+    </label>
+
   </div>
 </div>
