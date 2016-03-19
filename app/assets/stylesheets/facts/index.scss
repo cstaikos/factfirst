@@ -1,31 +1,39 @@
+.sort-nav {
+  background-color: $light-gray;
+  &> div {
+    float: left;
+  }
+}
+
 .category-buttons {
+  @include span-columns(12);
   display: block;
   overflow: hidden;
   margin-bottom: 1em;
   h4 {
     margin: 0;
-    margin-bottom: 0.5em;
   }
 }
 
 .filter-buttons {
+  @include span-columns(4);
   display: block;
   overflow: hidden;
   h4 {
     margin: 0;
-    margin-bottom: 0.5em;
   }
 }
 
 .facts-index-search {
   @include span-columns(6);
   float: none;
-  margin-top: 1em;
-  margin-bottom: 1em;
   h4 {
     margin: 0;
-    margin-bottom: 0.5em;
   }
+}
+
+.details-reset {
+  @include span-columns(12);
 }
 
 #spinner {
