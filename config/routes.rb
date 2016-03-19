@@ -23,6 +23,7 @@ Rails.application.routes.draw do
                                       omniauth_callbacks: 'omniauth_callbacks' }
 
   get 'users/:id' => 'users#show', as: 'user'
+  get 'users/:id/metrics' => 'users#metrics'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

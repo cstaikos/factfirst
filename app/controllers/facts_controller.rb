@@ -44,7 +44,6 @@ class FactsController < ApplicationController
 
     @facts = @facts.page(params[:page]).per(15)
 
-
     respond_to do |format|
       format.js {}
       format.html {}
