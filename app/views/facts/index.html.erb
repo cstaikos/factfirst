@@ -10,7 +10,7 @@
   <div class="query-details">
     <%= query_details %>
   </div>
-  <%= link_to 'Click to reset', facts_path + '?category=all&sort=popular', remote: true , id: 'reset'%>
+  <%= link_to '&times;'.html_safe + 'Clear search', facts_path + '?category=all&sort=popular', remote: true , id: 'reset'%>
 </div>
 
 <div class="facts-container">

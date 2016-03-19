@@ -1,5 +1,6 @@
 .sort-nav {
-  background-color: $light-gray;
+  overflow: hidden;
+
   &> div {
     float: left;
   }
@@ -34,10 +35,19 @@
 
 .details-reset {
   @include span-columns(12);
+
+  h3 {
+    margin: 0;
+    margin-top: 10px;
+  }
 }
 
 #spinner {
   width: 50px;
   margin: 0 auto;
   display: none;
+}
+
+#reset {
+  font-size: 0.4em;
 }
