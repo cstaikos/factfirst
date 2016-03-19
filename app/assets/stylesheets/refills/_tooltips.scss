@@ -12,6 +12,8 @@
   $tooltip-distance-from-item: 3em;
   $tooltip-arrow-distance-from-box: -1.3em;
 
+  height: 11px;
+
   background: $tooltip-background;
   border-radius: $base-border-radius;
   border: 1px solid $base-border-color;

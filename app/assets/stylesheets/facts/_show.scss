@@ -343,7 +343,7 @@
     margin: 0px;
     padding-top: 10px;
   }
-  @include span-columns(7);
+  @include span-columns(12);
   @include media($large-screen) {
     @include span-columns(8);
   }
@@ -364,11 +364,13 @@
 
 #fact-image {
   padding-top: 15px;
-  @include span-columns(5);
+  display: none;
   @include media($large-screen) {
+    display: inline;
     @include span-columns(4);
   }
   @include media($desktop-screen) {
+    display: inline;
     @include span-columns(3);
   }
   margin-bottom: 7px;
@@ -387,7 +389,19 @@
   // vertical-align: middle;
 }
 .input-group input, .input-group-button {
-    display: table-cell;
+    @include media(min-width $small-screen) {
+      display: table-cell;
+    }
+    button:last-child {
+      margin-bottom: 10px;
+    }
+}
+
+// Hacky way around the Bitters default 100% width for this one case
+.copy-share {
+  @include media(max-width $small-screen) {
+    width: 95% !important;
+  }
 }
 
 .clippy-btn {

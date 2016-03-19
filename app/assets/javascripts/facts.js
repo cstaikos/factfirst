@@ -7,6 +7,9 @@ $(document).on('ready page:load', function(){
   $(".evidence-description").dotdotdot({
       });
 
+  $(".tooltip-item").dotdotdot({
+      });
+
   // Odomoter (number scrolling) on fact show page
   window.setTimeout(function() {
     $(".odometer").text($("#actual-score").text());
