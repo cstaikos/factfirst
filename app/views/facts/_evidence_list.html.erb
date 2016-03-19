@@ -12,10 +12,6 @@
         </div>
         <div class="show-evidence">
 
-          <h4 class="evidence-title">
-            <%= link_to ( evidence.title || truncate(evidence.url, length: 50) ), evidence.url, target: '_blank' %>
-          </h4>
-
           <div class="tooltip-item source-tooltip">
             <%= "Source domain: #{evidence.source ? evidence.source.domain : 'n/a'}" %>
             <div class="tooltip">
@@ -26,11 +22,14 @@
               </p>
             </div>
           </div>
-
+          
+          <h4 class="evidence-title">
+            <%= link_to ( evidence.title || truncate(evidence.url, length: 50) ), evidence.url, target: '_blank' %>
+          </h4>
 
           <p class="evidence-description"><%= evidence.description || 'No site description found.' %></p>
 
-          <p class="evidence-posting">Added by <%= link_to evidence.user.display_name, evidence.user %> on <%= evidence.created_at.strftime("%B %-d, %Y") %></p>
+          <p class="evidence-posting">Added by <%= link_to truncate(evidence.user.display_name, length: 8), evidence.user %> on <%= evidence.created_at.strftime("%b %-d, %Y") %></p>
 
         </div>
 
