@@ -1,13 +1,24 @@
-<%= render 'refills/categories_filter_buttons' %>
+<div class="sort-nav">
 
-<%= render 'refills/sort_filter_buttons' %>
+  <div class="trigger-buttons">
+    <a href="#" id="category-dropdown-trigger" class="index-dropdown-trigger">Select category</a>
+    <a href="#" id="sort-dropdown-trigger" class="index-dropdown-trigger">Sort by...</a>
+  </div>
 
-<%= render 'facts/facts_index_search' %>
+  <%= render 'refills/categories_filter_buttons' %>
 
-<div class="query-details">
-  <%= query_details %>
+  <%= render 'refills/sort_filter_buttons' %>
+
+  <%= render 'facts/facts_index_search' %>
+
 </div>
-<%= link_to 'Click to reset', facts_path + '?category=all&sort=popular', remote: true , id: 'reset'%>
+
+<div class="details-reset">
+  <div class="query-details">
+    <%= query_details %>
+  </div>
+  <%= link_to '&times;'.html_safe + 'Clear search', facts_path + '?category=all&sort=popular', remote: true , id: 'reset'%>
+</div>
 
 <div class="facts-container">
   <%= image_tag 'ajax-loader.gif', id: 'spinner' %>
