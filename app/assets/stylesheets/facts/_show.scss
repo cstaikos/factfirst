@@ -108,8 +108,13 @@
 
 .evidence-header-text {
   margin: 0 0 5px;
-  font-size: 1em;
-
+  font-size: 0.85em;
+  @include media(max-width $small-screen) {
+    font-weight: normal;
+    span {
+      font-size: 0.75em;
+    }
+  }
   @include media($small-screen) {
     font-size: 1.1em;
   }
@@ -146,18 +151,38 @@
 .vote-buttons {
   vertical-align: middle;
   .upvote {
-    font-size: 2em;
+    font-size: 1.2em;
+    @include media($small-screen) {
+      font-size: 1.8em;
+    }
+    @include media($medium-screen) {
+      font-size: 2em;
+    }
     display: block;
     text-align: center;
   }
   .downvote {
-    font-size: 2em;
+    font-size: 1.2em; /// 24.6876 x 29px
+    @include media($small-screen) {
+      font-size: 1.8em;
+    }
+    @include media($medium-screen) {
+      font-size: 2em;
+    }
     display: block;
     text-align: center;
   }
   .numvotes {
-    font-size: 0.5em;
-    line-height: 20px;
+    font-size: 11.52px; // computed from 1.8em / 0.4em from 450px-600px breakpoint for consistency
+    line-height: 14px;
+    @include media($small-screen) {
+      font-size: 0.4em;
+      line-height: 14px;
+    }
+    @include media($medium-screen) {
+      font-size: 0.5em;
+      line-height: 20px;
+    }
     @include media(max-width $large-screen) {
       display: block;
     }
@@ -179,24 +204,53 @@
   .evidence-title {
     margin: 0;
     margin-top: 0px;
-    @include media(max-width $large-screen) {
+    font-size: 0.9em;
+    height: 38px;
+    @include media(min-width $small-screen max-width $large-screen) {
+      font-size: 1em;
       height: 42px;
-      a {
-        // display: block;
-        // height: 37px;
-      }
     }
     @include media($large-screen) {
       font-size: 16px;
       min-height: 48px;
-      a {
-
-      }
       text-overflow: ellipsis;
     }
   }
   .evidence-url {
     margin: 0;
+  }
+  .evidence-posting {
+    // This is a custom breakpoint in order to solve an annoying multi-line bug that occurs around 500px and make things look much better on small viewports
+    @include media(max-width 510px) {
+      display: none;
+    }
+    @include media(min-width 510px) {
+      display: block;
+    }
+    font-size: 0.8em;
+    padding: 0;
+    margin: 0;
+    span {
+      font-style: italic;
+    }
+  }
+  .evidence-posting-mobile {
+    @include media(max-width 510px) {
+      font-size: 0.7em;
+      display: block;
+    }
+    @include media(min-width 510px) {
+      display: none;
+    }
+    font-size: 0.8em;
+    padding: 0;
+    margin: 0;
+    span {
+      padding: 0;
+      margin: 0;
+      display: block;
+      font-style: italic;
+    }
   }
   .evidence-description {
     margin: 0;
@@ -213,10 +267,13 @@
 }
 
 .add-evidence-box {
-  padding: 10px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
   font-size: 0.7em;
+  padding: 10px 5px;
+  @include media($small-screen) {
+    padding: 10px;
+  }
   p {
     margin: 0;
     padding: 0;
@@ -224,14 +281,26 @@
     font-size: 0.8em;
 
     @include media($medium-screen) {
-      font-size: 1em;
+      font-size: 1.1em;
+    }
+
+    @include media($large-screen) {
+      font-size: 1.3em;
     }
 
     @include media($desktop-screen) {
-      font-size: 1.2em;
+      font-size: 1.5em;
     }
   }
-  margin-bottom: 20px;
+  @include media(max-width $medium-screen) {
+    margin-bottom: 10px;
+  }
+  @include media($medium-screen) {
+    margin-bottom: 15px;
+  }
+  @include media($large-screen) {
+    margin-bottom: 20px;
+  }
   @include span-columns(6);
 }
 
@@ -243,21 +312,18 @@
   display: inline-block;
 }
 
-.evidence-posting {
-  font-size: 0.8em;
-  padding: 0;
-  margin: 0;
-}
-
 .evidence-submit input {
-  @include media(max-width $large-screen) {
+  @include media(max-width $small-screen) {
+    padding: 0.75em 0.25em !important;
+    font-size: 0.85em !important;
+  }
+  @include media(min-width $small-screen max-width $large-screen) {
     font-size: 0.9em !important;
   }
 }
 
 .evidence-supporting-button {
   background-color: $upvote-color !important;
-  font-size: 1em;
 }
 
 .evidence-refuting-button {
@@ -337,11 +403,15 @@
 
 .permalink-left {
   h2 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
     padding: 0px;
     margin: 0px;
-    padding-top: 10px;
+    padding-top: 5px;
+    @include media(min-width $small-screen) {
+      font-size: 1.5em;
+      padding-top: 10px;
+    }
   }
   @include span-columns(12);
   @include media($large-screen) {
@@ -355,7 +425,13 @@
     padding: 0;
     margin: 0;
     padding-bottom: 5px;
-    font-size: 14px !important;
+    font-size: 12px !important;
+    @include media(max-width $medium-screen) {
+      padding-right: 5px;
+    }
+    @include media(min-width $small-screen) {
+      font-size: 14px !important;
+    }
     @include media($desktop-screen) {
       font-size: 16px !important;
     }
@@ -400,7 +476,10 @@
 // Hacky way around the Bitters default 100% width for this one case
 .copy-share {
   @include media(max-width $small-screen) {
-    width: 95% !important;
+    font-size: 0.8em !important;
+  }
+  @include media(max-width $medium-screen) {
+    font-size: 0.9em !important;
   }
 }
 
