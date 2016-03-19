@@ -215,27 +215,37 @@
     margin: 0;
   }
   .evidence-posting {
-    @include media(max-width $small-screen) {
+    // This is a custom breakpoint in order to solve an annoying multi-line bug that occurs around 500px and make things look much better on small viewports
+    @include media(max-width 510px) {
       display: none;
     }
-    @include media(min-width $small-screen) {
+    @include media(min-width 510px) {
       display: block;
     }
     font-size: 0.8em;
     padding: 0;
     margin: 0;
+    span {
+      font-style: italic;
+    }
   }
   .evidence-posting-mobile {
-    @include media(max-width $small-screen) {
+    @include media(max-width 510px) {
       font-size: 0.7em;
       display: block;
     }
-    @include media(min-width $small-screen) {
+    @include media(min-width 510px) {
       display: none;
     }
     font-size: 0.8em;
     padding: 0;
     margin: 0;
+    span {
+      padding: 0;
+      margin: 0;
+      display: block;
+      font-style: italic;
+    }
   }
   .evidence-description {
     margin: 0;
