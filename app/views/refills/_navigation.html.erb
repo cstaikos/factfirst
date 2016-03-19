@@ -22,6 +22,10 @@
                 id: "user-image-nav" %>
           </a>
         </div>
+      <% else %>
+        <label class="auth-modal-label" for="auth-modal">
+          <div class="modal-trigger login mobile-login">login/signup</div>
+        </label>
       <% end %>
 
       <ul id="js-navigation-menu" class="navigation-menu show">
@@ -49,5 +53,5 @@
       <% end %>
     </div>
   </div>
-  <%= render 'refills/modal_authenticate' %>
 </header>
+<%= render 'refills/modal_authenticate' %>
