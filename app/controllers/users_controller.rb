@@ -29,6 +29,7 @@ class UsersController < ApplicationController
       @evidences_by_category_count << category.facts.inject(0) {|sum, fact| sum += fact.evidences.where(user: @user).count }
 
       @votes_by_category_count << category.facts.inject(0) {|sum, fact| sum += fact.votes.where(user: @user).count }
+
     end
 
     respond_to do |format|
