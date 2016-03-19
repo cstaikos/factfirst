@@ -32,9 +32,14 @@ class EvidencesController < ApplicationController
       @evidence.source = @new_source
 
       # Once domain is validated, do a final check to ensure the link isn't broken before continuing
-      response_code = HTTParty.get(@evidence.url).code
-      if response_code != 200
-        redirect_to fact_path(@fact), alert: "This link appears to be broken (#{response_code}). If you think this is an error please contact the site admin." and return
+      begin
+        response_code = HTTParty.get(@evidence.url).code
+        if response_code != 200
+          redirect_to fact_path(@fact), alert: "This link appears to be broken (#{response_code}). If you think this is an error please contact the site admin." and return
+        end
+      rescue Exception
+        flash[:alert] = "Error: #{URI(@evidence.url).host} seems to be an invalid domain.\nIf you think this is incorrect please contact the admin."
+        redirect_to fact_path(@fact) and return
       end
 
     else
