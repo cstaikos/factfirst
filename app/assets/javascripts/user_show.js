@@ -64,7 +64,7 @@ $(document).on('ready', function(){
 
                     activity_by_category.addSeries({
                         name: 'Votes',
-                        data: [1, 2, 3, 5, 2, 7, 2, 1]
+                        data: data[3]
                     });
                 }
             }
