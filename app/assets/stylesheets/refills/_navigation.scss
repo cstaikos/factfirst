@@ -33,7 +33,9 @@ header.navigation {
   $horizontal-bar-mode: $large-screen;
   $search-bar-display: $desktop-screen;
 
-  min-height: $navigation-height;
+  // NOTE: This is a hacky way of fixing a 10 px padding bug caused by the modal. Added as a bug/chore fix
+  // changed from min-height to height
+  height: $navigation-height;
   width: 100%;
   z-index: 999;
   top: 0;

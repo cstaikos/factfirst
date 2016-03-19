@@ -30,7 +30,7 @@ class SessionsController < Devise::SessionsController
 
     respond_to do |format|
       format.js { render template: '/users/sessions/create.js.erb'}
-      format.html {}
+      format.html { redirect_to request.referer }
     end
 
 
@@ -164,8 +164,3 @@ class SessionsController < Devise::SessionsController
 
 
 end
-
-
-
-
-
