@@ -186,26 +186,31 @@ header.navigation {
   }
 
   #welcome-message {
-      background: $navigation-background;
-      display: inline-block;
-      overflow: hidden;
-      padding-right: 0.8em;
-      text-align: right;
-      width: 100%;
-      z-index: 9999;
-      color: $navigation-color;
-      margin-top: 0.8em;
+    background: $navigation-background;
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 0.8em;
+    text-align: right;
+    width: 100%;
+    z-index: 9999;
+    color: $navigation-color;
+    margin-top: 13px;
 
-      @include media ($horizontal-bar-mode) {
-        background: transparent;
-        text-decoration: none;
-        width: auto;
-        font-size: 0.8em;
-      }
+    span {
+      position: relative;
+      top: -12px;
+    }
 
-      @include media ($desktop-screen) {
-        font-size: 0.9em;
-      }
+    @include media ($horizontal-bar-mode) {
+      background: transparent;
+      text-decoration: none;
+      width: auto;
+      font-size: 0.8em;
+    }
+
+    @include media ($desktop-screen) {
+      font-size: 0.9em;
+    }
 
     a {
       color: $navigation-color;
@@ -396,7 +401,7 @@ header.navigation {
     // width: 2em;
     // height: 2em;
     height: 100%;
-    width: 28px;
+    width: 34px;
   }
 
   // Search bar
