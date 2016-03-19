@@ -156,14 +156,6 @@ $(document).on('ready', function(){
             }]
         });
 
-
-
-
-
-
-
-
-
     });
 
 });

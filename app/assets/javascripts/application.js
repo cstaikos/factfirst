@@ -20,9 +20,9 @@
 $(document).on('ready', function(){
 
     $('.requires-login').on('click', function(e){
+        e.preventDefault();
         if ($(this).hasClass('requires-login')) {
-          e.preventDefault();
-          $("body").addClass("modal-open");
+            $("body").addClass("modal-open");
           $('#auth-modal').prop("checked", "true");
         }
     });

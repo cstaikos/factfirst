@@ -1,7 +1,7 @@
 class FactsController < ApplicationController
 
 
-  before_action :login_to_add_fact, only: [:new, :create]
+  # before_action :login_to_add_fact, only: [:new, :create]
   before_action :load_fact, only: [:show, :edit, :update, :destroy]
   before_action :load_categories
 
@@ -116,11 +116,11 @@ class FactsController < ApplicationController
     @fact = Fact.find(params[:id])
   end
 
-  def login_to_add_fact
-    unless current_user
-      redirect_to new_user_session_path, alert: "Please login to add a Fact!"
-    end
-  end
+  # def login_to_add_fact
+  #   unless current_user
+  #     redirect_to new_user_session_path, alert: "Please login to add a Fact!"
+  #   end
+  # end
 
   def load_categories
     @categories = Category.all
