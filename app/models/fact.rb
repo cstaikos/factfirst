@@ -3,6 +3,7 @@ class Fact < ActiveRecord::Base
   belongs_to :category
   has_many :evidences, dependent: :destroy
   has_and_belongs_to_many :favorited_users, class_name: 'User'
+  has_many :votes, through: :evidences
 
   after_create :set_defaults
 
