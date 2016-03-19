@@ -146,18 +146,38 @@
 .vote-buttons {
   vertical-align: middle;
   .upvote {
-    font-size: 2em;
+    font-size: 1.2em;
+    @include media($small-screen) {
+      font-size: 1.8em;
+    }
+    @include media($medium-screen) {
+      font-size: 2em;
+    }
     display: block;
     text-align: center;
   }
   .downvote {
-    font-size: 2em;
+    font-size: 1.2em; /// 24.6876 x 29px
+    @include media($small-screen) {
+      font-size: 1.8em;
+    }
+    @include media($medium-screen) {
+      font-size: 2em;
+    }
     display: block;
     text-align: center;
   }
   .numvotes {
-    font-size: 0.5em;
-    line-height: 20px;
+    font-size: 11.52px; // computed from 1.8em / 0.4em from 450px-600px breakpoint for consistency
+    line-height: 14px;
+    @include media($small-screen) {
+      font-size: 0.4em;
+      line-height: 14px;
+    }
+    @include media($medium-screen) {
+      font-size: 0.5em;
+      line-height: 20px;
+    }
     @include media(max-width $large-screen) {
       display: block;
     }
@@ -192,6 +212,29 @@
     }
   }
   .evidence-url {
+    margin: 0;
+  }
+  .evidence-posting {
+    @include media(max-width $small-screen) {
+      display: none;
+    }
+    @include media(min-width $small-screen) {
+      display: block;
+    }
+    font-size: 0.8em;
+    padding: 0;
+    margin: 0;
+  }
+  .evidence-posting-mobile {
+    @include media(max-width $small-screen) {
+      font-size: 0.7em;
+      display: block;
+    }
+    @include media(min-width $small-screen) {
+      display: none;
+    }
+    font-size: 0.8em;
+    padding: 0;
     margin: 0;
   }
   .evidence-description {
@@ -244,12 +287,6 @@
 
 .evidence-field {
   display: inline-block;
-}
-
-.evidence-posting {
-  font-size: 0.8em;
-  padding: 0;
-  margin: 0;
 }
 
 .evidence-submit input {
