@@ -1,9 +1,16 @@
 <div class="sort-nav">
+
+  <div class="trigger-buttons">
+    <a href="#" id="category-dropdown-trigger" class="index-dropdown-trigger">Select category</a>
+    <a href="#" id="sort-dropdown-trigger" class="index-dropdown-trigger">Sort by...</a>
+  </div>
+
   <%= render 'refills/categories_filter_buttons' %>
 
   <%= render 'refills/sort_filter_buttons' %>
 
   <%= render 'facts/facts_index_search' %>
+
 </div>
 
 <div class="details-reset">

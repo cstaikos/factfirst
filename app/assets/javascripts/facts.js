@@ -18,7 +18,7 @@ $(document).on('ready page:load', function(){
 
   // Trigger category dropdown
   $("#category-dropdown-trigger").on('click', function(){
-    categoryMenu = $(this).siblings('.button-group');
+    categoryMenu = $('.category-buttons .button-group');
     if (categoryMenu.css('display') == 'none') {
       categoryMenu.show(400);
     }
@@ -29,7 +29,7 @@ $(document).on('ready page:load', function(){
 
   // Trigger sort dropdown
   $("#sort-dropdown-trigger").on('click', function(){
-    categoryMenu = $(this).siblings('.button-group');
+    categoryMenu = $('.filter-buttons .button-group');
     if (categoryMenu.css('display') == 'none') {
       categoryMenu.show(400);
     }
