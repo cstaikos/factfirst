@@ -287,7 +287,15 @@
       font-size: 1.5em;
     }
   }
-  margin-bottom: 20px;
+  @include media(max-width $medium-screen) {
+    margin-bottom: 10px;
+  }
+  @include media($medium-screen) {
+    margin-bottom: 15px;
+  }
+  @include media($large-screen) {
+    margin-bottom: 20px;
+  }
   @include span-columns(6);
 }
 
@@ -390,11 +398,15 @@
 
 .permalink-left {
   h2 {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
     padding: 0px;
     margin: 0px;
-    padding-top: 10px;
+    padding-top: 5px;
+    @include media(min-width $small-screen) {
+      font-size: 1.5em;
+      padding-top: 10px;
+    }
   }
   @include span-columns(12);
   @include media($large-screen) {
@@ -408,7 +420,13 @@
     padding: 0;
     margin: 0;
     padding-bottom: 5px;
-    font-size: 14px !important;
+    font-size: 12px !important;
+    @include media(max-width $medium-screen) {
+      padding-right: 5px;
+    }
+    @include media(min-width $small-screen) {
+      font-size: 14px !important;
+    }
     @include media($desktop-screen) {
       font-size: 16px !important;
     }
@@ -453,7 +471,10 @@
 // Hacky way around the Bitters default 100% width for this one case
 .copy-share {
   @include media(max-width $small-screen) {
-    width: 95% !important;
+    font-size: 0.8em !important;
+  }
+  @include media(max-width $medium-screen) {
+    font-size: 0.9em !important;
   }
 }
 
