@@ -369,10 +369,9 @@ header.navigation {
     display: inline;
     font-size: 0.8em;
     float: left;
-    margin-top: 1em;
+    margin-top: 11px;
     padding: 0.75em 1em;
     margin-right: 1em;
-    text-transform: uppercase;
   }
 
   .logout {
@@ -486,4 +485,22 @@ header.navigation {
   @include media(min-width $small-screen) {
     display: none;
   }
+}
+
+// The most important class......
+.mobile-login {
+  margin-top: 13px !important; // not aligned properly at 60px nav height by default
+  padding: 9px 7px !important;
+  // font-weight: normal !important;
+  font-size: 0.7em !important;
+  float: right !important;
+  background-color: #006668 !important;
+  color: #FFFFFF !important;
+  @include media(min-width $large-screen) {
+    display: none !important;
+  }
+}
+
+.mobile-logout {
+  
 }
