@@ -12,7 +12,7 @@
 
       <div class="login-form">
         <h2>Log in</h2>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name) ) do |f| %>
 
             <%= devise_error_messages! %>
 
@@ -105,9 +105,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
