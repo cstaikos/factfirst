@@ -12,8 +12,8 @@ $base-font-color: $dark-gray !default;
 
 .modal {
   ///////////////////////////////////////////////////////////////////////////////////
-
-  display: inline-block;
+  // NOTE: This line causes a 20px height bug somewhere - when it is display: block (default) everything works fine
+  // display: inline-block;
   .login-form{
     display: inline-block;
     float: right;

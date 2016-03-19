@@ -33,9 +33,7 @@ header.navigation {
   $horizontal-bar-mode: $large-screen;
   $search-bar-display: $desktop-screen;
 
-  // NOTE: This is a hacky way of fixing a 10 px padding bug caused by the modal. Added as a bug/chore fix
-  // changed from min-height to height
-  height: $navigation-height;
+  min-height: $navigation-height;
   width: 100%;
   z-index: 999;
   top: 0;
@@ -101,6 +99,9 @@ header.navigation {
 
     @include media ($horizontal-bar-mode) {
       float: left;
+    }
+    @include media($desktop-screen) {
+      width: 580px; // Fix a bug
     }
   }
 
@@ -185,26 +186,31 @@ header.navigation {
   }
 
   #welcome-message {
-      background: $navigation-background;
-      display: inline-block;
-      overflow: hidden;
-      padding-right: 0.8em;
-      text-align: right;
-      width: 100%;
-      z-index: 9999;
-      color: $navigation-color;
-      margin-top: 0.8em;
+    background: $navigation-background;
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 0.8em;
+    text-align: right;
+    width: 100%;
+    z-index: 9999;
+    color: $navigation-color;
+    margin-top: 13px;
 
-      @include media ($horizontal-bar-mode) {
-        background: transparent;
-        text-decoration: none;
-        width: auto;
-        font-size: 0.8em;
-      }
+    span {
+      position: relative;
+      top: -12px;
+    }
 
-      @include media ($desktop-screen) {
-        font-size: 0.9em;
-      }
+    @include media ($horizontal-bar-mode) {
+      background: transparent;
+      text-decoration: none;
+      width: auto;
+      font-size: 0.8em;
+    }
+
+    @include media ($desktop-screen) {
+      font-size: 0.9em;
+    }
 
     a {
       color: $navigation-color;
@@ -371,10 +377,9 @@ header.navigation {
     display: inline;
     font-size: 0.8em;
     float: left;
-    margin-top: 1em;
+    margin-top: 11px;
     padding: 0.75em 1em;
     margin-right: 1em;
-    text-transform: uppercase;
   }
 
   .logout {
@@ -396,7 +401,7 @@ header.navigation {
     // width: 2em;
     // height: 2em;
     height: 100%;
-    width: 28px;
+    width: 34px;
   }
 
   // Search bar
@@ -487,5 +492,31 @@ header.navigation {
   display: inline;
   @include media(min-width $small-screen) {
     display: none;
+  }
+}
+
+// The most important class......
+.mobile-login {
+  margin-top: 13px !important; // not aligned properly at 60px nav height by default
+  padding: 9px 7px !important;
+  // font-weight: normal !important;
+  font-size: 0.7em !important;
+  float: right !important;
+  background-color: #006668 !important;
+  color: #FFFFFF !important;
+  @include media(min-width $large-screen) {
+    display: none !important;
+  }
+}
+
+.mobile-logout {
+  margin-top: 13px !important; // not aligned properly at 60px nav height by default
+  padding: 9px 7px !important;
+  font-weight: normal !important;
+  font-size: 0.7em !important;
+  float: right !important;
+  text-transform: none !important;
+  @include media(min-width $large-screen) {
+    display: none !important;
   }
 }
