@@ -4,6 +4,20 @@
   &> div {
     float: left;
   }
+
+  .button-group {
+
+    @include media(max-width $small-screen) {
+      display: none;
+    }
+  }
+}
+
+.index-dropdown-trigger {
+  @include button(flat, #477DCA);
+  @include media(min-width $small-screen) {
+    display: none;
+  }
 }
 
 .category-buttons {
