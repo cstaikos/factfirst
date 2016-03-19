@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def metrics
+    @user = current_user
     @evidence_voted_on = []
     @facts_voted_on_by_evidence = []
     @evidences_by_category_count = []
@@ -12,23 +13,22 @@ class UsersController < ApplicationController
     @votes_by_category_count = []
 
     @categories = Category.all.pluck('name')
-    @facts = Fact.all.where(user_id: current_user.id)
+    @facts = @user.facts
 
-    votes_by_user = Vote.all.where(user_id: current_user.id)
+    votes_by_user = @user.votes
 
     votes_by_user.each do |vote|
-      @evidence_voted_on << Evidence.find(vote.evidence_id)
+      @evidence_voted_on << vote.evidence
     end
 
-    @evidence_voted_on.each { |evidence| @facts_voted_on_by_evidence << Fact.find_by(id: evidence.fact_id) }
+    @evidence_voted_on.each { |evidence| @facts_voted_on_by_evidence << evidence.fact }
 
     Category.all.each do |category|
-      facts_by_category = Fact.all.where(category_id: category.id)
-      @facts_by_category_count << @facts.where(category_id: category.id).count
+      @facts_by_category_count << category.facts.where(user: @user).count
 
-      @evidences_by_category_count << facts_by_category.inject(0) { |sum, fact| sum + fact.evidences.where(user_id: current_user.id).count }
+      @evidences_by_category_count << category.facts.inject(0) {|sum, fact| sum += fact.evidences.where(user: @user).count }
 
-      @votes_by_category_count << @facts_voted_on_by_evidence.count { |fact| fact.category_id == category.id }
+      @votes_by_category_count << category.facts.inject(0) {|sum, fact| sum += fact.votes.where(user: @user).count }
     end
 
     respond_to do |format|
