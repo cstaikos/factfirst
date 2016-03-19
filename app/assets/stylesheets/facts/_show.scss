@@ -179,19 +179,15 @@
   .evidence-title {
     margin: 0;
     margin-top: 0px;
-    @include media(max-width $large-screen) {
+    font-size: 0.9em;
+    height: 38px;
+    @include media(min-width $small-screen max-width $large-screen) {
+      font-size: 1em;
       height: 42px;
-      a {
-        // display: block;
-        // height: 37px;
-      }
     }
     @include media($large-screen) {
       font-size: 16px;
       min-height: 48px;
-      a {
-
-      }
       text-overflow: ellipsis;
     }
   }
@@ -213,10 +209,13 @@
 }
 
 .add-evidence-box {
-  padding: 10px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
   font-size: 0.7em;
+  padding: 10px 5px;
+  @include media($small-screen) {
+    padding: 10px;
+  }
   p {
     margin: 0;
     padding: 0;
@@ -254,14 +253,17 @@
 }
 
 .evidence-submit input {
-  @include media(max-width $large-screen) {
+  @include media(max-width $small-screen) {
+    padding: 0.75em 0.25em !important;
+    font-size: 0.85em !important;
+  }
+  @include media(min-width $small-screen max-width $large-screen) {
     font-size: 0.9em !important;
   }
 }
 
 .evidence-supporting-button {
   background-color: $upvote-color !important;
-  font-size: 1em;
 }
 
 .evidence-refuting-button {
