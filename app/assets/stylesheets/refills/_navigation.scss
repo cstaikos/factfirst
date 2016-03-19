@@ -100,6 +100,9 @@ header.navigation {
     @include media ($horizontal-bar-mode) {
       float: left;
     }
+    @include media($desktop-screen) {
+      width: 580px; // Fix a bug
+    }
   }
 
   ul.navigation-menu {
