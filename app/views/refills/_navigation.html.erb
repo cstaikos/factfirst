@@ -43,8 +43,11 @@
           </div>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout" )%>
       <% else %>
-          <%= render 'refills/modal_authenticate' %>
+        <label for="auth-modal">
+          <div class="modal-trigger login">login/signup</div>
+        </label>
       <% end %>
     </div>
   </div>
+  <%= render 'refills/modal_authenticate' %>
 </header>
