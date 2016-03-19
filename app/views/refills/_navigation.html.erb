@@ -16,6 +16,7 @@
       </div>
 
       <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "logout mobile-logout" )%>
         <div class="gravatar">
           <a href="<%= user_path(current_user) %>">
             <%= image_tag "http://www.gravatar.com/avatar/#{current_user.gravatar_hash}?d=identicon",

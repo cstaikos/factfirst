@@ -502,5 +502,13 @@ header.navigation {
 }
 
 .mobile-logout {
-  
+  margin-top: 13px !important; // not aligned properly at 60px nav height by default
+  padding: 9px 7px !important;
+  font-weight: normal !important;
+  font-size: 0.7em !important;
+  float: right !important;
+  text-transform: none !important;
+  @include media(min-width $large-screen) {
+    display: none !important;
+  }
 }
