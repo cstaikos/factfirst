@@ -29,7 +29,7 @@ class FactsController < ApplicationController
         @facts = @facts.sort_by(&:controversy_score) #TODO this too needs to be a db column...sorting this way is way slower
       when 'new'
         @facts = @facts.order(created_at: :desc)
-      when 'bullshit'
+      when 'false'
         @facts = @facts.order(score: :asc)
       when 'truth'
         @facts = @facts.order(score: :desc)

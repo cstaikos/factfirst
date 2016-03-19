@@ -129,10 +129,18 @@
 }
 
 .piece-of-evidence {
+  word-wrap: break-word;
+  word-break: break-all;
   width: 100%;
   display: table;
   background-color: #f9f9f9;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  @include media($medium-screen) {
+    margin-bottom: 15px;
+  }
+  @include media($large-screen) {
+    margin-bottom: 20px;
+  }
 }
 
 .vote-buttons {
@@ -150,6 +158,9 @@
   .numvotes {
     font-size: 0.5em;
     line-height: 20px;
+    @include media(max-width $large-screen) {
+      display: block;
+    }
   }
 }
 
@@ -164,16 +175,40 @@
   width: 80%;
   display: table-cell;
   padding: 0 8px;
+  font-size: 14px;
   .evidence-title {
-    margin: 20px 0 0 0;
-    line-height: 5px;
+    margin: 0;
+    margin-top: 0px;
+    @include media(max-width $large-screen) {
+      height: 42px;
+      a {
+        // display: block;
+        // height: 37px;
+      }
+    }
+    @include media($large-screen) {
+      font-size: 16px;
+      min-height: 48px;
+      a {
 
+      }
+      text-overflow: ellipsis;
+    }
   }
   .evidence-url {
     margin: 0;
   }
   .evidence-description {
     margin: 0;
+    font-size: 0.8em;
+    padding-bottom: 8px;
+    height: 42px;
+    @include media($medium-screen) {
+      height: 57px;
+    }
+    @include media($large-screen) {
+      height: 46px;
+    }
   }
 }
 
@@ -186,12 +221,14 @@
     margin: 0;
     padding: 0;
     padding-bottom: 5px;
-    @include media($small-screen) {
-      font-size: 0.8em;
-    }
+    font-size: 0.8em;
 
     @include media($medium-screen) {
       font-size: 1em;
+    }
+
+    @include media($desktop-screen) {
+      font-size: 1.2em;
     }
   }
   margin-bottom: 20px;
@@ -212,18 +249,15 @@
   margin: 0;
 }
 
-.evidence-description {
-  font-size: 0.8em;
-  padding-bottom: 8px;
-  min-height: 46px;
+.evidence-submit input {
+  @include media(max-width $large-screen) {
+    font-size: 0.9em !important;
+  }
 }
 
 .evidence-supporting-button {
   background-color: $upvote-color !important;
   font-size: 1em;
-  @include media(max-width $large-screen) {
-    font-size: 0.9em !important;
-  }
 }
 
 .evidence-refuting-button {
@@ -309,19 +343,36 @@
     margin: 0px;
     padding-top: 10px;
   }
-  @include span-columns(9);
+  @include span-columns(12);
+  @include media($large-screen) {
+    @include span-columns(8);
+  }
+  @include media($desktop-screen) {
+    @include span-columns(9);
+  }
   p {
-    font-size: 16px !important;
     font-weight: normal;
     padding: 0;
     margin: 0;
     padding-bottom: 5px;
+    font-size: 14px !important;
+    @include media($desktop-screen) {
+      font-size: 16px !important;
+    }
   }
 }
 
 #fact-image {
   padding-top: 15px;
-  @include span-columns(3);
+  display: none;
+  @include media($large-screen) {
+    display: inline;
+    @include span-columns(4);
+  }
+  @include media($desktop-screen) {
+    display: inline;
+    @include span-columns(3);
+  }
   margin-bottom: 7px;
 }
 
@@ -338,7 +389,19 @@
   // vertical-align: middle;
 }
 .input-group input, .input-group-button {
-    display: table-cell;
+    @include media(min-width $small-screen) {
+      display: table-cell;
+    }
+    button:last-child {
+      margin-bottom: 10px;
+    }
+}
+
+// Hacky way around the Bitters default 100% width for this one case
+.copy-share {
+  @include media(max-width $small-screen) {
+    width: 95% !important;
+  }
 }
 
 .clippy-btn {
@@ -381,15 +444,32 @@
   display: inline-block;
   clear: both;
   padding-top: 6px;
-  width: 120px;
+  @include media(max-width $desktop-screen) {
+    width: 80px;
+    font-size: 0.8em;
+  }
+  @include media($desktop-screen) {
+    width: 120px;
+    font-size: 1em;
+  }
 }
 
 #copy-fact-image {
-  width: 500px;
+  @include media($large-screen) {
+    width: 313px;
+  }
+  @include media($desktop-screen) {
+    width: 500px;
+  }
 }
 
 #copy-fact-iframe {
-  width: 500px;
+  @include media($large-screen) {
+    width: 313px;
+  }
+  @include media($desktop-screen) {
+    width: 500px;
+  }
 }
 
 .tooltip-item.source-tooltip {
@@ -398,7 +478,7 @@
   border: none;
   background: none;
   padding: 0;
-  margin: 0 0 20px;
+  margin: 0 0 0;
   border-bottom: 1px dotted $light-gray;
 }
 
@@ -407,7 +487,6 @@
   height: 1px;
   width: 1px;
 }
-
 
 .evidence-field {
   max-width: 300px !important;

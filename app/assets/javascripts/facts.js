@@ -1,5 +1,15 @@
 $(document).on('ready page:load', function(){
 
+  // Truncate text on fact-show padding-left
+  $(".evidence-title").dotdotdot({
+      });
+
+  $(".evidence-description").dotdotdot({
+      });
+
+  $(".tooltip-item").dotdotdot({
+      });
+
   // Odomoter (number scrolling) on fact show page
   window.setTimeout(function() {
     $(".odometer").text($("#actual-score").text());

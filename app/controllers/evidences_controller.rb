@@ -1,12 +1,16 @@
 class EvidencesController < ApplicationController
   before_action :login_to_add_evidence
 
+  require 'httparty'
+
   def create
     @fact = Fact.find(params[:fact_id])
 
     @evidence = @fact.evidences.build(evidence_params)
     @evidence.user = current_user
     @evidence.grab_metadata
+
+
 
     # If user already has 5 evidences on this fact, they can't add more
     if @fact.evidences.where(user_id: current_user).count >= 5
@@ -21,11 +25,18 @@ class EvidencesController < ApplicationController
     # Auto upvote submitted evidence
     @evidence.votes.build(upvote: true, user: current_user)
 
-    # Create new source or grab existing one if it exists
+    # Create new source or grab existing one if it exists (Source.create_from_url will return a source object if successful, or false)
     @new_source = Source.create_from_url(@evidence.url)
 
     if @new_source
       @evidence.source = @new_source
+
+      # Once domain is validated, do a final check to ensure the link isn't broken before continuing
+      response_code = HTTParty.get(@evidence.url).code
+      if response_code != 200
+        redirect_to fact_path(@fact), alert: "This link appears to be broken (#{response_code}). If you think this is an error please contact the site admin." and return
+      end
+
     else
       flash[:alert] = "Error: #{URI(@evidence.url).host} seems to be an invalid domain.\nIf you think this is incorrect please contact the admin."
       redirect_to fact_path(@fact) and return
