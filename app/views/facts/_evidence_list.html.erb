@@ -1,6 +1,6 @@
 <div class="<%= support ? 'supporting' : 'refuting' %>">
   <div class="evidence-title-box">
-    <h3 class="evidence-header-text"><%= support ? 'Supporting' : 'Refuting' %> Evidence (<%= support ? @fact.supporting_evidence.count : @fact.refuting_evidence.count %>)<a href="#add-<%= support ? 'supporting' : 'refuting' %>" class="add-evidence-anchor">+ add evidence</a></h3>
+    <h3 class="evidence-header-text"><%= support ? 'Supporting' : 'Refuting' %> Evidence <span>(<%= support ? @fact.supporting_evidence.count : @fact.refuting_evidence.count %>)</span><a href="#add-<%= support ? 'supporting' : 'refuting' %>" class="add-evidence-anchor">+ add evidence</a></h3>
   </div>
   <ul class="evidence-list">
 

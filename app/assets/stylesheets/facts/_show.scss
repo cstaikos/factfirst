@@ -108,8 +108,13 @@
 
 .evidence-header-text {
   margin: 0 0 5px;
-  font-size: 1em;
-
+  font-size: 0.85em;
+  @include media(max-width $small-screen) {
+    font-weight: normal;
+    span {
+      font-size: 0.75em;
+    }
+  }
   @include media($small-screen) {
     font-size: 1.1em;
   }
