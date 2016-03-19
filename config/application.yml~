@@ -9,4 +9,18 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
 wot_key: "7101a68697f3608314e281eb7dbdc6f9f88d7a99"
+
+facebook_APPID: "999460257077-vudgebme5ms6qsoduhrvi325kvpmdh0s.apps.googleusercontent.com"
+facebook_secret: "9e72ba582cc5e404b2046fa080da1165"
+facebook_callback: "http://localhost:3000/users/auth/facebook/callback"
+google_APPID: "999460257077-vudgebme5ms6qsoduhrvi325kvpmdh0s.apps.googleusercontent.com"
+google_secret: "HN1ky3RbecCxFrePaZ2gEC5L"
+
+production:
+facebook_APPID: "1586548388302228"
+facebook_secret: "48b5e7cd8df357cdcc328e25ad746fa5"
+facebook_callback: "http://www.truthometer.co/users/auth/facebook/callback"
+google_APPID: "520405443589-tgl57g757egodes2uojo5tm8eaccqvnu.apps.googleusercontent.com"
+google_secret: "eoJlgIuikmR4nl-3r2k1v9bw"

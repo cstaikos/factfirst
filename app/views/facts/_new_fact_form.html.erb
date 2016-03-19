@@ -1,0 +1,25 @@
+<div class="add-evidence-box">
+
+  <%= form_for @fact do |f| %>
+
+  <div class="evidence-url-form-group">
+    <%= f.label :body %><br/>
+    <%= f.text_area :body, autofocus: true, :class => 'evidence-field', placeholder: "URL" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.select  (:category_id) do %>
+    <%= content_tag(:option, '-- Category --') %>
+    <%= options_from_collection_for_select(@categories, 'id', 'name',:selected => @category) %>
+    <% end %>
+  </div>
+
+  <div class="evidence-submit">
+    <%= f.submit "Create Supporting Evidence",
+    :class => "evidence-supporting-button #{requires_login}"  %>
+  </div>
+
+  <% end %>
+
+</div>
