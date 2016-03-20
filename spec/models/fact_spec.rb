@@ -23,9 +23,7 @@ RSpec.describe Fact, type: :model do
   end
 
 
-  describe do
 
-  end
 
   describe "#refuting_evidence" do
     context "when adding refuting evidence to fact" do
