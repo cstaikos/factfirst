@@ -17,12 +17,12 @@ var TruthinessScore = React.createClass({
   },
   componentDidMount: function() {
     this.loadScoreFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    setInterval(this.loadScoreFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
       React.createElement('span', {},
-        "52"
+        this.state.data.score
       )
     );
   }
