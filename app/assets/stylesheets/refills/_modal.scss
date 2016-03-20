@@ -15,6 +15,7 @@ $base-font-color: $dark-gray !default;
   // NOTE: This line causes a 20px height bug somewhere - when it is display: block (default) everything works fine
   // display: inline-block;
   .login-form{
+
     display: inline-block;
     float: right;
     width: 47%;
@@ -39,9 +40,15 @@ $base-font-color: $dark-gray !default;
       width: 100%;
     }
 
+    #login-email{
+      margin-top: 52px;
+
+    }
+
     #user_remember_me{
       //display: inline-block;
       float: left;
+      margin-top: 8px;
     }
 
     #remember_me_label{
@@ -49,6 +56,8 @@ $base-font-color: $dark-gray !default;
       padding-bottom: 0px;
       position: relative;
       bottom: 5px;
+      margin-bottom: 10px;
+      margin-top: 8px;
     }
 
   }
@@ -171,6 +180,7 @@ $base-font-color: $dark-gray !default;
     padding-top: 0;
     position: relative;
     width: 95%;
+    min-width: 305px;
 
     @include media($medium-screen) {
       max-height: 70%;
