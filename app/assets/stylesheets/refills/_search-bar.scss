@@ -50,7 +50,7 @@ form.search-bar {
   }
 
   button[type=submit] {
-    @include button(flat, $base-accent-color);
+    @include button(flat, #477DCA);
     @include position(absolute, 0em 0em 0em null);
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
