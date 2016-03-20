@@ -104,9 +104,8 @@ RSpec.describe Fact, type: :model do
         vote_2 = create(:vote, upvote: true, evidence_id: evidence_2.id)
 
         fact.reload
-
         fact.update_score
-        expect(fact.score).to eq 5
+        expect(fact.score).to eq 0
       end
     end
 
