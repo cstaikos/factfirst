@@ -61,7 +61,7 @@ class Fact < ActiveRecord::Base
 
   def update_image
 
-    canvas = Magick::ImageList.new('public/imagemagick/base.png')
+    canvas = Magick::ImageList.new((Rails.env.production? ? "public/imagemagick/" : "app/assets/images/") + "base.png")
 
     footer_drawer = Magick::Draw.new
     footer_drawer.pointsize = 18
