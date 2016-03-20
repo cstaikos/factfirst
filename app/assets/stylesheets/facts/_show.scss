@@ -215,6 +215,10 @@
       min-height: 48px;
       text-overflow: ellipsis;
     }
+    a {
+      word-wrap: break-word;
+      word-break: break-all;
+    }
   }
   .evidence-url {
     margin: 0;
