@@ -114,6 +114,10 @@ RSpec.describe Fact, type: :model do
 
 end
 
+describe do
+
+end
+
 
 
 
