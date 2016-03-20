@@ -1,15 +1,14 @@
 FactoryGirl.define do
 
-  # after(:create) { |object| puts "Created a new #{object}" }
+  # after(:create) { |object| p object }
 
   factory :fact do
     body "Test Fact"
+    category
   end
 
   factory :vote do
-    upvote true
   end
-
 
 end
 
