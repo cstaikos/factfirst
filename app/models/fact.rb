@@ -11,6 +11,7 @@ class Fact < ActiveRecord::Base
   validates :body, presence: true
 
   require 'rmagick'
+  require 'rvg/rvg'
 
   def set_defaults
     self.score = 0
@@ -44,7 +45,7 @@ class Fact < ActiveRecord::Base
       sum += if evidence.support
                evidence.upvotes * evidence.source.wot_factor.to_f  # upvotes on supporting evidence are good for a fact
              else
-               evidence.downvotes * evidence.source.reverse_wot_factor # downvotes on refuting evidence are good for
+               evidence.downvotes * evidence.source.wot_factor.to_f # downvotes on refuting evidence are good for
                # a fact
              end
     end
@@ -61,40 +62,44 @@ class Fact < ActiveRecord::Base
 
   def update_image
 
-    canvas = Magick::ImageList.new('public/imagemagick/base.png')
+    canvas = Magick::ImageList.new((Rails.env.production? ? "public/imagemagick/" : "app/assets/images/") + "base.png")
 
     footer_drawer = Magick::Draw.new
     footer_drawer.pointsize = 18
     footer_drawer.gravity = Magick::CenterGravity
-    footer_text = "Agree? Disagree? Join the conversation and change this image!\nVisit www.truthometer.co/facts/#{id} to get started"
-    footer_drawer.annotate(canvas, 645,900,0,0,footer_text) {
+    footer_text = "Based on #{total_votes} votes over #{evidences.count} pieces of evidence\n\nAgree? Disagree? Join the conversation and change this image!\nVisit www.truthometer.co/facts/#{id} to get started"
+    footer_drawer.annotate(canvas, 645,865,0,0,footer_text) {
       self.fill = 'white'
     }
 
     fact_body_drawer = Magick::Draw.new
     fact_body_drawer.pointsize = 34
     fact_body_drawer.gravity = Magick::ForgetGravity
-    body_text = fit_text(self.body, 450)
-    fact_body_drawer.annotate(canvas, 0,0,38,200, body_text) {
+    body_text = fit_text(self.body, 375)
+    fact_body_drawer.annotate(canvas, 0,0,300,150, body_text) {
       self.fill = 'black'
     }
 
     score_drawer = Magick::Draw.new
-    score_drawer.pointsize = 80
+    score_drawer.pointsize = 50
     score_drawer.gravity = Magick::CenterGravity
-    score_drawer.annotate(canvas, 1067,375,0,0, self.score.to_s) {
-      self.fill = 'white'
-    }
-
-    other_stats_drawer = Magick::Draw.new
-    other_stats_drawer.pointsize = 18
-    other_stats_drawer.gravity = Magick::ForgetGravity
-    other_stats_text = "Score is based on #{total_votes} votes over #{evidences.count} pieces of evidence"
-    other_stats_drawer.annotate(canvas, 0,0,42,380, other_stats_text) {
+    score_drawer.annotate(canvas, 290,600,0,0, self.score.to_s) {
       self.fill = 'black'
     }
 
-    canvas.write("public/imagemagick/fact_photos/#{self.id}.png")
+    rvg = Magick::RVG.new(640, 480)
+    needle = Magick::Image.read((Rails.env.production? ? "public/imagemagick/" : "app/assets/images/") + "needle.png").first
+    rvg.image(needle)
+    # 417
+
+    rvg.rotate(-162, 146, 227) # 0%
+    rvg.rotate( ( (self.score.to_f / 100) * 257), 146, 227)
+    # rvg.rotate(257, 146, 227) # 100%
+    needle = rvg.draw
+
+    canvas.composite!(needle, 0, 0, Magick::OverCompositeOp)
+
+    canvas.write((Rails.env.production? ? "public/imagemagick/" : "app/assets/images/fact_photos/") + "#{self.id}.png")
 
   end
 
