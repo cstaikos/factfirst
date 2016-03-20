@@ -31,6 +31,8 @@ gem 'httparty'
 # Patch for open_uri which gives option to allow redirects
 gem 'open_uri_redirections'
 
+# React baby
+gem 'react-rails', '~> 1.6.0'
 
 # HTML5/CSS Framework
 gem 'bourbon', '4.2.6'

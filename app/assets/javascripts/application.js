@@ -12,13 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
 //= require refills/navigation
 //= require flashnotice
 //= require odometer.min.js
 
+// NOTE: This is a quick bug fix because the login modal was not opening on different screen sizes when button was hidden
+// We should probably fundamentally redo the way we handle the login modal at some point to remove this dependency
 $(document).on('ready', function(){
-
     $('.requires-login').on('click', function(e){
         if ($(this).hasClass('requires-login')) {
           e.preventDefault();
