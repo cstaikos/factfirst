@@ -92,8 +92,9 @@ class Fact < ActiveRecord::Base
     rvg.image(needle)
     # 417
 
-    rvg.rotate((self.score.to_f / 100) * 417 + 118, 146, 227)
-    # rvg.rotate(256, 146, 227)
+    rvg.rotate(-162, 146, 227) # 0%
+    rvg.rotate( ( (self.score.to_f / 100) * 257), 146, 227)
+    # rvg.rotate(257, 146, 227) # 100%
     needle = rvg.draw
 
     canvas.composite!(needle, 0, 0, Magick::OverCompositeOp)
