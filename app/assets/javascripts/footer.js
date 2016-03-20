@@ -1,10 +1,11 @@
 var fixFooterHeight = function() {
   var formHeight = $('.form-wrapper').height();
   var textWrapHeight = $('.application-wrapper').height();
+  console.log(textWrapHeight);
 
   //Accounts for pages with very little content
   if(textWrapHeight < 800){
-      $('.application-wrapper').css('height', '90vh');
+      $('.application-wrapper').css('min-height', '90vh');
   }
 }
 

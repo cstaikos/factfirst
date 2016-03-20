@@ -1,10 +1,8 @@
 class CustomFailure < Devise::FailureApp
 
   def redirect_url
-    respond_to do |format|
-      format.js { render template: '/users/sessions/create.js.erb'}
-      format.html {}
-    end
+    flash[:alert] = "Invalid login or password"
+    request.referer
   end
 
   def respond

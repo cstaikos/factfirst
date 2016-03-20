@@ -190,8 +190,8 @@
 }
 
 .piece-of-evidence {
-  word-wrap: break-word;
-  word-break: break-all;
+  // word-wrap: break-word;
+  // word-break: break-all;
   width: 100%;
   display: table;
   background-color: #f9f9f9;
@@ -270,6 +270,10 @@
       font-size: 16px;
       min-height: 48px;
       text-overflow: ellipsis;
+    }
+    a {
+      word-wrap: break-word;
+      word-break: break-all;
     }
   }
   .evidence-url {

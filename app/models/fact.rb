@@ -44,7 +44,8 @@ class Fact < ActiveRecord::Base
       sum += if evidence.support
                evidence.upvotes * evidence.source.wot_factor.to_f  # upvotes on supporting evidence are good for a fact
              else
-               evidence.downvotes * evidence.source.reverse_wot_factor # downvotes on refuting evidence are good for a fact
+               evidence.downvotes * evidence.source.reverse_wot_factor # downvotes on refuting evidence are good for
+               # a fact
              end
     end
 

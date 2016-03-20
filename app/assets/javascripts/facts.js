@@ -15,6 +15,30 @@ $(document).on('ready page:load', function(){
     $(".odometer").text($("#actual-score").text());
   }, 10)
 
+
+  // Trigger category dropdown
+  $("#category-dropdown-trigger").on('click', function(){
+    categoryMenu = $('.category-buttons .button-group');
+    if (categoryMenu.css('display') == 'none') {
+      categoryMenu.show(400);
+    }
+    else {
+      categoryMenu.hide(400);
+    }
+  });
+
+  // Trigger sort dropdown
+  $("#sort-dropdown-trigger").on('click', function(){
+    categoryMenu = $('.filter-buttons .button-group');
+    if (categoryMenu.css('display') == 'none') {
+      categoryMenu.show(400);
+    }
+    else {
+      categoryMenu.hide(400);
+    }
+  });
+
+
   // Reset search box when clicking reset
   $('#reset').on('click', function() {
     $("#search-index").val("");

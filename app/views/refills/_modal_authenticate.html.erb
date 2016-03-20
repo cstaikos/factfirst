@@ -9,13 +9,22 @@
 
       <div class="login-form">
         <h2>Log in</h2>
+
+        <%= link_to user_omniauth_authorize_path(:google_oauth2), id: 'gpluslogin' do %>
+            <span id="gptext">Google</span>
+        <% end %>
+
+        <%= link_to user_omniauth_authorize_path(:facebook), id: 'fblogin' do %>
+            <span id="fbtext">Facebook</span>
+        <% end %>
+
         <%= form_for(resource, as: resource_name, url: session_path(resource_name) ) do |f| %>
 
             <%= devise_error_messages! %>
 
             <div class="field">
               <%# f.label :email %>
-              <%= f.email_field :email, autofocus: true, placeholder: "email" %>
+              <%= f.email_field :email, autofocus: true, placeholder: "email", id: 'login-email' %>
             </div>
 
             <div class="field">
@@ -28,23 +37,14 @@
                   <%= f.label :remember_me, id: "remember_me_label" %>
                   <%= f.check_box :remember_me %>
                 </div>
-            <% end %>
+      <% end %>
 
             <div class="actions">
-              <%= f.submit "Log in" %>
+              <%= f.submit "Log in", class: 'auth-modal-buttons' %>
             </div>
 
-        <% end %>
+      <% end %>
 
-        <%= link_to user_omniauth_authorize_path(:google_oauth2), id: 'gpluslogin' do %>
-            <em id="gpname">g+</em>
-            <span id="gptext">Sign In with Google</span>
-        <% end %>
-
-        <%= link_to user_omniauth_authorize_path(:facebook), id: 'fblogin' do %>
-            <em id="fbname">f</em>
-            <span id="fbtext">Sign In with Facebook</span>
-        <% end %>
 
         <%# link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
 
@@ -63,9 +63,7 @@
 
         <%= form_for(resource,  as: resource_name,
                      url: registration_path(resource_name),
-                     html: {id: "sign_up_user"},
-                     format: :json,
-                     remote: true) do |f| %>
+                     html: {id: "sign_up_user"}) do |f| %>
 
             <%= devise_error_messages! %>
 
@@ -77,7 +75,7 @@
 
             <div class="field">
               <%# f.label :email %>
-              <%= f.email_field :email, placeholder: "email" %>
+              <%= f.email_field :email, placeholder: "email", id: 'signup-email' %>
             </div>
 
             <div class="field">
@@ -94,7 +92,7 @@
             </div>
 
             <div class="actions">
-              <%= f.submit "Sign up" %>
+              <%= f.submit "Sign up", class: 'auth-modal-buttons' %>
             </div>
         <% end %>
       </div>

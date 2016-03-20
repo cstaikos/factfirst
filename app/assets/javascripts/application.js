@@ -22,7 +22,11 @@ $(document).on('ready', function(){
     $('.requires-login').on('click', function(e){
         if ($(this).hasClass('requires-login')) {
           e.preventDefault();
-          $(".modal-trigger").click();
+          if (Modernizr.mq('(min-width: 900px)')) {
+            $("#modal-trigger-screen").click();
+          } else if (Modernizr.mq('(max-width: 900px)')) {
+            $("#modal-trigger-mobile").click();
+          }
         }
     });
 
