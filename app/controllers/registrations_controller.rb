@@ -14,11 +14,11 @@ class RegistrationsController < Devise::RegistrationsController
 
         @current_user = current_user
 
-        flash.now[:success] = "Successfully Signed In!"
+        flash[:success] = "Successfully Signed In!"
 
         respond_to do |format|
           format.js { render template: '/users/registrations/create.js.erb'}
-          format.html {}
+          format.html { redirect_to request.referer }
         end
 
         # return render :json => {:success => true}
@@ -33,10 +33,10 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
 
-      flash.now[:error] = resource.errors.full_messages.to_sentence
+      flash[:alert] = resource.errors.full_messages.to_sentence
       respond_to do |format|
         format.js { render template: '/users/registrations/signup_failed.js.erb'}
-        format.html {}
+        format.html { redirect_to request.referer }
       end
 
       # return render :json => {:success => false}
