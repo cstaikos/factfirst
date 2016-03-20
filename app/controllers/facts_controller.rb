@@ -59,6 +59,11 @@ class FactsController < ApplicationController
   def show
     @fact = Fact.find(params[:id])
     @evidence = @fact.evidences.build
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
