@@ -66,7 +66,7 @@
       </div>
     </div>
     <div id="fact-image">
-      <%= (image_tag "#{(Rails.env.production? ? 'public/imagemagick/fact_photos/' : 'fact_photos/') + @fact.id.to_s}.png", width: 224, height: 168)[( Rails.env.production? ? (6..-1) : (0..-1) )] %>
+      <%= (image_tag "#{(Rails.env.production? ? 'public/imagemagick/fact_photos/' : 'fact_photos/') + @fact.id.to_s}.png", width: 224, height: 168)[( Rails.env.production? ? (6..-1) : (0..-1) )].html_safe %>
     </div>
   </div>
 
