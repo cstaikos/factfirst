@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Fact, type: :model do
 
+
   let!(:fact) { create(:fact) }
 
   describe "#set_defaults" do
@@ -37,6 +38,7 @@ RSpec.describe Fact, type: :model do
         evidence_2 = create(:evidence, support: false, fact_id: fact.id)
         vote_1 = create(:vote, upvote: true, evidence_id: evidence_1.id)
         vote_2 = create(:vote, upvote: true, evidence_id: evidence_2.id)
+        fact.reload # This is necessary to make the test pass. Why?
         fact.update_score
         expect(fact.score).to eq 50
       end
