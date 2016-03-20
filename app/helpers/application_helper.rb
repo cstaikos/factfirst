@@ -20,4 +20,8 @@ module ApplicationHelper
       'requires-login'
     end
   end
+
+  def photo_path
+    (Rails.env.production? ? "public/imagemagick/fact_photos" : "fact_photos/")
+  end
 end
