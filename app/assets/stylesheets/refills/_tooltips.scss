@@ -39,12 +39,16 @@
     font-size: 0.9em; // Make sure you use -webkit-backface-visibility: hidden; on the body element to prevent 1px nudging bugs.
     line-height: 1.5em;
     margin: 0 auto;
-    max-width: $tooltip-max-width;
+    // max-width: $tooltip-max-width;
     opacity: 0;
     padding: 1em;
     text-align: center;
     visibility: hidden;
     z-index: 10;
+    width: 120px;
+    @include media($small-screen) {
+      width: 150px;
+  }
 
     p {
       color: $base-font-color;
