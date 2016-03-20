@@ -6,22 +6,9 @@ class UsersController < ApplicationController
 
   def metrics
     @user = current_user
-    @evidence_voted_on = []
-    @facts_voted_on_by_evidence = []
     @evidences_by_category_count = []
     @facts_by_category_count = []
     @votes_by_category_count = []
-
-    @categories = Category.all.pluck('name')
-    @facts = @user.facts
-
-    votes_by_user = @user.votes
-
-    votes_by_user.each do |vote|
-      @evidence_voted_on << vote.evidence
-    end
-
-    @evidence_voted_on.each { |evidence| @facts_voted_on_by_evidence << evidence.fact }
 
     Category.all.each do |category|
       @facts_by_category_count << category.facts.where(user: @user).count
@@ -35,12 +22,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json do
-        render json: [@categories,
+        render json: [Category.all.pluck('name'),
                       @facts_by_category_count,
                       @evidences_by_category_count,
-                      @votes_by_category_count
-                                ]
+                      @votes_by_category_count]
       end
     end
+    
   end
+
+
 end
