@@ -1,8 +1,10 @@
 <h1>Truthometer</h1>
 
+<h2>What is it?</h2>
+
 <h3>A True Problem</h3>
 <p>
-  Billions of conversations occur online every day. Despite this volume, they can be surprisingly unproductive. One part of the problem is that it's all too easy to propogate false information. Often it's accidental, sometimes it's intentional, but it's always detrimental to constructive discourse.
+  Billions of conversations occur online every day. Despite this volume, they can be surprisingly unproductive. One part of the problem is that it's all too easy to propagate false information. Often it's accidental, sometimes it's intentional, but it's always detrimental to constructive discourse.
 </p>
 
 <h3>A Collaborative Solution</h3>
@@ -24,7 +26,89 @@
   Facts on Truthometer can be shared easily across the web. Each fact has an auto-generated image representing its truth score and other stats. Simply drop this into a conversation in your favorite forum or social network and set the record straight! Images also include a link back to Truthometer - if others in the conversation disagree, it's on them to contribute evidence to support their view.
 </p>
 
-<h3>The Road Ahead</h3>
+<h3>Transparent and Community-Driven at Every Level</h3>
 <p>
-  We're currently in Beta and have a ton of great features in store, including a forum for discussing how to improve the site and community. In the meantime, send us an <a href="mailto:info@truthometer.co?subject=feedback">email</a> if you have any feedback.
+  We believe it is important to remain 100% transparent on the inner workings of Truthometer in order to empower the community to contribute via discussion and/or code. Check out our <%= link_to 'forum', forum_path %> to discuss improvements, or submit a pull request via <%= link_to 'Github', 'https://github.com/cstaikos/factfirst' %>. See below for an in-depth description of how the site works, known issues, etc.
+</p>
+
+<h2>How it Works</h2>
+
+<h3>Truthiness</h3>
+
+<p>
+  At the top level, our goal is to evaluate the “truthiness” of a particular fact. The truthiness represents the likelihood that a particular fact is true, and is a function of the evidence - supporting or refuting - submitted to the fact, as well as votes cast by the community on those pieces of evidence.
+</p>
+
+<h3>Evidence</h3>
+
+<p>
+  Evidence is currently only in the form of a URL - while there are many types of evidence that may support or refute a fact, we felt it more in the spirit of online discourse for anyone to be able to instantly verify a piece of evidence by simply clicking on a link. Given the availability of information online, the collaborative benefits of this likely outweigh any disadvantages of not being able to link to print resources.
+</p>
+
+<h3>Sources and Vote Weighting</h3>
+
+<p>
+  Each piece of evidence (url) comes from a root domain - for instance, both of the below wikipedia articles come from wikipedia.org, which is their source:
+</p>
+
+<ul>
+  <li>https://en.wikipedia.org/wiki/Truth</li>
+  <li>https://en.wikipedia.org/wiki/Falsity</li>
+</ul>
+
+<br>
+
+<p>
+  Any votes placed on a piece of evidence are weighted according to the quality of their source. Currently this is relatively simple, with the only factor being a reputation score pulled from the <a href="https://www.mywot.com/wiki/API">Web of Trust (WOT) API</a>.
+</p>
+
+<h3>Scoring</h3>
+
+<p>
+  To calculate the truthiness score of a fact, the following formula is employed:
+</p>
+
+<br>
+<%= image_tag 'score_equation.gif' %>
+<br><br>
+
+<p>
+  Where <em>S</em> represents the truthiness score of the fact in question. <em>n</em> is how many pieces of evidence have been submitted for a fact. <em>V</em> represents a count of votes: <em>V<sub>s<sub>i</sub></sub></em> is the sum of votes in support of the fact (upvotes on supporting evidence or downvotes on refuting evidence), and <em>V<sub>t</sub></em> is the total vote count. <em>w<sub>i</sub></em> is a weighting factor for the source of evidence, explained in detail below.
+</p>
+
+<p>
+  To put it plainly: for each piece of evidence submitted to a fact we add up all of the supporting votes, weighted by the reliability score of their sources, and then divide this sum by the total number of votes cast. The result is a percentage score of truthiness.
+</p>
+
+<h3 id="weight">Weight Factors</h3>
+
+<p>
+  Currently we consider only the reputation scores returned from the WOT API when weighting votes. WOT provides two values for each domain in their database: (a)reputation score and (b)confidence score, both of which are integers between 0 and 100.
+</p>
+
+<p>
+  (a) Reputation score is based on crowd-sourced data regarding the safety of a particular website. An average score is 70, which we consider to be a neutral trustworthiness score.
+</p>
+<p>
+  (b) Confidence score is a measure of how confident WOT is in their assessment of a site's reputation.
+</p>
+
+<p>
+  Based on these scores, we calculate a WOT factor, which is currently the sole weighting factor applied to votes when calculating a fact's truthiness score. The formula for calculating the WOT factor is shown below:
+</p>
+
+<br>
+<%= image_tag 'wot_factor_equation.gif' %>
+<br><br>
+
+<p>
+  Where <em>w</em> is the WOT factor for a particular source. <em>R</em> represents a reputation score for a particular source. <em>R<sub>w</sub></em> represents the reputation for the source in question (acquired via the WOT API), and <em>R<sub>b</sub></em> represents the base (neutral) trust score - 70 in our case. <em>k</em> is a scaling factor, and <em>C</em><sub>w</sub> is the confidence value returned from the WOT API divided by 100 (to turn the percentage to a decimal between 0 and 1). Currently the scaling factor <em>k</em> is set to 2/300, which results in a WOT factor that ranges from ~0.53 to 1.2. Any site with a neutral reputation score (70) will result in a WOT factor of 1.0 meaning votes on evidence from that source will be worth the default value of 1.
+</p>
+
+<h2>Moving Forward</h2>
+
+<h3>A Collaborative Effort</h3>
+
+<p>
+  The current algorithm for calculating truthiness is the first of many iterations. Our team is small, and we have undoubtedly overlooked flaws and omitted imporant features to our algorithm. We encourage anyone interested to take part in discussions via our <%= link_to 'forum', forum_path %> and contribute via <%= link_to 'Github', 'https://github.com/cstaikos/factfirst' %> to help turn Truthometer into a widely accepted source of truth.
 </p>
