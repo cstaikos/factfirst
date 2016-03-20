@@ -22,6 +22,6 @@ module ApplicationHelper
   end
 
   def photo_path
-    (Rails.env.production? ? "public/imagemagick/fact_photos" : "fact_photos/")
+    (Rails.env.production? ? "public/imagemagick/fact_photos/" : "public/fact_photos/")
   end
 end
