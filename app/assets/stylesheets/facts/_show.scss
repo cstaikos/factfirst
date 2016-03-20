@@ -102,6 +102,66 @@
   }
 }
 
+.add-fact-box {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-size: 1.2em;
+  padding: 10px 5px;
+  @include media($small-screen) {
+    padding: 10px;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 5px;
+    font-size: 0.8em;
+
+    @include media($medium-screen) {
+      font-size: 1.1em;
+    }
+
+    @include media($large-screen) {
+      font-size: 1.3em;
+    }
+
+    @include media($desktop-screen) {
+      font-size: 1.5em;
+    }
+  }
+  @include media(max-width $medium-screen) {
+    margin-bottom: 10px;
+  }
+  @include media($medium-screen) {
+    margin-bottom: 15px;
+  }
+  @include media($large-screen) {
+    margin-bottom: 20px;
+  }
+  @include span-columns(6);
+}
+
+.add-fact-field {
+  display: inline-block;
+}
+
+.add-fact-submit input {
+  @include media(max-width $small-screen) {
+    padding: 0.75em 0.25em !important;
+    font-size: 0.85em !important;
+  }
+  @include media(min-width $small-screen max-width $large-screen) {
+    font-size: 0.9em !important;
+  }
+}
+
+.add-fact-subtext {
+  font-size: 0.55em;
+}
+
+.add-fact-button {
+  background-color: $blue !important;
+}
+
 .evidence-title-box {
   color: #333;
 }
