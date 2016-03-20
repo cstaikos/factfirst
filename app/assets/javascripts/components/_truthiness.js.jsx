@@ -1,3 +1,5 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var TruthinessScore = React.createClass({
   loadScoreFromServer: function() {
     $.ajax({
@@ -19,11 +21,23 @@ var TruthinessScore = React.createClass({
     this.loadScoreFromServer();
     setInterval(this.loadScoreFromServer, this.props.pollInterval);
   },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return nextState.data.score !== this.state.data.score;
+  },
+  componentWillUpdate: function() {
+    React.findDOMNode(this).classList.add("new-truthiness-score");
+  },
+  componentDidUpdate: function() {
+    var animationTest = React.findDOMNode(this);
+    setTimeout(function(){
+       animationTest.classList.remove("new-truthiness-score");
+    }, 1000);
+  },
   render: function() {
     return (
-      React.createElement('span', {},
-        this.state.data.score
-      )
+      <span>
+        {this.state.data.score}
+      </span>
     );
   }
 });
