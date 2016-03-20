@@ -1,13 +1,62 @@
+<div class="user-profile-wrapper">
+  <div class="user-profile">
+    <div class="user-profile-image">
+      <h1><%= @user.display_name %></h1>
+      <%= image_tag "http://www.gravatar.com/avatar/#{@user.gravatar_hash}?d=identicon",
+                          id: "user-profile-image" %>
+    </div>
+
+    <div class="user-totals">
+      <ul>
+        <li><%= pluralize @user.facts.count, 'fact' %></li>
+        <li><%= pluralize @user.evidences.count, 'evidences' %></li>
+        <li><%= pluralize @user.votes.count, 'vote' %></li>
+      </ul>
+    </div>
+
+    <div class="user-profile-details">
+
+
+
+
+
+      <!--<p>Average truthiness of submitted facts: </p>-->
+      <!--<p><%= @user.facts.empty? ? 'N/A' : @user.facts.average(:score).round(2)%></p>-->
+      <!--<p>Total of  posted</p>-->
+      <!--<p>Quality of evidence submitted: </p>-->
+      <!--<p><%= @user.evidence_quality %>%</p>-->
+      <!--<p>Total of <%= pluralize @user.votes.count, 'vote' %> cast<p>-->
+      <!--<div>-->
+
+      </div>
+    </div>
+
+    <div class="user-activity-chart-wrapper">
+      <div id="activity-by-category" style="width:100%; height:400px;"></div>
+    </div>
+
+</div>
+
+<!--<div class="user-profile-speedo">-->
+<!--<span class="speedometer"></span>-->
+<!--<span class="needle"></span>-->
+<!--<span id="score" class="truth-score odometer user-profile-odometer">00</span>-->
+<!--<span id="actual-score" style="display:none"><%# @user.facts.average(:score).round(2) %></span>-->
+<!--</div>-->
+
+
 
 <%= render 'refills/profile_flex_boxes' %>
 
-<%= render 'refills/stats_flex_boxes' %>
+<%# render 'refills/stats_flex_boxes' %>
 
 <%= render 'refills/favorites_flex_boxes' %>
 
-<div id="activity-by-category" style="width:100%; height:400px;"></div>
+
+
+
 <div id="facts-upvotes-downvotes" style="width:100%; height:200px;"></div>
-<div id="evidence-upvotes-downvotes" style="width:100%; height:200px;"></div>
+
 
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script>$(document).on('ready',function(){hCharts();});</script>
