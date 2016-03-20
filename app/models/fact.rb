@@ -94,7 +94,7 @@ class Fact < ActiveRecord::Base
       self.fill = 'black'
     }
 
-    canvas.write("public/imagemagick/fact_photos/#{self.id}.png")
+    canvas.write((Rails.env.production? ? "public/imagemagick/" : "app/assets/images/fact_photos/") + "#{self.id}.png")
 
   end
 
