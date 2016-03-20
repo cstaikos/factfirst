@@ -10,7 +10,7 @@ class Source < ActiveRecord::Base
 
   # Use web of trust (wot) api to get trust and confidence scores for domain
   def get_wot
-    response = HTTParty.get("http://api.mywot.com/0.4/public_link_json2?hosts=#{domain}/&key=#{ENV['wot_key']}s")
+    response = HTTParty.get("http://api.mywot.com/0.4/public_link_json2?hosts=#{domain}/&key=#{ENV['wot_key']}")
 
     if response.code == 200
       json = JSON.parse(response.body)
