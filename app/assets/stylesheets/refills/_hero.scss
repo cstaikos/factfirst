@@ -82,6 +82,7 @@
 
     button {
       @include button(flat, $base-accent-color);
+      background-color: $base-accent-color !important;
       padding: 0.7em 1em;
     }
 
