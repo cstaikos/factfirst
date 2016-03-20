@@ -67,7 +67,7 @@
     </div>
     <div id="fact-image">
       <% if Rails.env.production? %>
-        <img src='public/imagemagick/fact_photos/<%= @fact.id.to_s + ".png" %>' width="224", height="168">
+        <img src='/public/imagemagick/fact_photos/<%= @fact.id.to_s + ".png" %>' width="224", height="168">
       <% else %>
         <%= image_tag "fact_photos/#{@fact.id.to_s}.png", width: 224, height: 168 %>
       <% end %>
