@@ -106,7 +106,7 @@ RSpec.describe Fact, type: :model do
         fact.reload
 
         fact.update_score
-        expect(fact.score).to eq 2
+        expect(fact.score).to eq 5
       end
     end
 
