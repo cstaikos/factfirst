@@ -1,4 +1,5 @@
 class FactsController < ApplicationController
+  before_action :login_to_add_fact, only: [:create]
 
 
   # before_action :login_to_add_fact, only: [:new, :create]
@@ -59,6 +60,11 @@ class FactsController < ApplicationController
   def show
     @fact = Fact.find(params[:id])
     @evidence = @fact.evidences.build
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
@@ -124,5 +130,11 @@ class FactsController < ApplicationController
 
   def load_categories
     @categories = Category.all
+  end
+
+  def login_to_add_fact
+    unless current_user
+      redirect_to new_user_session_path, alert: "Please log in to create a fact!"
+    end
   end
 end
