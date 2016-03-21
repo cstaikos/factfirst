@@ -1,0 +1,30 @@
+<% content_for :head do %>
+
+  <meta content="Truthometer" property="og:site_name" />
+
+  <title><%= meta_tags[:title] %></title>
+  <meta content="<%= meta_tags[:title] %>" property="og:title" />
+  <meta content="<%= meta_tags[:title] %>" name="twitter:title" />
+
+  <meta content="website" property="og:type" />
+
+  <meta content="<%= request.base_url + request.path %>" property="og:url" />
+  <meta content="<%= request.base_url + request.path %>" name="twitter:url" />
+
+  <meta content="<%= meta_tags[:description] %>"name="description" />
+  <meta content="<%= meta_tags[:description] %>" name="twitter:description" />
+
+
+  <% if controller_action = "facts#show" %>
+    <link href="http://www.truthometer.co/public/imagemagick/fact_photos/<%= @fact ? @fact.id.to_s + ".png" : "" %>" rel="image_src" />
+    <meta content="http://www.truthometer.co/public/imagemagick/fact_photos/<%= @fact ? @fact.id.to_s + ".png" : "" %>" property="og:image" />
+  <% else %>
+    <link href="<%= asset_path "truthometer-logo-large-01.png" %>" rel="image_src" />
+    <meta content="<%= asset_path "truthometer-logo-large-01.png" %>" property="og:image" />
+  <% end %>
+
+
+
+
+
+<% end %>
