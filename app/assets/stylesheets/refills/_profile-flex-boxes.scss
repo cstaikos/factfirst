@@ -44,7 +44,7 @@
     box-shadow: inset 0 0 1px $profile-flex-box-border-color, 0 2px 4px darken($base-background-color, 10%);
     display: block;
     margin: $profile-flex-box-gutter;
-    padding: 0.5em 0em 0em 0em;
+    //padding: 0.5em 0em 0em 0em;
 
     @for $i from 1 to 7 { // assign colors from $profile-flex-box-top-colors list
       &:nth-child(#{$i}) {
