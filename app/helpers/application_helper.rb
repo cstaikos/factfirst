@@ -46,6 +46,8 @@ module ApplicationHelper
       tags[:title] = "About | Truthometer"
     when "static_pages#forum"
       tags[:title] = "Forum | Truthometer"
+    when "users#show"
+      tags[:title] = "#{@user.display_name} | Truthometer"
     end
 
     tags
