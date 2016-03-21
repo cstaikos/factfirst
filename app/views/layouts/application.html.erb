@@ -32,13 +32,11 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= content_for?(:head) ? yield(:head) : "" %>
-
-</head>
-<body>
   <%= render '/meta_tags' %>
 
+</head>
 
+<body>
   <%= render 'refills/navigation' %>
 
   <div id="flash-messages">

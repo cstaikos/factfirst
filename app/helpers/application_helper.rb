@@ -35,7 +35,7 @@ module ApplicationHelper
 
     case controller_action
     when "facts#show"
-      tags[:title] = "Fact | Truthometer"
+      tags[:title] = "#{@fact.body} | Truthometer"
     when "facts#index"
       tags[:title] = "Browse Facts | Truthometer"
     when "facts#new"
