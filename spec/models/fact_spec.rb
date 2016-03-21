@@ -108,11 +108,6 @@ RSpec.describe Fact, type: :model do
         expect(fact.score).to eq 0
       end
     end
-
-    describe do
-
-    end
-
   end
 
 
