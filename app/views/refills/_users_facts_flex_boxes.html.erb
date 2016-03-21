@@ -1,0 +1,18 @@
+<div class="stats-flex-box-wrapper">
+
+  <div class="stats-flex-boxes">
+
+    <% if current_user == @user %>
+      <div class="stats-flex-box users-favorites">
+          <h2 class="stats-flex-title">My Favorites:</h2>
+          <ul>
+            <% @user.favorites.each do |fact| %>
+                <%= render fact %>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
