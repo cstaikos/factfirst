@@ -13,22 +13,34 @@ var TruthinessScore = React.createClass({
     });
   },
   getInitialState: function() {
-    return {data: []};
+    return {data: {score: this.props.score}, increase: true};
   },
   componentDidMount: function() {
-  this.loadScoreFromServer();
-  setInterval(this.loadScoreFromServer, this.props.pollInterval);
+    this.loadScoreFromServer();
+    setInterval(this.loadScoreFromServer, this.props.pollInterval);
   },
   shouldComponentUpdate: function(nextProps, nextState) {
     return nextState.data.score !== this.state.data.score;
   },
+  componentWillReceiveProps: function() {
+    if(nextState.data.score > this.state.data.score) {
+      this.setState({increase: true});
+    } else if(nextState.data.score < this.state.data.score) {
+      this.setState({increase: false});
+    }
+  },
   componentWillUpdate: function() {
-    React.findDOMNode(this).classList.add("new-truthiness-score");
+    if(this.state.increase == true) {
+      React.findDOMNode(this).classList.add("increase-truthiness-score");
+    } else {
+      React.findDOMNode(this).classList.add("decrease-truthiness-score");
+    }
   },
   componentDidUpdate: function() {
     var animationTest = React.findDOMNode(this);
     setTimeout(function(){
-       animationTest.classList.remove("new-truthiness-score");
+       animationTest.classList.remove("increase-truthiness-score");
+       animationTest.classList.remove("decrease-truthiness-score");
     }, 1000);
   },
   render: function() {
