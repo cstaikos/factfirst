@@ -21,6 +21,12 @@ $top-margin: 2.35765%;
       @include span-columns(12);
     }
 
+    a {
+      margin-left: 15px;
+      font-size: 0.8em;
+      display: block;
+    }
+
     .user-totals {
       display: block;
       margin: 10px;
@@ -30,6 +36,7 @@ $top-margin: 2.35765%;
       h3 {
         margin: 0;
       }
+
 
       @include media(max-width $medium-screen) {
         float: left;
@@ -50,7 +57,7 @@ $top-margin: 2.35765%;
       }
 
       img {
-        margin: 10px 10px 10px 0;
+        margin: 10px 10px 0 0;
         max-width: 100%;
         border-radius: 16px;
         border-width: 4px;
