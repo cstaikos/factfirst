@@ -1,6 +1,7 @@
 
 
   <meta content="Truthometer" property="og:site_name" />
+  <meta content="<%= ENV["facebook_APPID"] %>" property="fb:app_id" />
 
   <title><%= meta_tags[:title] %></title>
   <meta content="<%= meta_tags[:title] %>" property="og:title" />
@@ -11,7 +12,8 @@
   <meta content="<%= request.base_url + request.path %>" property="og:url" />
   <meta content="<%= request.base_url + request.path %>" name="twitter:url" />
 
-  <meta content="<%= meta_tags[:description] %>"name="description" />
+  <meta content="<%= meta_tags[:description] %>" name="description" />
+  <meta content="<%= meta_tags[:description] %>" name="og:description" />
   <meta content="<%= meta_tags[:description] %>" name="twitter:description" />
 
 
