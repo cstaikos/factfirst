@@ -1,10 +1,9 @@
 <div class="fact-boxes">
   <a href="<%= fact_path(fact) %>" class="fact-box">
-    <p class="fact-name"><strong><%= truncate(fact.body, length: 80) %></strong></p>
-    <!-- Full cat name is for > 1150px screen, short-cat-name is for smaller screens -->
-    <div class="fact-box-score"><span class="short-cat-name">TRU</span><span class="full-cat-name">TRUTHINESS</span><%= react_component('TruthinessScore', {url: "/facts/#{fact.id}.json", pollInterval: 5000, score: fact.score}, {prerender: true}) %></div>
-    <div class="fact-box-score"><span class="short-cat-name">POP</span><span class="full-cat-name">POPULARITY</span><%= fact.total_votes %></div>
-    <div class="fact-box-score"><span class="short-cat-name">CAT</span><span class="full-cat-name">CATEGORY</span><span class="fact-box-category"><%= fact.category.name %></span></div>
+    <%= react_component('FactTitle', {url: "#{fact_path( :id => fact.id, :format => :json )}", pollInterval: 5000, title: truncate(fact.body, length: 80)}) %>
+    <%= react_component('TruthinessScore', {url: "#{fact_path( :id => fact.id, :format => :json )}", pollInterval: 5000, truthiness: fact.score}, {prerender: true}) %>
+    <%= react_component('PopularityScore', {url: "#{fact_path( :id => fact.id, :format => :json )}", pollInterval: 5000, popularity: fact.total_votes}, {prerender: true}) %>
+    <%= react_component('FactCategory', {url: "#{fact_path( :id => fact.id, :format => :json )}", pollInterval: 5000, category: fact.category.name}, {prerender: true}) %>
   </a>
   <div class="fact-box-favorite"><span class="fact-box-star" id="favorite-<%= fact.id %>"><%= favorite_button(fact) %></span> <p>Posted by <%= link_to truncate(fact.user.display_name, length: 10), fact.user %> on <%= fact.created_at.strftime("%B %-d, %Y") %></p></div>
 </div>
