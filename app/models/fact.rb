@@ -99,7 +99,7 @@ class Fact < ActiveRecord::Base
 
     canvas.composite!(needle, 0, 0, Magick::OverCompositeOp)
 
-    canvas.write((Rails.env.production? ? "public/imagemagick/" : "app/assets/images/fact_photos/") + "#{self.id}.png")
+    canvas.write((Rails.env.production? ? "public/imagemagick/fact_photos/" : "app/assets/images/fact_photos/") + "#{self.id}.png")
 
   end
 

@@ -15,15 +15,15 @@ User.create(
   password_confirmation: '123123123'
 )
 
-3.times do
+25.times do
   Fact.create(
     body: Faker::Lorem.sentence,
-    user: User.all.sample,
+    user: User.all.find_by(email: 'cstaikos@gmail.com'),
     category: Category.all.sample
   )
 end
 
-10.times do
+20.times do
   url = Faker::Internet.url
   Evidence.create(
     url: url,
@@ -34,11 +34,32 @@ end
   )
 end
 
+20.times do
+  url = Faker::Internet.url
+  Evidence.create(
+      url: url,
+      support: [true, false].sample,
+      user: User.all.find_by(email: 'cstaikos@gmail.com'),
+      fact: Fact.all.sample,
+      source: Source.create_from_url(url)
+  )
+end
+
+
+
 750.times do
   Vote.create(
     upvote: [true, false].sample,
     user: User.all.sample,
     evidence: Evidence.all.sample
+  )
+end
+
+30.times do
+  Vote.create(
+      upvote: [true, false].sample,
+      user: User.all.find_by(email: 'cstaikos@gmail.com'),
+      evidence: Evidence.all.sample
   )
 end
 

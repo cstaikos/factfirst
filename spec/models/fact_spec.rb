@@ -22,6 +22,9 @@ RSpec.describe Fact, type: :model do
     end
   end
 
+
+
+
   describe "#refuting_evidence" do
     context "when adding refuting evidence to fact" do
       it "returns the created refuting evidence" do
@@ -101,15 +104,16 @@ RSpec.describe Fact, type: :model do
         vote_2 = create(:vote, upvote: true, evidence_id: evidence_2.id)
 
         fact.reload
-
         fact.update_score
         expect(fact.score).to eq 0
       end
     end
-
   end
 
+
+
 end
+
 
 
 
