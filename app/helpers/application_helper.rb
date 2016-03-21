@@ -40,7 +40,7 @@ module ApplicationHelper
     when "facts#index"
       tags[:title] = "Browse Facts | Truthometer"
     when "facts#new"
-      tags[:title] = "New Facts | Truthometer"
+      tags[:title] = "New Fact | Truthometer"
     when "static_pages#home"
       tags[:title] = "Truthometer"
     when "static_pages#about"
