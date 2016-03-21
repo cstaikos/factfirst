@@ -4,74 +4,77 @@ $user_favorites_height: 15em;
 $border-for-testing: 1px solid black;
 $top-margin: 2.35765%;
 
-#user-profile-image {
-  margin: 0;
-  max-width: 100%;
-  border-radius: 16px;
-  border-width: 4px;
-  border: 1px solid black;
-}
-
 .user-profile-wrapper{
-  @include outer-container;
-  //border: $border-for-testing;
+  padding: 20px;
   display: flex;
+  @include outer-container;
+
+  @include media(max-width $medium-screen) {
+    display: block;
+  }
+
+
 
   .user-profile {
     @include span-columns(4);
-    border: $border-for-testing;
-    padding-left: 19px;
+    @include media(max-width $medium-screen) {
+      @include span-columns(12);
+    }
+
+    .user-totals {
+      display: block;
+      margin: 10px;
+      font-size: 1.1em;
+      font-weight: bold;
+
+      h3 {
+        margin: 0;
+      }
+
+      @include media(max-width $medium-screen) {
+        float: left;
+      }
+
+      @include media(max-width $large-screen) {
+        font-size: 0.8em;
+      }
+
+    }
+
 
     .user-profile-image {
-
-      .user-totals {
-        display: inline-block;
-        position: relative;
-        bottom: 0px;
-        left: 23px;
-        font-size: 18px;
-      }
 
       h1{
         margin: 0;
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
       }
 
+      img {
+        margin: 10px 10px 10px 0;
+        max-width: 100%;
+        border-radius: 16px;
+        border-width: 4px;
+        border: 1px solid $light-gray;
 
-    }
-
-    .user-profile-details {
-
-      .user-profile-speedo {
-        width: 103px;
-        height: 95px;
-        display: inline-block;
-        position: relative;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background: url("/assets/dial-d6f6944a07ba99122fb0bd46ef74a334f0e97b5e3810040224b02bd27c076cb8.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-        /* margin-right: 20px; */
-
-        .user-profile-odometer {
-          font-size: 14px;
-          left: 7px;
-          top: 57px;
+        @include media(max-width $medium-screen) {
+          float: left;
         }
       }
 
 
-
     }
+
+
   }
 
   .user-activity-chart-wrapper {
-
     @include span-columns(8);
     @include omega();
-    //border: $border-for-testing;
+
+    @include media(max-width $medium-screen) {
+      @include span-columns(12);
+    }
+
   }
 
 
