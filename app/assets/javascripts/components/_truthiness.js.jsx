@@ -1,5 +1,3 @@
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
 var TruthinessScore = React.createClass({
   loadScoreFromServer: function() {
     $.ajax({
