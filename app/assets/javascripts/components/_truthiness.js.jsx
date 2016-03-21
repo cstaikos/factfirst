@@ -16,8 +16,8 @@ var TruthinessScore = React.createClass({
     return {data: []};
   },
   componentDidMount: function() {
-    this.loadScoreFromServer();
-    setInterval(this.loadScoreFromServer, this.props.pollInterval);
+  this.loadScoreFromServer();
+  setInterval(this.loadScoreFromServer, this.props.pollInterval);
   },
   shouldComponentUpdate: function(nextProps, nextState) {
     return nextState.data.score !== this.state.data.score;
