@@ -1,98 +1,98 @@
-  <div class="fact-header">
-    <div id="speedo">
-      <span class="speedometer"></span>
-      <span class="needle"></span>
-      <span id="score" class="truth-score odometer">00</span>
-      <span id="actual-score" style="display:none"><%= @fact.score %></span>
-    </div>
-
-    <span class="fact-show">
-        <%= @fact.body %>
-    </span>
+<div class="fact-header">
+  <div id="speedo">
+    <span class="speedometer"></span>
+    <span class="needle"></span>
+    <span id="score" class="truth-score odometer">00</span>
+    <span id="actual-score" style="display:none"><%= @fact.score %></span>
   </div>
 
-  <div class="fact-favorite-text">
-    <div id="favorite-<%= @fact.id %>">
-      <%= favorite_button(@fact) %>
-    </div>
-    <span class="favorite-text-medium">Fact posted by <%= link_to truncate(@fact.user.display_name, length: 8), @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
-    <span class="favorite-text-mobile">By <%= link_to truncate(@fact.user.display_name, length: 8), @fact.user %> on <%= @fact.created_at.strftime("%b %-d, %Y") %> | <%= @fact.category.name %></span>
+  <span class="fact-show">
+      <%= @fact.body %>
+  </span>
+</div>
+
+<div class="fact-favorite-text">
+  <div id="favorite-<%= @fact.id %>">
+    <%= favorite_button(@fact) %>
   </div>
+  <span class="favorite-text-medium">Fact posted by <%= link_to truncate(@fact.user.display_name, length: 8), @fact.user %> on <%= @fact.created_at.strftime("%B %-d, %Y") %> | Category: <%= @fact.category.name %></span>
+  <span class="favorite-text-mobile">By <%= link_to truncate(@fact.user.display_name, length: 8), @fact.user %> on <%= @fact.created_at.strftime("%b %-d, %Y") %> | <%= @fact.category.name %></span>
+</div>
 
-  <div class="evidence">
-    <%= render 'evidence_list', support: true %>
-    <%= render 'evidence_list', support: false %>
+<div class="evidence">
+  <%= render 'evidence_list', support: true %>
+  <%= render 'evidence_list', support: false %>
+</div>
+
+<span id="add-supporting" class="anchor-span"></span>
+<%= render 'evidence_form', support: true %>
+<span id="add-refuting" class="anchor-span"></span>
+<%= render 'evidence_form', support: false %>
+
+<% if current_user == User.find(@fact.user_id) && @fact.total_votes == 0 %>
+  <div class="delete-fact-box">
+    <%= link_to "Delete This Fact",
+        fact_path(@fact),
+        method: :delete,
+        data: { confirm:"Are you sure you want to delete this fact?" },
+        class: 'delete-fact-link' %><span> (WARNING: permanently deletes this fact)</span>
   </div>
+<% end  %>
 
-  <span id="add-supporting" class="anchor-span"></span>
-  <%= render 'evidence_form', support: true %>
-  <span id="add-refuting" class="anchor-span"></span>
-  <%= render 'evidence_form', support: false %>
-
-  <% if current_user == User.find(@fact.user_id) && @fact.total_votes == 0 %>
-    <div class="delete-fact-box">
-      <%= link_to "Delete This Fact",
-          fact_path(@fact),
-          method: :delete,
-          data: { confirm:"Are you sure you want to delete this fact?" },
-          class: 'delete-fact-link' %><span> (WARNING: permanently deletes this fact)</span>
+<div class="permalink">
+  <div class="permalink-left">
+    <h2>Share this Fact</h2>
+    <p>Continue the conversation! Share a link to our dynamically generated image that will automatically update its content when new evidence is created and more people vote. Think of it as a user-driven infographic.</p>
+    <!-- Clipboard Target -->
+    <div class="input-group">
+      <label class="input-group-label" for="copy-fact-image-button">Image URL:</label>
+      <input class="copy-share" id="copy-fact-image" value='http://www.truthometer.co/public/imagemagick/fact_photos/<%= @fact.id.to_s + ".png" %>'>
+      <!-- Clipboard Trigger -->
+      <span class="input-group-button">
+        <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
+            <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
+        </button>
+      </span>
     </div>
-  <% end  %>
-
-  <div class="permalink">
-    <div class="permalink-left">
-      <h2>Share this Fact</h2>
-      <p>Continue the conversation! Share a link to our dynamically generated image that will automatically update its content when new evidence is created and more people vote. Think of it as a user-driven infographic.</p>
-      <!-- Clipboard Target -->
-      <div class="input-group">
-        <label class="input-group-label" for="copy-fact-image-button">Image URL:</label>
-        <input class="copy-share" id="copy-fact-image" value='<%= asset_path "#{(Rails.env.production? ? 'public/imagemagick/fact_photos/' : 'fact_photos/') + @fact.id.to_s}.png" %>'>
-        <!-- Clipboard Trigger -->
-        <span class="input-group-button">
-          <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
-              <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
-          </button>
-        </span>
-      </div>
-      <div class="input-group">
-        <label class="input-group-label" for="copy-fact-iframe-button">HTML Code:</label>
-        <input class="copy-share" id="copy-fact-iframe" value="<%= "<a href='#{fact_url(@fact)}'><img src='#{root_url}#{photo_path + @fact.id.to_s}.png'></a>" %>">
-        <!-- Clipboard Trigger -->
-        <span class="input-group-button">
-          <button id="copy-fact-iframe-button" class="clippy-btn" data-clipboard-target="#copy-fact-iframe">
-              <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
-          </button>
-        </span>
-      </div>
-    </div>
-    <div id="fact-image">
-      <% if Rails.env.production? %>
-        <img src='public/imagemagick/fact_photos/<%= @fact.id.to_s + ".png" %>' width="224", height="168">
-      <% else %>
-        <%= image_tag "fact_photos/#{@fact.id.to_s}.png", width: 224, height: 168 %>
-      <% end %>
+    <div class="input-group">
+      <label class="input-group-label" for="copy-fact-iframe-button">HTML Code:</label>
+      <input class="copy-share" id="copy-fact-iframe" value="<%= "<a href='#{fact_url(@fact)}'><img src='http://www.truthometer.co/public/imagemagick/fact_photos/#{@fact.id.to_s + ".png"}'></a>" %>">
+      <!-- Clipboard Trigger -->
+      <span class="input-group-button">
+        <button id="copy-fact-iframe-button" class="clippy-btn" data-clipboard-target="#copy-fact-iframe">
+            <%= image_tag "clippy.svg", alt: "Copy to clipboard", class: "clippy", width: 13 %>
+        </button>
+      </span>
     </div>
   </div>
+  <div id="fact-image">
+    <% if Rails.env.production? %>
+      <img src='/public/imagemagick/fact_photos/<%= @fact.id.to_s + ".png" %>' width="224", height="168">
+    <% else %>
+      <%= image_tag "fact_photos/#{@fact.id.to_s}.png", width: 224, height: 168 %>
+    <% end %>
+  </div>
+</div>
 
-  <a href="https://muut.com/i/truthometer/comments" class="muut" type="dynamic">Comments</a>
-  <script src="//cdn.muut.com/1/moot.min.js"></script>
+<a href="https://muut.com/i/truthometer/comments" class="muut" type="dynamic">Comments</a>
+<script src="//cdn.muut.com/1/moot.min.js"></script>
 
-  <!-- TODO: Figure out how to not have this style tag in the view...-->
-  <style>
-  @-webkit-keyframes move {
-      0% {
-          transform:rotate(-130deg);
-      }
+<!-- TODO: Figure out how to not have this style tag in the view...-->
+<style>
+@-webkit-keyframes move {
+    0% {
+        transform:rotate(-130deg);
+    }
 
-      100% {
-          transform:rotate(<%= -130 + ((@fact.score/100.0) * 260) %>deg);
-      }
-  }</style>
+    100% {
+        transform:rotate(<%= -130 + ((@fact.score/100.0) * 260) %>deg);
+    }
+}</style>
 
-  <script>
-    // Call clipboard.js on buttons
-    (function(){
-      new Clipboard('#copy-fact-image-button');
-      new Clipboard('#copy-fact-iframe-button')
-    })();
-  </script>
+<script>
+  // Call clipboard.js on buttons
+  (function(){
+    new Clipboard('#copy-fact-image-button');
+    new Clipboard('#copy-fact-iframe-button')
+  })();
+</script>
