@@ -13,7 +13,7 @@ var TruthinessScore = React.createClass({
     });
   },
   getInitialState: function() {
-    return {data: {score: this.props.score}, increase: true};
+    return {data: {score: this.props.score}, scoreIncrease: true};
   },
   componentDidMount: function() {
     this.loadScoreFromServer();
@@ -23,14 +23,12 @@ var TruthinessScore = React.createClass({
     return nextState.data.score !== this.state.data.score;
   },
   componentWillReceiveProps: function() {
-    if(nextState.data.score > this.state.data.score) {
-      this.setState({increase: true});
-    } else if(nextState.data.score < this.state.data.score) {
-      this.setState({increase: false});
-    }
+    this.setState({
+      scoreIncrease: nextState.scoreIncrease > this.scoreIncrease
+    });
   },
   componentWillUpdate: function() {
-    if(this.state.increase == true) {
+    if(this.state.scoreIncrease == true) {
       React.findDOMNode(this).classList.add("increase-truthiness-score");
     } else {
       React.findDOMNode(this).classList.add("decrease-truthiness-score");

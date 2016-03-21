@@ -2,7 +2,7 @@
   <a href="<%= fact_path(fact) %>" class="fact-box">
     <p class="fact-name"><strong><%= truncate(fact.body, length: 80) %></strong></p>
     <!-- Full cat name is for > 1150px screen, short-cat-name is for smaller screens -->
-    <div class="fact-box-score"><span class="short-cat-name">TRU</span><span class="full-cat-name">TRUTHINESS</span><%= react_component('TruthinessScore', {url: "/facts/#{fact.id}.json", pollInterval: 5000, score: fact.score}, prerender: true) %></div>
+    <div class="fact-box-score"><span class="short-cat-name">TRU</span><span class="full-cat-name">TRUTHINESS</span><%= react_component('TruthinessScore', {url: "/facts/#{fact.id}.json", pollInterval: 5000, score: fact.score}, {prerender: true}) %></div>
     <div class="fact-box-score"><span class="short-cat-name">POP</span><span class="full-cat-name">POPULARITY</span><%= fact.total_votes %></div>
     <div class="fact-box-score"><span class="short-cat-name">CAT</span><span class="full-cat-name">CATEGORY</span><span class="fact-box-category"><%= fact.category.name %></span></div>
   </a>
