@@ -11,9 +11,11 @@ class UsersController < ApplicationController
 
   def metrics
 
-    if current_user
+    if current_user && (params[:id] == current_user.id)
+
       @user = current_user
     else
+
       @user = User.find(params[:id])
     end
 
