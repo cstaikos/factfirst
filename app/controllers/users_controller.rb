@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @categories = %w(test test test)
+
+    @my_facts = Kaminari.paginate_array(@user.facts.to_a)
+    @my_facts = @my_facts.page(params[:page]).per(6)
+
+
   end
 
   def metrics

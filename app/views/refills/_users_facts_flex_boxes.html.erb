@@ -1,0 +1,20 @@
+<div class="stats-flex-box-wrapper">
+
+  <div class="stats-flex-boxes">
+
+    <% if current_user == @user %>
+      <div class="stats-flex-box users-favorites">
+
+          <h2 class="stats-flex-title">My Facts:</h2>
+          <ul>
+            <!--<%# @user.facts.each do |fact| %>-->
+                <%= render @my_facts %>
+                <%= paginate @my_facts %>
+            <!--<%# end %>-->
+          </ul>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
