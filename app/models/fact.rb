@@ -110,10 +110,11 @@ class Fact < ActiveRecord::Base
 
       if obj.upload_file(file)
         puts "Uploaded #{file} to bucket #{bucket}"
+        self.photo_url = obj.public_url
       else
         puts "Could not upload #{file} to bucket #{bucket}!"
       end
-      
+
     end
 
   end

@@ -46,7 +46,7 @@
     <!-- Clipboard Target -->
     <div class="input-group">
       <label class="input-group-label" for="copy-fact-image-button">Image URL:</label>
-      <input class="copy-share" id="copy-fact-image" value='http://www.truthometer.co/public/imagemagick/fact_photos/<%= @fact.id.to_s + ".png" %>'>
+      <input class="copy-share" id="copy-fact-image" value='<%= @fact.photo_url %>'>
       <!-- Clipboard Trigger -->
       <span class="input-group-button">
         <button id="copy-fact-image-button" class="clippy-btn" data-clipboard-target="#copy-fact-image">
@@ -56,7 +56,7 @@
     </div>
     <div class="input-group">
       <label class="input-group-label" for="copy-fact-iframe-button">HTML Code:</label>
-      <input class="copy-share" id="copy-fact-iframe" value="<%= "<a href='#{fact_url(@fact)}'><img src='http://www.truthometer.co/public/imagemagick/fact_photos/#{@fact.id.to_s + ".png"}'></a>" %>">
+      <input class="copy-share" id="copy-fact-iframe" value="<%= "<a href='#{fact_url(@fact)}'><img src='#{@fact.photo_url}'></a>" %>">
       <!-- Clipboard Trigger -->
       <span class="input-group-button">
         <button id="copy-fact-iframe-button" class="clippy-btn" data-clipboard-target="#copy-fact-iframe">
@@ -67,7 +67,7 @@
   </div>
   <div id="fact-image">
     <% if Rails.env.production? %>
-      <img src='/public/imagemagick/fact_photos/<%= @fact.id.to_s + ".png" %>' width="224", height="168">
+      <img src="<%= @fact.photo_url %>" width="224", height="168">
     <% else %>
       <%= image_tag "fact_photos/#{@fact.id.to_s}.png", width: 224, height: 168 %>
     <% end %>
