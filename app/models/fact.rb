@@ -57,6 +57,8 @@ class Fact < ActiveRecord::Base
     save
 
     update_image
+
+    save
   end
 
 
