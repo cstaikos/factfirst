@@ -284,10 +284,19 @@ hr.transition + h2 {
   margin: 0;
 }
 
-.increase-truthiness-score {
-  color: green;
+.change-truthiness-score {
+  color: #FFDC00;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 
-.decrease-truthiness-score {
-  color: red;
-}
+// .increase-truthiness-score {
+//   color: green;
+// }
+//
+// .decrease-truthiness-score {
+//   color: red;
+// }

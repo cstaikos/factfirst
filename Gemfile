@@ -28,6 +28,10 @@ gem 'public_suffix'
 gem 'figaro'
 gem 'httparty'
 
+# For image uploading to aws S3
+gem 'aws-sdk'
+
+
 # Patch for open_uri which gives option to allow redirects
 gem 'open_uri_redirections'
 

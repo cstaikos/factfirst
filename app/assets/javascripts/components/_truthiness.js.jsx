@@ -22,7 +22,7 @@ var TruthinessScore = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     return nextState.data.score !== this.state.data.score;
   },
-  componentWillReceiveProps: function() {
+  componentWillReceiveProps: function(nextProps, nextState) {
     if(nextState.data.score > this.state.data.score) {
       this.setState({increase: true});
     } else if(nextState.data.score < this.state.data.score) {
@@ -30,18 +30,21 @@ var TruthinessScore = React.createClass({
     }
   },
   componentWillUpdate: function() {
-    if(this.state.increase == true) {
-      React.findDOMNode(this).classList.add("increase-truthiness-score");
-    } else {
-      React.findDOMNode(this).classList.add("decrease-truthiness-score");
-    }
+    React.findDOMNode(this).classList.add("change-truthiness-score");
+    // NOTE: This is not working properly. The previous function does not increase state. The idea was to have red for decrease, green for increase.
+    // Will revisit when React workflow is improved.
+    // if(this.state.increase == true) {
+    //   React.findDOMNode(this).classList.add("increase-truthiness-score");
+    // } else {
+    //   React.findDOMNode(this).classList.add("decrease-truthiness-score");
+    // }
   },
   componentDidUpdate: function() {
     var animationTest = React.findDOMNode(this);
     setTimeout(function(){
-       animationTest.classList.remove("increase-truthiness-score");
-       animationTest.classList.remove("decrease-truthiness-score");
-    }, 1000);
+       animationTest.classList.remove("change-truthiness-score");
+      //  animationTest.classList.remove("decrease-truthiness-score");
+    }, 3000);
   },
   render: function() {
     return (

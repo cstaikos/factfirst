@@ -1,5 +1,7 @@
 // Populate list of facts with what matches category/sort/search from controller
 $("#facts-list").html('<%= @facts.empty? ? "No facts found - please refine your search" : (j render @facts) %>');
+// Remount all react components on page that were not getting mounted post-instant search (fix empty truthiness bug)
+ReactRailsUJS.mountComponents()
 
 // Add selected class to current filter buttons and remove whatever was previously selected
 $(".is-selected").toggleClass("is-selected");
