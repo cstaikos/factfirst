@@ -18,8 +18,8 @@
 
 
   <% if controller_action = "facts#show" %>
-    <link href="http://www.truthometer.co/public/imagemagick/fact_photos/<%= @fact ? @fact.id.to_s + ".png" : "" %>" rel="image_src" />
-    <meta content="http://www.truthometer.co/public/imagemagick/fact_photos/<%= @fact ? @fact.id.to_s + ".png" : "" %>" property="og:image" />
+    <link href="<%= @fact.photo_url %>" rel="image_src" />
+    <meta content="<%= @fact.photo_url %>" property="og:image" />
   <% else %>
     <link href="<%= asset_path "truthometer-logo-large-01.png" %>" rel="image_src" />
     <meta content="<%= asset_path "truthometer-logo-large-01.png" %>" property="og:image" />
