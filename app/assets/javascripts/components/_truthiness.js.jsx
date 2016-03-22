@@ -22,7 +22,7 @@ var TruthinessScore = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
     return nextState.data.score !== this.state.data.score;
   },
-  componentWillReceiveProps: function() {
+  componentWillReceiveProps: function(nextState) {
     if(nextState.data.score > this.state.data.score) {
       this.setState({increase: true});
     } else if(nextState.data.score < this.state.data.score) {
