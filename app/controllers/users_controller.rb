@@ -10,7 +10,13 @@ class UsersController < ApplicationController
   end
 
   def metrics
-    @user = current_user
+
+    if current_user
+      @user = current_user
+    else
+      @user = User.find(params[:id])
+    end
+
     @evidences_by_category_count = []
     @facts_by_category_count = []
     @votes_by_category_count = []
