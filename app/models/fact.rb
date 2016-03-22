@@ -101,6 +101,22 @@ class Fact < ActiveRecord::Base
 
     canvas.write((Rails.env.production? ? "public/imagemagick/fact_photos/" : "app/assets/images/fact_photos/") + "#{self.id}.png")
 
+    if Rails.env.production?
+      s3 = Aws::S3::Resource.new(region: 'us-east-1')
+      file = "public/imagemagick/fact_photos/#{self.id}.png"
+      bucket = "fact_photos"
+      name = File.basename file
+      obj = s3.bucket(bucket).object(name)
+
+      if obj.upload_file(file)
+        puts "Uploaded #{file} to bucket #{bucket}"
+        self.photo_url = obj.public_url
+      else
+        puts "Could not upload #{file} to bucket #{bucket}!"
+      end
+
+    end
+
   end
 
   # Checks if text fits within certain width
