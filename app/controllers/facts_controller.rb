@@ -25,7 +25,7 @@ class FactsController < ApplicationController
       end
     end
 
-    if params[:sort]
+    if params[:sort] && params[:sort].downcase != 'popular'
       case params[:sort].downcase
       when 'debated'
         @facts = @facts.sort_by(&:controversy_score) #TODO this too needs to be a db column...sorting this way is way slower
