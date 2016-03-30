@@ -112,7 +112,7 @@ class Fact < ActiveRecord::Base
 
       if obj.upload_file(file)
         puts "Uploaded #{file} to bucket #{bucket}"
-        self.photo_url = "http://images.truthometer.co/fact_photos/#{id}.png"
+        self.photo_url = "http://images.truthometer.co/#{id}.png"
       else
         puts "Could not upload #{file} to bucket #{bucket}!"
       end
