@@ -106,7 +106,7 @@ class Fact < ActiveRecord::Base
     if Rails.env.production?
       s3 = Aws::S3::Resource.new(region: 'us-east-1')
       file = "public/imagemagick/fact_photos/#{self.id}.png"
-      bucket = "fact_photos"
+      bucket = "images.truthometer.co"
       name = File.basename file
       obj = s3.bucket(bucket).object(name)
 
