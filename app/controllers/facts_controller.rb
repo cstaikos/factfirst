@@ -20,7 +20,8 @@ class FactsController < ApplicationController
       if params[:category].downcase == 'favorites'
         @facts = current_user.favorites
       else
-        @facts = @facts.where(category: Category.where(name: params[:category]) ) unless params[:category].downcase == 'all'
+        @facts = @facts.where(category: Category.where('name ILIKE ?', "%#{params[:category]}%")) unless params[:category].downcase == 'all'
+
       end
     end
 

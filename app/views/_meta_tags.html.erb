@@ -17,10 +17,10 @@
   <meta content="<%= meta_tags[:description] %>" name="twitter:description" />
 
 
-  <% if controller_action = "facts#show" %>
-    <link href="<%= @fact.photo_url %>" rel="image_src" />
-    <meta content="<%= @fact.photo_url %>" property="og:image" />
+  <% if controller_action == "facts#show" %>
+    <link href="<%= @fact ? @fact.photo_url : '' %>" rel="image_src" />
+    <meta content="<%= @fact ? @fact.photo_url : '' %>" property="og:image" />
   <% else %>
-    <link href="<%= asset_path "truthometer-logo-large-01.png" %>" rel="image_src" />
-    <meta content="<%= asset_path "truthometer-logo-large-01.png" %>" property="og:image" />
+    <link href="<%= request.base_url + (asset_path "truthometer-logo-large-01.png") %>" rel="image_src" />
+    <meta content="<%= request.base_url + (asset_path "truthometer-logo-large-01.png") %>" property="og:image" />
   <% end %>
