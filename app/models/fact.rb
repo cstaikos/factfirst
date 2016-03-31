@@ -109,6 +109,7 @@ class Fact < ActiveRecord::Base
       bucket = "images.truthometer.co"
       name = File.basename file
       obj = s3.bucket(bucket).object(name)
+      obj.metadata[:content_type] = "image/png"
 
       if obj.upload_file(file)
         puts "Uploaded #{file} to bucket #{bucket}"
